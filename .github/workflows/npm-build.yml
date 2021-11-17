@@ -28,4 +28,6 @@ jobs:
           node-version: '14'
       - run: rm -rf node_modules
       - run: npm install --force
+      - run: npm i enzyme  
+      - run: npm i --save-dev enzyme enzyme-adapter-react-16 
       - run: npm test
