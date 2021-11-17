@@ -1,7 +1,7 @@
 [![DOI](https://zenodo.org/badge/420900040.svg)](https://zenodo.org/badge/latestdoi/420900040)
 
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
-[![Build Status](https://app.travis-ci.com/shantanu109/WolfJobs.svg?branch=master)](https://app.travis-ci.com/shantanu109/WolfJobs)
+[![npm-build](https://github.com/ashakhatri007/WolfJobs/actions/workflows/npm-build.yml/badge.svg)](https://github.com/ashakhatri007/WolfJobs/actions/workflows/npm-build.yml)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
 [![Issues](https://img.shields.io/github/issues/shantanu109/wolfjobs)](https://GitHub.com/shantanu109/Wolfjobs/)
 [![Issues Closed](https://img.shields.io/github/issues-closed/shantanu109/wolfjobs)](https://GitHub.com/shantanu109/Wolfjobs/)
