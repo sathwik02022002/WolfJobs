@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/420900040.svg)](https://zenodo.org/badge/latestdoi/420900040)
+[![DOI](https://zenodo.org/badge/429097663.svg)](https://zenodo.org/badge/latestdoi/429097663)
 
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![npm-build](https://github.com/ashakhatri007/WolfJobs/actions/workflows/npm-build.yml/badge.svg)](https://github.com/ashakhatri007/WolfJobs/actions/workflows/npm-build.yml)
