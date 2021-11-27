@@ -145,10 +145,10 @@ Your app is ready to be deployed!
 # Contributors
   <table>
   <tr>
-    <td align="center"><a href="https://github.com/shantanu109"><img src="https://avatars.githubusercontent.com/u/42075794?v=4" width="100px;" alt=""/><br /><sub><b>Shantanu Pandey</b></sub></a></td>
-    <td align="center"><a href="https://github.com/gargvarun250"><img src="https://avatars.githubusercontent.com/u/89566418?v=4" width="100px;" alt=""/><br /><sub><b>Varun Garg</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/Sahil-Nande"><img src="https://avatars.githubusercontent.com/u/89487138?v=4" width="100px;" alt=""/><br /><sub><b>Sahil Nande</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/urmi6899"><img src="https://avatars.githubusercontent.com/u/53376580?v=4" width="100px;" alt=""/><br /><sub><b>Urmi Pathak</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/leanneserrao"><img src="https://avatars.githubusercontent.com/u/25662536?v=4" width="100px;" alt=""/><br /><sub><b>Leanne Serrao</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/ashakhatri007"><img src="https://avatars.githubusercontent.com/ashakhatri007" width="100px;" alt=""/><br /><sub><b>Asha Khatri</b></sub></a></td>
+    <td align="center"><a href="https://github.com/hetthakkar"><img src="https://avatars.githubusercontent.com/hetthakkar" width="100px;" alt=""/><br /><sub><b>Het Thakkar</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/lorenzs2908 "><img src="https://avatars.githubusercontent.com/lorenzs2908 " width="100px;" alt=""/><br /><sub><b>Lorenz Schellar</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Neelkanth7"><img src="https://avatars.githubusercontent.com/Neelkanth7" width="100px;" alt=""/><br /><sub><b>Neelkanth Tripathi</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/divyankgupta23"><img src="https://avatars.githubusercontent.com/divyankgupta23" width="100px;" alt=""/><br /><sub><b>Divyank Gupta</b></sub></a><br /></td>
   </tr>
 </table>
