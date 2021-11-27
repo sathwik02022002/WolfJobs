@@ -80,6 +80,14 @@ class App extends React.Component {
     return (
       <Router>
         <div className="wrapper">
+          <ToastContainer toastStyle={
+            {
+              backgroundColor: '#f5f5f5',
+              color: '#000',
+              border: '1px solid #000',
+              borderRadius: '5px',
+            }
+          } />
           <Navbar />
           {/* <Home /> */}
 
@@ -91,16 +99,7 @@ class App extends React.Component {
                   job={job}
 
                 />
-                <ToastContainer toastStyle={
-                  {
-                    backgroundColor: '#f5f5f5',
-                    color: '#000',
-                    fontSize: '1.5rem',
-                    fontWeight: 'bold',
-                    border: '1px solid #000',
-                    borderRadius: '5px',
-                  }
-                } />
+
               </div>
 
             }} />
@@ -115,6 +114,7 @@ class App extends React.Component {
               path="/goal"
               component={Goal}
               isLoggedIn={auth.isLoggedIn}
+              isLoading={this.props.isLoading}
             />
             <PrivateRoute
               path="/history"
@@ -151,7 +151,7 @@ function mapStateToProps(state) {
     auth: state.auth,
     profile: state.profile,
     job: state.job,
-
+    isLoading: state.isLoading,
 
   }
 

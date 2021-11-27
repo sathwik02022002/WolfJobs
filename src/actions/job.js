@@ -11,6 +11,7 @@ import {
   } from './actionTypes';
 
 import {toast} from 'react-toastify';
+import { setIsLoading } from './utilState';
 
 
 
@@ -49,9 +50,15 @@ export function createJob(
             // do something
             localStorage.setItem("token", data.data.token);
             dispatch(jobSuccess(data.data.job));
+            toast.success("Job created successfully")
             return;
           }
           // dispatch(signupFailed(data.message));
+        }).catch((error) => {
+          toast.error(error.message);
+          console.log('error', error);
+        }).finally(() => {
+          dispatch(setIsLoading(false));
         });
     };
   }
