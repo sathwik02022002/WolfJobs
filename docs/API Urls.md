@@ -74,12 +74,12 @@ res.json(200, {\
       success: true,\
     })
 
-## Get Food and its Calorie content
+## Get the jobs according to search criteria
 Method: "GET"\
 /users/search/${searchText}\
 Response:\
 res.json(200, {\
-      message: "The list of Searched Food",\
+      message: "The list of Searched Jobs",\
       data: {\
         users: users,\
       },\
