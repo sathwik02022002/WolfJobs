@@ -20,6 +20,6 @@
 |.5|other automated analysis tools  | Github worflow - https://github.com/ashakhatri007/WolfJobs/actions  |3|
 |.5|test cases:.a large proportion of the issues related to handling failing cases. | https://github.com/ashakhatri007/WolfJobs/issues |3|
 |.5|test cases are routinely executed | https://github.com/ashakhatri007/WolfJobs/actions |3|
-|1|Documentation describing how this version improves on the older version| https://github.com/ashakhatri007/WolfJobs/blob/master/docs/Proj3Improvements.md|3|
+|1|Documentation describing how this version improves on the older version| https://github.com/ashakhatri007/WolfJobs/blob/master/docs/Project3Improvements.md|3|
 |3|This version is a little(1), some(2), much(3) improved on the last version.|Tutor's assessment.| |
 |16| Total|
