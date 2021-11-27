@@ -10,6 +10,8 @@ import {
     CLOSE_JOB
   } from './actionTypes';
 
+import {toast} from 'react-toastify';
+
 
 
 export function createJob(
@@ -154,6 +156,11 @@ export function createApplication(applicantname,address,phonenumber,applicantId,
               return;
             }
             // dispatch(signupFailed(data.message));
+          })
+          .catch((error) => {
+            console.log('error', error);
+            // toast.warn('Error in creating application');
+            toast.error('Error in creating application' + error);
           });
       };
 

@@ -20,6 +20,7 @@
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
     "react-thunk": "^1.0.0",
+    "react-toastify": "^8.1.0",
     "redux": "^4.1.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
@@ -39,7 +40,7 @@
       "react-app/jest"
     ]
   },
-  "prettier":{
+  "prettier": {
     "trailingComma": "es5",
     "tabWidth": 4,
     "semi": false,
