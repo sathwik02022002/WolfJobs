@@ -3,6 +3,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {clearAuthState, editUser} from '../actions/auth'
+import TextField from '@mui/material/TextField';
+import Select from 'react-select';
+
+const Gender = [
+  { label: "Male", value: "Male" },
+  { label: "Female", value: "Female" },
+  { label: "Others", value: "Others" }
+];
+
+const AvailableHours = [
+  { label: "5 Hours", value: "5 Hours" },
+  { label: "10 Hours", value: "10 Hours" },
+  { label: "15 Hours", value: "15 Hours" },
+  { label: "20 Hours", value: "20 Hours" }
+];
+
 
 class Settings extends Component {
   constructor(props) {
@@ -18,7 +34,7 @@ class Settings extends Component {
       address:'',
       phonenumber:'',
       hours:'',
-      dob:'',
+      dob:new Date(),
       gender:'',
       skills:''
     };
@@ -61,7 +77,7 @@ class Settings extends Component {
             address:result.data.user.address,
             phonenumber:result.data.user.phonenumber,
             hours:result.data.user.hours,
-            dob:result.data.user.dob,
+            dob:result.data.user.dob == null ? new Date() : result.data.user.dob,
             gender:result.data.user.gender,
             skills:result.data.user.skills
           });
@@ -163,12 +179,7 @@ class Settings extends Component {
         <div className="field">
           <div className="field-label">Available Hours</div>
           {editMode ? (
-            <input
-              type="text"
-              onChange={(e) => this.handleChange('hours',e.target.value)}
-              value={this.state.hours}
-              placeholder='Hours'
-            />
+            <Select options={AvailableHours} onChange={(e) => this.handleChange('hours',e.value)}/>
           ) : (
             
             <div className="field-value">{this.state.hours}</div>
@@ -177,26 +188,24 @@ class Settings extends Component {
         <div className="field">
           <div className="field-label">DOB</div>
           {editMode ? (
-            <input
-              type="text"
+            <TextField
+              type="date"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
               onChange={(e) => this.handleChange('dob',e.target.value)}
               value={this.state.dob}
-              placeholder='DOB'
-            />
+          />
           ) : (
             
-            <div className="field-value">{this.state.dob}</div>
+            <div className="field-value">{this.state.dob.toString()}</div>
           )}
         </div>
         <div className="field">
           <div className="field-label">Gender</div>
           {editMode ? (
-            <input
-              type="text"
-              onChange={(e) => this.handleChange('gender',e.target.value)}
-              value={this.state.gender}
-              placeholder='Gender'
-            />
+            <Select  options={Gender} onChange={(e) => this.handleChange('gender',e.value)}/>
           ) : (
             
             <div className="field-value">{this.state.gender}</div>
