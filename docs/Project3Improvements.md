@@ -17,6 +17,7 @@ res.set('Access-Control-Allow-Origin', '*');
 
 There was a problem when you edit profile. The state was updated with edit details but once page refresh is done only minimalistic info sustained from auth was shown. The issue here was getprofile was not implemented at all. We implemented neccessary changes in frontend and backend to support get profile. Now after edit profile and even full page refresh, user will be able to see the latest profile details.
 
-
+Get Profile Page:
+<img width="1200" alt="get profile" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/GetProfile.png">
 
 
