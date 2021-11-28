@@ -2,7 +2,17 @@
 <h3>💎 Addition of Code Coverga Badge </h3>
 
 <br><br>
+<h3>💎 Addition of Prettier for code formatting and syntax checker</h3>
+We used Prettier an opinionated code formatter to enforce a consistent style by parsing our code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.
 
+```
+  {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": false
+  }
+```
 <h3>💎 Implemented Github actions for automated build and test for every push/ PRs to master branch</h3>
 
 There was no way to run automated build and tests on code committed to master branch, this can lead to late discovery of issue. We implemented github actions workflow to detect build failurs and/or regressions by running automated checks on PRs and their incremental pushes.
