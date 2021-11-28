@@ -3,6 +3,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {clearAuthState, editUser, generateOtp, verifyOtp} from '../actions/auth'
+import TextField from '@mui/material/TextField';
+import Select from 'react-select';
+
+const Gender = [
+  { label: "Male", value: "Male" },
+  { label: "Female", value: "Female" },
+  { label: "Others", value: "Others" }
+];
+
+const AvailableHours = [
+  { label: "5 Hours", value: "5 Hours" },
+  { label: "10 Hours", value: "10 Hours" },
+  { label: "15 Hours", value: "15 Hours" },
+  { label: "20 Hours", value: "20 Hours" }
+];
+
 
 class Settings extends Component {
   constructor(props) {
@@ -10,6 +26,7 @@ class Settings extends Component {
 
     this.state = {
       name: props.auth.user.name,
+      id: props.auth.user._id,
       password: '',
       confirmPassword: '',
       editMode: false,
@@ -17,7 +34,7 @@ class Settings extends Component {
       address:'',
       phonenumber:'',
       hours:'',
-      dob:'',
+      dob:new Date(),
       gender:'',
       skills:'',
       showOtpField: false,
@@ -46,6 +63,38 @@ class Settings extends Component {
   componentWillUnmount(){
       this.props.dispatch(clearAuthState())
   }
+
+  componentDidMount(){
+      console.log("Inside component did mount");
+      fetch("http://localhost:8000/api/v1/users/getprofile/" + this.props.auth.user._id)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            name: result.data.user.name,
+            password: result.data.user.password,
+            confirmPassword: '',
+            role:'',
+            address:result.data.user.address,
+            phonenumber:result.data.user.phonenumber,
+            hours:result.data.user.hours,
+            dob:result.data.user.dob == null ? new Date() : result.data.user.dob,
+            gender:result.data.user.gender,
+            skills:result.data.user.skills
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
   render() {
     const { user,error } = this.props.auth;
     const { editMode } = this.state;
@@ -54,7 +103,7 @@ class Settings extends Component {
       <div className="settings">
         <div className="img-container">
           <img
-            src="https://cdn-icons.flaticon.com/png/512/668/premium/668709.png?token=exp=1636045281~hmac=01dc4c9a3c91ca3c5bae9c160e2fb7c6"
+            src="https://icons-for-free.com/download-icon-person-1324760545186718018_512.png"
             alt="user-dp"
           />
         </div>
@@ -163,7 +212,7 @@ class Settings extends Component {
             />
           ) : (
             
-            <div className="field-value">{user.address}</div>
+            <div className="field-value">{this.state.address}</div>
           )}
         </div>
         <div className="field">
@@ -177,49 +226,42 @@ class Settings extends Component {
             />
           ) : (
             
-            <div className="field-value">{user.phonenumber}</div>
+            <div className="field-value">{this.state.phonenumber}</div>
           )}
         </div>
         <div className="field">
           <div className="field-label">Available Hours</div>
           {editMode ? (
-            <input
-              type="text"
-              onChange={(e) => this.handleChange('hours',e.target.value)}
-              value={this.state.hours}
-              placeholder='Hours'
-            />
+            <Select options={AvailableHours} onChange={(e) => this.handleChange('hours',e.value)}/>
           ) : (
             
-            <div className="field-value">{user.hours}</div>
+            <div className="field-value">{this.state.hours}</div>
           )}
         </div>
         <div className="field">
           <div className="field-label">DOB</div>
           {editMode ? (
-            <input
-              type="text"
+            <TextField
+              type="date"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
               onChange={(e) => this.handleChange('dob',e.target.value)}
               value={this.state.dob}
-              placeholder='DOB'
-            />
+          />
           ) : (
             
-            <div className="field-value">{user.dob}</div>
+            <div className="field-value">{this.state.dob.toString()}</div>
           )}
         </div>
         <div className="field">
           <div className="field-label">Gender</div>
           {editMode ? (
-            <input
-              type="text"
-              onChange={(e) => this.handleChange('gender',e.target.value)}
-              value={this.state.gender}
-              placeholder='Gender'
-            />
+            <Select  options={Gender} onChange={(e) => this.handleChange('gender',e.value)}/>
           ) : (
             
-            <div className="field-value">{user.gender}</div>
+            <div className="field-value">{this.state.gender}</div>
           )}
         </div>
         <div className="field">
@@ -233,7 +275,7 @@ class Settings extends Component {
             />
           ) : (
             
-            <div className="field-value">{user.skills}</div>
+            <div className="field-value">{this.state.skills}</div>
           )}
         </div>
 
