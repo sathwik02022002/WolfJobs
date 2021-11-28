@@ -64,7 +64,7 @@ The Exit Profile UI was having all input fields as text. Improved few fields to 
 res.set('Access-Control-Allow-Origin', '*');
 ```
 
-<h3> 🐞 Bug - Profile details not visible after updating profile and doing page refresh</h3>
+<h3> 🐞 Bug - Profile details not visible after updating profile and doing page refresh </h3>
 
 There was a problem when you edit profile. The state was updated with edit details but once page refresh is done only minimalistic info sustained from auth was shown. The issue here was getprofile was not implemented at all. We implemented neccessary changes in frontend and backend to support get profile. Now after edit profile and even full page refresh, user will be able to see the latest profile details.
 
