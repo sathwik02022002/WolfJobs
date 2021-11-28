@@ -11,9 +11,12 @@ import {
   CLEAR_AUTH_STATE,
   EDIT_USER_SUCCESSFULL,
   EDIT_USER_FAILED,
+  GENERATE_OTP_SUCCESS,
+  GENERATE_OTP_FAILED,
 } from "./actionTypes";
 import { getFormBody } from "../helpers/utils";
 import { getAuthTokenFromLocalStorage } from "../helpers/utils";
+import { toast } from 'react-toastify';
 // import { fetchUserFriends } from '../actions/friends';
 
 export function startLogin() {
@@ -146,6 +149,77 @@ export function editUserFailed(error) {
   };
 }
 
+export function generateOtpSuccess() {
+  return {
+    type: GENERATE_OTP_SUCCESS,
+  };
+}
+
+export function generateOtpFailed(error) {
+  return {
+    type: GENERATE_OTP_FAILED,
+    error,
+  };
+}
+
+export function userEmailVerified() {
+  return {
+    type: "USER_EMAIL_VERIFIED",
+  };
+}
+
+export function generateOtp(userId) {
+  return (dispatch) => {
+    const url = APIURLS.generateOtp(userId);
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: getFormBody({ userId }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          // dispatch(generateOtpSuccess());
+          toast.success("OTP Sent Successfully");
+          return;
+        }
+        // dispatch(generateOtpFailed(data.message));
+        // toast.error(data.message);
+        toast.success(data.message)
+      }).catch((error) => {
+        // dispatch(generateOtpFailed(error));
+        toast.error("Could not generate OTP");
+      });
+  };
+}
+
+export function verifyOtp(userId, otp) {
+  return (dispatch) => {
+    const url = APIURLS.verifyOtp(userId);
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: getFormBody({ userId, otp }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          dispatch(userEmailVerified());
+          toast.success("OTP Verified Successfully");
+          return;
+        }
+        // dispatch(verifu(data.message));
+        toast.error(data.message);
+      }).catch((error) => {
+        // dispatch(generateOtpFailed(error));
+        toast.error("Could not verify OTP");
+      });
+  };
+}
 
 export function editUser(
   name,
