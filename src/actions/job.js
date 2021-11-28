@@ -10,6 +10,9 @@ import {
     CLOSE_JOB
   } from './actionTypes';
 
+import {toast} from 'react-toastify';
+import { setIsLoading } from './utilState';
+
 
 
 export function createJob(
@@ -47,9 +50,15 @@ export function createJob(
             // do something
             localStorage.setItem("token", data.data.token);
             dispatch(jobSuccess(data.data.job));
+            toast.success("Job created successfully")
             return;
           }
           // dispatch(signupFailed(data.message));
+        }).catch((error) => {
+          toast.error(error.message);
+          console.log('error', error);
+        }).finally(() => {
+          dispatch(setIsLoading(false));
         });
     };
   }
@@ -152,8 +161,15 @@ export function createApplication(applicantname,address,phonenumber,applicantId,
             console.log('APPLICATION ADDED SUCCESSFULLY')
             dispatch(applicationSuccess(data.data.application));
               return;
+            } else {
+              toast.error(data.message);
             }
             // dispatch(signupFailed(data.message));
+          })
+          .catch((error) => {
+            console.log('error', error);
+            // toast.warn('Error in creating application');
+            toast.error('Error in creating application');
           });
       };
 
