@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {clearAuthState, editUser} from '../actions/auth'
+import {clearAuthState, editUser, generateOtp, verifyOtp} from '../actions/auth'
 
 class Settings extends Component {
   constructor(props) {
@@ -19,7 +19,9 @@ class Settings extends Component {
       hours:'',
       dob:'',
       gender:'',
-      skills:''
+      skills:'',
+      showOtpField: false,
+      otp: ''
     };
   }
 
@@ -64,6 +66,57 @@ class Settings extends Component {
           <div className="field-label">Email</div>
           <div className="field-value">{user.email}</div>
         </div>
+
+        {(!this.props.auth.user.isVerified && !this.state.showOtpField) && (
+          <div className="field" style={{
+            border: '1px solid #ccc',
+            textAlign: 'center',
+            padding: '5px',
+            borderRadius: '5px',
+            borderColor: '#F00',
+            color: '#F00',
+            cursor: 'pointer'
+          }} onClick={
+            () => {
+              this.setState({
+                showOtpField: true
+              })
+              this.props.dispatch(generateOtp(this.props.auth.user._id));
+            }
+          }>
+            Email not verified. Click here to verify
+          </div>
+        )}
+        {
+          this.state.showOtpField && (!this.props.auth.user.isVerified) && (
+            <div className="field" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <input
+                  type="text"
+                  placeholder="Enter OTP"
+                  style={{
+                    textAlign: 'center',
+                    color: '#F00',
+                    border: '1px solid #FOO',
+                    borderColor: '#F00',
+                    marginTop: '0px',
+                  }}
+                  onChange={(e) => {
+                    this.handleChange('otp', e.target.value)
+                  }}
+                />
+                <button
+                  style={{
+                    marginTop: '0px',
+                  }}
+                  onClick={() => {
+                    this.props.dispatch(verifyOtp(this.props.auth.user._id, this.state.otp))
+                  }}
+                >
+                Verify
+                </button>
+            </div>
+          )
+        }
 
         <div className="field">
           <div className="field-label">Name</div>
