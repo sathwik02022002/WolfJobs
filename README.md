@@ -14,6 +14,7 @@
 [![Top Language](https://img.shields.io/github/languages/top/shantanu109/wolfjobs)](https://GitHub.com/shantanu109/Wolfjobs/)
 [![Version](https://img.shields.io/github/package-json/v/shantanu109/wolfjobs)](https://GitHub.com/shantanu109/Wolfjobs/)
 [![Release](https://img.shields.io/github/v/release/shantanu109/wolfjobs)](https://GitHub.com/shantanu109/Wolfjobs/)
+[![codecov](https://codecov.io/gh/ashakhatri007/WolfJobs/branch/master/graph/badge.svg?token=1KKWYOMDBZ)](https://codecov.io/gh/ashakhatri007/WolfJobs)
 
 ![WolfJobs Logo](https://user-images.githubusercontent.com/89487138/140389503-29cb0c25-83d0-4196-9bfb-7d1ecc863412.png)
 ![Banner](https://www.schoolcraft.edu/wp-content/uploads/2021/07/student-employee-open-house-graphic.png)
