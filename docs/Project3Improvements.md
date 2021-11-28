@@ -23,10 +23,26 @@ Below steps are executed:
 ```
 
 Worflow runs:
-<img width="1200" alt="get profile" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/WorkflowRuns.png">
+<img width="1200" alt="workflowruns" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/WorkflowRuns.png">
 
 
+<br><br>
+
+<h3>💎 Improvements to Edit Profile UI</h3>
+The Exit Profile UI was having all input fields as text. Improved few fields to the way it should be.
+
+Available Hours:
+
+<img width="800" alt="AvailableHours" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/AvailableHours.png">
 <br>
+Date of Birth:
+
+<img width="800" alt="DOB" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/DOB.png">
+<br>
+Gender:
+
+<img width="800" alt="Gender" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/Gender.png">
+<br><br>
 <h1> ✅ Bug fixes </h1>
 
 <h3> 🐞 Bug -  CORS not enabled on server side APIs</h3>
