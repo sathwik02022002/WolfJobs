@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { toast } from 'react-toastify'
 import { createApplication, closeJob } from '../actions/job'
 
 class Job extends Component {
     handleApply = () => {
         const { user } = this.props.auth
         const { job } = this.props
+
+        if(!user.isVerified){
+            toast.error('Please verify your email before applying');
+            return;
+        }
 
         this.props.dispatch(
             createApplication(

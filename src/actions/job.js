@@ -161,13 +161,15 @@ export function createApplication(applicantname,address,phonenumber,applicantId,
             console.log('APPLICATION ADDED SUCCESSFULLY')
             dispatch(applicationSuccess(data.data.application));
               return;
+            } else {
+              toast.error(data.message);
             }
             // dispatch(signupFailed(data.message));
           })
           .catch((error) => {
             console.log('error', error);
             // toast.warn('Error in creating application');
-            toast.error('Error in creating application' + error);
+            toast.error('Error in creating application');
           });
       };
 
