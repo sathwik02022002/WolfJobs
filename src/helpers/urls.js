@@ -15,7 +15,6 @@ export const APIURLS = {
     userSearch: (searchText) => `${API_ROOT}/users/search/${searchText}`,
     fetchApplication: () => `${API_ROOT}/users/fetchapplications`,
     closeJob: () => `${API_ROOT}/users/closejob`,
-
-   
-    
+    generateOtp: () => `${API_ROOT}/users/generateOTP`,
+    verifyOtp: () => `${API_ROOT}/users/verifyOTP`,    
 }
