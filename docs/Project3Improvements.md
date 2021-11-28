@@ -30,16 +30,16 @@ Worflow runs:
 
 <h3>💎 Improvements to Edit Profile UI</h3>
 The Exit Profile UI was having all input fields as text. Improved few fields to the way it should be.
-
-Available Hours:
+<br>
+<b>Available Hours:<b>
 
 <img width="800" alt="AvailableHours" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/AvailableHours.png">
 <br>
-Date of Birth:
+<b>Date of Birth:<b>
 
 <img width="800" alt="DOB" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/DOB.png">
 <br>
-Gender:
+<b>Gender:<b>
 
 <img width="800" alt="Gender" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/Gender.png">
 <br><br>
