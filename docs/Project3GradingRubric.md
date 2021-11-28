@@ -10,10 +10,10 @@
 |.5|Number of commits: by different people  | https://github.com/ashakhatri007/WolfJobs/graphs/contributors |3|
 |1|issues are being closed | Close all issues: https://github.com/ashakhatri007/WolfJobs/issues |3|
 |.5|issues are discussed before they are closed | https://github.com/ashakhatri007/WolfJobs/issues |3|
-|.5|Use of syntax checkers. | using Visual studio code for syntax checking capabilities |3|
+|.5|Use of syntax checkers. | using Visual studio code and ESlint for syntax checking capabilities - https://github.com/ashakhatri007/WolfJobs/blob/master/.eslintrc.json |3|
 |1|Issues reports: there are many  | https://github.com/ashakhatri007/WolfJobs/issues | 3|
-|.5|Use of code formatters. | config files in GH showing your this formatter's config -  |3|
-|.5|Use of style checkers | |3|
+|.5|Use of code formatters. | Using prettier - https://github.com/ashakhatri007/WolfJobs/blob/master/.prettierrc.json  |3|
+|.5|Use of style checkers | Using prettier - https://github.com/ashakhatri007/WolfJobs/blob/master/.prettierrc.json |3|
 |.5|Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code. | https://github.com/ashakhatri007/WolfJobs/blob/master/README.md |3|
 |.5|test cases exist  | https://github.com/ashakhatri007/WolfJobs/tree/master/src/test/components |3|
 |.5|Use of code coverage  | Add code coverage |3|
