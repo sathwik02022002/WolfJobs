@@ -1,6 +1,31 @@
 <h1> ✅ Features </h1>
 <h3>💎 Addition of Code Coverga Badge </h3>
 
+<br><br>
+
+<h3>💎 Implemented Github actions for automated build and test for every push/ PRs to master branch</h3>
+
+There was no way to run automated build and tests on code committed to master branch, this can lead to late discovery of issue. We implemented github actions workflow to detect build failurs and/or regressions by running automated checks on PRs and their incremental pushes.
+
+Below steps are executed:
+
+```
+ steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: rm -rf node_modules
+      - run: npm install --force
+      - run: npm i enzyme  
+      - run: npm i --save-dev enzyme                enzyme-adapter-react-16 
+      - run: npm test
+```
+
+Worflow runs:
+<img width="1200" alt="get profile" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/WorkflowRuns.png">
+
+
 <br>
 <h1> ✅ Bug fixes </h1>
 
