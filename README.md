@@ -4,7 +4,7 @@
 [![npm-build](https://github.com/ashakhatri007/WolfJobs/actions/workflows/npm-build-test.yml/badge.svg)](https://github.com/ashakhatri007/WolfJobs/actions/workflows/npm-build-test.yml)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
 [![Issues](https://img.shields.io/github/issues/ashakhatri007/wolfjobs)](https://GitHub.com/ashakhatri007/Wolfjobs/)
-[![Issues Closed](https://img.shields.io/github/issues-closed/shantanu109/wolfjobs)](https://GitHub.com/shantanu109/Wolfjobs/)
+[![Issues Closed](https://img.shields.io/github/issues-closed/ashakhatri007/wolfjobs)](https://GitHub.com/ashakhatri007/Wolfjobs/)
 ![last commit](https://img.shields.io/github/last-commit/ashakhatri007/Wolfjobs)
 ![total lines](https://img.shields.io/tokei/lines/github/ashakhatri007/Wolfjobs)
 [![Repo-size](https://img.shields.io/github/repo-size/ashakhatri007/Wolfjobs)](https://GitHub.com/ashakhatri007/Wolfjobs/)
