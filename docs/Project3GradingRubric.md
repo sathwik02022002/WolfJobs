@@ -1,6 +1,6 @@
 |Score|Notes|Evidence|Self Assessment|
 |-|-----|-------|--|
-|.5| short release cycles| https://github.com/ashakhatri007/WolfJobs/releases | 3|
+|.5| short release cycles| https://github.com/ashakhatri007/WolfJobs/releases | 2|
 |.5| workload is spread over the whole team (so one team member is often Xtimes more productive than the others...| https://github.com/ashakhatri007/WolfJobs/graphs/contributors | 3|
 |.5|Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing |https://github.com/ashakhatri007/WolfJobs/blob/master/README.md |3|
 |.5|the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up  | https://github.com/ashakhatri007/WolfJobs/blob/master/CONTRIBUTING.md |3|
