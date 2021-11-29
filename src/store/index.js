@@ -8,11 +8,11 @@ let store
 export function configureStore() {
     store = createStore(
         reducer,
-        compose(
+        // compose(
             applyMiddleware(thunk, logger),
-            window.__REDUX_DEVTOOLS_EXTENSION__ &&
-                window.__REDUX_DEVTOOLS_EXTENSION__()
-        )
+            // window.__REDUX_DEVTOOLS_EXTENSION__ &&
+                // window.__REDUX_DEVTOOLS_EXTENSION__()
+        // )
     )
 
     return store
