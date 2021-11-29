@@ -1,6 +1,6 @@
 <h1> ✅ Features </h1>
 <h3>💎 Addition of Code Coverage Badge </h3>
-
+We used Codecov for generating code coverage badge. Report for same can be found here: https://app.codecov.io/gh/ashakhatri007/WolfJobs
 <br><br>
 <h3>💎 Addition of Prettier for code formatting and syntax checker</h3>
 We used Prettier an opinionated code formatter to enforce a consistent style by parsing our code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.
