@@ -1,5 +1,5 @@
 <h1> ✅ Features </h1>
-<h3>💎 Addition of Code Coverga Badge </h3>
+<h3>💎 Addition of Code Coveradge Badge </h3>
 
 <br><br>
 <h3>💎 Addition of Prettier for code formatting and syntax checker</h3>
