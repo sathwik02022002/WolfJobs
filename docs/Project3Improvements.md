@@ -41,15 +41,15 @@ Worflow runs:
 <h3>💎 Improvements to Edit Profile UI</h3>
 The Exit Profile UI was having all input fields as text. Improved few fields to the way it should be.
 
-<b>Available Hours:<b>
+<b>Available Hours:</b>
 
 <img width="800" alt="AvailableHours" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/AvailableHours.png">
 
-<b>Date of Birth:<b>
+<b>Date of Birth:</b>
 
 <img width="800" alt="DOB" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/DOB.png">
 
-<b>Gender:<b>
+<b>Gender:</b>
 
 <img width="800" alt="Gender" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/Gender.png">
 <br><br>
@@ -71,4 +71,17 @@ There was a problem when you edit profile. The state was updated with edit detai
 Get Profile Page:
 <img width="1200" alt="get profile" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/GetProfile.png">
 
+<h3> 🐞 Bug: User able to apply for the same job multiple times </h3>
 
+<p>Previously, users were able to apply for the same job multiple times. This was a problem because the manager would see that applicant multiple times. To fix this behavior, a check was implemented in backend to check if user has already applied for the job.</p>
+
+
+<h1> ✨ Enhancements  </h1>
+
+<h3>📧 Email verification using OTP</h3>
+
+<p>Previously, user emails were not verified when a user created an account. This was a security issue and particularly pertinent for this application where spam prevention is very important. </p>
+
+We added a feature where users can verify their emails generating an OTP on demand which is sent to their email. This OTP is then used to verify their email. This verification can be performed by the user on the profile page. 
+
+When a user tries to apply to a particular job, their profile is checked for email verification. If the user has not verified their email, they are shown a message asking them to verify their email.
