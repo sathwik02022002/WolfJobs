@@ -56,7 +56,7 @@ https://user-images.githubusercontent.com/53376580/140424961-e5cda829-7d05-4221-
 # Application Preview:
 ## Applicant Side
 ### Signup Page
-https://user-images.githubusercontent.com/53376580/140411230-bc93751b-67ba-4ac7-9082-d026c323839b.mov
+https://user-images.githubusercontent.com/89552657/144122974-a0a18ce0-a2c9-41c1-b228-d7f1123cca07.mov
 
 ### Edit Profile
 https://user-images.githubusercontent.com/89552657/144117729-df299821-2861-4d2c-a6a6-53254cf3e9a2.mov
