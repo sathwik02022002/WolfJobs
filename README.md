@@ -68,7 +68,7 @@ https://user-images.githubusercontent.com/89552657/144117768-6fb0db5b-e3c5-4b16-
 https://user-images.githubusercontent.com/89552657/144117794-93453cdd-acdc-4caa-beca-f9ccf1c326e1.mov
 
 ### Job Status
-https://user-images.githubusercontent.com/89552657/144118266-784ab768-c087-46e2-907a-1e5233aea718.mov
+https://user-images.githubusercontent.com/89552657/144119510-9e9b966c-e34e-4439-8e8f-5bb4ad46bb77.mov
 
 ## Manager Side
 ### Accept or Reject applicant
