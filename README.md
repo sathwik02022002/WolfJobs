@@ -56,19 +56,16 @@ https://user-images.githubusercontent.com/53376580/140424961-e5cda829-7d05-4221-
 # Application Preview:
 ## Applicant Side
 ### Signup Page
-
-
 https://user-images.githubusercontent.com/53376580/140411230-bc93751b-67ba-4ac7-9082-d026c323839b.mov
 
 ### Edit Profile
-https://user-images.githubusercontent.com/53376580/140409480-1143c83a-f650-41b9-9a5a-5a29fb8a69a3.mov
+https://user-images.githubusercontent.com/89552657/144117729-df299821-2861-4d2c-a6a6-53254cf3e9a2.mov
 
 ### Search Engine
-https://user-images.githubusercontent.com/53376580/140409391-5e36d4e3-dc7f-410d-9b22-74b16380877e.mov
-
+https://user-images.githubusercontent.com/89552657/144117768-6fb0db5b-e3c5-4b16-8cad-5838d4a4132e.mov
 
 ### Apply for Job
-https://user-images.githubusercontent.com/53376580/140409146-e528dd14-c58a-4a1e-8fa0-0568efb1f6f6.mov
+https://user-images.githubusercontent.com/89552657/144117794-93453cdd-acdc-4caa-beca-f9ccf1c326e1.mov
 
 ### Job Status
 https://user-images.githubusercontent.com/53376580/140409311-2d8c6316-2da4-4299-870f-93185b05a165.mov
