@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-ro
 
 import { Home, Page404, Navbar, Login, Signup, Settings, Goal, History, UserApplication } from './';
 import PropTypes from 'prop-types';
-import { authenticateUser } from '../actions/auth';
+import { authenticateUser, refreshUserData } from '../actions/auth';
 import { getAuthTokenFromLocalStorage } from '../helpers/utils';
 import { fetchJobs } from '../actions/job';
 import { fetchApplications } from '../actions/job';
@@ -68,7 +68,7 @@ class App extends React.Component {
         })
       );
       //const users = this.props.auth.user
-
+      this.props.dispatch(refreshUserData(user._id));
     }
   }
 

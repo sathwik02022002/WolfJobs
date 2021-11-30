@@ -13,10 +13,11 @@ import {
   EDIT_USER_FAILED,
   GENERATE_OTP_SUCCESS,
   GENERATE_OTP_FAILED,
+  SET_USER,
 } from "./actionTypes";
 import { getFormBody } from "../helpers/utils";
 import { getAuthTokenFromLocalStorage } from "../helpers/utils";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 // import { fetchUserFriends } from '../actions/friends';
 
 export function startLogin() {
@@ -187,8 +188,9 @@ export function generateOtp(userId) {
         }
         // dispatch(generateOtpFailed(data.message));
         // toast.error(data.message);
-        toast.success(data.message)
-      }).catch((error) => {
+        toast.success(data.message);
+      })
+      .catch((error) => {
         // dispatch(generateOtpFailed(error));
         toast.error("Could not generate OTP");
       });
@@ -214,7 +216,8 @@ export function verifyOtp(userId, otp) {
         }
         // dispatch(verifu(data.message));
         toast.error(data.message);
-      }).catch((error) => {
+      })
+      .catch((error) => {
         // dispatch(generateOtpFailed(error));
         toast.error("Could not verify OTP");
       });
@@ -266,10 +269,42 @@ export function editUser(
           if (data.data.token) {
             localStorage.setItem("token", data.data.token);
           }
+          toast.success("Profile Updated Successfully");
           return;
         }
 
         dispatch(editUserFailed(data.message));
+      })
+      .catch((error) => {
+        toast.error("Could not edit profile");
       });
+  };
+}
+
+export function setUser(user) {
+  return {
+    type: SET_USER,
+    user,
+  };
+}
+
+export function refreshUserData(userId) {
+  return (dispatch) => {
+    fetch(
+      "http://localhost:8000/api/v1/users/getprofile/" +
+        userId
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          dispatch(setUser(result.data.user));
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
   };
 }
