@@ -72,8 +72,7 @@ https://user-images.githubusercontent.com/89552657/144119510-9e9b966c-e34e-4439-
 
 ## Manager Side
 ### Accept or Reject applicant
-
-https://user-images.githubusercontent.com/53376580/140409450-2b444b36-b3c4-4217-bdcf-fb08dd85d4b0.mov
+https://user-images.githubusercontent.com/89552657/144120109-2a6104d6-8245-484e-aae0-8afb6545c117.mov
 
 ### View all applicantions and close job when hired
 https://user-images.githubusercontent.com/53376580/140409523-7a437ae6-608a-4732-857c-f4625f0be9fe.mov
