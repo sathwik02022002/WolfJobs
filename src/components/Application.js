@@ -39,11 +39,11 @@ class Application extends Component {
         console.log('APPPPPP',app);
         const { isLoggedIn } = this.props.auth;
         return (
-            <div className="post"  style={{width:'50vw',marginLeft:'50px'}}>
+            <div className="post" >
             <div className="post-header">
 
             <div >
-                <h4 style={{display:'inline-block',marginTop:'-12px'}}>Job Name : </h4> 
+                <h4 style={{display:'inline-block',}}>Job Name : </h4> 
                 <span style={{marginLeft:'10px'}}>{app.jobname}</span>
             </div>
 
@@ -118,5 +118,3 @@ function mapStateToProps({ auth, job,application }) {
   }
   
   export default connect(mapStateToProps)(Application);
-
-

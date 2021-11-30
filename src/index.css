@@ -422,6 +422,7 @@ nav .nav-links ul li:hover {
   width: 30%;
   margin: 50px auto;
   border-radius: 6px;
+  filter: initial
 }
 .goal-form{
   background-color: #fff;
@@ -473,7 +474,7 @@ nav .nav-links ul li:hover {
   margin-top: 20px;
   background: #f64b55
   ;
-  border-radius: 2px;
+  border-radius: 15px;
   color: #fff;
   font-size: 20px;
   padding: 9px;
@@ -509,14 +510,15 @@ nav .nav-links ul li:hover {
 
 /* SETTINGS and USERPROFILE */
 .settings {
-  display: inline-flex;
   flex-direction: column;
   background: #fff;
   padding: 30px;
   border-radius: 6px;
   margin-top: 50px;
   margin-left: 30px;
-  width: 40%;
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
 }
 .settings .img-container {
   display: flex;
@@ -655,13 +657,13 @@ nav .nav-links ul li:hover {
 .header__input{
   display: flex;
   align-items: center;
-  background-color: #eff2f5;
   padding: 10px;
   margin-left: 20px;
   border-radius: 999px;
   width: 500px;
   min-width: 30px;
   margin-right: 50px;
+  border: 1px solid #e0e0e0;
 }
 
 .header__middle{
@@ -762,6 +764,8 @@ nav .nav-links ul li:hover {
 
 .post{
   width: 100%;
+  max-width: 32rem;
+  margin: 0 auto; 
   margin-top:15px;
   border-radius: 15px;
   background-color: white;
@@ -790,6 +794,10 @@ nav .nav-links ul li:hover {
 
 .header__option > .MuiSvgIcon-root{
   color:gray;
+}
+
+.header__option > a > svg {
+  fill: 	hsl(356, 90%, 48%);
 }
 
 .header__option:hover > .MuiSvgIcon-root{
@@ -923,4 +931,34 @@ box-sizing: border-box;
   
 
 
+}
+body:before { 
+	content:"";
+	position:fixed;
+	top:50%; left: 50%;
+	z-index:9999;
+	width:1px; height: 1px;
+	outline:2999px solid invert !important;
+  filter: invert(100%)
+}
+
+.filter-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.5rem;
+  /* padding-top: 1.5rem; */
+  width: 100%;
+  /* max-width: 42rem; */
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+}
+
+.filter-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
