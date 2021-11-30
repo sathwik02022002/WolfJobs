@@ -13,6 +13,7 @@ import {
     GENERATE_OTP_SUCCESS,
     GENERATE_OTP_FAILED,
     USER_EMAIL_VERIFIED,
+    SET_USER,
 } from '../actions/actionTypes'
 
 const initialAuthState = {
@@ -96,6 +97,11 @@ export default function auth(state = initialAuthState, action) {
                     ...state.user,
                     isVerified: true,
                 },
+            }
+        case SET_USER:
+            return {
+                ...state,
+                user: action.user,
             }
         default:
             return state

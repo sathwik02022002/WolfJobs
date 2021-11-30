@@ -47,7 +47,6 @@ class Job extends Component {
             <div
                 className="post"
                 key={job._id}
-                style={{ width: '50vw', marginLeft: '50px' }}
             >
                 <div className="post-header">
                     <div>
