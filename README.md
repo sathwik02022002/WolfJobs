@@ -75,14 +75,10 @@ https://user-images.githubusercontent.com/89552657/144119510-9e9b966c-e34e-4439-
 https://user-images.githubusercontent.com/89552657/144120109-2a6104d6-8245-484e-aae0-8afb6545c117.mov
 
 ### View all applicantions and close job when hired
-https://user-images.githubusercontent.com/53376580/140409523-7a437ae6-608a-4732-857c-f4625f0be9fe.mov
-
-
+https://user-images.githubusercontent.com/89552657/144120517-57e39e5f-a922-40f3-910c-a5e80bbcca99.mov
 
 ### View hired applicant details
-https://user-images.githubusercontent.com/53376580/140409552-1ae7a421-c73e-449a-9d28-68e1b90cd6cd.mov
-
-
+https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-b32e-c4c6a59a6e2e.mov
 
 # Installation Guide
  
