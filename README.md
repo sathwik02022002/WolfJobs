@@ -87,7 +87,7 @@ https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-
  - Download the Allow CORS: Access-Control-Allow-Origin extension for Google Chrome
  
  - In the command prompt clone the frontend project using following commands:
-#### `git clone https://github.com/shantanu109/WolfJobs.git`
+#### `git clone https://github.com/ashakhatri007/WolfJobs.git`
 
 - Then enter
 #### `rmdir /s /q node_modules && npm install`
@@ -99,8 +99,8 @@ https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
  
 # Source Code
- - Link to frontend repository: https://github.com/shantanu109/WolfJobs
- - Link to backend repository: https://github.com/shantanu109/WolfJobsBackend
+ - Link to frontend repository: https://github.com/ashakhatri007/WolfJobs
+ - Link to backend repository: https://github.com/ashakhatri007/WolfJobsBackend
 
 # Additional commands for React App
 
