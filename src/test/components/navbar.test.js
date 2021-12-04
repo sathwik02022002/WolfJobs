@@ -26,12 +26,12 @@ test('navbar', () => {
  expect(wrapper).toMatchSnapshot();
 });
 
-test('render', () => {
-   const wrapper = mount(
-       <Provider store={store}>
-           <Navbar  auth={auth} user={user} />
-       </Provider>
-   );
-   expect(wrapper).toMatchSnapshot();
+// test('render', () => {
+//    const wrapper = mount(
+//        <Provider store={store}>
+//            <Navbar  auth={auth} user={user} />
+//        </Provider>
+//    );
+//    expect(wrapper).toMatchSnapshot();
 
-});
+// });
