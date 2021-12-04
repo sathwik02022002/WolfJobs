@@ -18,6 +18,11 @@
 
 ![WolfJobs Logo](https://user-images.githubusercontent.com/89487138/140389503-29cb0c25-83d0-4196-9bfb-7d1ecc863412.png)
 ![Banner](https://www.schoolcraft.edu/wp-content/uploads/2021/07/student-employee-open-house-graphic.png)
+
+# Project grading video
+
+[![Grading](http://img.youtube.com/vi/r8-E4-N6q10/0.jpg)](http://www.youtube.com/watch?v=r8-E4-N6q10 "Grading video")
+
 # WolfJobs
 Need a side Hustle or want to get some quick rewards? Wolfjobs provides the perfect platform to meet your requirements.
 
@@ -84,14 +89,10 @@ https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-
  
  - Install [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows)
  - Download and install [NodeJs](https://nodejs.org/en/download/)
- - Download the Allow CORS: Access-Control-Allow-Origin extension for Google Chrome
  
  - In the command prompt clone the frontend project using following commands:
 #### `git clone https://github.com/ashakhatri007/WolfJobs.git`
 
-- Then enter
-#### `rmdir /s /q node_modules && npm install`
- to install all the required dependencies in both the terminal. The dependencies have been mentioned in the 'package.json' file.
 
  - Then enter below command for both the terminals to start the application:
 #### `npm start`
@@ -125,11 +126,11 @@ Your app is ready to be deployed!
   
   1.	**Job Analysis** – In phase 3, wolf Job will provide the functionality of analysing various aspects of a job. Job Analysis based on various parameters using graphical representation will help in making prediction on which jobs are more preferred and for which jobs applicants have more inclination. Hiring managers can then decide what rewards and salary to be given to the applicants of that job. Even applicants will get to know, which job is being preferred among other applicants.
 
-  2.	**OTP and Email Verification** – In the 3rd phase, wolf Job will provide the functionality to verify an end user by 2-way authentication, that is, Authentication via OTP as well as email verification.
+  2.	**Chatbot Integration** – Our platform Wolf Job will also provide the functionality of Chatbot integrated with our website so that user can easily interact with the bot and get to know about various features of our web application and have a nice interactive experience.
 
-  3.	**Chatbot Integration** – Our platform Wolf Job will also provide the functionality of Chatbot integrated with our website so that user can easily interact with the bot and get to know about various features of our web application and have a nice interactive experience.
+  3.	**Interview Appointment Scheduling** – In future phase 3, Wolf Job will also provide the facility for the hiring manager to organize an interview appointment for the job based on applicant’s availability and convenient time uploaded by the hiring manager. Either of the users can upload their availability time in the G-sheet and using google calendar appointments can be organised.
 
-  4.	**Interview Appointment Scheduling** – In future phase 3, Wolf Job will also provide the facility for the hiring manager to organize an interview appointment for the job based on applicant’s availability and convenient time uploaded by the hiring manager. Either of the users can upload their availability time in the G-sheet and using google calendar appointments can be organised.
+Other future related items can be found in Issues section
 
 
 
