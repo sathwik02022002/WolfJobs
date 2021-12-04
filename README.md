@@ -84,14 +84,10 @@ https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-
  
  - Install [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows)
  - Download and install [NodeJs](https://nodejs.org/en/download/)
- - Download the Allow CORS: Access-Control-Allow-Origin extension for Google Chrome
  
  - In the command prompt clone the frontend project using following commands:
 #### `git clone https://github.com/ashakhatri007/WolfJobs.git`
 
-- Then enter
-#### `rmdir /s /q node_modules && npm install`
- to install all the required dependencies in both the terminal. The dependencies have been mentioned in the 'package.json' file.
 
  - Then enter below command for both the terminals to start the application:
 #### `npm start`
