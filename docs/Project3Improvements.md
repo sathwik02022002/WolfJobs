@@ -95,3 +95,8 @@ When a user tries to apply to a particular job, their profile is checked for ema
 <p> Previously, when a user navigated to their jobs page, all of the jobs were shown. We added a feature where a user can filter jobs based on status.(<i>in progress</i>, <i>accepted</i>, <i>rejected</i>) </p>
 
 <img width="1200" alt="get profile" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/JobFilter.png">
+
+
+<h3> Styling improvements </h3>
+
+<p> Design improvements were made to make the app more user friendly and intuitive. Previously, there were many design inconsistencies like the button shapes, icon colors and fonts did not match everywhere. These were fixed by implementing a few changes in the frontend. All of these changes can be viewed in the feature videos in the main README </p>
