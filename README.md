@@ -56,38 +56,29 @@ https://user-images.githubusercontent.com/53376580/140424961-e5cda829-7d05-4221-
 # Application Preview:
 ## Applicant Side
 ### Signup Page
-
-
-https://user-images.githubusercontent.com/53376580/140411230-bc93751b-67ba-4ac7-9082-d026c323839b.mov
+https://user-images.githubusercontent.com/89552657/144122974-a0a18ce0-a2c9-41c1-b228-d7f1123cca07.mov
 
 ### Edit Profile
-https://user-images.githubusercontent.com/53376580/140409480-1143c83a-f650-41b9-9a5a-5a29fb8a69a3.mov
+https://user-images.githubusercontent.com/89552657/144117729-df299821-2861-4d2c-a6a6-53254cf3e9a2.mov
 
 ### Search Engine
-https://user-images.githubusercontent.com/53376580/140409391-5e36d4e3-dc7f-410d-9b22-74b16380877e.mov
-
+https://user-images.githubusercontent.com/89552657/144117768-6fb0db5b-e3c5-4b16-8cad-5838d4a4132e.mov
 
 ### Apply for Job
-https://user-images.githubusercontent.com/53376580/140409146-e528dd14-c58a-4a1e-8fa0-0568efb1f6f6.mov
+https://user-images.githubusercontent.com/89552657/144117794-93453cdd-acdc-4caa-beca-f9ccf1c326e1.mov
 
 ### Job Status
-https://user-images.githubusercontent.com/53376580/140409311-2d8c6316-2da4-4299-870f-93185b05a165.mov
-
+https://user-images.githubusercontent.com/89552657/144119510-9e9b966c-e34e-4439-8e8f-5bb4ad46bb77.mov
 
 ## Manager Side
 ### Accept or Reject applicant
-
-https://user-images.githubusercontent.com/53376580/140409450-2b444b36-b3c4-4217-bdcf-fb08dd85d4b0.mov
+https://user-images.githubusercontent.com/89552657/144120109-2a6104d6-8245-484e-aae0-8afb6545c117.mov
 
 ### View all applicantions and close job when hired
-https://user-images.githubusercontent.com/53376580/140409523-7a437ae6-608a-4732-857c-f4625f0be9fe.mov
-
-
+https://user-images.githubusercontent.com/89552657/144120517-57e39e5f-a922-40f3-910c-a5e80bbcca99.mov
 
 ### View hired applicant details
-https://user-images.githubusercontent.com/53376580/140409552-1ae7a421-c73e-449a-9d28-68e1b90cd6cd.mov
-
-
+https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-b32e-c4c6a59a6e2e.mov
 
 # Installation Guide
  
@@ -96,7 +87,7 @@ https://user-images.githubusercontent.com/53376580/140409552-1ae7a421-c73e-449a-
  - Download the Allow CORS: Access-Control-Allow-Origin extension for Google Chrome
  
  - In the command prompt clone the frontend project using following commands:
-#### `git clone https://github.com/shantanu109/WolfJobs.git`
+#### `git clone https://github.com/ashakhatri007/WolfJobs.git`
 
 - Then enter
 #### `rmdir /s /q node_modules && npm install`
@@ -108,8 +99,8 @@ https://user-images.githubusercontent.com/53376580/140409552-1ae7a421-c73e-449a-
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
  
 # Source Code
- - Link to frontend repository: https://github.com/shantanu109/WolfJobs
- - Link to backend repository: https://github.com/shantanu109/WolfJobsBackend
+ - Link to frontend repository: https://github.com/ashakhatri007/WolfJobs
+ - Link to backend repository: https://github.com/ashakhatri007/WolfJobsBackend
 
 # Additional commands for React App
 
