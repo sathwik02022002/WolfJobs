@@ -4,6 +4,8 @@ import { Provider } from 'react-redux'
 import Job from '../../components/Job';
 import { configureStore } from '../../store'
 
+const store = configureStore();
+
 test('createJob', () => {
  const wrapper = shallow(<createJob/>);
  expect(wrapper).toMatchSnapshot();
