@@ -17,7 +17,7 @@ const state = {
     hours: "test",
     dob: "test",
     gender: "test",
-    skills: "test"
+    skills: "tests"
 }
 
 
