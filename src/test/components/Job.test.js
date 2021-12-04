@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import Job from '../../components/Job';
 import { configureStore } from '../../store'
 
-const store = configureStore();
+const store = configureStore()
 
 test('createJob', () => {
  const wrapper = shallow(<createJob/>);
@@ -22,6 +22,10 @@ const job = {
     managerid: 'test',
 };
 
+const user ={
+    _id: 1,
+}
+
 test('Job', () => {
     const wrapper = shallow(
 
@@ -29,7 +33,6 @@ test('Job', () => {
             <Job job={job} />
         </Provider>
     );
-    expect(wrapper).toMatchSnapshot();
 });
 
 test('render', () => {
@@ -39,4 +42,14 @@ test('render', () => {
         </Provider>
     );
     expect(wrapper).toMatchSnapshot();
+
+});
+
+test('HandleApplyTest', () => {
+    const wrapper = mount(
+        <Provider store={store}>
+            <Job job={job} auth=
+            {{user}} />
+        </Provider>
+    );
 });
