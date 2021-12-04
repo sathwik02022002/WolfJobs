@@ -15,7 +15,7 @@ const state = {
     address: "test",
     phonenumber: "test",
     hours: "test",
-    dob: "test",
+    dob: "tests",
     gender: "tests",
     skills: "test"
 }
