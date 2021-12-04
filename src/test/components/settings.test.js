@@ -7,7 +7,7 @@ import { configureStore } from '../../store'
 const store = configureStore()
 
 const state = {
-    name : "test",
+    name : "testss",
     password : "test",
     confirmPassword : "test",
     user_id : "test",
