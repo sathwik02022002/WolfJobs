@@ -75,6 +75,10 @@ Get Profile Page:
 
 <p>Previously, users were able to apply for the same job multiple times. This was a problem because the manager would see that applicant multiple times. To fix this behavior, a check was implemented in backend to check if user has already applied for the job.</p>
 
+<h3> 🐞 Bug: App breaks on page refresh </h3>
+
+<p> Whenever a user reloads a page, all the state was lost except their name and user id. We implemented a fix for this by creating an API that would fetch the user and calling it in app mount. The state management API then updates the state with the user details.</p>
+
 
 <h1> ✨ Enhancements  </h1>
 
@@ -85,3 +89,9 @@ Get Profile Page:
 We added a feature where users can verify their emails generating an OTP on demand which is sent to their email. This OTP is then used to verify their email. This verification can be performed by the user on the profile page. 
 
 When a user tries to apply to a particular job, their profile is checked for email verification. If the user has not verified their email, they are shown a message asking them to verify their email.
+
+<h3> 📃 Filter jobs based on status </h3>
+
+<p> Previously, when a user navigated to their jobs page, all of the jobs were shown. We added a feature where a user can filter jobs based on status.(<i>in progress</i>, <i>accepted</i>, <i>rejected</i>) </p>
+
+<img width="1200" alt="get profile" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/FilterJobs.png">
