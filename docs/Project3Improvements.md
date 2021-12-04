@@ -94,4 +94,4 @@ When a user tries to apply to a particular job, their profile is checked for ema
 
 <p> Previously, when a user navigated to their jobs page, all of the jobs were shown. We added a feature where a user can filter jobs based on status.(<i>in progress</i>, <i>accepted</i>, <i>rejected</i>) </p>
 
-<img width="1200" alt="get profile" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/FilterJobs.png">
+<img width="1200" alt="get profile" src="https://github.com/ashakhatri007/WolfJobs/blob/master/images/JobFilter.png">
