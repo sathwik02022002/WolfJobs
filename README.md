@@ -16,12 +16,13 @@
 [![Release](https://img.shields.io/github/v/release/ashakhatri007/wolfjobs)](https://GitHub.com/ashakhatri007/Wolfjobs/)
 [![codecov](https://codecov.io/gh/ashakhatri007/WolfJobs/branch/master/graph/badge.svg?token=1KKWYOMDBZ)](https://codecov.io/gh/ashakhatri007/WolfJobs)
 
-![WolfJobs Logo](https://user-images.githubusercontent.com/89487138/140389503-29cb0c25-83d0-4196-9bfb-7d1ecc863412.png)
-![Banner](https://www.schoolcraft.edu/wp-content/uploads/2021/07/student-employee-open-house-graphic.png)
 
 # Project presentation video
 
 [![Grading](http://img.youtube.com/vi/r8-E4-N6q10/0.jpg)](http://www.youtube.com/watch?v=r8-E4-N6q10 "Grading video")
+
+![WolfJobs Logo](https://user-images.githubusercontent.com/89487138/140389503-29cb0c25-83d0-4196-9bfb-7d1ecc863412.png)
+![Banner](https://www.schoolcraft.edu/wp-content/uploads/2021/07/student-employee-open-house-graphic.png)
 
 # WolfJobs
 Need a side Hustle or want to get some quick rewards? Wolfjobs provides the perfect platform to meet your requirements.
