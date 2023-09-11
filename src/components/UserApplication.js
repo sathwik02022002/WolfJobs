@@ -24,7 +24,12 @@ class UserApplication extends Component {
       <div>
         <div class="filter-menu">
           <div className="filter-item">
-            <label style={{ marginBottom: "5px", userSelect: "none", cursor: "pointer" }}
+            <label
+              style={{
+                marginBottom: "5px",
+                userSelect: "none",
+                cursor: "pointer",
+              }}
               htmlFor="inProgress"
             >
               Show applications in progress
@@ -39,8 +44,14 @@ class UserApplication extends Component {
             />
           </div>
           <div className="filter-item">
-            <label style={{ marginBottom: "5px", userSelect: "none", cursor: "pointer" }}
-              htmlFor="accepted">
+            <label
+              style={{
+                marginBottom: "5px",
+                userSelect: "none",
+                cursor: "pointer",
+              }}
+              htmlFor="accepted"
+            >
               Show accepted applications
             </label>
             <input
@@ -53,8 +64,14 @@ class UserApplication extends Component {
             />
           </div>
           <div className="filter-item">
-            <label style={{ marginBottom: "5px", userSelect: "none", cursor: "pointer" }}
-              htmlFor="rejected">
+            <label
+              style={{
+                marginBottom: "5px",
+                userSelect: "none",
+                cursor: "pointer",
+              }}
+              htmlFor="rejected"
+            >
               Show rejected applications
             </label>
             <input

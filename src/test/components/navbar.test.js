@@ -1,29 +1,27 @@
-import React from 'react';
-import { shallow, mount} from 'enzyme';
-import { Provider } from 'react-redux'
-import Navbar from '../../components/Navbar';
-import {configureStore} from '../../store';
+import React from "react";
+import { shallow, mount } from "enzyme";
+import { Provider } from "react-redux";
+import Navbar from "../../components/Navbar";
+import { configureStore } from "../../store";
 
-const store = configureStore()
-
-
+const store = configureStore();
 
 const auth = {
-   isLoggedIn:"test"
-}
+  isLoggedIn: "test",
+};
 
 const user = {
-   name:"test",
-   role:"test"
-}
+  name: "test",
+  role: "test",
+};
 
-
-
-test('navbar', () => {
- const wrapper = shallow(<Provider store={store}>
-    <Navbar  auth={auth} user={user} />
-    </Provider>);
- expect(wrapper).toMatchSnapshot();
+test("navbar", () => {
+  const wrapper = shallow(
+    <Provider store={store}>
+      <Navbar auth={auth} user={user} />
+    </Provider>
+  );
+  expect(wrapper).toMatchSnapshot();
 });
 
 // test('render', () => {

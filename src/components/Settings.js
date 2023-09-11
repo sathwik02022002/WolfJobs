@@ -98,14 +98,14 @@ class Settings extends Component {
     console.log("Inside component did mount");
     fetch(
       "http://localhost:8000/api/v1/users/getprofile/" +
-      this.props.auth.user._id
+        this.props.auth.user._id
     )
       .then((res) => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            ...result.data.user
+            ...result.data.user,
           });
           // this.props.dispatch(setUser(result.data.user));
         },
@@ -292,7 +292,9 @@ class Settings extends Component {
               value={this.state.dob}
             />
           ) : (
-            <div className="field-value">{this.state.dob && this.state.dob.toString()}</div>
+            <div className="field-value">
+              {this.state.dob && this.state.dob.toString()}
+            </div>
           )}
         </div>
         <div className="field">

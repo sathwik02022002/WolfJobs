@@ -290,10 +290,7 @@ export function setUser(user) {
 
 export function refreshUserData(userId) {
   return (dispatch) => {
-    fetch(
-      "http://localhost:8000/api/v1/users/getprofile/" +
-        userId
-    )
+    fetch("http://localhost:8000/api/v1/users/getprofile/" + userId)
       .then((res) => res.json())
       .then(
         (result) => {

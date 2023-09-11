@@ -1,19 +1,16 @@
-export function getFormBody (params){
+export function getFormBody(params) {
+  let formBody = [];
 
-    let formBody = [];
+  for (let property in params) {
+    let encodedKey = encodeURIComponent(property);
+    let encodedValue = encodeURIComponent(params[property]);
 
-    for (let property in params){
-        let encodedKey = encodeURIComponent(property);
-        let encodedValue = encodeURIComponent(params[property]);
+    formBody.push(encodedKey + "=" + encodedValue);
+  }
 
-        formBody.push(encodedKey + '=' + encodedValue);
-
-    }
-
-    return formBody.join('&');
-
+  return formBody.join("&");
 }
 
-export function getAuthTokenFromLocalStorage (){
-    return localStorage.getItem('token');
+export function getAuthTokenFromLocalStorage() {
+  return localStorage.getItem("token");
 }

@@ -1,4 +1,9 @@
-import { UPDATE_APPLICATION,ADD_APPLICATION,ACCEPT_APPLICATION,REJECT_APPLICATION} from '../actions/actionTypes';
+import {
+  UPDATE_APPLICATION,
+  ADD_APPLICATION,
+  ACCEPT_APPLICATION,
+  REJECT_APPLICATION,
+} from "../actions/actionTypes";
 
 export default function application(state = [], action) {
   // { posts : [] }
@@ -11,36 +16,34 @@ export default function application(state = [], action) {
       return [action.application, ...state];
 
     case ACCEPT_APPLICATION:
-        const updatedApplication = state.map((application) => {
-            if (application._id === action.applicationId){
-                return {
-                    ...application,
-                    status: action.status
-                };
-            }
+      const updatedApplication = state.map((application) => {
+        if (application._id === action.applicationId) {
+          return {
+            ...application,
+            status: action.status,
+          };
+        }
 
-            return application
-        });
+        return application;
+      });
 
-        return updatedApplication;
+      return updatedApplication;
 
-        case REJECT_APPLICATION:
-            const updatedApplication1 = state.map((application) => {
-                if (application._id === action.applicationId){
-                    return {
-                        ...application,
-                        status: action.status
-                    };
-                }
-    
-                return application
-            });
-    
-            return updatedApplication1;
+    case REJECT_APPLICATION:
+      const updatedApplication1 = state.map((application) => {
+        if (application._id === action.applicationId) {
+          return {
+            ...application,
+            status: action.status,
+          };
+        }
 
-          
+        return application;
+      });
+
+      return updatedApplication1;
+
     default:
       return state;
   }
 }
-
