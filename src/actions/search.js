@@ -1,8 +1,8 @@
 import {
   FETCH_SEARCH_RESULTS_SUCCESS,
   CLEAR_SEARCH_STATE,
-} from "./actionTypes";
-import { APIURLS } from "../helpers/urls";
+} from './actionTypes';
+import { APIURLS } from '../helpers/urls';
 
 // This function searches for Food data and its calories
 
@@ -17,13 +17,13 @@ export function searchUsers(searchText) {
     } else {
       fetch(url, {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          'Content-Type': 'application/x-www-form-urlencoded',
           //'Authorization': `Bearer ${getAuthTokenFromLocalStorage()}`
         },
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("SEARCH Data", data);
+          console.log('SEARCH Data', data);
 
           if (data.success) {
             dispatch(searchResultsSuccess(data.data.users));

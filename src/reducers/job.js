@@ -1,4 +1,4 @@
-import { UPDATE_JOB, ADD_JOB, CLOSE_JOB } from "../actions/actionTypes";
+import { UPDATE_JOB, ADD_JOB, CLOSE_JOB } from '../actions/actionTypes';
 
 export default function jobs(state = [], action) {
   // { posts : [] }

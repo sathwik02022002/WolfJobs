@@ -1,4 +1,4 @@
-import { APIURLS } from "../helpers/urls";
+import { APIURLS } from '../helpers/urls';
 import {
   LOGIN_START,
   LOGIN_FAILED,
@@ -14,10 +14,10 @@ import {
   GENERATE_OTP_SUCCESS,
   GENERATE_OTP_FAILED,
   SET_USER,
-} from "./actionTypes";
-import { getFormBody } from "../helpers/utils";
-import { getAuthTokenFromLocalStorage } from "../helpers/utils";
-import { toast } from "react-toastify";
+} from './actionTypes';
+import { getFormBody } from '../helpers/utils';
+import { getAuthTokenFromLocalStorage } from '../helpers/utils';
+import { toast } from 'react-toastify';
 // import { fetchUserFriends } from '../actions/friends';
 
 export function startLogin() {
@@ -46,19 +46,19 @@ export function login(email, password) {
     const url = APIURLS.login();
 
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: getFormBody({ email, password }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("data", data);
+        console.log('data', data);
 
         if (data.success) {
           //dispatch action to save user
-          localStorage.setItem("token", data.data.token);
+          localStorage.setItem('token', data.data.token);
           dispatch(loginSuccess(data.data.user));
           //   dispatch(fetchUserFriends(data.data.user._id));
           return;
@@ -72,9 +72,9 @@ export function signup(email, password, confirmPassword, name, role) {
   return (dispatch) => {
     const url = APIURLS.signup();
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: getFormBody({
         email,
@@ -89,7 +89,7 @@ export function signup(email, password, confirmPassword, name, role) {
         // console.log('data', data);
         if (data.success) {
           // do something
-          localStorage.setItem("token", data.data.token);
+          localStorage.setItem('token', data.data.token);
           dispatch(signupSuccessful(data.data.user));
           return;
         }
@@ -165,7 +165,7 @@ export function generateOtpFailed(error) {
 
 export function userEmailVerified() {
   return {
-    type: "USER_EMAIL_VERIFIED",
+    type: 'USER_EMAIL_VERIFIED',
   };
 }
 
@@ -173,9 +173,9 @@ export function generateOtp(userId) {
   return (dispatch) => {
     const url = APIURLS.generateOtp(userId);
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: getFormBody({ userId }),
     })
@@ -183,7 +183,7 @@ export function generateOtp(userId) {
       .then((data) => {
         if (data.success) {
           // dispatch(generateOtpSuccess());
-          toast.success("OTP Sent Successfully");
+          toast.success('OTP Sent Successfully');
           return;
         }
         // dispatch(generateOtpFailed(data.message));
@@ -192,7 +192,7 @@ export function generateOtp(userId) {
       })
       .catch((error) => {
         // dispatch(generateOtpFailed(error));
-        toast.error("Could not generate OTP");
+        toast.error('Could not generate OTP');
       });
   };
 }
@@ -201,9 +201,9 @@ export function verifyOtp(userId, otp) {
   return (dispatch) => {
     const url = APIURLS.verifyOtp(userId);
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: getFormBody({ userId, otp }),
     })
@@ -211,7 +211,7 @@ export function verifyOtp(userId, otp) {
       .then((data) => {
         if (data.success) {
           dispatch(userEmailVerified());
-          toast.success("OTP Verified Successfully");
+          toast.success('OTP Verified Successfully');
           return;
         }
         // dispatch(verifu(data.message));
@@ -219,7 +219,7 @@ export function verifyOtp(userId, otp) {
       })
       .catch((error) => {
         // dispatch(generateOtpFailed(error));
-        toast.error("Could not verify OTP");
+        toast.error('Could not verify OTP');
       });
   };
 }
@@ -241,9 +241,9 @@ export function editUser(
     const url = APIURLS.editProfile();
 
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
         //'Authorization': `Bearer ${getAuthTokenFromLocalStorage()}`
       },
       body: getFormBody({
@@ -262,21 +262,21 @@ export function editUser(
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("EDIT PROFILE data", data);
+        console.log('EDIT PROFILE data', data);
         if (data.success) {
           dispatch(editUserSucessfull(data.data.user));
 
           if (data.data.token) {
-            localStorage.setItem("token", data.data.token);
+            localStorage.setItem('token', data.data.token);
           }
-          toast.success("Profile Updated Successfully");
+          toast.success('Profile Updated Successfully');
           return;
         }
 
         dispatch(editUserFailed(data.message));
       })
       .catch((error) => {
-        toast.error("Could not edit profile");
+        toast.error('Could not edit profile');
       });
   };
 }
@@ -290,7 +290,7 @@ export function setUser(user) {
 
 export function refreshUserData(userId) {
   return (dispatch) => {
-    fetch("http://localhost:8000/api/v1/users/getprofile/" + userId)
+    fetch('http://localhost:8000/api/v1/users/getprofile/' + userId)
       .then((res) => res.json())
       .then(
         (result) => {

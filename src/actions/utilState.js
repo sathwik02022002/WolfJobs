@@ -1,4 +1,4 @@
-import { SET_LOADING } from "./actionTypes";
+import { SET_LOADING } from './actionTypes';
 
 export function setIsLoading(isLoading) {
   return {

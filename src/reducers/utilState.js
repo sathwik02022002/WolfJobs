@@ -1,4 +1,4 @@
-import { SET_LOADING } from "../actions/actionTypes";
+import { SET_LOADING } from '../actions/actionTypes';
 
 const initialUtilState = {
   isLoading: false,

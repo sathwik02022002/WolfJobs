@@ -1,7 +1,7 @@
 import {
   FETCH_SEARCH_RESULTS_SUCCESS,
   CLEAR_SEARCH_STATE,
-} from "../actions/actionTypes";
+} from '../actions/actionTypes';
 
 const initialSearchState = {
   results: [],
