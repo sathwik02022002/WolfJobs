@@ -60,10 +60,10 @@ class Job extends Component {
             >
               Status :{" "}
             </h4>
-            {job.status == "0" && (
+            {job.status === "0" && (
               <span style={{ marginLeft: "10px" }}>Open</span>
             )}
-            {job.status == "1" && (
+            {job.status === "1" && (
               <span style={{ marginLeft: "10px" }}>Closed</span>
             )}
           </div>
@@ -116,7 +116,7 @@ class Job extends Component {
             <span style={{ marginLeft: "10px" }}>{job.schedule}</span>
           </div>
 
-          {isLoggedIn && user.role == "Applicant" && (
+          {isLoggedIn && user.role === "Applicant" && (
             <div className="field">
               <button
                 className="button save-btn"
@@ -128,8 +128,8 @@ class Job extends Component {
             </div>
           )}
           {isLoggedIn &&
-            user.role == "Manager" &&
-            user._id == job.managerid && (
+            user.role === "Manager" &&
+            user._id === job.managerid && (
               <div className="field">
                 <button
                   className="button save-btn"

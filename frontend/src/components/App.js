@@ -1,16 +1,16 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 // import Home from './Home';
 
-import jwtDecode from 'jwt-decode';
+import jwtDecode from "jwt-decode";
 
 import {
   BrowserRouter as Router,
-  Link,
+  // Link,
   Route,
   Switch,
   Redirect,
-} from 'react-router-dom';
+} from "react-router-dom";
 
 import {
   Home,
@@ -22,14 +22,14 @@ import {
   Goal,
   History,
   UserApplication,
-} from './';
-import PropTypes from 'prop-types';
-import { authenticateUser, refreshUserData } from '../actions/auth';
-import { getAuthTokenFromLocalStorage } from '../helpers/utils';
-import { fetchJobs } from '../actions/job';
-import { fetchApplications } from '../actions/job';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+} from "./";
+// import PropTypes from "prop-types";
+import { authenticateUser, refreshUserData } from "../actions/auth";
+import { getAuthTokenFromLocalStorage } from "../helpers/utils";
+import { fetchJobs } from "../actions/job";
+import { fetchApplications } from "../actions/job";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PrivateRoute = (privateRouteProps) => {
   const { isLoggedIn, path, component: Component } = privateRouteProps;
@@ -43,7 +43,7 @@ const PrivateRoute = (privateRouteProps) => {
         ) : (
           <Redirect
             to={{
-              pathname: '/login',
+              pathname: "/login",
               state: {
                 from: props.location,
               },
@@ -67,7 +67,7 @@ class App extends React.Component {
     if (token) {
       const user = jwtDecode(token);
 
-      console.log('user', user);
+      console.log("user", user);
 
       this.props.dispatch(
         authenticateUser({
@@ -83,18 +83,18 @@ class App extends React.Component {
 
   render() {
     const { auth } = this.props;
-    const { isLoggedIn } = this.props.auth;
-    const { user } = this.props.auth;
+    // const { isLoggedIn } = this.props.auth;
+    // const { user } = this.props.auth;
     const { job } = this.props;
     return (
       <Router>
         <div className="wrapper">
           <ToastContainer
             toastStyle={{
-              backgroundColor: '#f5f5f5',
-              color: '#000',
-              border: '1px solid #000',
-              borderRadius: '5px',
+              backgroundColor: "#f5f5f5",
+              color: "#000",
+              border: "1px solid #000",
+              borderRadius: "5px",
             }}
           />
           <Navbar />

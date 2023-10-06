@@ -5,12 +5,12 @@ export function getFormBody(params) {
     let encodedKey = encodeURIComponent(property);
     let encodedValue = encodeURIComponent(params[property]);
 
-    formBody.push(encodedKey + '=' + encodedValue);
+    formBody.push(encodedKey + "=" + encodedValue);
   }
 
-  return formBody.join('&');
+  return formBody.join("&");
 }
 
 export function getAuthTokenFromLocalStorage() {
-  return localStorage.getItem('token');
+  return localStorage.getItem("token");
 }

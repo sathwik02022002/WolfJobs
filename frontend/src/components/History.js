@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Application from "./Application";
 import { connect } from "react-redux";
-import { fetchJobs } from "../actions/job";
+// import { fetchJobs } from "../actions/job";
 
 class History extends Component {
   render() {
@@ -17,8 +17,8 @@ class History extends Component {
       <div>
         {application.map(
           (app) =>
-            app.manageremail == user._id &&
-            app.status == "0" && <Application app={app} key={app._id} />
+            app.manageremail === user._id &&
+            app.status === "0" && <Application app={app} key={app._id} />
         )}
 
         {/* <Widgets style={{marginTop:'1000px'}}/> */}

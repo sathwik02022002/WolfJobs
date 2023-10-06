@@ -6,12 +6,12 @@ import { logoutUser } from "../actions/auth";
 import { searchUsers } from "../actions/search";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
-import FlagIcon from "@material-ui/icons/Flag";
+// import FlagIcon from "@material-ui/icons/Flag";
 import WorkIcon from "@material-ui/icons/Work";
 import ListAltIcon from "@material-ui/icons/ListAlt";
-import SubscriptionsOutlinedIcon from "@material-ui/icons/SubscriptionsOutlined";
-import StorefrontOutlinedIcon from "@material-ui/icons/StorefrontOutlined";
-import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
+// import SubscriptionsOutlinedIcon from "@material-ui/icons/SubscriptionsOutlined";
+// import StorefrontOutlinedIcon from "@material-ui/icons/StorefrontOutlined";
+// import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 
 class Navbar extends React.Component {
   logOut = () => {
@@ -97,21 +97,21 @@ class Navbar extends React.Component {
                 <HomeIcon fontSize="large" />
               </Link>
             </div>
-            {user.role == "Manager" && (
+            {user.role === "Manager" && (
               <div className="header__option ">
                 <Link to="/goal">
                   <WorkIcon fontSize="large" />
                 </Link>
               </div>
             )}
-            {user.role == "Manager" && (
+            {user.role === "Manager" && (
               <div className="header__option ">
                 <Link to="/history">
                   <ListAltIcon fontSize="large" />
                 </Link>
               </div>
             )}
-            {user.role == "Applicant" && (
+            {user.role === "Applicant" && (
               <div className="header__option ">
                 <Link to="/applicationinfo">
                   <ListAltIcon fontSize="large" />

@@ -16,7 +16,7 @@ class Home extends Component {
         {search.results.length > 0
           ? search.results.map((job) => <Job job={job} key={job._id} />)
           : job.map(
-              (job) => job.status == "0" && <Job job={job} key={job._id} />
+              (job) => job.status === "0" && <Job job={job} key={job._id} />
             )}
       </div>
     );

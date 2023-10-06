@@ -4,7 +4,7 @@ import {
   clearAuthState,
   editUser,
   generateOtp,
-  setUser,
+  // setUser,
   verifyOtp,
 } from "../actions/auth";
 import TextField from "@mui/material/TextField";

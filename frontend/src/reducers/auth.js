@@ -14,7 +14,7 @@ import {
   GENERATE_OTP_FAILED,
   USER_EMAIL_VERIFIED,
   SET_USER,
-} from '../actions/actionTypes';
+} from "../actions/actionTypes";
 
 const initialAuthState = {
   user: {},

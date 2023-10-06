@@ -1,5 +1,5 @@
-import { APIURLS } from '../helpers/urls';
-import { getFormBody } from '../helpers/utils';
+import { APIURLS } from "../helpers/urls";
+import { getFormBody } from "../helpers/utils";
 import {
   ADD_JOB,
   UPDATE_JOB,
@@ -8,10 +8,10 @@ import {
   ACCEPT_APPLICATION,
   REJECT_APPLICATION,
   CLOSE_JOB,
-} from './actionTypes';
+} from "./actionTypes";
 
-import { toast } from 'react-toastify';
-import { setIsLoading } from './utilState';
+import { toast } from "react-toastify";
+import { setIsLoading } from "./utilState";
 
 export function createJob(
   name,
@@ -26,9 +26,9 @@ export function createJob(
   return (dispatch) => {
     const url = APIURLS.createJob();
     fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       body: getFormBody({
         name,
@@ -46,16 +46,16 @@ export function createJob(
         // console.log('data', data);
         if (data.success) {
           // do something
-          localStorage.setItem('token', data.data.token);
+          localStorage.setItem("token", data.data.token);
           dispatch(jobSuccess(data.data.job));
-          toast.success('Job created successfully');
+          toast.success("Job created successfully");
           return;
         }
         // dispatch(signupFailed(data.message));
       })
       .catch((error) => {
         toast.error(error.message);
-        console.log('error', error);
+        console.log("error", error);
       })
       .finally(() => {
         dispatch(setIsLoading(false));
@@ -83,11 +83,11 @@ export function fetchJobs() {
 
     fetch(url)
       .then((response) => {
-        console.log('Response', response);
+        console.log("Response", response);
         return response.json();
       })
       .then((data) => {
-        console.log('dsssdsds', data);
+        console.log("dsssdsds", data);
         dispatch(updateJobs(data.jobs));
       });
   };
@@ -98,11 +98,11 @@ export function fetchApplications() {
 
     fetch(url)
       .then((response) => {
-        console.log('Response', response);
+        console.log("Response", response);
         return response.json();
       })
       .then((data) => {
-        console.log('dsssdsds', data);
+        console.log("dsssdsds", data);
         dispatch(updateApplication(data.application));
       });
   };
@@ -138,9 +138,9 @@ export function createApplication(
   return (dispatch) => {
     const url = APIURLS.createApplication();
     fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       body: getFormBody({
         applicantname,
@@ -164,7 +164,7 @@ export function createApplication(
           // do something
           //   localStorage.setItem("token", data.data.token);
           //   dispatch(applicationSuccess(data.data.job));
-          console.log('APPLICATION ADDED SUCCESSFULLY');
+          console.log("APPLICATION ADDED SUCCESSFULLY");
           dispatch(applicationSuccess(data.data.application));
           return;
         } else {
@@ -173,9 +173,9 @@ export function createApplication(
         // dispatch(signupFailed(data.message));
       })
       .catch((error) => {
-        console.log('error', error);
+        console.log("error", error);
         // toast.warn('Error in creating application');
-        toast.error('Error in creating application');
+        toast.error("Error in creating application");
       });
   };
 }
@@ -184,9 +184,9 @@ export function acceptApplication(userId, applicationId) {
   return (dispatch) => {
     const url = APIURLS.acceptApplication();
     fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       body: getFormBody({
         id: userId,
@@ -200,7 +200,7 @@ export function acceptApplication(userId, applicationId) {
           // do something
           //   localStorage.setItem("token", data.data.token);
           //   dispatch(applicationSuccess(data.data.job));
-          console.log('APPLICATION ADDED SUCCESSFULLY');
+          console.log("APPLICATION ADDED SUCCESSFULLY");
 
           dispatch(acceptSuccess(data.data.application));
           return;
@@ -214,9 +214,9 @@ export function rejectApplication(userId, applicationId) {
   return (dispatch) => {
     const url = APIURLS.rejectApplication();
     fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       body: getFormBody({
         id: userId,
@@ -230,7 +230,7 @@ export function rejectApplication(userId, applicationId) {
           // do something
           //   localStorage.setItem("token", data.data.token);
           //   dispatch(applicationSuccess(data.data.job));
-          console.log('APPLICATION REJECTED SUCCESSFULLY');
+          console.log("APPLICATION REJECTED SUCCESSFULLY");
 
           dispatch(rejectSuccess(data.data.application));
           return;
@@ -244,9 +244,9 @@ export function closeJob(userId, jobId) {
   return (dispatch) => {
     const url = APIURLS.closeJob();
     fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       body: getFormBody({
         id: userId,
@@ -260,7 +260,7 @@ export function closeJob(userId, jobId) {
           // do something
           //   localStorage.setItem("token", data.data.token);
           //   dispatch(applicationSuccess(data.data.job));
-          console.log('APPLICATION REJECTED SUCCESSFULLY');
+          console.log("APPLICATION REJECTED SUCCESSFULLY");
 
           dispatch(closeSuccess(data.data.job));
           return;
@@ -273,7 +273,7 @@ export function closeJob(userId, jobId) {
 export function closeSuccess(job) {
   return {
     type: CLOSE_JOB,
-    status: '1',
+    status: "1",
     jobId: job._id,
   };
 }
@@ -288,7 +288,7 @@ export function applicationSuccess(application) {
 export function acceptSuccess(application) {
   return {
     type: ACCEPT_APPLICATION,
-    status: '1',
+    status: "1",
     applicationId: application._id,
   };
 }
@@ -296,7 +296,7 @@ export function acceptSuccess(application) {
 export function rejectSuccess(application) {
   return {
     type: REJECT_APPLICATION,
-    status: '2',
+    status: "2",
     applicationId: application._id,
   };
 }

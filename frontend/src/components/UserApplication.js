@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Application from "./Application";
 import { connect } from "react-redux";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 class UserApplication extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class UserApplication extends Component {
   render() {
     const { application } = this.props;
 
-    const { user } = this.props.auth;
+    // const { user } = this.props.auth;
     console.log("lalallaala");
 
     return (
@@ -92,6 +92,7 @@ class UserApplication extends Component {
           } else if (app.status === "2" && this.state.showRejected) {
             return <Application app={app} key={app._id} />;
           }
+          return null;
         })}
       </div>
     );
