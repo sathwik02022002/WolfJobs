@@ -1,10 +1,14 @@
 import "./App.css";
-import { Header } from "./feature/header/components/header";
+import { Header } from "./core/header/header";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Header />
+      <div className="w-screen h-screen">
+        <Header />
+        <Outlet />
+      </div>
     </>
   );
 }
