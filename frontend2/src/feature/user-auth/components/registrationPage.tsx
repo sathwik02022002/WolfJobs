@@ -1,7 +1,11 @@
-import { InputLabel } from "../../../core/forms/inputRow";
+import { useNavigate } from "react-router-dom";
+import { InputLabel } from "../../../core/components/inputLabel";
 import { useRegistrationStore } from "../controller/registrationController";
+import { signup } from "../../../core/auth";
 
 export function RegistrationPage() {
+  const navigate = useNavigate();
+
   const name = useRegistrationStore((state) => state.name);
   const email = useRegistrationStore((state) => state.email);
   const password = useRegistrationStore((state) => state.password);
@@ -79,7 +83,17 @@ export function RegistrationPage() {
               <option value="Applicant">Applicant</option>
             </select>
 
-            <button className="mx-1 my-2 py-1 bg-red-400 rounded text-white text-xl hover:bg-red-500/90">
+            <button
+              className="mx-1 my-2 py-1 bg-red-400 rounded text-white text-xl hover:bg-red-500/90"
+              onClick={(e) => {
+                e.preventDefault();
+                if (password !== confirmPassword) {
+                  // TODO: Show error message
+                  return;
+                }
+                signup(email, password, confirmPassword, name, role, navigate);
+              }}
+            >
               Register
             </button>
           </div>
