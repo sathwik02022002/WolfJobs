@@ -40,7 +40,7 @@ class Navbar extends React.Component {
               // http://ninjasfiles.s3.amazonaws.com/0000000000003454.png
               //   src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1200px-Facebook_f_logo_%282019%29.svg.png"
               alt="logo"
-              src="/images/WolfJobs Logo (1).png"
+              src="/images/wolfjobs-logo.png"
               style={{ height: "50px" }}
             />
           </Link>

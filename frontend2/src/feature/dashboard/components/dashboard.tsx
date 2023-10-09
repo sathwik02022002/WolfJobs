@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../controllers/userController";
 import { useLoginStore } from "../../user-auth/controller/loginController";
 import { useRegistrationStore } from "../../user-auth/controller/registrationController";
+import { toast } from "react-toastify";
 
 export function Dashboard() {
   const naviagte = useNavigate();
@@ -70,6 +71,15 @@ export function Dashboard() {
   return (
     <>
       <h2>Dashboard</h2>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          // naviagte("/createjob");
+          toast.success("Hello world");
+        }}
+      >
+        Create Job button
+      </button>
     </>
   );
 }

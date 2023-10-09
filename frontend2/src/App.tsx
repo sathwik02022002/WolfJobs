@@ -6,18 +6,34 @@ import { RegistrationPage } from "./feature/user-auth/components/registrationPag
 import { Dashboard } from "./feature/dashboard/components/dashboard";
 import { LogoutPage } from "./feature/user-auth/components/logoutPage";
 import ProtectedRoute from "./core/components/protectedRoute";
+import { ExplorePage } from "./feature/explore/components/explorePage";
+import { CreateJob } from "./feature/createJob/components/createJob";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
-      <div className="w-screen h-screen">
-        <Header />
+      <Header />
+
+      <div className="">
+        <div className="max-h-10 float-right">
+          <ToastContainer
+            autoClose={1}
+            hideProgressBar={false}
+            newestOnTop={false}
+            // closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            // pauseOnHover
+            theme="light"
+          />
+        </div>
         <Routes>
           <Route path="/" element={<h1>Coming soon</h1>} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/logout" element={<LogoutPage />} />
           <Route path="/register" element={<RegistrationPage />} />
-
           <Route
             path="/dashboard"
             element={
@@ -26,6 +42,23 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/explore"
+            element={
+              <ProtectedRoute>
+                <ExplorePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/createjob"
+            element={
+              <ProtectedRoute>
+                <CreateJob />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<>Error 404</>} />
         </Routes>
       </div>
     </>

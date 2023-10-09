@@ -1,6 +1,8 @@
+import { useUserStore } from "../dashboard/controllers/userController";
 import { NavBar } from "./nav-bar";
 
 export function Header() {
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
   return (
     <>
       <div className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 bg-white supports-backdrop-blur:bg-white/95">
@@ -9,7 +11,7 @@ export function Header() {
             <div className="relative flex items-center">
               <a
                 className="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto"
-                href="/"
+                href={isLoggedIn ? "/dashboard" : "/"}
               >
                 <img
                   alt="logo"
