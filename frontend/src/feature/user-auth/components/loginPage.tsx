@@ -1,15 +1,40 @@
 import { useNavigate } from "react-router-dom";
-import { InputLabel } from "../../../core/components/inputLabel";
-import { useLoginStore } from "../controller/loginController";
 import { login } from "../../../core/auth";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Stack, TextField, Button } from "@mui/material";
+// import { DevTool } from "@hookform/devtools";
+
+type FormValues = {
+  email: string;
+  password: string;
+};
+
+const schema = yup.object({
+  email: yup
+    .string()
+    .email("Email format is not valid")
+    .required("Email is required"),
+  password: yup.string().required("Password is required"),
+});
 
 export function LoginPage() {
-  const email = useLoginStore((state) => state.email);
-  const password = useLoginStore((state) => state.password);
-
-  const updateEmail = useLoginStore((state) => state.updateEmail);
-  const updatePassword = useLoginStore((state) => state.updatePassword);
   const navigate = useNavigate();
+
+  const form = useForm<FormValues>({
+    defaultValues: { email: "", password: "" },
+    resolver: yupResolver(schema),
+  });
+  // const { control } = form;
+  const { register, handleSubmit, formState } = form;
+  const { errors } = formState;
+
+  const onSubmit = (data: FormValues) => {
+    console.log("form submitted");
+    console.log(data);
+    login(data.email, data.password, navigate);
+  };
 
   return (
     <>
@@ -18,38 +43,36 @@ export function LoginPage() {
           <div className="flex text-4xl justify-center text-red-400 mb-2 ">
             Login
           </div>
-          <InputLabel title="Email" />
-          <input
-            className="mx-1 bg-slate-100 border decoration-slate-300 px-2 py-1 rounded hover:bg-slate-200/60"
-            onChange={(e) => {
-              updateEmail(e.target.value);
-            }}
-            value={email}
-            type="email"
-          />
-
-          <InputLabel title="Password" />
-          <input
-            className="mx-1 bg-slate-100 border decoration-slate-300 px-2 py-1 rounded hover:bg-slate-200/60"
-            onChange={(e) => {
-              updatePassword(e.target.value);
-            }}
-            value={password}
-            type="password"
-          />
-
-          <button
-            className="mx-1 my-2 py-1 bg-red-400 rounded text-white text-xl hover:bg-red-500/90"
-            onClick={(e) => {
-              e.preventDefault();
-              // TODO show error message
-              login(email, password, navigate);
-            }}
-          >
-            Login
-          </button>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate>
+            <Stack spacing={2} width={400}>
+              <TextField
+                label="Email"
+                type="email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                    message: "Enter a valid email",
+                  },
+                })}
+                error={!!errors.email}
+                helperText={errors.email?.message}
+              />
+              <TextField
+                label="Password"
+                type="password"
+                {...register("password", { required: "Password is required" })}
+                error={!!errors.password}
+                helperText={errors.password?.message}
+              />
+              <Button type="submit" variant="contained" color="primary">
+                Login
+              </Button>
+            </Stack>
+          </form>
         </div>
       </div>
+      {/* <DevTool control={control}></DevTool> */}
     </>
   );
 }
