@@ -9,26 +9,14 @@ import ProtectedRoute from "./core/components/protectedRoute";
 import { ExplorePage } from "./feature/explore/components/explorePage";
 import { CreateJob } from "./feature/createJob/components/createJob";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
-      <Header />
-
-      <div className="">
-        <div className="max-h-10 float-right">
-          <ToastContainer
-            autoClose={1}
-            hideProgressBar={false}
-            newestOnTop={false}
-            // closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            // pauseOnHover
-            theme="light"
-          />
-        </div>
+      <div className="h-screen">
+        <Header />
+        <ToastContainer style={{ marginTop: "64px" }} />
         <Routes>
           <Route path="/" element={<h1>Coming soon</h1>} />
           <Route path="/login" element={<LoginPage />} />

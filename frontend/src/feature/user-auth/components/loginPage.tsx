@@ -38,15 +38,15 @@ export function LoginPage() {
 
   return (
     <>
-      <div className="w-full pt-4">
-        <div className="p-4 m-1 flex flex-col  w-96 mx-auto my-auto border rounded">
-          <div className="flex text-4xl justify-center text-red-400 mb-2 ">
-            Login
+      <div className="mx-auto bg-slate-50 content flex flex-col justify-center items-center">
+        <div className=" p-4  border rounded bg-white">
+          <div className="text-3xl justify-center text-black mb-2 ">
+            Sign In to your Account
           </div>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <Stack spacing={2} width={400}>
               <TextField
-                label="Email"
+                label="Email Id"
                 type="email"
                 {...register("email", {
                   required: "Email is required",
@@ -57,19 +57,64 @@ export function LoginPage() {
                 })}
                 error={!!errors.email}
                 helperText={errors.email?.message}
+                sx={{
+                  "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                  "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                  "& fieldset": {
+                    paddingLeft: (theme) => theme.spacing(1.5),
+                    borderRadius: "10px",
+                  },
+                }}
               />
               <TextField
                 label="Password"
                 type="password"
-                {...register("password", { required: "Password is required" })}
+                {...register("password", {
+                  required: "Password is required",
+                })}
                 error={!!errors.password}
                 helperText={errors.password?.message}
+                sx={{
+                  "& label": {
+                    paddingLeft: (theme) => theme.spacing(1),
+                  },
+                  "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                  "& fieldset": {
+                    paddingLeft: (theme) => theme.spacing(1.5),
+                    borderRadius: "10px",
+                  },
+                }}
               />
-              <Button type="submit" variant="contained" color="primary">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                style={{
+                  background: "#FF5353",
+                  borderRadius: "10px",
+                  textTransform: "none",
+                  fontSize: "16px",
+                }}
+              >
                 Login
               </Button>
             </Stack>
           </form>
+          <div className="mx-auto"></div>
+          <br />
+          <div className="mv-1 border-t mx-16" />
+          <div className="flex justify-center">
+            <p className="-mt-3 bg-white px-3 text-[#CCCCCC]">OR</p>
+          </div>
+          <br />
+          <p
+            className="text-[#656565] text-center"
+            onClick={() => {
+              navigate("/register");
+            }}
+          >
+            Create a new account
+          </p>
         </div>
       </div>
       {/* <DevTool control={control}></DevTool> */}

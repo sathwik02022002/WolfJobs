@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { getFormBody } from "./apiUtils";
 import { loginURL, signUpURL } from "./constants";
 
@@ -17,6 +18,7 @@ export async function login(email: string, password: string, navigate: any) {
         sessionStorage.setItem("token", data.data.token);
         navigate("/dashboard");
       }
+      toast.error("Login Failed");
     });
 }
 
@@ -50,5 +52,6 @@ export function signup(
         navigate("/dashboard");
         return;
       }
+      toast.error("Sign up Failed");
     });
 }

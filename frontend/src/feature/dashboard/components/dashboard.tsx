@@ -36,7 +36,6 @@ export function Dashboard() {
   useEffect(() => {
     const token: string = sessionStorage.getItem("token")!;
     if (!!!token) {
-      console.log("saDHasdjknads");
       naviagte("/login");
     }
     if (!!token) {
@@ -74,8 +73,7 @@ export function Dashboard() {
       <button
         onClick={(e) => {
           e.preventDefault();
-          // naviagte("/createjob");
-          toast.success("Hello world");
+          naviagte("/createjob");
         }}
       >
         Create Job button
