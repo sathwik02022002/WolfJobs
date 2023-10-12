@@ -1,9 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../controllers/userController";
-import { useLoginStore } from "../../user-auth/controller/loginController";
-import { useRegistrationStore } from "../../user-auth/controller/registrationController";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 export function Dashboard() {
   const naviagte = useNavigate();
@@ -20,18 +19,7 @@ export function Dashboard() {
   const updateHours = useUserStore((state) => state.updateHours);
   const updateIsLoggedIn = useUserStore((state) => state.updateIsLoggedIn);
 
-  const updateEmailLogin = useLoginStore((state) => state.updateEmail);
-  const updatePasswordLogin = useLoginStore((state) => state.updatePassword);
-
-  const updateNameSign = useRegistrationStore((state) => state.updateName);
-  const updatePasswordSign = useRegistrationStore(
-    (state) => state.updatePassword
-  );
-  const updateConfirmPasswordSign = useRegistrationStore(
-    (state) => state.updateConfirmPassword
-  );
-  const updateRoleSign = useRegistrationStore((state) => state.updateRole);
-  const updateEmailSign = useRegistrationStore((state) => state.updateEmail);
+  const [jobsList, setJobList] = useState([]);
 
   useEffect(() => {
     const token: string = sessionStorage.getItem("token")!;
@@ -55,28 +43,44 @@ export function Dashboard() {
       updateGender(userInfo.gender);
       updateHours(userInfo.hours);
       updateIsLoggedIn(true);
-
-      updateEmailLogin("");
-      updatePasswordLogin("");
-
-      updateNameSign("");
-      updatePasswordSign("");
-      updateConfirmPasswordSign("");
-      updateRoleSign("Manager");
-      updateEmailSign("");
     }
+  }, []);
+
+  const count = useRef(0);
+  useEffect(() => {
+    if (count.current !== 0) {
+      axios
+        .get("http://localhost:8000/api/v1/users/fetchapplications")
+        .then((res) => {
+          if (res.status !== 200) {
+            toast.error("Error fetching jobs");
+            return;
+          }
+          console.log(res);
+          const jobsData = res.data;
+          setJobList(jobsData.application);
+          console.log(jobsData.application);
+        });
+    }
+    count.current++;
   }, []);
 
   return (
     <>
       <h2>Dashboard</h2>
+
+      {jobsList.map((job: any) => (
+        <p>{job._id}</p>
+      ))}
       <button
         onClick={(e) => {
           e.preventDefault();
           naviagte("/createjob");
         }}
+        type="button"
+        className=" fixed bg-red-400 text-white p-4 bottom-3 right-3"
       >
-        Create Job button
+        Create Job button +
       </button>
     </>
   );

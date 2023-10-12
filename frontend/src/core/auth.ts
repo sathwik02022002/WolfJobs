@@ -13,10 +13,10 @@ export async function login(email: string, password: string, navigate: any) {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log("Login data", data);
       if (data.success) {
         sessionStorage.setItem("token", data.data.token);
         navigate("/dashboard");
+        return;
       }
       toast.error("Login Failed");
     });
@@ -48,7 +48,6 @@ export function signup(
     .then((data) => {
       if (data.success) {
         sessionStorage.setItem("token", data.data.token);
-        console.log("Navigating to dashboard");
         navigate("/dashboard");
         return;
       }
