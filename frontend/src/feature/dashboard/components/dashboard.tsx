@@ -19,7 +19,7 @@ export function Dashboard() {
   const updateHours = useUserStore((state) => state.updateHours);
   const updateIsLoggedIn = useUserStore((state) => state.updateIsLoggedIn);
 
-  const [jobsList, setJobList] = useState([]);
+  const [jobsList, setJobList] = useState<Job[]>([]);
 
   useEffect(() => {
     const token: string = sessionStorage.getItem("token")!;
@@ -50,38 +50,103 @@ export function Dashboard() {
   useEffect(() => {
     if (count.current !== 0) {
       axios
-        .get("http://localhost:8000/api/v1/users/fetchapplications")
+        .get("http://localhost:8000/api/v1/users", {
+          params: { page: 1, limit: 25 },
+        })
         .then((res) => {
           if (res.status !== 200) {
             toast.error("Error fetching jobs");
             return;
           }
-          console.log(res);
-          const jobsData = res.data;
-          setJobList(jobsData.application);
-          console.log(jobsData.application);
+          setJobList(res.data.jobs as Job[]);
         });
     }
     count.current++;
   }, []);
 
+  useEffect(() => {}, []);
+
   return (
     <>
-      <h2>Dashboard</h2>
+      <div className="content bg-slate-50">
+        <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
+          <div className="w-4/12 overflow-y-scroll overflow-x-hidden mt-2 mx-5 px-4">
+            <div className="text-2xl py-4">All jobs</div>
+            {jobsList.map((job: Job) => {
+              // return <JobListTile data={job} />;
+              const x = job;
+              console.log(x);
+              return <JobListTile />;
+            })}
+          </div>
+          <div
+            className="w-8/12"
+            style={{ height: "calc(100vh - 72px)" }}
+          ></div>
+        </div>
 
-      {jobsList.map((job: any) => (
-        <p>{job._id}</p>
-      ))}
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          naviagte("/createjob");
-        }}
-        type="button"
-        className=" fixed bg-red-400 text-white p-4 bottom-3 right-3"
-      >
-        Create Job button +
-      </button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            naviagte("/createjob");
+          }}
+          type="button"
+          className=" fixed bg-red-400 text-white p-4 bottom-3 right-3"
+        >
+          Create Job button +
+        </button>
+      </div>
     </>
   );
 }
+
+type Job = {
+  _id: string;
+  name: string;
+  skills: string[];
+  managerid: string;
+  status: string;
+  location: string;
+  description: string;
+  pay: string;
+  schedule: string;
+};
+
+// const JobListTile = (props: any) => {
+const JobListTile = () => {
+  // const { data }: { data: Job } = props;
+
+  // const jobOffice = "NC State Dining";
+  // const officeRedColour = "#1A2A2A1A";
+  // const officeRedHightlightColour = "#FF2A2A1A";
+
+  return (
+    <div className="my-3 ">
+      <div className="p-3 bg-white rounded-xl">
+        <div className="flex flex-row">
+          <div className="w-4/6 ">
+            <div className="w-fit bg-[#FF2A2A1A] rounded-full px-2 py-1 ">
+              <p className="inline" style={{ width: "fit-content" }}>
+                {/* <div className="inline"> */}
+                <div className="flex flex-row justify-center">
+                  <div className=" p-1 w-1  bg-[#FF2A2A1A]  rounded-full"></div>
+                </div>
+                {/* </div> */}
+                NC State Dining
+              </p>
+            </div>
+            <p>
+              <b>Role:</b> Dining Associate <br />
+              <b>Job Status:</b> Closed <br />
+              <b>Type:</b> Full-time <br />
+            </p>
+          </div>
+          <div className="w-2/6  flex flex-col-reverse text-right">
+            <p>Know more</p>
+            <p>40$/hr</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
