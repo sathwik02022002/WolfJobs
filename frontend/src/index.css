@@ -6,6 +6,7 @@ html,
 body {
   margin: 0;
   height: 100vh;
+  font-family: "Urbanist", sans-serif;
 }
 
 /* html {
@@ -20,4 +21,8 @@ body > #root {
   /* Subtract the header size */
   height: calc(100% - 72px);
   overflow: auto;
+}
+
+.content-scroll {
+  height: calc(100% - 72px);
 }
