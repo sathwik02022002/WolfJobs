@@ -10,6 +10,7 @@ import { ExplorePage } from "./feature/explore/components/explorePage";
 import { CreateJob } from "./feature/createJob/components/createJob";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LandingPage } from "./feature/user-auth/components/landingPage";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Header />
         <ToastContainer style={{ marginTop: "64px" }} />
         <Routes>
-          <Route path="/" element={<h1>Coming soon</h1>} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/logout" element={<LogoutPage />} />
           <Route path="/register" element={<RegistrationPage />} />
