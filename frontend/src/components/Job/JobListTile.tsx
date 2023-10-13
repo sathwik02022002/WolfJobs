@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi";
+import { useSearchParams } from "react-router-dom";
 
 const JobListTile = (props: any) => {
   const { data } = props;
   const [active, setActive] = useState<boolean>(true);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
-    console.log(data);
-  }, []);
+    const id = searchParams.get("jobId");
+    setActive(data._id === id);
+  }, [searchParams]);
+
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    setSearchParams({ jobId: data._id });
+  };
 
   const affilation = "NC State Dining";
   const role = "Dining Associate";
@@ -24,21 +33,15 @@ const JobListTile = (props: any) => {
   };
   const handleFillQuestionnaire = (e: any) => {
     e.stopPropagation();
-    console.log("Know more");
+    console.log("Fill Questionnaire");
   };
   const handleViewApplication = (e: any) => {
     e.stopPropagation();
-    console.log("Know more");
+    console.log("View Application");
   };
 
   return (
-    <div
-      className="my-3 "
-      onClick={(e) => {
-        e.preventDefault();
-        setActive(!active);
-      }}
-    >
+    <div className="my-3 " onClick={handleClick}>
       <div
         className={`p-3 bg-white rounded-xl ${
           active ? "border-red-300 " : "border-white"
@@ -51,7 +54,7 @@ const JobListTile = (props: any) => {
                 {affilation.toUpperCase()}
               </p>
             </div>
-            <div className="h-4"></div>
+            <div className="h-1"></div>
             <div className="pl-2">
               <p className="text-base">
                 <b>Role:</b> {role}

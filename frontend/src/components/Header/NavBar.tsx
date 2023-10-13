@@ -11,6 +11,7 @@ const NavBar = () => {
           <ul className="flex space-x-8">
             {!isLoggedIn && <NavBarItem link="/login" text="Login" />}
             {!isLoggedIn && <NavBarItem link="/register" text="Register" />}
+            {isLoggedIn && <NavBarItem link="/explore" text="All jobs" />}
             {isLoggedIn && <NavBarItem link="/logout" text="Log Out" />}
           </ul>
         </nav>

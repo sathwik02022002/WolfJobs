@@ -11,7 +11,7 @@ import RegistrationPage from "./Pages/Auth/RegistrationPage";
 import Header from "./components/Header/Header";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import CreateJob from "./Pages/CreateJob/CreateJob";
-import ExplorePage from "./Pages/Explore/Explore";
+import Explore from "./Pages/Explore/Explore";
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
             path="/explore"
             element={
               <ProtectedRoute>
-                <ExplorePage />
+                <Explore />
               </ProtectedRoute>
             }
           />
