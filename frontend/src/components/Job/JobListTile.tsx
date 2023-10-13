@@ -1,31 +1,104 @@
-const JobListTile = () => {
+import { useEffect, useState } from "react";
+import { HiOutlineArrowRight } from "react-icons/hi";
+
+const JobListTile = (props: any) => {
+  const { data } = props;
+  const [active, setActive] = useState<boolean>(true);
+
+  useEffect(() => {
+    console.log(data);
+  }, []);
+
+  const affilation = "NC State Dining";
+  const role = "Dining Associate";
+  const jobStatus = "Closed";
+  const jobType = "Full-time";
+
+  const viewMore = true;
+  const viewQuestionnaire = false;
+  const viewApplication = false;
+
+  const handleKnowMore = (e: any) => {
+    e.stopPropagation();
+    console.log("Know more");
+  };
+  const handleFillQuestionnaire = (e: any) => {
+    e.stopPropagation();
+    console.log("Know more");
+  };
+  const handleViewApplication = (e: any) => {
+    e.stopPropagation();
+    console.log("Know more");
+  };
+
   return (
-    <div className="my-3 ">
-      <div className="p-3 bg-white rounded-xl">
+    <div
+      className="my-3 "
+      onClick={(e) => {
+        e.preventDefault();
+        setActive(!active);
+      }}
+    >
+      <div
+        className={`p-3 bg-white rounded-xl ${
+          active ? "border-red-300 " : "border-white"
+        } border`}
+      >
         <div className="flex flex-row">
           <div className="w-4/6 ">
-            <div className="w-fit bg-[#FF2A2A]/10 rounded-2xl px-3 py-0 ">
+            <div className="w-fit bg-[#FF2A2A]/10 rounded-2xl px-3 py-0">
               <p className="inline text-xs" style={{ width: "fit-content" }}>
-                {/* <div className="inline">
-                    <div className="flex flex-row justify-center">
-                      <div className=" p-1 w-1  bg-[#FF2A2A1A]  rounded-full"></div>
-                    </div>
-                  </div> */}
-                {"NC State Dining".toUpperCase()}
+                {affilation.toUpperCase()}
               </p>
             </div>
-            <p className="text-sm">
-              <b>Role:</b> Dining Associate{" "}
-            </p>
-            <p className="text-sm">
-              <b>Job Status:</b> Closed{" "}
-            </p>
-            <p className="text-sm">
-              <b>Type:</b> Full-time
-            </p>
+            <div className="h-4"></div>
+            <div className="pl-2">
+              <p className="text-base">
+                <b>Role:</b> {role}
+              </p>
+              <p className="text-base">
+                <b>Job Status:</b>
+                <span
+                  className={`${
+                    jobStatus.toLowerCase() === "closed" ? "text-[#FF5353]" : ""
+                  }`}
+                >
+                  &nbsp;{jobStatus}
+                </span>
+              </p>
+              <p className="text-base">
+                <b>Type:</b> {jobType}
+              </p>
+            </div>
           </div>
           <div className="w-2/6  flex flex-col-reverse text-right">
-            <p className="text-xs">Know more</p>
+            {viewMore && (
+              <p
+                className="inline-flex items-center flex-row-reverse text-xs text-[#656565]"
+                onClick={handleKnowMore}
+              >
+                <HiOutlineArrowRight />
+                Know more&nbsp;
+              </p>
+            )}
+            {viewQuestionnaire && (
+              <p
+                className="inline-flex items-center flex-row-reverse text-xs text-[#00B633]"
+                onClick={handleFillQuestionnaire}
+              >
+                <HiOutlineArrowRight />
+                Fill Questionnaire&nbsp;
+              </p>
+            )}
+            {viewApplication && (
+              <p
+                className="inline-flex items-center flex-row-reverse text-xs text-[#656565]"
+                onClick={handleViewApplication}
+              >
+                <HiOutlineArrowRight />
+                View Application&nbsp;
+              </p>
+            )}
             <p className="text-3xl">40$/hr</p>
           </div>
         </div>

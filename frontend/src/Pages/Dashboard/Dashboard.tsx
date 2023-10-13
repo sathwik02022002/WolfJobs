@@ -1,8 +1,9 @@
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../../store/UserStore";
 import { toast } from "react-toastify";
-import axios from "axios";
+import JobListTile from "../../components/Job/JobListTile";
 
 const Dashboard = () => {
   const naviagte = useNavigate();
@@ -70,17 +71,26 @@ const Dashboard = () => {
     <>
       <div className="content bg-slate-50">
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
-          <div className="w-4/12 overflow-y-scroll overflow-x-hidden mt-2 mx-5 px-4">
+          <div className="w-4/12 bg-white/60 overflow-y-scroll overflow-x-hidden pt-2 px-9">
             <div className="text-2xl py-4">All jobs</div>
             {jobsList.map((job: Job) => {
-              // return <JobListTile data={job} />;
-              const x = job;
-              console.log(x);
-              return <JobListTile />;
+              return <JobListTile data={job} />;
+            })}
+            {jobsList.map((job: Job) => {
+              return <JobListTile data={job} />;
+            })}
+            {jobsList.map((job: Job) => {
+              return <JobListTile data={job} />;
+            })}
+            {jobsList.map((job: Job) => {
+              return <JobListTile data={job} />;
+            })}
+            {jobsList.map((job: Job) => {
+              return <JobListTile data={job} />;
             })}
           </div>
           <div
-            className="w-8/12"
+            className="w-8/12 "
             style={{ height: "calc(100vh - 72px)" }}
           ></div>
         </div>
@@ -97,54 +107,6 @@ const Dashboard = () => {
         </button>
       </div>
     </>
-  );
-};
-
-type Job = {
-  _id: string;
-  name: string;
-  skills: string[];
-  managerid: string;
-  status: string;
-  location: string;
-  description: string;
-  pay: string;
-  schedule: string;
-};
-
-const JobListTile = () => {
-  return (
-    <div className="my-3 ">
-      <div className="p-3 bg-white rounded-xl">
-        <div className="flex flex-row">
-          <div className="w-4/6 ">
-            <div className="w-fit bg-[#FF2A2A]/10 rounded-2xl px-3 py-0 ">
-              <p className="inline text-xs" style={{ width: "fit-content" }}>
-                {/* <div className="inline">
-                  <div className="flex flex-row justify-center">
-                    <div className=" p-1 w-1  bg-[#FF2A2A1A]  rounded-full"></div>
-                  </div>
-                </div> */}
-                {"NC State Dining".toUpperCase()}
-              </p>
-            </div>
-            <p className="text-sm">
-              <b>Role:</b> Dining Associate{" "}
-            </p>
-            <p className="text-sm">
-              <b>Job Status:</b> Closed{" "}
-            </p>
-            <p className="text-sm">
-              <b>Type:</b> Full-time
-            </p>
-          </div>
-          <div className="w-2/6  flex flex-col-reverse text-right">
-            <p className="text-xs">Know more</p>
-            <p className="text-3xl">40$/hr</p>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 };
 
