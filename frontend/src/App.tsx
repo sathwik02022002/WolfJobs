@@ -1,15 +1,17 @@
 import "./App.css";
-import { Header } from "./feature/header/header";
-import { Route, Routes } from "react-router-dom";
-import { LoginPage } from "./feature/user-auth/components/loginPage";
-import { RegistrationPage } from "./feature/user-auth/components/registrationPage";
-import { Dashboard } from "./feature/dashboard/components/dashboard";
-import { LogoutPage } from "./feature/user-auth/components/logoutPage";
-import ProtectedRoute from "./core/components/protectedRoute";
-import { ExplorePage } from "./feature/explore/components/explorePage";
-import { CreateJob } from "./feature/createJob/components/createJob";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { ToastContainer } from "react-toastify";
+import { Route, Routes } from "react-router-dom";
+
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import LoginPage from "./Pages/Auth/LoginPage";
+import LogoutPage from "./Pages/Auth/LogoutPage";
+import RegistrationPage from "./Pages/Auth/RegistrationPage";
+import Header from "./components/Header/Header";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import CreateJob from "./Pages/CreateJob/CreateJob";
+import ExplorePage from "./Pages/Explore/Explore";
 
 function App() {
   return (
