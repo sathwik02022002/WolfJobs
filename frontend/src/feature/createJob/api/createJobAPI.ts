@@ -4,12 +4,15 @@ import { createJobURL } from "../../../core/constants";
 export const createJob = async (
   name: string,
   id: string,
-  skills: string,
-  status: number,
+  status: string,
   location: string,
   description: string,
   pay: string,
-  schedule: string
+  type: string,
+  question1: string,
+  question2: string,
+  question3: string,
+  question4: string,
 ) => {
   const url = createJobURL;
   await fetch(url, {
@@ -20,12 +23,15 @@ export const createJob = async (
     body: getFormBody({
       name,
       id,
-      skills,
       status,
       location,
       description,
       pay,
-      schedule,
+      type,
+      question1,
+      question2,
+      question3,
+      question4,
     }),
   })
     .then((res) => res.json())

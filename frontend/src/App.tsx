@@ -11,6 +11,8 @@ import { CreateJob } from "./feature/createJob/components/createJob";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LandingPage } from "./feature/user-auth/components/landingPage";
+import { JobQuestionnaire } from "./feature/createJob/components/jobQuestionnaire";
+import { JobPreview } from "./feature/createJob/components/jobPreview";
 
 function App() {
   return (
@@ -47,6 +49,24 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/job_questionnaire"
+            element={
+              <ProtectedRoute>
+                <JobQuestionnaire />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/job_preview"
+            element={
+              <ProtectedRoute>
+                <JobPreview />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="*" element={<>Error 404</>} />
         </Routes>
       </div>

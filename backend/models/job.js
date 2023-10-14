@@ -5,17 +5,14 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  skills: {
-    type: Array,
-    required: true,
-  },
   managerid: {
     type: String,
     required: true,
   },
   status: {
     type: String,
-    default: "0",
+    enum: ['Open', 'Closed'],
+    default: 'open',
   },
   location: {
     type: String,
@@ -29,7 +26,24 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  schedule: {
+  type: {
+    type: String,
+    enum: ['Full-Time', 'Part-Time'],
+    required: true,
+  },
+  question1: {
+    type: String,
+    required: true,
+  },
+  question2: {
+    type: String,
+    required: true,
+  },
+  question3: {
+    type: String,
+    required: true,
+  },
+  question4: {
     type: String,
     required: true,
   },
