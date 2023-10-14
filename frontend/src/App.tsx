@@ -1,5 +1,8 @@
 import "./App.css";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
+// import { LandingPage } from "./feature/user-auth/components/landingPage";
+// import { JobQuestionnaire } from "./feature/createJob/components/jobQuestionnaire";
+// import { JobPreview } from "./feature/createJob/components/jobPreview";
 
 import { ToastContainer } from "react-toastify";
 import { Route, Routes } from "react-router-dom";
@@ -12,6 +15,9 @@ import Header from "./components/Header/Header";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import CreateJob from "./Pages/CreateJob/CreateJob";
 import Explore from "./Pages/Explore/Explore";
+import { LandingPage } from "./Pages/Auth/landingPage";
+import { JobQuestionnaire } from "./Pages/CreateJob/jobQuestionnaire";
+import { JobPreview } from "./Pages/CreateJob/jobPreview";
 
 function App() {
   return (
@@ -20,7 +26,7 @@ function App() {
         <Header />
         <ToastContainer style={{ marginTop: "64px" }} />
         <Routes>
-          <Route path="/" element={<h1>Coming soon</h1>} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/logout" element={<LogoutPage />} />
           <Route path="/register" element={<RegistrationPage />} />
@@ -48,6 +54,24 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/job_questionnaire"
+            element={
+              <ProtectedRoute>
+                <JobQuestionnaire />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/job_preview"
+            element={
+              <ProtectedRoute>
+                <JobPreview />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="*" element={<>Error 404</>} />
         </Routes>
       </div>

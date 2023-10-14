@@ -256,11 +256,14 @@ module.exports.createJob = async function (req, res) {
       name: req.body.name,
       managerid: user._id,
       managerAffilication: user.affiliation,
-      skills: check.split(" "),
+      type: req.body.type,
       location: req.body.location,
       description: req.body.description,
       pay: req.body.pay,
-      schedule: req.body.schedule,
+      question1: req.body.question1,
+      question2: req.body.question2,
+      question3: req.body.question3,
+      question4: req.body.question4,
     });
     res.set("Access-Control-Allow-Origin", "*");
     return res.json(200, {

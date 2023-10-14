@@ -1,84 +1,419 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const CreateJob = () => {
   const [name, setName] = useState("");
-  const [skill, setSkill] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [pay, setPay] = useState("");
-  const [schedule, setSchedule] = useState("");
+  const [type, setType] = useState("");
+
+  const navigate = useNavigate();
 
   return (
     <>
-      <h1>Create Job</h1>
-      <br />
-      <h2 className="text-xl mx-1">Name</h2>
-      <input
-        className="mx-1 bg-slate-100 border decoration-slate-300 px-2 py-1 rounded hover:bg-slate-200/60"
-        onChange={(e) => {
-          setName(e.target.value);
+      <div
+        style={{
+          position: "absolute",
+          width: "767px",
+          height: "0px",
+          left: "40px",
+          top: "500px",
+          border: "1px solid #DFDFDF",
+          transform: "rotate(90deg)",
+          borderRight: "2px solid #000",
         }}
-        type="text"
-        value={name}
-      />
-      <br />
-      <h2 className="text-xl mx-1">Skill</h2>
+      ></div>
 
-      <input
-        className="mx-1 bg-slate-100 border decoration-slate-300 px-2 py-1 rounded hover:bg-slate-200/60"
-        onChange={(e) => {
-          setSkill(e.target.value);
+      <div
+        style={{
+          position: "absolute",
+          width: "276px",
+          height: "36px",
+          left: "48px",
+          top: "154px",
+          fontFamily: "Poppins",
+          fontStyle: "normal",
+          fontWeight: 500,
+          fontSize: "24px",
+          lineHeight: "36px",
+          color: "#000000",
         }}
-        type="text"
-        value={skill}
-      />
-      <br />
-      <h2 className="text-xl mx-1">Location</h2>
-      <input
-        className="mx-1 bg-slate-100 border decoration-slate-300 px-2 py-1 rounded hover:bg-slate-200/60"
-        onChange={(e) => {
-          setLocation(e.target.value);
+      >
+        Create New Job Listing
+      </div>
+
+      <p
+        style={{
+          position: "absolute",
+          height: "20px",
+          left: "3.33%",
+          right: "95.28%",
+          top: "54%",
+          transform: "translateY(-50%)",
+          marginTop: "-135.5px",
+          background: "white",
         }}
-        type="text"
-        value={location}
-      />
-      <br />
-      <h2 className="text-xl mx-1">Description</h2>
-      <input
-        className="mx-1 bg-slate-100 border decoration-slate-300 px-2 py-1 rounded hover:bg-slate-200/60"
-        onChange={(e) => {
-          setDescription(e.target.value);
+      >
+        <img src="/images/Vector.png" alt="Vector Image" />
+      </p>
+      <div
+        style={{
+          position: "absolute",
+          width: "81px",
+          height: "19px",
+          left: "80px",
+          top: "232px",
+          fontFamily: "Urbanist",
+          fontStyle: "normal",
+          fontWeight: 400,
+          fontSize: "16px",
+          lineHeight: "19px",
+          color: "#1E1E1E",
         }}
-        type="text"
-        value={description}
-      />
-      <br />
-      <h2 className="text-xl mx-1">Pay</h2>
-      <input
-        className="mx-1 bg-slate-100 border decoration-slate-300 px-2 py-1 rounded hover:bg-slate-200/60"
-        onChange={(e) => {
-          setPay(e.target.value);
+      >
+        Add Details
+      </div>
+
+      <p
+        style={{
+          position: "absolute",
+          height: "20px",
+          left: "3.33%",
+          right: "95.28%",
+          top: "60%",
+          transform: "translateY(-50%)",
+          marginTop: "-135.5px",
+          background: "white",
         }}
-        type="text"
-        value={pay}
-      />
-      <br />
-      <h2 className="text-xl mx-1">Schedule</h2>
-      <input
-        className="mx-1 bg-slate-100 border decoration-slate-300 px-2 py-1 rounded hover:bg-slate-200/60"
-        onChange={(e) => {
-          setSchedule(e.target.value);
+      >
+        <img src="/images/Vector2.png" alt="Vector Image" />
+      </p>
+      <div
+        style={{
+          position: "absolute",
+          width: "109px",
+          height: "19px",
+          left: "80px",
+          top: "272px",
+          fontFamily: "Urbanist",
+          fontStyle: "normal",
+          fontWeight: 400,
+          fontSize: "16px",
+          lineHeight: "19px",
+          color: "#CBCBCB",
+          whiteSpace: "nowrap",
         }}
-        type="text"
-        value={schedule}
-      />
-      <br />
+      >
+        Fill Questionnaire
+      </div>
+
+      <p
+        style={{
+          position: "absolute",
+          height: "20px",
+          left: "3.33%",
+          right: "95.28%",
+          top: "65.5%",
+          transform: "translateY(-50%)",
+          marginTop: "-135.5px",
+          background: "white",
+        }}
+      >
+        <img src="/images/Vector2.png" alt="Vector Image" />
+      </p>
+      <div
+        style={{
+          position: "absolute",
+          width: "109px",
+          height: "19px",
+          left: "80px",
+          top: "312px",
+          fontFamily: "Urbanist",
+          fontStyle: "normal",
+          fontWeight: 400,
+          fontSize: "16px",
+          lineHeight: "19px",
+          color: "#CBCBCB",
+          whiteSpace: "nowrap",
+        }}
+      >
+        Preview
+      </div>
+
+      <p
+        style={{
+          position: "absolute",
+          height: "20px",
+          left: "3.33%",
+          right: "95.28%",
+          top: "71.5%",
+          transform: "translateY(-50%)",
+          marginTop: "-135.5px",
+          background: "white",
+        }}
+      >
+        <img src="/images/Vector2.png" alt="Vector Image" />
+      </p>
+      <div
+        style={{
+          position: "absolute",
+          width: "109px",
+          height: "19px",
+          left: "80px",
+          top: "352px",
+          fontFamily: "Urbanist",
+          fontStyle: "normal",
+          fontWeight: 400,
+          fontSize: "16px",
+          lineHeight: "19px",
+          color: "#CBCBCB",
+          whiteSpace: "nowrap",
+        }}
+      >
+        Confirm
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          width: "138px",
+          height: "36px",
+          left: "548px",
+          top: "154px",
+          fontFamily: "Poppins",
+          fontStyle: "normal",
+          fontWeight: 500,
+          fontSize: "24px",
+          lineHeight: "36px",
+          color: "#000000",
+        }}
+      >
+        Add Details
+      </div>
+
+      <div
+        style={{
+          boxSizing: "border-box",
+          position: "absolute",
+          width: "344px",
+          height: "50px",
+          left: "548px",
+          top: "220px",
+          background: "#FFFFFF",
+          border: "1px solid #CBCBCB",
+          borderRadius: "10px",
+        }}
+      >
+        <input
+          style={{
+            position: "absolute",
+            width: "300px",
+            height: "40px",
+            left: "10px",
+            top: "2px",
+            fontFamily: "Urbanist",
+            fontStyle: "normal",
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "19px",
+            color: "black",
+          }}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          value={name}
+          placeholder="Job Role"
+        />
+      </div>
+
+      <div
+        style={{
+          boxSizing: "border-box",
+          position: "absolute",
+          width: "344px",
+          height: "50px",
+          left: "548px",
+          top: "289px",
+          background: "#FFFFFF",
+          border: "1px solid #CBCBCB",
+          borderRadius: "10px",
+        }}
+      >
+        <select
+          style={{
+            position: "absolute",
+            width: "300px",
+            height: "40px",
+            left: "10px",
+            top: "2px",
+            fontFamily: "Urbanist",
+            fontStyle: "normal",
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "19px",
+            color: type ? "black" : "#999",
+          }}
+          onChange={(e) => {
+            setType(e.target.value);
+          }}
+          value={type}
+        >
+          <option value="" disabled selected hidden>
+            Job Type
+          </option>
+          <option value="full-time">Full-Time</option>
+          <option value="parttime">Part-Time</option>
+        </select>
+      </div>
+
+      <div
+        style={{
+          boxSizing: "border-box",
+          position: "absolute",
+          width: "344px",
+          height: "50px",
+          left: "548px",
+          top: "357px",
+          background: "#FFFFFF",
+          border: "1px solid #CBCBCB",
+          borderRadius: "10px",
+        }}
+      >
+        <input
+          style={{
+            position: "absolute",
+            width: "300px",
+            height: "40px",
+            left: "10px",
+            top: "2px",
+            fontFamily: "Urbanist",
+            fontStyle: "normal",
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "19px",
+            color: "black",
+          }}
+          onChange={(e) => {
+            setLocation(e.target.value);
+          }}
+          value={location}
+          placeholder="Location"
+        />
+      </div>
+
+      <div
+        style={{
+          boxSizing: "border-box",
+          position: "absolute",
+          width: "344px",
+          height: "50px",
+          left: "548px",
+          top: "425px",
+          background: "#FFFFFF",
+          border: "1px solid #CBCBCB",
+          borderRadius: "10px",
+        }}
+      >
+        <input
+          style={{
+            position: "absolute",
+            width: "300px",
+            height: "40px",
+            left: "10px",
+            top: "2px",
+            fontFamily: "Urbanist",
+            fontStyle: "normal",
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "19px",
+            color: "black",
+          }}
+          onChange={(e) => {
+            setPay(e.target.value);
+          }}
+          value={pay}
+          placeholder="Pay"
+        />
+      </div>
+
+      <div
+        style={{
+          boxSizing: "border-box",
+          position: "absolute",
+          width: "344px",
+          height: "233px",
+          left: "548px",
+          top: "494px",
+          background: "#FFFFFF",
+          border: "1px solid #CBCBCB",
+          borderRadius: "10px",
+        }}
+      >
+        <input
+          style={{
+            position: "absolute",
+            width: "300px",
+            height: "40px",
+            left: "10px",
+            top: "2px",
+            fontFamily: "Urbanist",
+            fontStyle: "normal",
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "19px",
+            color: "black",
+          }}
+          onChange={(e) => {
+            setDescription(e.target.value);
+          }}
+          value={description}
+          placeholder="Job Description"
+        />
+      </div>
       <button
         onClick={(e) => {
           e.preventDefault();
+          navigate("/job_questionnaire", {
+            state: {
+              name,
+              location,
+              description,
+              pay,
+              type,
+            },
+          });
+        }}
+        type="button"
+        style={{
+          boxSizing: "border-box",
+          position: "absolute",
+          width: "344px",
+          height: "50px",
+          left: "548px",
+          top: "747px",
+          background: "#FFFFFF",
+          border: "1px solid #FF5353",
+          borderRadius: "10px",
         }}
       >
-        Create Job
+        <p
+          style={{
+            position: "absolute",
+            width: "300px",
+            height: "40px",
+            left: "10px",
+            top: "10px",
+            fontFamily: "Urbanist",
+            fontStyle: "normal",
+            fontWeight: 600,
+            fontSize: "18px",
+            lineHeight: "22px",
+            color: "#FF5353",
+          }}
+        >
+          Proceed
+        </p>
       </button>
     </>
   );
