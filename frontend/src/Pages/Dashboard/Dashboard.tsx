@@ -117,7 +117,13 @@ const Dashboard = () => {
                 {role === "Manager" ? "My Listings" : "My Applications"}
               </div>
               {displayList?.map((job: Job) => {
-                return <JobListTile data={job} key={job._id} />;
+                return (
+                  <JobListTile
+                    data={job}
+                    key={job._id}
+                    action={"view-application"}
+                  />
+                );
               })}
             </div>
           </>

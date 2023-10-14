@@ -3,10 +3,16 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { useSearchParams } from "react-router-dom";
 
 const JobListTile = (props: any) => {
-  const { data }: { data: Job } = props;
-  const [active, setActive] = useState<boolean>(true);
+  const { data, action }: { data: Job; action: string | undefined } = props;
 
+  const [active, setActive] = useState<boolean>(true);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const affilation = data.managerAffilication;
+  const role = "Dining Associate";
+  const jobStatus = data.status === "0" ? "Open" : "Closed";
+  const jobType = "Full-time";
+  const pay = data.pay || "0";
 
   useEffect(() => {
     const id = searchParams.get("jobId");
@@ -33,15 +39,6 @@ const JobListTile = (props: any) => {
     return "bg-[#FF2A2A]/10";
   };
 
-  const affilation = data.managerAffilication;
-  const role = "Dining Associate";
-  const jobStatus = data.status === "0" ? "Open" : "Closed";
-  const jobType = "Full-time";
-  const pay = data.pay || "0";
-
-  const viewMore = true;
-  const viewQuestionnaire = false;
-  const viewApplication = false;
   // const isClosed = data.status !== "0";
 
   const handleKnowMore = (e: any) => {
@@ -96,7 +93,7 @@ const JobListTile = (props: any) => {
             </div>
           </div>
           <div className="w-2/6  flex flex-col-reverse text-right">
-            {viewMore && (
+            {action === "view-more" || !action ? (
               <p
                 className="inline-flex items-center flex-row-reverse text-xs text-[#656565]"
                 onClick={handleKnowMore}
@@ -104,8 +101,10 @@ const JobListTile = (props: any) => {
                 <HiOutlineArrowRight />
                 Know more&nbsp;
               </p>
+            ) : (
+              <></>
             )}
-            {viewQuestionnaire && (
+            {action === "view-questionnaire" ? (
               <p
                 className="inline-flex items-center flex-row-reverse text-xs text-[#00B633]"
                 onClick={handleFillQuestionnaire}
@@ -113,8 +112,10 @@ const JobListTile = (props: any) => {
                 <HiOutlineArrowRight />
                 Fill Questionnaire&nbsp;
               </p>
+            ) : (
+              <></>
             )}
-            {viewApplication && (
+            {action === "view-application" ? (
               <p
                 className="inline-flex items-center flex-row-reverse text-xs text-[#656565]"
                 onClick={handleViewApplication}
@@ -122,6 +123,8 @@ const JobListTile = (props: any) => {
                 <HiOutlineArrowRight />
                 View Application&nbsp;
               </p>
+            ) : (
+              <></>
             )}
             <p className="text-3xl">{pay}$/hr</p>
           </div>
