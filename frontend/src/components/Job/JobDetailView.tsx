@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { useJobStore } from "../../store/JobDetails";
+import { useJobStore } from "../../store/JobStore";
 
 const JobDetailView = () => {
   const [searchParams, setSearchParams] = useSearchParams();

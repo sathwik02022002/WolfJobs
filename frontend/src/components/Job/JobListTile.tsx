@@ -35,13 +35,14 @@ const JobListTile = (props: any) => {
 
   const affilation = data.managerAffilication;
   const role = "Dining Associate";
-  const jobStatus = "Closed";
+  const jobStatus = data.status === "0" ? "Open" : "Closed";
   const jobType = "Full-time";
   const pay = data.pay || "0";
 
   const viewMore = true;
   const viewQuestionnaire = false;
   const viewApplication = false;
+  // const isClosed = data.status !== "0";
 
   const handleKnowMore = (e: any) => {
     e.stopPropagation();

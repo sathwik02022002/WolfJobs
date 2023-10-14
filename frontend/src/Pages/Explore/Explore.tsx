@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 import JobsListView from "../../components/Job/JobListView";
 import JobDetailView from "../../components/Job/JobDetailView";
-import { useJobStore } from "../../store/JobDetails";
+import { useJobStore } from "../../store/JobStore";
 
 const Explore = () => {
   const naviagte = useNavigate();

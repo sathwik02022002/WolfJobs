@@ -1,4 +1,3 @@
-// export ApplicationRegistrationStore;
 import { create } from "zustand";
 
 type JobState = {
