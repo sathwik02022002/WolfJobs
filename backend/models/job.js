@@ -11,7 +11,6 @@ const jobSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['Open', 'Closed'],
     default: 'open',
   },
   location: {
@@ -28,7 +27,6 @@ const jobSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ['Full-Time', 'Part-Time'],
     required: true,
   },
   question1: {

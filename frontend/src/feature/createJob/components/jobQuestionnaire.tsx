@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export function JobQuestionnaire() {
+
+    const location = useLocation();
+    const { state } = location;
 
     const [question1, setQues1] = useState("");
     const [question2, setQues2] = useState("");
@@ -50,6 +54,7 @@ export function JobQuestionnaire() {
 
             <div style={{ position: 'absolute', width: '138px', height: '36px', left: '548px', top: '154px', fontFamily: 'Poppins', fontStyle: 'normal', fontWeight: 500, fontSize: '24px', lineHeight: '36px', color: '#000000', whiteSpace: 'nowrap' }}>
                 Application Questions
+                name: {state["name"]}
             </div>
 
             <div style={{ boxSizing: 'border-box', position: 'absolute', width: '756px', height: '80px', left: '548px', top: '246px', background: '#FFFFFF', border: '1px solid #CBCBCB', borderRadius: '10px' }}>
@@ -72,7 +77,19 @@ export function JobQuestionnaire() {
                     onChange={(e) => { setQues4(e.target.value); }} value={question4} placeholder="Question 4" />
             </div>
 
-            <button onClick={(e) => { e.preventDefault(); navigate("/job_preview"); }} type="button"
+            <button onClick={(e) => {
+                e.preventDefault(); navigate("/job_preview", {
+                    state: {
+                        details: state,
+                        questions: {
+                            question1,
+                            question2,
+                            question3,
+                            question4,
+                        },
+                    },
+                });
+            }} type="button"
                 style={{ position: 'absolute', width: '231px', height: '50px', left: '548px', top: '686px', background: '#FF5353', borderRadius: '10px' }}>
                 <p style={{ position: 'absolute', width: '231px', height: '50px', left: '0px', top: '13px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: 600, fontSize: '18px', lineHeight: '22px', color: '#FFFFFF' }}>
                     Preview

@@ -1,8 +1,32 @@
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { createJob } from "../../../feature/createJob/api/createJobAPI";
+
 
 export function JobPreview() {
 
+    const location = useLocation();
+    const { state } = location;
+    const { details, questions } = state;
+
     const navigate = useNavigate();
+
+    const onSubmit = () => {
+        console.log("form submitted");
+        createJob(
+            details["name"],
+            "1",
+            "open",
+            details["location"],
+            details["description"],
+            details["pay"],
+            details["type"],
+            questions["question1"],
+            questions["question2"],
+            questions["question3"],
+            questions["question4"],
+        );
+    };
 
     return (
         <>
@@ -44,9 +68,12 @@ export function JobPreview() {
 
             <div style={{ position: 'absolute', width: '138px', height: '36px', left: '548px', top: '154px', fontFamily: 'Poppins', fontStyle: 'normal', fontWeight: 500, fontSize: '24px', lineHeight: '36px', color: '#000000', whiteSpace: 'nowrap' }}>
                 Job Details
+                <p>
+                    Name: {details["name"]}
+                </p>
             </div>
 
-            <button onClick={(e) => { e.preventDefault(); navigate("/add_job"); }} type="button"
+            <button onClick={() => { onSubmit(); navigate("/dashboard"); }} type="submit"
                 style={{ position: 'absolute', width: '231px', height: '50px', left: '548px', top: '686px', background: '#FF5353', borderRadius: '10px' }}>
                 <p style={{ position: 'absolute', width: '231px', height: '50px', left: '0px', top: '13px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: 600, fontSize: '18px', lineHeight: '22px', color: '#FFFFFF' }}>
                     Add Listing

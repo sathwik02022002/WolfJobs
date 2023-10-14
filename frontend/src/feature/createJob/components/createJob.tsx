@@ -62,8 +62,8 @@ export const CreateJob = () => {
       <div style={{ boxSizing: 'border-box', position: 'absolute', width: '344px', height: '50px', left: '548px', top: '289px', background: '#FFFFFF', border: '1px solid #CBCBCB', borderRadius: '10px' }}>
         <select style={{ position: 'absolute', width: '300px', height: '40px', left: '10px', top: '2px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: 400, fontSize: '16px', lineHeight: '19px', color: type ? 'black' : '#999' }} onChange={(e) => { setType(e.target.value); }} value={type}>
           <option value="" disabled selected hidden>Job Type</option>
-          <option value="option1">Full-Time</option>
-          <option value="option2">Part-Time</option>
+          <option value="full-time">Full-Time</option>
+          <option value="parttime">Part-Time</option>
         </select>
       </div>
 
@@ -83,12 +83,23 @@ export const CreateJob = () => {
 
       <div style={{ boxSizing: 'border-box', position: 'absolute', width: '344px', height: '233px', left: '548px', top: '494px', background: '#FFFFFF', border: '1px solid #CBCBCB', borderRadius: '10px' }}>
         <input style={{ position: 'absolute', width: '300px', height: '40px', left: '10px', top: '2px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: 400, fontSize: '16px', lineHeight: '19px', color: 'black' }}
-          onChange={(e) => { setDescription(e.target.value); }}
+          onChange={(e) => {
+            setDescription(e.target.value);
+          }}
           value={description}
           placeholder="Job Description" />
       </div>
-
-      <button onClick={(e) => { e.preventDefault(); navigate("/job_questionnaire"); }} type="button" style={{ boxSizing: 'border-box', position: 'absolute', width: '344px', height: '50px', left: '548px', top: '747px', background: '#FFFFFF', border: '1px solid #FF5353', borderRadius: '10px' }}>
+      <button onClick={(e) => {
+        e.preventDefault(); navigate("/job_questionnaire", {
+          state: {
+            name,
+            location,
+            description,
+            pay,
+            type,
+          },
+        });
+      }} type="button" style={{ boxSizing: 'border-box', position: 'absolute', width: '344px', height: '50px', left: '548px', top: '747px', background: '#FFFFFF', border: '1px solid #FF5353', borderRadius: '10px' }}>
         <p style={{ position: 'absolute', width: '300px', height: '40px', left: '10px', top: '10px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: 600, fontSize: '18px', lineHeight: '22px', color: '#FF5353' }}>
           Proceed
         </p>
