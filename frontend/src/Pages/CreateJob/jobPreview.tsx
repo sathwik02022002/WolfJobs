@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { createJob } from "../../../feature/createJob/api/createJobAPI";
+import { createJob } from "../../deprecateded/createJobAPI";
+import { useUserStore } from "../../store/UserStore";
 
 
 export function JobPreview() {
@@ -11,11 +12,14 @@ export function JobPreview() {
 
     const navigate = useNavigate();
 
-    const onSubmit = () => {
+    const userId = useUserStore((state) => state.id);
+
+    const onSubmit = (e:any) => {
+        e.preventDefault();
         console.log("form submitted");
         createJob(
             details["name"],
-            "1",
+            userId,
             "open",
             details["location"],
             details["description"],
@@ -25,6 +29,7 @@ export function JobPreview() {
             questions["question2"],
             questions["question3"],
             questions["question4"],
+            navigate
         );
     };
 
@@ -73,7 +78,7 @@ export function JobPreview() {
                 </p>
             </div>
 
-            <button onClick={() => { onSubmit(); navigate("/dashboard"); }} type="submit"
+            <button onClick={onSubmit} type="submit"
                 style={{ position: 'absolute', width: '231px', height: '50px', left: '548px', top: '686px', background: '#FF5353', borderRadius: '10px' }}>
                 <p style={{ position: 'absolute', width: '231px', height: '50px', left: '0px', top: '13px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: 600, fontSize: '18px', lineHeight: '22px', color: '#FFFFFF' }}>
                     Add Listing

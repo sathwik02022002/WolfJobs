@@ -13,6 +13,7 @@ export const createJob = async (
   question2: string,
   question3: string,
   question4: string,
+  navigate: any
 ) => {
   const url = createJobURL;
   await fetch(url, {
@@ -35,8 +36,10 @@ export const createJob = async (
     }),
   })
     .then((res) => res.json())
-    .then((data) => {
-      if (data.success) {
+    .then((res) => {
+      if (res.status === 200) {
+        // success
+        navigate("/dashboard");
       }
     });
 };
