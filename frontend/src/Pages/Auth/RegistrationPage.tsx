@@ -22,7 +22,8 @@ type FormValues = {
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
-  const [role, setRole] = useState("Manager");
+  const [role, setRole] = useState("Applicant");
+  const [affilation, setAffiliation] = useState("nc-state-dining");
 
   const form = useForm<FormValues>({
     defaultValues: { name: "", email: "", password: "", confirmPassword: "" },
@@ -40,6 +41,7 @@ const RegistrationPage = () => {
       data.confirmPassword,
       data.name,
       role,
+      role === "Manager" ? affilation : "",
       navigate
     );
   };
@@ -150,6 +152,30 @@ const RegistrationPage = () => {
                   <MenuItem value={"Applicant"}>Applicant</MenuItem>
                 </Select>
               </FormControl>
+              {role === "Manager" && (
+                <FormControl>
+                  <InputLabel id="affiliation-id">Role</InputLabel>
+                  <Select
+                    value={affilation}
+                    labelId="affiliation-id"
+                    label="Role"
+                    id="role"
+                    onChange={(e: SelectChangeEvent) => {
+                      setAffiliation(e.target.value);
+                    }}
+                  >
+                    <MenuItem value={"nc-state-dining"}>
+                      NC State Dining
+                    </MenuItem>
+                    <MenuItem value={"campus-enterprises"}>
+                      Campus Enterprises
+                    </MenuItem>
+                    <MenuItem value={"wolfpack-outfitters"}>
+                      Wolfpack Outfitters
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              )}
               <Button
                 type="submit"
                 variant="contained"

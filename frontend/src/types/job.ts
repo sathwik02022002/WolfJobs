@@ -3,6 +3,7 @@ type Job = {
   name: string;
   skills: string[];
   managerid: string;
+  managerAffilication: string;
   status: string;
   location: string;
   description: string;
