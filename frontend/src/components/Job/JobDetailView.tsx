@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useJobStore } from "../../store/JobStore";
+import NoJobSelected from "./NoJobSelected";
 
 const JobDetailView = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,15 +22,11 @@ const JobDetailView = () => {
   return (
     <>
       <div className="w-8/12" style={{ height: "calc(100vh - 72px)" }}>
-        {!!!jobData && <NoJobSelected />}
+        {!jobData && <NoJobSelected />}
         {!!jobData && <JobDetail jobData={jobData} />}
       </div>
     </>
   );
-};
-
-const NoJobSelected = () => {
-  return <>No job selected</>;
 };
 
 const JobDetail = (props: any) => {
