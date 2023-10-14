@@ -10,7 +10,6 @@ const JobListTile = (props: any) => {
 
   const affilation = data.managerAffilication;
   const role = "Dining Associate";
-  const jobStatus = data.status === "0" ? "Open" : "Closed";
   const jobType = "Full-time";
   const pay = data.pay || "0";
 
@@ -81,10 +80,10 @@ const JobListTile = (props: any) => {
                 <b>Job Status:</b>
                 <span
                   className={`${
-                    jobStatus.toLowerCase() === "closed" ? "text-[#FF5353]" : ""
+                    data.status === "closed" ? "text-[#FF5353]" : ""
                   }`}
                 >
-                  &nbsp;{jobStatus}
+                  &nbsp;<span className="capitalize">{data.status}</span>
                 </span>
               </p>
               <p className="text-base">

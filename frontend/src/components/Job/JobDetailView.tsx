@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useJobStore } from "../../store/JobStore";
 import NoJobSelected from "./NoJobSelected";
+import JobDetail from "./JobDetails";
 
 const JobDetailView = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,11 +28,6 @@ const JobDetailView = () => {
       </div>
     </>
   );
-};
-
-const JobDetail = (props: any) => {
-  const { jobData } = props;
-  return <>{jobData?._id}</>;
 };
 
 export default JobDetailView;
