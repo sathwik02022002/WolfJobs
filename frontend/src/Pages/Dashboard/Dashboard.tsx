@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import JobDetailView from "../../components/Job/JobDetailView";
+import JobsListView from "../../components/Job/JobListView";
+import axios from "axios";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../../store/UserStore";
-import { toast } from "react-toastify";
-import axios from "axios";
+import { useJobStore } from "../../store/JobStore";
+import { useApplicationStore } from "../../store/ApplicationStore";
+import JobListTile from "../../components/Job/JobListTile";
 
 const Dashboard = () => {
   const naviagte = useNavigate();
@@ -19,7 +24,20 @@ const Dashboard = () => {
   const updateHours = useUserStore((state) => state.updateHours);
   const updateIsLoggedIn = useUserStore((state) => state.updateIsLoggedIn);
 
-  const [jobsList, setJobList] = useState<Job[]>([]);
+  const role = useUserStore((state) => state.role);
+  const managerId = useUserStore((state) => state.id);
+
+  const updateJobList = useJobStore((state) => state.updateJobList);
+  const jobList: Job[] = useJobStore((state) => state.jobList);
+
+  const updateApplicationList = useApplicationStore(
+    (state) => state.updateApplicationList
+  );
+  const applicationList: Application[] = useApplicationStore(
+    (state) => state.applicationList
+  );
+
+  const [displayList, setDisplayList] = useState<Job[]>([]);
 
   useEffect(() => {
     const token: string = sessionStorage.getItem("token")!;
@@ -27,10 +45,8 @@ const Dashboard = () => {
       naviagte("/login");
     }
     if (!!token) {
-      console.log(token);
       const tokenInfo = token.split(".");
       const userInfo = JSON.parse(atob(tokenInfo[1]));
-      console.log(userInfo);
 
       updateName(userInfo.name);
       updateAddress(userInfo.address);
@@ -44,108 +60,77 @@ const Dashboard = () => {
       updateHours(userInfo.hours);
       updateIsLoggedIn(true);
     }
+
+    axios
+      .get("http://localhost:8000/api/v1/users/fetchapplications")
+      .then((res) => {
+        if (res.status !== 200) {
+          toast.error("Error fetching applications");
+          return;
+        }
+        updateApplicationList(res.data.application as Application[]);
+      });
+
+    axios
+      .get("http://localhost:8000/api/v1/users", {
+        params: { page: 1, limit: 25 },
+      })
+      .then((res) => {
+        if (res.status !== 200) {
+          toast.error("Error fetching jobs");
+          return;
+        }
+        updateJobList(res.data.jobs as Job[]);
+      });
   }, []);
 
-  const count = useRef(0);
   useEffect(() => {
-    if (count.current !== 0) {
-      axios
-        .get("http://localhost:8000/api/v1/users", {
-          params: { page: 1, limit: 25 },
-        })
-        .then((res) => {
-          if (res.status !== 200) {
-            toast.error("Error fetching jobs");
-            return;
-          }
-          setJobList(res.data.jobs as Job[]);
-        });
-    }
-    count.current++;
-  }, []);
+    if (role === "Manager") {
+      const temp = jobList.filter((item) => {
+        return item.managerid === managerId;
+      });
+      console.log(temp);
+      setDisplayList(temp);
+    } else if (role === "Applicant") {
+      const applicantsJobs: Application[] = applicationList.filter(
+        (item) => item.applicantid
+      );
+      const ids: string[] = [];
+      for (let i = 0; i < applicantsJobs.length; i++) {
+        const id = applicantsJobs[i]?.jobid || "";
+        ids.push(id);
+      }
+      const temp = jobList.filter((item) => ids.includes(item._id));
+      console.log(temp);
 
-  useEffect(() => {}, []);
+      setDisplayList(temp);
+    }
+  }, [role, jobList, applicationList]);
 
   return (
     <>
       <div className="content bg-slate-50">
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
-          <div className="w-4/12 overflow-y-scroll overflow-x-hidden mt-2 mx-5 px-4">
-            <div className="text-2xl py-4">All jobs</div>
-            {jobsList.map((job: Job) => {
-              // return <JobListTile data={job} />;
-              const x = job;
-              console.log(x);
-              return <JobListTile />;
-            })}
-          </div>
-          <div
-            className="w-8/12"
-            style={{ height: "calc(100vh - 72px)" }}
-          ></div>
+          <>
+            <div className="w-4/12 bg-white/60 overflow-y-scroll overflow-x-hidden pt-2 px-9">
+              <div className="text-2xl py-4">
+                {role === "Manager" ? "My Listings" : "My Applications"}
+              </div>
+              {displayList?.map((job: Job) => {
+                return (
+                  <JobListTile
+                    data={job}
+                    key={job._id}
+                    action={"view-application"}
+                  />
+                );
+              })}
+            </div>
+          </>
+          <JobDetailView />
         </div>
-
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            naviagte("/createjob");
-          }}
-          type="button"
-          className=" fixed bg-red-400 text-white p-4 bottom-3 right-3"
-        >
-          Create Job button +
-        </button>
       </div>
     </>
   );
 };
-
-type Job = {
-  _id: string;
-  name: string;
-  skills: string[];
-  managerid: string;
-  status: string;
-  location: string;
-  description: string;
-  pay: string;
-  schedule: string;
-};
-
-const JobListTile = () => {
-  return (
-    <div className="my-3 ">
-      <div className="p-3 bg-white rounded-xl">
-        <div className="flex flex-row">
-          <div className="w-4/6 ">
-            <div className="w-fit bg-[#FF2A2A]/10 rounded-2xl px-3 py-0 ">
-              <p className="inline text-xs" style={{ width: "fit-content" }}>
-                {/* <div className="inline">
-                  <div className="flex flex-row justify-center">
-                    <div className=" p-1 w-1  bg-[#FF2A2A1A]  rounded-full"></div>
-                  </div>
-                </div> */}
-                {"NC State Dining".toUpperCase()}
-              </p>
-            </div>
-            <p className="text-sm">
-              <b>Role:</b> Dining Associate{" "}
-            </p>
-            <p className="text-sm">
-              <b>Job Status:</b> Closed{" "}
-            </p>
-            <p className="text-sm">
-              <b>Type:</b> Full-time
-            </p>
-          </div>
-          <div className="w-2/6  flex flex-col-reverse text-right">
-            <p className="text-xs">Know more</p>
-            <p className="text-3xl">40$/hr</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 export default Dashboard;

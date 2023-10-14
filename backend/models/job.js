@@ -13,6 +13,10 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  managerAffilication: {
+    type: String,
+    required: true,
+  },
   status: {
     type: String,
     default: "0",

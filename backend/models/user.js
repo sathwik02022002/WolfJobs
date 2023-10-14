@@ -25,26 +25,30 @@ const userSchema = new mongoose.Schema(
     },
     address: {
       type: String,
-      default: '',
+      default: "",
     },
     phonenumber: {
       type: String,
-      default: '',
+      default: "",
     },
     hours: {
       type: String,
-      default: '',
+      default: "",
     },
     dob: {
       type: Date,
     },
     gender: {
       type: String,
-      default: '',
+      default: "",
     },
     availability: {
       type: String,
-      default: '',
+      default: "",
+    },
+    affiliation: {
+      type: String,
+      default: "",
     },
     skills: {
       type: Array,

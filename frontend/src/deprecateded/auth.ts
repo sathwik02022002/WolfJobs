@@ -28,6 +28,7 @@ export function signup(
   confirmPassword: string,
   name: string,
   role: string,
+  affiliation: string,
   navigate: any
 ) {
   const url = signupURL;
@@ -42,6 +43,7 @@ export function signup(
       confirm_password: confirmPassword,
       name,
       role,
+      affiliation,
     }),
   })
     .then((response) => response.json())
