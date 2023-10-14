@@ -3,7 +3,7 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { useSearchParams } from "react-router-dom";
 
 const JobListTile = (props: any) => {
-  const { data } = props;
+  const { data }: { data: Job } = props;
   const [active, setActive] = useState<boolean>(true);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,10 +18,26 @@ const JobListTile = (props: any) => {
     setSearchParams({ jobId: data._id });
   };
 
-  const affilation = "NC State Dining";
+  const getAffiliationTag = (tag: string) => {
+    return tag.split("-").join(" ");
+  };
+
+  const getAffiliationColour = (tag: string) => {
+    if (tag === "nc-state-dining") {
+      return "bg-[#FF2A2A]/10";
+    } else if (tag === "campus-enterprises") {
+      return "bg-[#91B0FF]/10";
+    } else if (tag === "wolfpack-outfitters") {
+      return "bg-[#FBD71E]/10";
+    }
+    return "bg-[#FF2A2A]/10";
+  };
+
+  const affilation = data.managerAffilication;
   const role = "Dining Associate";
   const jobStatus = "Closed";
   const jobType = "Full-time";
+  const pay = data.pay || "0";
 
   const viewMore = true;
   const viewQuestionnaire = false;
@@ -49,9 +65,13 @@ const JobListTile = (props: any) => {
       >
         <div className="flex flex-row">
           <div className="w-4/6 ">
-            <div className="w-fit bg-[#FF2A2A]/10 rounded-2xl px-3 py-0">
+            <div
+              className={`w-fit ${getAffiliationColour(
+                affilation
+              )} rounded-2xl px-3 py-0`}
+            >
               <p className="inline text-xs" style={{ width: "fit-content" }}>
-                {affilation.toUpperCase()}
+                {getAffiliationTag(affilation).toUpperCase()}
               </p>
             </div>
             <div className="h-1"></div>
@@ -102,7 +122,7 @@ const JobListTile = (props: any) => {
                 View Application&nbsp;
               </p>
             )}
-            <p className="text-3xl">40$/hr</p>
+            <p className="text-3xl">{pay}$/hr</p>
           </div>
         </div>
       </div>
