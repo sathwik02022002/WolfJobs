@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useUserStore } from "../../store/UserStore";
 
 const CreateJob = () => {
   const [name, setName] = useState("");
@@ -7,6 +8,7 @@ const CreateJob = () => {
   const [description, setDescription] = useState("");
   const [pay, setPay] = useState("");
   const [type, setType] = useState("");
+
 
   const navigate = useNavigate();
 

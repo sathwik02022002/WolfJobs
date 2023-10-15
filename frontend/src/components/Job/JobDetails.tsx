@@ -2,6 +2,12 @@ import axios from "axios";
 import { useUserStore } from "../../store/UserStore";
 import { Button } from "@mui/material";
 import { toast } from "react-toastify";
+import JobScreening from "./JobScreening";
+import JobRating from "./JobRating";
+import JobGrading from "./JobGrading";
+import JobFinalReview from "./JobFinalReview";
+import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const JobDetail = (props: any) => {
   const { jobData } = props;
@@ -103,18 +109,112 @@ const JobDetail = (props: any) => {
           <div className="text-[#686868] mx-2">{data.description}</div>
         </div>
       </div>
-      {role === "Applicant" && (
+
+      {role === "Applicant" && data.status === "open" && (
         <Button onClick={handleApplyJob} type="button" variant="contained">
           Apply Now
         </Button>
       )}
+
       {role === "Manager" &&
-        userId === data.managerid &&
-        data.status === "open" && (
-          <Button onClick={handleCloseJob} type="button" variant="contained">
-            Close job
-          </Button>
+        userId === jobData.managerid &&
+        jobData.status === "open" && <JobManagerView jobData={jobData} />}
+    </>
+  );
+};
+
+const JobManagerView = (props: any) => {
+  const { jobData }: { jobData: Job } = props;
+  const role = useUserStore((state) => state.role);
+  const userId = useUserStore((state) => state.id);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [viewManager, setViewManager] = useState("job-screening");
+
+  useEffect(() => {
+    const jobManager: string = searchParams.get("view") || "job-screening";
+    // const jobId: string = searchParams.get("jobId")!;
+    setViewManager(jobManager);
+    // setSearchParams({ jobId: jobId, view: jobManager });
+  }, [searchParams]);
+
+  // let openPage = "job-screening";
+
+  const handleCloseJob = (e: any) => {
+    e.preventDefault();
+    console.log("Close job");
+
+    const body = {
+      jobid: jobData._id,
+    };
+
+    axios
+      .post("http://localhost:8000/api/v1/users/closejob", body)
+      .then((res) => {
+        if (res.status !== 200) {
+          toast.error("Failed to apply");
+          return;
+        }
+        toast.success("Job closed");
+        location.reload();
+      });
+  };
+
+  return (
+    <>
+      {role === "Manager" &&
+        userId === jobData.managerid &&
+        jobData.status === "open" && (
+          <div>
+            <Button onClick={handleCloseJob} type="button" variant="contained">
+              Close job
+            </Button>
+            <div className="flex flex-row justify-around">
+              <Button
+                onClick={() => {
+                  const jobId: string = searchParams.get("jobId")!;
+                  setSearchParams({ jobId: jobId, view: "job-screening" });
+                }}
+                type="button"
+              >
+                Screening
+              </Button>
+              <Button
+                onClick={() => {
+                  const jobId: string = searchParams.get("jobId")!;
+                  setSearchParams({ jobId: jobId, view: "job-grading" });
+                }}
+                type="button"
+              >
+                Grading
+              </Button>
+              <Button
+                onClick={() => {
+                  const jobId: string = searchParams.get("jobId")!;
+                  setSearchParams({ jobId: jobId, view: "job-rating" });
+                }}
+                type="button"
+              >
+                Rating
+              </Button>
+              <Button
+                onClick={() => {
+                  const jobId: string = searchParams.get("jobId")!;
+                  setSearchParams({ jobId: jobId, view: "job-final-review" });
+                }}
+                type="button"
+              >
+                Final Review
+              </Button>
+            </div>
+          </div>
         )}
+      {viewManager === "job-screening" && <JobScreening jobData={jobData} />}
+      {viewManager === "job-grading" && <JobGrading jobData={jobData} />}
+      {viewManager === "job-rating" && <JobRating jobData={jobData} />}
+      {viewManager === "job-final-review" && (
+        <JobFinalReview jobData={jobData} />
+      )}
     </>
   );
 };

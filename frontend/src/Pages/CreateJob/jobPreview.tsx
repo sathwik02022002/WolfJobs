@@ -13,6 +13,8 @@ export function JobPreview() {
     const navigate = useNavigate();
 
     const userId = useUserStore((state) => state.id);
+  const managerAffiliation = useUserStore((state) => state.affiliation);
+
 
     const onSubmit = (e:any) => {
         e.preventDefault();
@@ -29,6 +31,7 @@ export function JobPreview() {
             questions["question2"],
             questions["question3"],
             questions["question4"],
+            managerAffiliation,
             navigate
         );
     };

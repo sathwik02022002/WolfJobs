@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { createJobURL, loginURL } from "../api/constants";
 import { getFormBody } from "./apiUtils";
 
@@ -13,6 +14,7 @@ export const createJob = async (
   question2: string,
   question3: string,
   question4: string,
+  affiliation: string,
   navigate: any
 ) => {
   const url = createJobURL;
@@ -33,13 +35,15 @@ export const createJob = async (
       question2,
       question3,
       question4,
+      affiliation,
     }),
   })
     .then((res) => res.json())
     .then((res) => {
-      if (res.status === 200) {
+      if (res.success === true) {
         // success
         navigate("/dashboard");
+        toast.success("Job created");
       }
     });
 };

@@ -14,6 +14,7 @@ type UserState = {
   gender: string;
   hours: string;
   isLoggedIn: boolean;
+  affiliation: string;
 };
 
 type UserAction = {
@@ -29,6 +30,7 @@ type UserAction = {
   updateGender: (name: UserState["gender"]) => void;
   updateHours: (name: UserState["hours"]) => void;
   updateIsLoggedIn: (name: UserState["isLoggedIn"]) => void;
+  updateAffiliation: (name: UserState["affiliation"]) => void;
 };
 
 export const useUserStore = create<UserState & UserAction>()((set) => ({
@@ -43,6 +45,7 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
   availability: "",
   gender: "",
   hours: "",
+  affiliation: "",
   isLoggedIn: false,
 
   updateName: (name: string) => {
@@ -81,4 +84,8 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
   updateIsLoggedIn: (isLoggedIn: boolean) => {
     set(() => ({ isLoggedIn: isLoggedIn }));
   },
+  updateAffiliation: (affiliation: string) => {
+    set(() => ({ affiliation: affiliation }));
+  },
+  // updateAffiliation: ()
 }));

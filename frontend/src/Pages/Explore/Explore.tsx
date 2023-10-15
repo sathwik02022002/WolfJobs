@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import JobsListView from "../../components/Job/JobListView";
 import JobDetailView from "../../components/Job/JobDetailView";
 import { useJobStore } from "../../store/JobStore";
+import { useApplicationStore } from "../../store/ApplicationStore";
 
 const Explore = () => {
   const naviagte = useNavigate();
@@ -24,10 +25,23 @@ const Explore = () => {
   const updateHours = useUserStore((state) => state.updateHours);
   const updateIsLoggedIn = useUserStore((state) => state.updateIsLoggedIn);
 
-  const updateApplicationList = useJobStore((state) => state.updateJobList);
-  const applicationsList = useJobStore((state) => state.jobList);
+  const updateApplicationList = useApplicationStore(
+    (state) => state.updateApplicationList
+  );
+
+  const applicationList: Application[] = useApplicationStore(
+    (state) => state.applicationList
+  );
 
   // const [jobsList, setJobList] = useState<Job[]>([]);
+
+  const updateEmail = useUserStore((state) => state.updateEmail);
+
+  const role = useUserStore((state) => state.role);
+  const managerId = useUserStore((state) => state.id);
+
+  const updateJobList = useJobStore((state) => state.updateJobList);
+  const jobList: Job[] = useJobStore((state) => state.jobList);
 
   useEffect(() => {
     const token: string = sessionStorage.getItem("token")!;
@@ -39,6 +53,7 @@ const Explore = () => {
       const userInfo = JSON.parse(atob(tokenInfo[1]));
 
       updateName(userInfo.name);
+      updateEmail(userInfo.email);
       updateAddress(userInfo.address);
       updateRole(userInfo.role);
       updateDob(userInfo.dob);
@@ -54,6 +69,16 @@ const Explore = () => {
 
   useEffect(() => {
     axios
+      .get("http://localhost:8000/api/v1/users/fetchapplications")
+      .then((res) => {
+        if (res.status !== 200) {
+          toast.error("Error fetching applications");
+          return;
+        }
+        updateApplicationList(res.data.application as Application[]);
+      });
+
+    axios
       .get("http://localhost:8000/api/v1/users", {
         params: { page: 1, limit: 25 },
       })
@@ -62,7 +87,7 @@ const Explore = () => {
           toast.error("Error fetching jobs");
           return;
         }
-        updateApplicationList(res.data.jobs as Job[]);
+        updateJobList(res.data.jobs as Job[]);
       });
   }, []);
 
@@ -70,7 +95,7 @@ const Explore = () => {
     <>
       <div className="content bg-slate-50">
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
-          <JobsListView jobsList={applicationsList} />
+          <JobsListView jobsList={applicationList} />
           <JobDetailView />
         </div>
       </div>

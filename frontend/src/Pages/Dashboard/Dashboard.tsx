@@ -34,6 +34,7 @@ const Dashboard = () => {
   const updateApplicationList = useApplicationStore(
     (state) => state.updateApplicationList
   );
+
   const applicationList: Application[] = useApplicationStore(
     (state) => state.applicationList
   );
@@ -62,7 +63,9 @@ const Dashboard = () => {
       updateHours(userInfo.hours);
       updateIsLoggedIn(true);
     }
+  }, []);
 
+  useEffect(() => {
     axios
       .get("http://localhost:8000/api/v1/users/fetchapplications")
       .then((res) => {
@@ -91,7 +94,6 @@ const Dashboard = () => {
       const temp = jobList.filter((item) => {
         return item.managerid === managerId;
       });
-      console.log(temp);
       setDisplayList(temp);
     } else if (role === "Applicant") {
       const applicantsJobs: Application[] = applicationList.filter(
@@ -103,8 +105,6 @@ const Dashboard = () => {
         ids.push(id);
       }
       const temp = jobList.filter((item) => ids.includes(item._id));
-      console.log(temp);
-
       setDisplayList(temp);
     }
   }, [role, jobList, applicationList]);
