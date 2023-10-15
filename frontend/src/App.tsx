@@ -1,5 +1,5 @@
 import "./App.css";
-// import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
 // import { LandingPage } from "./feature/user-auth/components/landingPage";
 // import { JobQuestionnaire } from "./feature/createJob/components/jobQuestionnaire";
 // import { JobPreview } from "./feature/createJob/components/jobPreview";

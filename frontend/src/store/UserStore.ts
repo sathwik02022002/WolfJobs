@@ -3,10 +3,11 @@ import { create } from "zustand";
 
 type UserState = {
   name: string;
+  email: string;
   address: string;
   role: string;
   dob: string;
-  skills: string[];
+  skills: string;
   phonenumber: string;
   id: string;
   availability: string;
@@ -17,6 +18,7 @@ type UserState = {
 
 type UserAction = {
   updateName: (name: UserState["name"]) => void;
+  updateEmail: (name: UserState["email"]) => void;
   updateAddress: (name: UserState["address"]) => void;
   updateRole: (name: UserState["role"]) => void;
   updateDob: (name: UserState["dob"]) => void;
@@ -31,10 +33,11 @@ type UserAction = {
 
 export const useUserStore = create<UserState & UserAction>()((set) => ({
   name: "",
+  email: "",
   address: "",
   role: "",
   dob: "",
-  skills: [],
+  skills: "",
   phonenumber: "",
   id: "",
   availability: "",
@@ -45,6 +48,9 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
   updateName: (name: string) => {
     set(() => ({ name: name }));
   },
+  updateEmail: (email: string) => {
+    set(() => ({ email: email }));
+  },
   updateAddress: (address: string) => {
     set(() => ({ address: address }));
   },
@@ -54,7 +60,7 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
   updateDob: (dob: string) => {
     set(() => ({ dob: dob }));
   },
-  updateSkills: (skills: string[]) => {
+  updateSkills: (skills: string) => {
     set(() => ({ skills: skills }));
   },
   updatePhonenumber: (phonenumber: string) => {

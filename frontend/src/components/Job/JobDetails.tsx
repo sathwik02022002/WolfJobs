@@ -1,8 +1,64 @@
+import axios from "axios";
+import { useUserStore } from "../../store/UserStore";
+import { Button } from "@mui/material";
+import { toast } from "react-toastify";
+
 const JobDetail = (props: any) => {
   const { jobData } = props;
   const data = jobData as Job;
 
   const jobType = data.type === "parttime" ? "Part time" : "Full time";
+
+  const applicantemail = useUserStore((state) => state.email);
+  const userId = useUserStore((state) => state.id);
+  const applicantname = useUserStore((state) => state.name);
+  const applicantSkills = useUserStore((state) => state.skills);
+  const applicantNumber = useUserStore((state) => state.phonenumber);
+  const role = useUserStore((state) => state.role);
+
+  const handleApplyJob = (e: any) => {
+    e.preventDefault();
+    const body = {
+      applicantname,
+      applicantid: userId,
+      applicantemail,
+      applicantSkills,
+      phonenumber: applicantNumber,
+      managerid: data.managerid,
+      jobname: data.name,
+      jobid: data._id,
+    };
+
+    axios
+      .post("http://localhost:8000/api/v1/users/createapplication", body)
+      .then((res) => {
+        if (res.status !== 200) {
+          toast.error("Failed to apply");
+          return;
+        }
+        toast.success("Applied successfully");
+      });
+  };
+
+  const handleCloseJob = (e: any) => {
+    e.preventDefault();
+    console.log("Close job");
+
+    const body = {
+      jobid: data._id,
+    };
+
+    axios
+      .post("http://localhost:8000/api/v1/users/closejob", body)
+      .then((res) => {
+        if (res.status !== 200) {
+          toast.error("Failed to apply");
+          return;
+        }
+        toast.success("Job closed");
+        location.reload();
+      });
+  };
 
   return (
     <>
@@ -47,6 +103,18 @@ const JobDetail = (props: any) => {
           <div className="text-[#686868] mx-2">{data.description}</div>
         </div>
       </div>
+      {role === "Applicant" && (
+        <Button onClick={handleApplyJob} type="button" variant="contained">
+          Apply Now
+        </Button>
+      )}
+      {role === "Manager" &&
+        userId === data.managerid &&
+        data.status === "open" && (
+          <Button onClick={handleCloseJob} type="button" variant="contained">
+            Close job
+          </Button>
+        )}
     </>
   );
 };

@@ -13,6 +13,7 @@ const Dashboard = () => {
   const naviagte = useNavigate();
 
   const updateName = useUserStore((state) => state.updateName);
+  const updateEmail = useUserStore((state) => state.updateEmail);
   const updateAddress = useUserStore((state) => state.updateAddress);
   const updateRole = useUserStore((state) => state.updateRole);
   const updateDob = useUserStore((state) => state.updateDob);
@@ -49,6 +50,7 @@ const Dashboard = () => {
       const userInfo = JSON.parse(atob(tokenInfo[1]));
 
       updateName(userInfo.name);
+      updateEmail(userInfo.email);
       updateAddress(userInfo.address);
       updateRole(userInfo.role);
       updateDob(userInfo.dob);
