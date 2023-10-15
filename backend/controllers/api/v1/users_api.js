@@ -309,7 +309,7 @@ module.exports.fetchApplication = async function (req, res) {
 
 module.exports.createApplication = async function (req, res) {
   // let user = await User.findOne({ _id: req.body.id });
-  check = req.body.skills;
+  // check = req.body.skills;
 
   try {
     const existingApplication = await Application.findOne({
@@ -327,17 +327,18 @@ module.exports.createApplication = async function (req, res) {
 
     let application = await Application.create({
       // applicantemail: req.body.applicantemail,
-      applicantid: req.body.applicantId,
+      applicantid: req.body.applicantid,
       applicantname: req.body.applicantname,
+      applicantemail: req.body.applicantemail,
+      applicantskills: req.body.applicantSkills,
       address: req.body.address,
       phonenumber: req.body.phonenumber,
       hours: req.body.hours,
       dob: req.body.dob,
       gender: req.body.gender,
-      skills: check.split(","),
       jobname: req.body.jobname,
-      jobid: req.body.jobId,
-      manageremail: req.body.managerId,
+      jobid: req.body.jobid,
+      managerid: req.body.managerid,
     });
     res.set("Access-Control-Allow-Origin", "*");
     return res.json(200, {
@@ -419,9 +420,9 @@ module.exports.rejectApplication = async function (req, res) {
 
 module.exports.closeJob = async function (req, res) {
   try {
-    let job = await Job.findById(req.body.jobId);
+    let job = await Job.findById(req.body.jobid);
 
-    job.status = "1";
+    job.status = "closed";
 
     job.save();
     res.set("Access-Control-Allow-Origin", "*");
