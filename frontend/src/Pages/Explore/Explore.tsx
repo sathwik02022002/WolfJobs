@@ -95,7 +95,7 @@ const Explore = () => {
     <>
       <div className="content bg-slate-50">
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
-          <JobsListView jobsList={applicationList} />
+          <JobsListView jobsList={jobList} />
           <JobDetailView />
         </div>
       </div>
