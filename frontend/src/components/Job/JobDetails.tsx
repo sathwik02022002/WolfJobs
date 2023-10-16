@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useUserStore } from "../../store/UserStore";
-import { Button } from "@mui/material";
+import { Badge, Button } from "@mui/material";
 import { toast } from "react-toastify";
 import JobScreening from "./JobScreening";
 import JobRating from "./JobRating";
@@ -43,26 +43,6 @@ const JobDetail = (props: any) => {
           return;
         }
         toast.success("Applied successfully");
-      });
-  };
-
-  const handleCloseJob = (e: any) => {
-    e.preventDefault();
-    console.log("Close job");
-
-    const body = {
-      jobid: data._id,
-    };
-
-    axios
-      .post("http://localhost:8000/api/v1/users/closejob", body)
-      .then((res) => {
-        if (res.status !== 200) {
-          toast.error("Failed to apply");
-          return;
-        }
-        toast.success("Job closed");
-        location.reload();
       });
   };
 
@@ -133,12 +113,8 @@ const JobManagerView = (props: any) => {
 
   useEffect(() => {
     const jobManager: string = searchParams.get("view") || "job-screening";
-    // const jobId: string = searchParams.get("jobId")!;
     setViewManager(jobManager);
-    // setSearchParams({ jobId: jobId, view: jobManager });
   }, [searchParams]);
-
-  // let openPage = "job-screening";
 
   const handleCloseJob = (e: any) => {
     e.preventDefault();
@@ -165,10 +141,25 @@ const JobManagerView = (props: any) => {
       {role === "Manager" &&
         userId === jobData.managerid &&
         jobData.status === "open" && (
-          <div>
-            <Button onClick={handleCloseJob} type="button" variant="contained">
-              Close job
-            </Button>
+          <div className="m-4">
+            <div className="mx-2">
+              <Button
+                onClick={handleCloseJob}
+                type="button"
+                variant="contained"
+                style={{
+                  background: "#FF5353",
+                  borderRadius: "10px",
+                  textTransform: "none",
+                  fontSize: "16px",
+                  minWidth: "200px",
+                  margin: "10px",
+                }}
+              >
+                Close job
+              </Button>
+            </div>
+            <div className="text-2xl my-4">Candidates Review</div>
             <div className="flex flex-row justify-around">
               <Button
                 onClick={() => {
@@ -176,6 +167,8 @@ const JobManagerView = (props: any) => {
                   setSearchParams({ jobId: jobId, view: "job-screening" });
                 }}
                 type="button"
+                variant={viewManager === "job-screening" ? "outlined" : "text"}
+                fullWidth={true}
               >
                 Screening
               </Button>
@@ -185,6 +178,9 @@ const JobManagerView = (props: any) => {
                   setSearchParams({ jobId: jobId, view: "job-grading" });
                 }}
                 type="button"
+                variant={viewManager === "job-grading" ? "outlined" : "text"}
+                // style={{ maxWidth: "500px" }}
+                fullWidth={true}
               >
                 Grading
               </Button>
@@ -194,6 +190,8 @@ const JobManagerView = (props: any) => {
                   setSearchParams({ jobId: jobId, view: "job-rating" });
                 }}
                 type="button"
+                variant={viewManager === "job-rating" ? "outlined" : "text"}
+                fullWidth={true}
               >
                 Rating
               </Button>
@@ -203,18 +201,24 @@ const JobManagerView = (props: any) => {
                   setSearchParams({ jobId: jobId, view: "job-final-review" });
                 }}
                 type="button"
+                variant={
+                  viewManager === "job-final-review" ? "outlined" : "text"
+                }
+                fullWidth={true}
               >
                 Final Review
               </Button>
             </div>
           </div>
         )}
-      {viewManager === "job-screening" && <JobScreening jobData={jobData} />}
-      {viewManager === "job-grading" && <JobGrading jobData={jobData} />}
-      {viewManager === "job-rating" && <JobRating jobData={jobData} />}
-      {viewManager === "job-final-review" && (
-        <JobFinalReview jobData={jobData} />
-      )}
+      <div className="m-4">
+        {viewManager === "job-screening" && <JobScreening jobData={jobData} />}
+        {viewManager === "job-grading" && <JobGrading jobData={jobData} />}
+        {viewManager === "job-rating" && <JobRating jobData={jobData} />}
+        {viewManager === "job-final-review" && (
+          <JobFinalReview jobData={jobData} />
+        )}
+      </div>
     </>
   );
 };

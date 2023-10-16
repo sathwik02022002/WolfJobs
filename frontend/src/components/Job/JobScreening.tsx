@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import { Button } from "@mui/material";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const JobScreening = (props: any) => {
   const { jobData }: { jobData: Job } = props;
@@ -18,8 +20,38 @@ const JobScreening = (props: any) => {
     );
   }, []);
 
-  const handleAccept = () => {};
-  const handleReject = () => {};
+  const handleAccept = (applicantid: string) => {
+    const url = "http://localhost:8000/api/v1/users/modifyApplication";
+
+    const body = {
+      applicationId: applicantid,
+      status: "screening",
+    };
+
+    axios.post(url, body).then((res) => {
+      if (res.status == 200) {
+        toast.success("Accepted candidate");
+        return;
+      }
+      toast.error("Failed to accept candidate");
+    });
+  };
+  const handleReject = (applicantid: string) => {
+    const url = "http://localhost:8000/api/v1/users/modifyApplication";
+
+    const body = {
+      applicationId: applicantid,
+      status: "rejected",
+    };
+
+    axios.post(url, body).then((res) => {
+      if (res.status == 200) {
+        toast.success("Rejected candidate");
+        return;
+      }
+      toast.error("Failed to reject candidate");
+    });
+  };
 
   return (
     <>
@@ -37,8 +69,22 @@ const JobScreening = (props: any) => {
                 )}
               </div>
               <div className="flex flex-row">
-                <Button onClick={handleAccept}>Accept</Button>
-                <Button onClick={handleReject}>Reject</Button>
+                <Button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    return handleAccept(item._id);
+                  }}
+                >
+                  Accept
+                </Button>
+                <Button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    return handleReject(item._id);
+                  }}
+                >
+                  Reject
+                </Button>
               </div>
             </div>
           </div>
