@@ -29,16 +29,7 @@ const Explore = () => {
     (state) => state.updateApplicationList
   );
 
-  const applicationList: Application[] = useApplicationStore(
-    (state) => state.applicationList
-  );
-
-  // const [jobsList, setJobList] = useState<Job[]>([]);
-
   const updateEmail = useUserStore((state) => state.updateEmail);
-
-  const role = useUserStore((state) => state.role);
-  const managerId = useUserStore((state) => state.id);
 
   const updateJobList = useJobStore((state) => state.updateJobList);
   const jobList: Job[] = useJobStore((state) => state.jobList);
@@ -95,7 +86,7 @@ const Explore = () => {
     <>
       <div className="content bg-slate-50">
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
-          <JobsListView jobsList={applicationList} />
+          <JobsListView jobsList={jobList} />
           <JobDetailView />
         </div>
       </div>
