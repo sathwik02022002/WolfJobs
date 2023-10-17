@@ -18,7 +18,9 @@ const JobGrading = (props: any) => {
     );
   }, []);
 
-  const handleScoring = (grade: string) => {};
+  const handleScoring = (grade: string) => {
+    // if
+  };
 
   return (
     <>
@@ -71,7 +73,7 @@ const JobGrading = (props: any) => {
                   onClick={() => {
                     const x: any = document.getElementById("-grade");
                     const grade: string = x.value || "";
-                    handleScoring(grade);
+                    handleScoring(grade.toString());
                   }}
                   style={{
                     borderColor: "#FF5353",
