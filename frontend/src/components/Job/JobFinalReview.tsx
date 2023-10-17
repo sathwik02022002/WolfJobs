@@ -22,10 +22,6 @@ const JobFinalReview = (props: any) => {
     // console.log(applicationList);
   }, []);
 
-  useEffect(() => {
-    console.log(rejectedList);
-  }, [rejectedList]);
-
   return (
     <>
       <div className="text-xl">Review</div>

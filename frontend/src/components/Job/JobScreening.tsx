@@ -15,38 +15,42 @@ const JobScreening = (props: any) => {
     // let displayList: Application[] = [];s
     setDisplayList(
       applicationList.filter(
-        (item) => item.jobid === jobData._id && item.status === "applied"
+        (item) => item.jobid === jobData._id && item.status === "grading"
       )
     );
   }, []);
 
-  const handleAccept = (applicantid: string) => {
+  const handleAccept = (applicationId: string) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
 
     const body = {
-      applicationId: applicantid,
+      applicationId: applicationId,
       status: "screening",
     };
 
     axios.post(url, body).then((res) => {
       if (res.status == 200) {
         toast.success("Accepted candidate");
+        location.reload();
+
         return;
       }
       toast.error("Failed to accept candidate");
     });
   };
-  const handleReject = (applicantid: string) => {
+  const handleReject = (applicationId: string) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
 
     const body = {
-      applicationId: applicantid,
+      applicationId: applicationId,
       status: "rejected",
     };
 
     axios.post(url, body).then((res) => {
       if (res.status == 200) {
         toast.success("Rejected candidate");
+        location.reload();
+
         return;
       }
       toast.error("Failed to reject candidate");

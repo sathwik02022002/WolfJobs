@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import { Button, TextField } from "@mui/material";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const JobGrading = (props: any) => {
   const { jobData }: { jobData: Job } = props;
@@ -18,8 +20,24 @@ const JobGrading = (props: any) => {
     );
   }, []);
 
-  const handleScoring = (grade: string) => {
-    // if
+  const handleScoring = (applicationId: string, grade: string) => {
+    const url = "http://localhost:8000/api/v1/users/modifyApplication";
+
+    const body = {
+      applicationId: applicationId,
+      status: "rating",
+      rating: grade,
+    };
+
+    axios.post(url, body).then((res) => {
+      if (res.status == 200) {
+        toast.success("Rejected candidate");
+        location.reload();
+
+        return;
+      }
+      toast.error("Failed to reject candidate");
+    });
   };
 
   return (
@@ -73,7 +91,7 @@ const JobGrading = (props: any) => {
                   onClick={() => {
                     const x: any = document.getElementById("-grade");
                     const grade: string = x.value || "";
-                    handleScoring(grade.toString());
+                    handleScoring(item._id, grade.toString());
                   }}
                   style={{
                     borderColor: "#FF5353",

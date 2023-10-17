@@ -364,6 +364,17 @@ module.exports.modifyApplication = async function (req, res) {
 
     application.status = req.body.status;
 
+    //change answer only from screening to grading
+    if (req.body.status === "grading") {
+      application.answer1 = req.body.answer1;
+      application.answer2 = req.body.answer2;
+      application.answer3 = req.body.answer3;
+      application.answer4 = req.body.answer4;
+    }
+
+    if (req.body.status === "rating") {
+      application.rating = req.body.rating;
+    }
     application.save();
     res.set("Access-Control-Allow-Origin", "*");
     return res.json(200, {

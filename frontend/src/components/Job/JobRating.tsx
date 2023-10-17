@@ -13,7 +13,7 @@ const JobRating = (props: any) => {
   useEffect(() => {
     setDisplayList(
       applicationList.filter(
-        (item) => item.jobid === jobData._id && item.status === "applied"
+        (item) => item.jobid === jobData._id && item.status === "rating"
       )
     );
   }, []);
@@ -33,6 +33,7 @@ const JobRating = (props: any) => {
     axios.post(url, body).then((res) => {
       if (res.status == 200) {
         toast.success("Accepted candidate");
+        location.reload();
         return;
       }
       toast.error("Failed to accept candidate");
@@ -49,6 +50,7 @@ const JobRating = (props: any) => {
     axios.post(url, body).then((res) => {
       if (res.status == 200) {
         toast.success("Rejected candidate");
+        location.reload();
         return;
       }
       toast.error("Failed to reject candidate");
