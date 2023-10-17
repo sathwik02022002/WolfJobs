@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { useSearchParams } from "react-router-dom";
+import { useApplicationStore } from "../../store/ApplicationStore";
+import { useUserStore } from "../../store/UserStore";
 
 const JobListTile = (props: any) => {
   // const { data, action }: { data: Job; action: string | undefined } = props;
@@ -9,6 +11,22 @@ const JobListTile = (props: any) => {
 
   const [active, setActive] = useState<boolean>(true);
   const [searchParams, setSearchParams] = useSearchParams();
+  const userId = useUserStore((state) => state.id);
+
+  const applicationList: Application[] = useApplicationStore(
+    (state) => state.applicationList
+  );
+
+  const [application, setApplication] = useState<Application | null>(null);
+
+  useEffect(() => {
+    const temp: Application | undefined = applicationList.find(
+      (item: Application) => {
+        return item.jobid === data._id && item.applicantid === userId;
+      }
+    );
+    setApplication(temp || null);
+  }, [data]);
 
   const affilation = data.managerAffilication;
   const role = "Dining Associate";
@@ -90,6 +108,14 @@ const JobListTile = (props: any) => {
               </p>
               <p className="text-base">
                 <b>Type:</b> {jobType}
+              </p>
+              <p className="text-base">
+                {application?.status === "accepted" ||
+                application?.status === "rejected" ? (
+                  <b>Application Status: {application?.status}</b>
+                ) : (
+                  <b>Application Status: In Review</b>
+                )}
               </p>
             </div>
           </div>
