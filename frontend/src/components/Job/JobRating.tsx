@@ -3,10 +3,12 @@ import { useApplicationStore } from "../../store/ApplicationStore";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Button } from "@mui/material";
+import { useSearchParams } from "react-router-dom";
 
 const JobRating = (props: any) => {
   const { jobData }: { jobData: Job } = props;
   const [displayList, setDisplayList] = useState<Application[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const applicationList = useApplicationStore((state) => state.applicationList);
 
@@ -16,11 +18,7 @@ const JobRating = (props: any) => {
         (item) => item.jobid === jobData._id && item.status === "rating"
       )
     );
-  }, []);
-
-  useEffect(() => {
-    console.log(applicationList);
-  }, [applicationList]);
+  }, [searchParams]);
 
   const handleAccept = (applicantid: string) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";

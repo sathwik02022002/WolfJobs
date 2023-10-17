@@ -3,11 +3,13 @@ import { useApplicationStore } from "../../store/ApplicationStore";
 import { Button, TextField } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useSearchParams } from "react-router-dom";
 
 const JobGrading = (props: any) => {
   const { jobData }: { jobData: Job } = props;
 
   const [displayList, setDisplayList] = useState<Application[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const applicationList = useApplicationStore((state) => state.applicationList);
 
@@ -15,10 +17,10 @@ const JobGrading = (props: any) => {
     // let displayList: Application[] = [];s
     setDisplayList(
       applicationList.filter(
-        (item) => item.jobid === jobData._id && item.status === "applied"
+        (item) => item.jobid === jobData._id && item.status === "grading"
       )
     );
-  }, []);
+  }, [searchParams]);
 
   const handleScoring = (applicationId: string, grade: string) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
@@ -89,7 +91,7 @@ const JobGrading = (props: any) => {
                   type="button"
                   variant="outlined"
                   onClick={() => {
-                    const x: any = document.getElementById("-grade");
+                    const x: any = document.getElementById(`${item._id}-grade`);
                     const grade: string = x.value || "";
                     handleScoring(item._id, grade.toString());
                   }}

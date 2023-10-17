@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useApplicationStore } from "../../store/ApplicationStore";
+import { useSearchParams } from "react-router-dom";
 
 const JobFinalReview = (props: any) => {
   const { jobData }: { jobData: Job } = props;
   const [acceptedList, setAcceptedList] = useState<Application[]>([]);
   const [rejectedList, setRejectedList] = useState<Application[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const applicationList = useApplicationStore((state) => state.applicationList);
 
@@ -20,7 +22,7 @@ const JobFinalReview = (props: any) => {
       )
     );
     // console.log(applicationList);
-  }, []);
+  }, [searchParams]);
 
   return (
     <>

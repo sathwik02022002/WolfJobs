@@ -119,13 +119,21 @@ const Dashboard = () => {
                 {role === "Manager" ? "My Listings" : "My Applications"}
               </div>
               {displayList?.map((job: Job) => {
-                return (
-                  <JobListTile
-                    data={job}
-                    key={job._id}
-                    action={"view-application"}
-                  />
-                );
+                let action;
+
+                if (role === "Manager") {
+                  action = "view-application";
+                } else {
+                  const application = applicationList?.find(
+                    (item) =>
+                      item.jobid === job._id && item.status === "screening"
+                  );
+                  action = application
+                    ? "view-questionnaire"
+                    : "view-application";
+                }
+
+                return <JobListTile data={job} key={job._id} action={action} />;
               })}
             </div>
           </>
