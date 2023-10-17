@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useUserStore } from "../../store/UserStore";
-import { Badge, Button } from "@mui/material";
+import { Badge, Button, ThemeProvider, createTheme } from "@mui/material";
 import { toast } from "react-toastify";
 import JobScreening from "./JobScreening";
 import JobRating from "./JobRating";
@@ -169,6 +169,10 @@ const JobManagerView = (props: any) => {
                 type="button"
                 variant={viewManager === "job-screening" ? "outlined" : "text"}
                 fullWidth={true}
+                style={{
+                  borderColor: viewManager === "job-screening" ? "#FF5353" : "",
+                  color: "#FF5353",
+                }}
               >
                 Screening
               </Button>
@@ -181,6 +185,10 @@ const JobManagerView = (props: any) => {
                 variant={viewManager === "job-grading" ? "outlined" : "text"}
                 // style={{ maxWidth: "500px" }}
                 fullWidth={true}
+                style={{
+                  borderColor: viewManager === "job-grading" ? "#FF5353" : "",
+                  color: "#FF5353",
+                }}
               >
                 Grading
               </Button>
@@ -192,6 +200,10 @@ const JobManagerView = (props: any) => {
                 type="button"
                 variant={viewManager === "job-rating" ? "outlined" : "text"}
                 fullWidth={true}
+                style={{
+                  borderColor: viewManager === "job-rating" ? "#FF5353" : "",
+                  color: "#FF5353",
+                }}
               >
                 Rating
               </Button>
@@ -205,8 +217,13 @@ const JobManagerView = (props: any) => {
                   viewManager === "job-final-review" ? "outlined" : "text"
                 }
                 fullWidth={true}
+                style={{
+                  borderColor:
+                    viewManager === "job-final-review" ? "#FF5353" : "",
+                  color: "#FF5353",
+                }}
               >
-                Final Review
+                Review
               </Button>
             </div>
           </div>
