@@ -3,9 +3,11 @@ import { useApplicationStore } from "../../store/ApplicationStore";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useSearchParams } from "react-router-dom";
 
 const JobScreening = (props: any) => {
   const { jobData }: { jobData: Job } = props;
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [displayList, setDisplayList] = useState<Application[]>([]);
 
@@ -15,10 +17,10 @@ const JobScreening = (props: any) => {
     // let displayList: Application[] = [];s
     setDisplayList(
       applicationList.filter(
-        (item) => item.jobid === jobData._id && item.status === "grading"
+        (item) => item.jobid === jobData._id && item.status === "applied"
       )
     );
-  }, []);
+  }, [searchParams]);
 
   const handleAccept = (applicationId: string) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
