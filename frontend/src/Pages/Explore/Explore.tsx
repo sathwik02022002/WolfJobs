@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../../store/UserStore";
 import { toast } from "react-toastify";
@@ -9,6 +9,8 @@ import JobsListView from "../../components/Job/JobListView";
 import JobDetailView from "../../components/Job/JobDetailView";
 import { useJobStore } from "../../store/JobStore";
 import { useApplicationStore } from "../../store/ApplicationStore";
+// const userId = useUserStore((state) => state.id);
+
 
 const Explore = () => {
   const naviagte = useNavigate();
@@ -28,20 +30,18 @@ const Explore = () => {
   const updateApplicationList = useApplicationStore(
     (state) => state.updateApplicationList
   );
+  // const userId = useUserStore((state) => state.id);
 
-  const applicationList: Application[] = useApplicationStore(
-    (state) => state.applicationList
-  );
-
-  // const [jobsList, setJobList] = useState<Job[]>([]);
+  // const [displayList, setDisplayList] = useState<Job[]>([]);
 
   const updateEmail = useUserStore((state) => state.updateEmail);
 
-  const role = useUserStore((state) => state.role);
-  const managerId = useUserStore((state) => state.id);
-
   const updateJobList = useJobStore((state) => state.updateJobList);
   const jobList: Job[] = useJobStore((state) => state.jobList);
+  // const applicationList = useApplicationStore((state) => state.applicationList);
+
+
+
 
   useEffect(() => {
     const token: string = sessionStorage.getItem("token")!;

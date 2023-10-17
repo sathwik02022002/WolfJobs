@@ -20,6 +20,7 @@ router.post("/createjob", usersApi.createJob);
 router.get("/", usersApi.index);
 router.get("/fetchapplications", usersApi.fetchApplication);
 router.post("/acceptapplication", usersApi.acceptApplication);
+router.post("/modifyApplication", jsonParser, usersApi.modifyApplication);
 router.post("/generateOTP", usersApi.generateOtp);
 router.post("/verifyOTP", usersApi.verifyOtp);
 router.post("/rejectapplication", usersApi.rejectApplication);

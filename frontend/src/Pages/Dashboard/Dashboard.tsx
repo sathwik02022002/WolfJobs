@@ -119,11 +119,21 @@ const Dashboard = () => {
                 {role === "Manager" ? "My Listings" : "My Applications"}
               </div>
               {displayList?.map((job: Job) => {
+                let action;
+
+                if (role === "Manager") {
+                  action = "view-application";
+                }
+                else {
+                  const application = applicationList?.find((item) => item.jobid === job._id && item.status === "screening");
+                  action = application ? "view-questionnaire" : "view-application";
+                }
+
                 return (
                   <JobListTile
                     data={job}
                     key={job._id}
-                    action={"view-application"}
+                    action={action}
                   />
                 );
               })}
@@ -133,16 +143,18 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          naviagte("/createjob");
-        }}
-        type="button"
-        className=" fixed bg-red-400 text-white p-4 bottom-3 right-3"
-      >
-        Create Job button +
-      </button>
+      {role === "Manager" && (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            naviagte("/createjob");
+          }}
+          type="button"
+          className=" fixed bg-red-400 text-white p-4 bottom-3 right-3"
+        >
+          Create Job button +
+        </button>)}
+
     </>
   );
 };

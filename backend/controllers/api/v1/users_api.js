@@ -358,6 +358,30 @@ module.exports.createApplication = async function (req, res) {
   }
 };
 
+module.exports.modifyApplication = async function (req, res) {
+  try {
+    let application = await Application.findById(req.body.applicationId);
+
+    application.status = req.body.status;
+
+    application.save();
+    res.set("Access-Control-Allow-Origin", "*");
+    return res.json(200, {
+      message: "Application is updated Successfully",
+      data: {
+        application,
+      },
+      success: true,
+    });
+  } catch (err) {
+    console.log(err);
+
+    return res.json(500, {
+      message: "Internal Server Error",
+    });
+  }
+};
+
 module.exports.acceptApplication = async function (req, res) {
   try {
     let application = await Application.findById(req.body.applicationId);
