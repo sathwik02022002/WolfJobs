@@ -13,11 +13,6 @@ import { useApplicationStore } from "../../store/ApplicationStore";
 import {
   Stack,
   TextField,
-  Select,
-  MenuItem,
-  SelectChangeEvent,
-  InputLabel,
-  FormControl,
 } from "@mui/material";
 
 type FormValues = {
