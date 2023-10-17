@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { createJob } from "../../deprecateded/createJobAPI";
 import { useUserStore } from "../../store/UserStore";
+import { Button } from "@mui/material";
+
 
 
 export function JobPreview() {
@@ -43,7 +45,6 @@ export function JobPreview() {
                     <>
                         <div className="w-4/12 bg-white/60 overflow-y-scroll overflow-x-hidden pt-2 px-9">
                             <div className="text-2xl py-4">
-                                <div style={{ position: 'absolute', width: '767px', height: '0px', left: '40px', top: '500px', border: '1px solid #DFDFDF', transform: 'rotate(90deg)', borderRight: '2px solid #000' }}></div>
 
                                 <div style={{ position: 'absolute', width: '276px', height: '36px', left: '48px', top: '154px', fontFamily: 'Poppins', fontStyle: 'normal', fontWeight: 500, fontSize: '24px', lineHeight: '36px', color: '#000000' }}>
                                     Create New Job Listing
@@ -55,11 +56,34 @@ export function JobPreview() {
                                 <div style={{ position: 'absolute', width: '81px', height: '19px', left: '80px', top: '232px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: 400, fontSize: '16px', lineHeight: '19px', color: '#1E1E1E' }}>
                                     Add Details
                                 </div>
+
+                                <p style={{ position: 'absolute', height: '20px', left: '3.33%', right: '95.28%', top: '60%', transform: 'translateY(-50%)', marginTop: '-135.5px', background: 'white' }}>
+                                    <img src="/images/Vector.png" alt="Vector Image" />
+                                </p>
+                                <div style={{ position: 'absolute', width: '109px', height: '19px', left: '80px', top: '272px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: 400, fontSize: '16px', lineHeight: '19px', color: '#1E1E1E', whiteSpace: 'nowrap' }}>
+                                    Fill Questionnaire
+                                </div>
+
+
+                                <p style={{ position: 'absolute', height: '20px', left: '3.33%', right: '95.28%', top: '65.5%', transform: 'translateY(-50%)', marginTop: '-135.5px', background: 'white' }}>
+                                    <img src="/images/Vector.png" alt="Vector Image" />
+                                </p>
+                                <div style={{ position: 'absolute', width: '109px', height: '19px', left: '80px', top: '312px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: 400, fontSize: '16px', lineHeight: '19px', color: '#1E1E1E', whiteSpace: 'nowrap' }}>
+                                    Preview
+                                </div>
+
+
+                                <p style={{ position: 'absolute', height: '20px', left: '3.33%', right: '95.28%', top: '71.5%', transform: 'translateY(-50%)', marginTop: '-135.5px', background: 'white' }}>
+                                    <img src="/images/Vector2.png" alt="Vector Image" />
+                                </p>
+                                <div style={{ position: 'absolute', width: '109px', height: '19px', left: '80px', top: '352px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: 400, fontSize: '16px', lineHeight: '19px', color: '#CBCBCB', whiteSpace: 'nowrap' }}>
+                                    Confirm
+                                </div>
+
                             </div>
                         </div>
                     </>
-
-                    <div>
+                    <>
                         <div className="w-7/12">
                             <div className="flex flex-col m-4 ">
                                 <div className="text-xl border-b border-gray-300 font-bold">
@@ -97,19 +121,35 @@ export function JobPreview() {
                                     Description
                                 </div>
                                 <div className="text-[#686868] mx-2">{details["description"]}</div>
+                                <div className="h-6" />
+                                <div className="text-lg border-b border-gray-300 mb-2 font-bold">
+                                    Questions
+                                </div>
+                                <div className="text-[#686868] mx-2">1: {questions["question1"]}</div>
+                                <div className="text-[#686868] mx-2">2: {questions["question2"]}</div>
+                                <div className="text-[#686868] mx-2">3: {questions["question3"]}</div>
+                                <div className="text-[#686868] mx-2">4: {questions["question4"]}</div>
+
                             </div>
+                            <Button onClick={onSubmit} type="submit"
+                                variant="contained"
+                                color="primary"
+                                style={{
+                                    background: "#FF5353",
+                                    borderRadius: "10px",
+                                    textTransform: "none",
+                                    fontSize: "16px",
+                                }}>
+                                Add Listing
+                            </Button>
+
                         </div>
 
-                    </div>
+                    </>
                 </div>
-            </div>
+            </div >
 
-            <button onClick={onSubmit} type="submit"
-                style={{ position: 'absolute', width: '231px', height: '50px', left: '548px', top: '686px', background: '#FF5353', borderRadius: '10px' }}>
-                <p style={{ position: 'absolute', width: '231px', height: '50px', left: '0px', top: '13px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: 600, fontSize: '18px', lineHeight: '22px', color: '#FFFFFF' }}>
-                    Add Listing
-                </p>
-            </button>
+
         </>
     );
 }
