@@ -55,7 +55,10 @@ const JobScreening = (props: any) => {
 
   return (
     <>
-      <div>Screening</div>
+      <div className="text-xl">Screening</div>
+      {displayList.length === 0 && (
+        <div className="text-base text-gray-500">List empty</div>
+      )}
       {displayList?.map((item: Application) => (
         <div className=" p-1">
           <div className="bg-white my-2 mx-1 p-2 rounded-lg">
@@ -74,6 +77,7 @@ const JobScreening = (props: any) => {
                     e.preventDefault();
                     return handleAccept(item._id);
                   }}
+                  style={{ color: "#FF5353" }}
                 >
                   Accept
                 </Button>
@@ -82,6 +86,7 @@ const JobScreening = (props: any) => {
                     e.preventDefault();
                     return handleReject(item._id);
                   }}
+                  style={{ color: "#FF5353" }}
                 >
                   Reject
                 </Button>
