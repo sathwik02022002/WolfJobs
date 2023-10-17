@@ -132,17 +132,18 @@ const Dashboard = () => {
           <JobDetailView />
         </div>
       </div>
-
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          naviagte("/createjob");
-        }}
-        type="button"
-        className=" fixed bg-red-400 text-white p-4 bottom-3 right-3"
-      >
-        Create Job button +
-      </button>
+      {role === "Manager" && (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            naviagte("/createjob");
+          }}
+          type="button"
+          className=" fixed bg-red-400 text-white p-4 bottom-3 right-3"
+        >
+          Create Job button +
+        </button>
+      )}
     </>
   );
 };
