@@ -146,10 +146,11 @@ const JobManagerView = (props: any) => {
               <Button
                 onClick={handleCloseJob}
                 type="button"
-                variant="contained"
+                variant="outlined"
                 style={{
-                  background: "#FF5353",
-                  borderRadius: "10px",
+                  color: "#FF5353",
+                  borderColor: "#FF5353",
+                  // borderRadius: "10px",
                   textTransform: "none",
                   fontSize: "16px",
                   minWidth: "200px",
@@ -167,11 +168,14 @@ const JobManagerView = (props: any) => {
                   setSearchParams({ jobId: jobId, view: "job-screening" });
                 }}
                 type="button"
-                variant={viewManager === "job-screening" ? "outlined" : "text"}
+                variant={viewManager === "job-screening" ? "contained" : "text"}
                 fullWidth={true}
                 style={{
-                  borderColor: viewManager === "job-screening" ? "#FF5353" : "",
-                  color: "#FF5353",
+                  borderColor: viewManager === "job-screening" ? "" : "#FF5353",
+                  color:
+                    viewManager === "job-screening" ? "#FFFFFF" : "#FF5353",
+                  backgroundColor:
+                    viewManager === "job-screening" ? "#FF5353" : "",
                 }}
               >
                 Screening
@@ -182,12 +186,14 @@ const JobManagerView = (props: any) => {
                   setSearchParams({ jobId: jobId, view: "job-grading" });
                 }}
                 type="button"
-                variant={viewManager === "job-grading" ? "outlined" : "text"}
+                variant={viewManager === "job-grading" ? "contained" : "text"}
                 // style={{ maxWidth: "500px" }}
                 fullWidth={true}
                 style={{
-                  borderColor: viewManager === "job-grading" ? "#FF5353" : "",
-                  color: "#FF5353",
+                  borderColor: viewManager === "job-grading" ? "" : "#FF5353",
+                  color: viewManager === "job-grading" ? "#FFFFFF" : "#FF5353",
+                  backgroundColor:
+                    viewManager === "job-grading" ? "#FF5353" : "",
                 }}
               >
                 Grading
@@ -198,11 +204,13 @@ const JobManagerView = (props: any) => {
                   setSearchParams({ jobId: jobId, view: "job-rating" });
                 }}
                 type="button"
-                variant={viewManager === "job-rating" ? "outlined" : "text"}
+                variant={viewManager === "job-rating" ? "contained" : "text"}
                 fullWidth={true}
                 style={{
-                  borderColor: viewManager === "job-rating" ? "#FF5353" : "",
-                  color: "#FF5353",
+                  // borderColor: viewManager === "job-rating" ? "" : "#FF5353",
+                  color: viewManager === "job-rating" ? "#FFFFFF" : "#FF5353",
+                  backgroundColor:
+                    viewManager === "job-rating" ? "#FF5353" : "",
                 }}
               >
                 Rating
@@ -214,13 +222,16 @@ const JobManagerView = (props: any) => {
                 }}
                 type="button"
                 variant={
-                  viewManager === "job-final-review" ? "outlined" : "text"
+                  viewManager === "job-final-review" ? "contained" : "text"
                 }
                 fullWidth={true}
                 style={{
                   borderColor:
+                    viewManager === "job-final-review" ? "" : "#FF5353",
+                  color:
+                    viewManager === "job-final-review" ? "#FFFFFF" : "#FF5353",
+                  backgroundColor:
                     viewManager === "job-final-review" ? "#FF5353" : "",
-                  color: "#FF5353",
                 }}
               >
                 Review
