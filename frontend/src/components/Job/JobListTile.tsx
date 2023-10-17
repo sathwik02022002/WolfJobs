@@ -3,14 +3,15 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { useSearchParams } from "react-router-dom";
 
 const JobListTile = (props: any) => {
-  const { data, action }: { data: Job; action: string | undefined } = props;
+  // const { data, action }: { data: Job; action: string | undefined } = props;
+  const { data }: { data: Job } = props;
+  let action = "view-more";
 
   const [active, setActive] = useState<boolean>(true);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const affilation = data.managerAffilication;
   const role = "Dining Associate";
-  const jobStatus = data.status === "0" ? "Open" : "Closed";
   const jobType = "Full-time";
   const pay = data.pay || "0";
 
@@ -57,8 +58,8 @@ const JobListTile = (props: any) => {
   return (
     <div className="my-3 " onClick={handleClick}>
       <div
-        className={`p-3 bg-white rounded-xl ${
-          active ? "border-red-300 " : "border-white"
+        className={`p-3 bg-white rounded-xl shadow-sm ${
+          active ? "border-black " : "border-white"
         } border`}
       >
         <div className="flex flex-row">
@@ -81,10 +82,10 @@ const JobListTile = (props: any) => {
                 <b>Job Status:</b>
                 <span
                   className={`${
-                    jobStatus.toLowerCase() === "closed" ? "text-[#FF5353]" : ""
+                    data.status === "closed" ? "text-[#FF5353]" : ""
                   }`}
                 >
-                  &nbsp;{jobStatus}
+                  &nbsp;<span className="capitalize">{data.status}</span>
                 </span>
               </p>
               <p className="text-base">

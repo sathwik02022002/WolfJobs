@@ -1,15 +1,21 @@
+import { toast } from "react-toastify";
 import { createJobURL, loginURL } from "../api/constants";
 import { getFormBody } from "./apiUtils";
 
 export const createJob = async (
   name: string,
   id: string,
-  skills: string,
-  status: number,
+  status: string,
   location: string,
   description: string,
   pay: string,
-  schedule: string
+  type: string,
+  question1: string,
+  question2: string,
+  question3: string,
+  question4: string,
+  affiliation: string,
+  navigate: any
 ) => {
   const url = createJobURL;
   await fetch(url, {
@@ -20,17 +26,24 @@ export const createJob = async (
     body: getFormBody({
       name,
       id,
-      skills,
       status,
       location,
       description,
       pay,
-      schedule,
+      type,
+      question1,
+      question2,
+      question3,
+      question4,
+      affiliation,
     }),
   })
     .then((res) => res.json())
-    .then((data) => {
-      if (data.success) {
+    .then((res) => {
+      if (res.success === true) {
+        // success
+        navigate("/dashboard");
+        toast.success("Job created");
       }
     });
 };

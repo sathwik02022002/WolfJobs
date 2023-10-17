@@ -3,20 +3,23 @@ import { create } from "zustand";
 
 type UserState = {
   name: string;
+  email: string;
   address: string;
   role: string;
   dob: string;
-  skills: string[];
+  skills: string;
   phonenumber: string;
   id: string;
   availability: string;
   gender: string;
   hours: string;
   isLoggedIn: boolean;
+  affiliation: string;
 };
 
 type UserAction = {
   updateName: (name: UserState["name"]) => void;
+  updateEmail: (name: UserState["email"]) => void;
   updateAddress: (name: UserState["address"]) => void;
   updateRole: (name: UserState["role"]) => void;
   updateDob: (name: UserState["dob"]) => void;
@@ -27,23 +30,29 @@ type UserAction = {
   updateGender: (name: UserState["gender"]) => void;
   updateHours: (name: UserState["hours"]) => void;
   updateIsLoggedIn: (name: UserState["isLoggedIn"]) => void;
+  updateAffiliation: (name: UserState["affiliation"]) => void;
 };
 
 export const useUserStore = create<UserState & UserAction>()((set) => ({
   name: "",
+  email: "",
   address: "",
   role: "",
   dob: "",
-  skills: [],
+  skills: "",
   phonenumber: "",
   id: "",
   availability: "",
   gender: "",
   hours: "",
+  affiliation: "",
   isLoggedIn: false,
 
   updateName: (name: string) => {
     set(() => ({ name: name }));
+  },
+  updateEmail: (email: string) => {
+    set(() => ({ email: email }));
   },
   updateAddress: (address: string) => {
     set(() => ({ address: address }));
@@ -54,7 +63,7 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
   updateDob: (dob: string) => {
     set(() => ({ dob: dob }));
   },
-  updateSkills: (skills: string[]) => {
+  updateSkills: (skills: string) => {
     set(() => ({ skills: skills }));
   },
   updatePhonenumber: (phonenumber: string) => {
@@ -75,4 +84,8 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
   updateIsLoggedIn: (isLoggedIn: boolean) => {
     set(() => ({ isLoggedIn: isLoggedIn }));
   },
+  updateAffiliation: (affiliation: string) => {
+    set(() => ({ affiliation: affiliation }));
+  },
+  // updateAffiliation: ()
 }));

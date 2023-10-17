@@ -1,8 +1,10 @@
 import { useUserStore } from "../../store/UserStore";
 import NavBar from "./NavBar";
+import NavBarItem from "./NavBarItem";
 
 const Header = () => {
   const isLoggedIn = useUserStore((state) => state.isLoggedIn);
+  const role = useUserStore((state) => state.role);
   return (
     <>
       <div className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 bg-white supports-backdrop-blur:bg-white/95">
@@ -19,6 +21,15 @@ const Header = () => {
                   className="h-10 p-0"
                 />
               </a>
+              <ul className="ml-4 flex space-x-8">
+                {role == "Manager" && isLoggedIn && (
+                  <NavBarItem link="/dashboard" text="My Listings" />
+                )}
+                {role == "Applicant" && isLoggedIn && (
+                  <NavBarItem link="/dashboard" text="My Applications" />
+                )}
+                {isLoggedIn && <NavBarItem link="/explore" text="All jobs" />}
+              </ul>
               <NavBar />
             </div>
           </div>

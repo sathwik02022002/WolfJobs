@@ -18,6 +18,7 @@ type FormValues = {
   email: string;
   password: string;
   confirmPassword: string;
+  skills: string;
 };
 
 const RegistrationPage = () => {
@@ -26,7 +27,13 @@ const RegistrationPage = () => {
   const [affilation, setAffiliation] = useState("nc-state-dining");
 
   const form = useForm<FormValues>({
-    defaultValues: { name: "", email: "", password: "", confirmPassword: "" },
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      skills: "",
+    },
   });
 
   const { register, handleSubmit, formState, watch } = form;
@@ -42,6 +49,7 @@ const RegistrationPage = () => {
       data.name,
       role,
       role === "Manager" ? affilation : "",
+      data.skills,
       navigate
     );
   };
@@ -126,6 +134,25 @@ const RegistrationPage = () => {
                 })}
                 error={!!errors.confirmPassword}
                 helperText={errors.confirmPassword?.message}
+                sx={{
+                  "& label": {
+                    paddingLeft: (theme) => theme.spacing(1),
+                  },
+                  "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                  "& fieldset": {
+                    paddingLeft: (theme) => theme.spacing(1.5),
+                    borderRadius: "10px",
+                  },
+                }}
+              />
+              <TextField
+                label="Skills"
+                type="text"
+                {...register("skills", {
+                  required: "Skills is required",
+                })}
+                error={!!errors.skills}
+                helperText={errors.skills?.message}
                 sx={{
                   "& label": {
                     paddingLeft: (theme) => theme.spacing(1),

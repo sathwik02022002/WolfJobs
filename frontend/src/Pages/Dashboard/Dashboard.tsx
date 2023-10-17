@@ -13,6 +13,7 @@ const Dashboard = () => {
   const naviagte = useNavigate();
 
   const updateName = useUserStore((state) => state.updateName);
+  const updateEmail = useUserStore((state) => state.updateEmail);
   const updateAddress = useUserStore((state) => state.updateAddress);
   const updateRole = useUserStore((state) => state.updateRole);
   const updateDob = useUserStore((state) => state.updateDob);
@@ -33,6 +34,7 @@ const Dashboard = () => {
   const updateApplicationList = useApplicationStore(
     (state) => state.updateApplicationList
   );
+
   const applicationList: Application[] = useApplicationStore(
     (state) => state.applicationList
   );
@@ -49,6 +51,7 @@ const Dashboard = () => {
       const userInfo = JSON.parse(atob(tokenInfo[1]));
 
       updateName(userInfo.name);
+      updateEmail(userInfo.email);
       updateAddress(userInfo.address);
       updateRole(userInfo.role);
       updateDob(userInfo.dob);
@@ -60,7 +63,9 @@ const Dashboard = () => {
       updateHours(userInfo.hours);
       updateIsLoggedIn(true);
     }
+  }, []);
 
+  useEffect(() => {
     axios
       .get("http://localhost:8000/api/v1/users/fetchapplications")
       .then((res) => {
@@ -89,7 +94,6 @@ const Dashboard = () => {
       const temp = jobList.filter((item) => {
         return item.managerid === managerId;
       });
-      console.log(temp);
       setDisplayList(temp);
     } else if (role === "Applicant") {
       const applicantsJobs: Application[] = applicationList.filter(
@@ -101,8 +105,6 @@ const Dashboard = () => {
         ids.push(id);
       }
       const temp = jobList.filter((item) => ids.includes(item._id));
-      console.log(temp);
-
       setDisplayList(temp);
     }
   }, [role, jobList, applicationList]);
@@ -130,6 +132,18 @@ const Dashboard = () => {
           <JobDetailView />
         </div>
       </div>
+      {role === "Manager" && (
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            naviagte("/createjob");
+          }}
+          type="button"
+          className=" fixed bg-red-400 text-white p-4 bottom-3 right-3"
+        >
+          Create Job button +
+        </button>
+      )}
     </>
   );
 };
