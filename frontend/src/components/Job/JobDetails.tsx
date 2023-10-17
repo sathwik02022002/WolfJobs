@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useUserStore } from "../../store/UserStore";
 import { useForm } from "react-hook-form";
-import { Badge, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import { toast } from "react-toastify";
 import JobScreening from "./JobScreening";
 import JobRating from "./JobRating";
@@ -10,10 +10,7 @@ import JobFinalReview from "./JobFinalReview";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useApplicationStore } from "../../store/ApplicationStore";
-import {
-  Stack,
-  TextField,
-} from "@mui/material";
+import { Stack, TextField } from "@mui/material";
 
 type FormValues = {
   answer1: string;
@@ -27,7 +24,6 @@ const JobDetail = (props: any) => {
   const data = jobData as Job;
 
   const jobType = data.type === "parttime" ? "Part time" : "Full time";
-
 
   const [displayList1, setDisplayList1] = useState<Application[]>([]);
   const [displayList2, setDisplayList2] = useState<Application[]>([]);
@@ -132,8 +128,9 @@ const JobDetail = (props: any) => {
                 <span className="font-semibold text-lg">Job Status:</span>
                 &nbsp;
                 <span
-                  className={`capitalize ${data.status === "open" ? "text-green-500" : "text-red-500"
-                    }`}
+                  className={`capitalize ${
+                    data.status === "open" ? "text-green-500" : "text-red-500"
+                  }`}
                 >
                   {data.status}
                 </span>
@@ -161,7 +158,6 @@ const JobDetail = (props: any) => {
       {role === "Applicant" && data.status === "open" && (
         <div>
           {displayList1.length > 0 ? (
-
             <div className="w-7/12">
               <div className="flex flex-col m-4 ">
                 <div className="text-xl border-b border-gray-300 font-bold">
@@ -170,7 +166,6 @@ const JobDetail = (props: any) => {
 
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
                   <div className="flex flex-row justify-between m-2">
-
                     <div className="flex flex-col ">
                       <div>
                         <span className="font-semibold text-lg">1:</span>&nbsp;
@@ -185,7 +180,9 @@ const JobDetail = (props: any) => {
                       {...register("answer1")}
                       sx={{
                         "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                        "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                        "& input": {
+                          paddingLeft: (theme) => theme.spacing(2.5),
+                        },
                         "& fieldset": {
                           paddingLeft: (theme) => theme.spacing(1.5),
                           borderRadius: "10px",
@@ -194,10 +191,10 @@ const JobDetail = (props: any) => {
                     />
 
                     <div className="flex flex-row justify-between m-2">
-
                       <div className="flex flex-col ">
                         <div>
-                          <span className="font-semibold text-lg">2:</span>&nbsp;
+                          <span className="font-semibold text-lg">2:</span>
+                          &nbsp;
                           {data.question2}
                         </div>
                       </div>
@@ -209,7 +206,9 @@ const JobDetail = (props: any) => {
                       {...register("answer2")}
                       sx={{
                         "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                        "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                        "& input": {
+                          paddingLeft: (theme) => theme.spacing(2.5),
+                        },
                         "& fieldset": {
                           paddingLeft: (theme) => theme.spacing(1.5),
                           borderRadius: "10px",
@@ -218,15 +217,14 @@ const JobDetail = (props: any) => {
                     />
 
                     <div className="flex flex-row justify-between m-2">
-
                       <div className="flex flex-col ">
                         <div>
-                          <span className="font-semibold text-lg">3:</span>&nbsp;
+                          <span className="font-semibold text-lg">3:</span>
+                          &nbsp;
                           {data.question3}
                         </div>
                       </div>
                     </div>
-
 
                     <TextField
                       label="Answer 3"
@@ -234,7 +232,9 @@ const JobDetail = (props: any) => {
                       {...register("answer3")}
                       sx={{
                         "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                        "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                        "& input": {
+                          paddingLeft: (theme) => theme.spacing(2.5),
+                        },
                         "& fieldset": {
                           paddingLeft: (theme) => theme.spacing(1.5),
                           borderRadius: "10px",
@@ -242,10 +242,10 @@ const JobDetail = (props: any) => {
                       }}
                     />
                     <div className="flex flex-row justify-between m-2">
-
                       <div className="flex flex-col ">
                         <div>
-                          <span className="font-semibold text-lg">4:</span>&nbsp;
+                          <span className="font-semibold text-lg">4:</span>
+                          &nbsp;
                           {data.question4}
                         </div>
                       </div>
@@ -257,7 +257,9 @@ const JobDetail = (props: any) => {
                       {...register("answer4")}
                       sx={{
                         "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                        "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                        "& input": {
+                          paddingLeft: (theme) => theme.spacing(2.5),
+                        },
                         "& fieldset": {
                           paddingLeft: (theme) => theme.spacing(1.5),
                           borderRadius: "10px",
@@ -283,16 +285,17 @@ const JobDetail = (props: any) => {
             </div>
           ) : (
             displayList2.length === 0 && (
-              <Button onClick={handleApplyJob} type="button" variant="contained">
+              <Button
+                onClick={handleApplyJob}
+                type="button"
+                variant="contained"
+              >
                 Apply Now
               </Button>
             )
           )}
         </div>
       )}
-
-
-
 
       {role === "Manager" &&
         userId === jobData.managerid &&
@@ -344,10 +347,11 @@ const JobManagerView = (props: any) => {
               <Button
                 onClick={handleCloseJob}
                 type="button"
-                variant="contained"
+                variant="outlined"
                 style={{
-                  background: "#FF5353",
-                  borderRadius: "10px",
+                  color: "#FF5353",
+                  borderColor: "#FF5353",
+                  // borderRadius: "10px",
                   textTransform: "none",
                   fontSize: "16px",
                   minWidth: "200px",
@@ -365,8 +369,15 @@ const JobManagerView = (props: any) => {
                   setSearchParams({ jobId: jobId, view: "job-screening" });
                 }}
                 type="button"
-                variant={viewManager === "job-screening" ? "outlined" : "text"}
+                variant={viewManager === "job-screening" ? "contained" : "text"}
                 fullWidth={true}
+                style={{
+                  borderColor: viewManager === "job-screening" ? "" : "#FF5353",
+                  color:
+                    viewManager === "job-screening" ? "#FFFFFF" : "#FF5353",
+                  backgroundColor:
+                    viewManager === "job-screening" ? "#FF5353" : "",
+                }}
               >
                 Screening
               </Button>
@@ -376,9 +387,15 @@ const JobManagerView = (props: any) => {
                   setSearchParams({ jobId: jobId, view: "job-grading" });
                 }}
                 type="button"
-                variant={viewManager === "job-grading" ? "outlined" : "text"}
+                variant={viewManager === "job-grading" ? "contained" : "text"}
                 // style={{ maxWidth: "500px" }}
                 fullWidth={true}
+                style={{
+                  borderColor: viewManager === "job-grading" ? "" : "#FF5353",
+                  color: viewManager === "job-grading" ? "#FFFFFF" : "#FF5353",
+                  backgroundColor:
+                    viewManager === "job-grading" ? "#FF5353" : "",
+                }}
               >
                 Grading
               </Button>
@@ -388,8 +405,14 @@ const JobManagerView = (props: any) => {
                   setSearchParams({ jobId: jobId, view: "job-rating" });
                 }}
                 type="button"
-                variant={viewManager === "job-rating" ? "outlined" : "text"}
+                variant={viewManager === "job-rating" ? "contained" : "text"}
                 fullWidth={true}
+                style={{
+                  // borderColor: viewManager === "job-rating" ? "" : "#FF5353",
+                  color: viewManager === "job-rating" ? "#FFFFFF" : "#FF5353",
+                  backgroundColor:
+                    viewManager === "job-rating" ? "#FF5353" : "",
+                }}
               >
                 Rating
               </Button>
@@ -400,11 +423,19 @@ const JobManagerView = (props: any) => {
                 }}
                 type="button"
                 variant={
-                  viewManager === "job-final-review" ? "outlined" : "text"
+                  viewManager === "job-final-review" ? "contained" : "text"
                 }
                 fullWidth={true}
+                style={{
+                  borderColor:
+                    viewManager === "job-final-review" ? "" : "#FF5353",
+                  color:
+                    viewManager === "job-final-review" ? "#FFFFFF" : "#FF5353",
+                  backgroundColor:
+                    viewManager === "job-final-review" ? "#FF5353" : "",
+                }}
               >
-                Final Review
+                Review
               </Button>
             </div>
           </div>

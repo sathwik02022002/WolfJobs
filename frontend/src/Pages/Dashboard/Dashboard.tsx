@@ -123,26 +123,23 @@ const Dashboard = () => {
 
                 if (role === "Manager") {
                   action = "view-application";
-                }
-                else {
-                  const application = applicationList?.find((item) => item.jobid === job._id && item.status === "screening");
-                  action = application ? "view-questionnaire" : "view-application";
+                } else {
+                  const application = applicationList?.find(
+                    (item) =>
+                      item.jobid === job._id && item.status === "screening"
+                  );
+                  action = application
+                    ? "view-questionnaire"
+                    : "view-application";
                 }
 
-                return (
-                  <JobListTile
-                    data={job}
-                    key={job._id}
-                    action={action}
-                  />
-                );
+                return <JobListTile data={job} key={job._id} action={action} />;
               })}
             </div>
           </>
           <JobDetailView />
         </div>
       </div>
-
       {role === "Manager" && (
         <button
           onClick={(e) => {
@@ -153,8 +150,8 @@ const Dashboard = () => {
           className=" fixed bg-red-400 text-white p-4 bottom-3 right-3"
         >
           Create Job button +
-        </button>)}
-
+        </button>
+      )}
     </>
   );
 };

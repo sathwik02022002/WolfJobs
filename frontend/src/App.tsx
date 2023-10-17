@@ -18,6 +18,7 @@ import Explore from "./Pages/Explore/Explore";
 import { LandingPage } from "./Pages/Auth/landingPage";
 import { JobQuestionnaire } from "./Pages/CreateJob/jobQuestionnaire";
 import { JobPreview } from "./Pages/CreateJob/jobPreview";
+import Profile from "./Pages/Profile/Profile";
 
 function App() {
   return (
@@ -68,6 +69,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <JobPreview />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
               </ProtectedRoute>
             }
           />

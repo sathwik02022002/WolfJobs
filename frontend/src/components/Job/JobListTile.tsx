@@ -3,7 +3,9 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { useSearchParams } from "react-router-dom";
 
 const JobListTile = (props: any) => {
-  const { data, action }: { data: Job; action: string | undefined } = props;
+  // const { data, action }: { data: Job; action: string | undefined } = props;
+  const { data }: { data: Job } = props;
+  let action = "view-more";
 
   const [active, setActive] = useState<boolean>(true);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -56,8 +58,8 @@ const JobListTile = (props: any) => {
   return (
     <div className="my-3 " onClick={handleClick}>
       <div
-        className={`p-3 bg-white rounded-xl ${
-          active ? "border-red-300 " : "border-white"
+        className={`p-3 bg-white rounded-xl shadow-sm ${
+          active ? "border-black " : "border-white"
         } border`}
       >
         <div className="flex flex-row">

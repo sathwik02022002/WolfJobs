@@ -82,6 +82,10 @@ const applicationSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  rating: {
+    type: String,
+    default: "",
+  },
 });
 
 const Application = mongoose.model("Application", applicationSchema);

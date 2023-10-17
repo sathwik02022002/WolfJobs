@@ -15,38 +15,42 @@ const JobScreening = (props: any) => {
     // let displayList: Application[] = [];s
     setDisplayList(
       applicationList.filter(
-        (item) => item.jobid === jobData._id && item.status === "applied"
+        (item) => item.jobid === jobData._id && item.status === "grading"
       )
     );
   }, []);
 
-  const handleAccept = (applicantid: string) => {
+  const handleAccept = (applicationId: string) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
 
     const body = {
-      applicationId: applicantid,
+      applicationId: applicationId,
       status: "screening",
     };
 
     axios.post(url, body).then((res) => {
       if (res.status == 200) {
         toast.success("Accepted candidate");
+        location.reload();
+
         return;
       }
       toast.error("Failed to accept candidate");
     });
   };
-  const handleReject = (applicantid: string) => {
+  const handleReject = (applicationId: string) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
 
     const body = {
-      applicationId: applicantid,
+      applicationId: applicationId,
       status: "rejected",
     };
 
     axios.post(url, body).then((res) => {
       if (res.status == 200) {
         toast.success("Rejected candidate");
+        location.reload();
+
         return;
       }
       toast.error("Failed to reject candidate");
@@ -55,7 +59,10 @@ const JobScreening = (props: any) => {
 
   return (
     <>
-      <div>Screening</div>
+      <div className="text-xl">Screening</div>
+      {displayList.length === 0 && (
+        <div className="text-base text-gray-500">List empty</div>
+      )}
       {displayList?.map((item: Application) => (
         <div className=" p-1">
           <div className="bg-white my-2 mx-1 p-2 rounded-lg">
@@ -74,6 +81,7 @@ const JobScreening = (props: any) => {
                     e.preventDefault();
                     return handleAccept(item._id);
                   }}
+                  style={{ color: "#FF5353" }}
                 >
                   Accept
                 </Button>
@@ -82,6 +90,7 @@ const JobScreening = (props: any) => {
                     e.preventDefault();
                     return handleReject(item._id);
                   }}
+                  style={{ color: "#FF5353" }}
                 >
                   Reject
                 </Button>
