@@ -41,7 +41,7 @@ const Dashboard = () => {
   const [displayList, setDisplayList] = useState<Job[]>([]);
 
   useEffect(() => {
-    const token: string = sessionStorage.getItem("token")!;
+    const token: string = localStorage.getItem("token")!;
     if (!!!token) {
       naviagte("/login");
     }

@@ -14,7 +14,7 @@ export async function login(email: string, password: string, navigate: any) {
     .then((res) => res.json())
     .then((data) => {
       if (data.success) {
-        sessionStorage.setItem("token", data.data.token);
+        localStorage.setItem("token", data.data.token);
         navigate("/dashboard");
         return;
       }
@@ -51,7 +51,7 @@ export function signup(
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
-        sessionStorage.setItem("token", data.data.token);
+        localStorage.setItem("token", data.data.token);
         navigate("/dashboard");
         return;
       }
