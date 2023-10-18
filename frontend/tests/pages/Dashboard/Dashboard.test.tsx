@@ -10,7 +10,5 @@ describe("Dashboard", () => {
         <Dashboard />
       </MemoryRouter>
     );
-    // const headline = screen.getByText(/Hello/i);
-    // expect(headline).toBeInTheDocument();
   });
 });
