@@ -46,7 +46,7 @@ jobs:
         # working-directory: ./frontend
         uses: codecov/codecov-action@v1
         with:
-          path: /frontend
+          path: /frontend/coverage
           token: ${{ secrets.CODECOV_TOKEN }}
       # - run: ls -al
       # - run: cd frontend
