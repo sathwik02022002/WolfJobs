@@ -56,16 +56,6 @@ const JobDetail = (props: any) => {
       );
       setShowQuestionnaire(!!temp || false);
     }
-    // if (role === "Applicant") {
-    //   setScreeningList(
-    //     applicationList.filter(
-    //       (item) =>
-    //         item.jobid === jobData._id &&
-    //         item.status === "screening" &&
-    //         item.applicantid === userId
-    //     )
-    //   );
-    // }
   }, [jobData, applicationList, userId]);
 
   useEffect(() => {
@@ -170,6 +160,14 @@ const JobDetail = (props: any) => {
               <div>
                 <span className="font-semibold text-lg">Location:</span>&nbsp;
                 {jobData.location}
+              </div>
+              <div>
+                {application?.status === "accepted" ||
+                application?.status === "rejected" ? (
+                  <b>Application Status: {application?.status}</b>
+                ) : (
+                  <b>Application Status: In Review</b>
+                )}
               </div>
             </div>
             <div className="text-3xl p-4">{jobData.pay}$/hr</div>
