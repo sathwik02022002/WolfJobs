@@ -10,7 +10,7 @@ const jsonParser = bodyParser.json();
 
 router.post("/create-session", usersApi.createSession);
 router.post("/signup", usersApi.signUp);
-router.post("/edit", usersApi.editProfile);
+router.post("/edit", jsonParser, usersApi.editProfile);
 router.get("/getprofile/:id", usersApi.getProfile);
 router.get("/search/:name", usersApi.searchUser);
 router.post("/createhistory", usersApi.createHistory);

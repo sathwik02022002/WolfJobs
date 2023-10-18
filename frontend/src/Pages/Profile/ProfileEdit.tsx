@@ -1,4 +1,5 @@
 import {
+  Button,
   FormControl,
   InputLabel,
   MenuItem,
@@ -7,8 +8,13 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { useUserStore } from "../../store/UserStore";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../deprecateded/auth";
 
 type FormValues = {
   name: string;
@@ -34,6 +40,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
     availability,
     gender,
     hours,
+    width = "700px",
   } = props;
 
   const form = useForm<FormValues>({
@@ -52,19 +59,44 @@ const ProfileEdit = ({ props }: { props: any }) => {
 
   const [availabilityDrop, setAvailabilityDtop] = useState(availability);
 
-  useEffect(() => {
-    console.log(props);
-  }, [props]);
+  const userId = useUserStore((state) => state.id);
+  const password = useUserStore((state) => state.password);
+
+  const navigate = useNavigate();
 
   const { register, handleSubmit, formState, watch } = form;
   const { errors } = formState;
 
-  const onSubmit = () => {};
+  const handleSaveProfile = (data: FormValues) => {
+    const url = "http://localhost:8000/api/v1/users/edit";
+    const body = {
+      id: userId,
+      name: data.name,
+      role,
+      email,
+      password,
+      address: data.address,
+      availability: availabilityDrop,
+      hours: data.hours,
+      gender: data.gender,
+      skills: data.skills,
+      phonenumber: data.phonenumber,
+    };
+
+    axios.post(url, body).then((res) => {
+      if (res.status !== 200) {
+        toast.error("Failed to save profile");
+        return;
+      }
+      toast.success("Saved profile");
+      login(email, password, navigate);
+    });
+  };
 
   return (
     <>
       <div className="my-2">
-        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+        <form onSubmit={handleSubmit(handleSaveProfile)} noValidate>
           <Stack spacing={2} width={"620px"}>
             <TextField
               label="Name"
@@ -239,6 +271,19 @@ const ProfileEdit = ({ props }: { props: any }) => {
                 },
               }}
             /> */}
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              style={{
+                background: "#FF5353",
+                borderRadius: "10px",
+                textTransform: "none",
+                fontSize: "16px",
+              }}
+            >
+              Save Profile
+            </Button>
           </Stack>
         </form>
       </div>

@@ -23,7 +23,6 @@ import Profile from "./Pages/Profile/Profile";
 const App = () => {
   return (
     <>
-      <div className="">Hello</div>
       <div className="h-screen">
         <Header />
         <ToastContainer style={{ marginTop: "64px" }} />

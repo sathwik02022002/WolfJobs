@@ -13,6 +13,7 @@ const Dashboard = () => {
 
   const updateName = useUserStore((state) => state.updateName);
   const updateEmail = useUserStore((state) => state.updateEmail);
+  const updatePassword = useUserStore((state) => state.updatePassword);
   const updateAddress = useUserStore((state) => state.updateAddress);
   const updateRole = useUserStore((state) => state.updateRole);
   const updateDob = useUserStore((state) => state.updateDob);
@@ -51,6 +52,7 @@ const Dashboard = () => {
 
       updateName(userInfo.name);
       updateEmail(userInfo.email);
+      updatePassword(userInfo.password);
       updateAddress(userInfo.address);
       updateRole(userInfo.role);
       updateDob(userInfo.dob);
