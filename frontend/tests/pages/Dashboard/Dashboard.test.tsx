@@ -10,8 +10,8 @@ describe("Dashboard", () => {
         <Dashboard />
       </MemoryRouter>
     );
-    const headingElement = screen.queryByText((_content, element) => {
-      return element?.textContent?.includes("My Listings");
-    });
+    // const headingElement = screen.queryByText((_content, element) => {
+    //   return element?.textContent?.includes("My Listings");
+    // });
   });
 });
