@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 export function JobPreview() {
   const location = useLocation();
   const { state } = location;
-  // const { details, questions } = state;
+  const { details, questions } = state;
 
   const navigate = useNavigate();
 
@@ -18,17 +18,17 @@ export function JobPreview() {
     e.preventDefault();
     console.log("form submitted");
     createJob(
-      state["details"]["name"],
+      details["name"],
       userId,
       "open",
-      state["details"]["location"],
-      state["details"]["description"],
-      state["details"]["pay"],
-      state["details"]["type"],
-      state["questions"]["question1"],
-      state["questions"]["question2"],
-      state["questions"]["question3"],
-      state["questions"]["question4"],
+      details["location"],
+      details["description"],
+      details["pay"],
+      details["type"],
+      questions["question1"],
+      questions["question2"],
+      questions["question3"],
+      questions["question4"],
       managerAffiliation,
       navigate
     );
