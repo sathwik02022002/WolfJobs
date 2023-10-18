@@ -7,7 +7,7 @@ describe("Header", () => {
   it("renders Header", () => {
     render(
       <MemoryRouter>
-        <Header link={"/"} text="Home" />{" "}
+        <Header />
       </MemoryRouter>
     );
     // const headline = screen.getByText(/Hello/i);

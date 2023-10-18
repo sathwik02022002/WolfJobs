@@ -4,14 +4,14 @@ import React from "react";
 import NavBarItem from "../../../src/components/Header/NavBarItem";
 import { MemoryRouter } from "react-router-dom";
 
-describe("Header", () => {
-  it("renders Header", () => {
+describe("NavBarItem", () => {
+  it("renders NavBarItem", () => {
     render(
       <MemoryRouter>
-        <NavBarItem />
+        <NavBarItem link={"/"} text="Home" />
       </MemoryRouter>
     );
-    // const headline = screen.getByText(/Hello/i);
-    // expect(headline).toBeInTheDocument();
+    const headline = screen.getByText(/Home/i);
+    expect(headline).toBeInTheDocument();
   });
 });

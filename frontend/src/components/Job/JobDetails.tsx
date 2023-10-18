@@ -3,11 +3,6 @@ import { useUserStore } from "../../store/UserStore";
 import { useForm } from "react-hook-form";
 import { Button } from "@mui/material";
 import { toast } from "react-toastify";
-import JobScreening from "./JobScreening";
-import JobRating from "./JobRating";
-import JobGrading from "./JobGrading";
-import JobFinalReview from "./JobFinalReview";
-import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import { Stack, TextField } from "@mui/material";
@@ -24,9 +19,6 @@ const JobDetail = (props: any) => {
   const { jobData }: { jobData: Job } = props;
 
   const jobType = jobData.type === "parttime" ? "Part time" : "Full time";
-
-  const [screeningList, setScreeningList] = useState<Application[]>([]);
-  const [displayList, setDisplayList] = useState<Application[]>([]);
 
   const applicationList: Application[] = useApplicationStore(
     (state) => state.applicationList
@@ -122,7 +114,7 @@ const JobDetail = (props: any) => {
       });
   };
 
-  const onSubmit = (data: FormValues) => {
+  const handleAnswerQuestionnaire = (data: FormValues) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
 
     const body = {
@@ -199,7 +191,10 @@ const JobDetail = (props: any) => {
                   Fill Questionnaire
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                <form
+                  onSubmit={handleSubmit(handleAnswerQuestionnaire)}
+                  noValidate
+                >
                   <div className="flex flex-row justify-between m-2">
                     <div className="flex flex-col ">
                       <div>
