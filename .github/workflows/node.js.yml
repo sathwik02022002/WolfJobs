@@ -25,13 +25,28 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - name: Setup Symfony
+      - name: Install packages
         working-directory: ./frontend
-        run: ls -al
+        run: |
+          ls -al
+          npm ci
+      - name: Run Tests
+        working-directory: ./frontend
+        run: |
+          npm run build --if-present
+
+      - name: Run build
+        working-directory: ./frontend
+        run: |
+          npm run test
+      - name: Run coverage
+        working-directory: ./frontend
+        run: |
+          npm run coverage
       # - run: ls -al
       # - run: cd frontend
       # - run: ls -al
       # - run: cd frontend
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
+      # - run: npm ci
+      # - run: npm run build --if-present
+      # - run: npm test
