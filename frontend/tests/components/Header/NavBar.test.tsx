@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import JobDetails from "../../../src/components/Job/JobDetails";
+import NavBar from "../../../src/components/Header/NavBar";
 import { MemoryRouter } from "react-router";
 
-describe("JobDetails", () => {
-  it("renders JobDetails", () => {
+describe("NavBar", () => {
+  it("renders NavBar", () => {
     render(
       <MemoryRouter>
-        <JobDetails jobData={{ type: "parttime" }} />
+        <NavBar />
       </MemoryRouter>
     );
     // const headline = screen.getByText(/Hello/i);
