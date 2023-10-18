@@ -65,7 +65,7 @@ const Explore = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5173/api/v1/users/fetchapplications")
+      .get("http://localhost:8000/api/v1/users/fetchapplications")
       .then((res) => {
         if (res.status !== 200) {
           toast.error("Error fetching applications");
@@ -75,7 +75,7 @@ const Explore = () => {
       });
 
     axios
-      .get("http://localhost:5173/api/v1/users", {
+      .get("http://localhost:8000/api/v1/users", {
         params: { page: 1, limit: 25 },
       })
       .then((res) => {
