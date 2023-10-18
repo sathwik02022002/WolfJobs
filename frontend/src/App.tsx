@@ -20,9 +20,10 @@ import { JobQuestionnaire } from "./Pages/CreateJob/jobQuestionnaire";
 import { JobPreview } from "./Pages/CreateJob/jobPreview";
 import Profile from "./Pages/Profile/Profile";
 
-function App() {
+const App = () => {
   return (
     <>
+      <div className="">Hello</div>
       <div className="h-screen">
         <Header />
         <ToastContainer style={{ marginTop: "64px" }} />
@@ -86,6 +87,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 export default App;

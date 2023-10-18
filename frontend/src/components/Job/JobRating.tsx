@@ -8,7 +8,7 @@ import { useSearchParams } from "react-router-dom";
 const JobRating = (props: any) => {
   const { jobData }: { jobData: Job } = props;
   const [displayList, setDisplayList] = useState<Application[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const applicationList = useApplicationStore((state) => state.applicationList);
 

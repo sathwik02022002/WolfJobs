@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useApplicationStore } from "../../store/ApplicationStore";
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSearchParams } from "react-router-dom";
@@ -9,7 +9,7 @@ const JobGrading = (props: any) => {
   const { jobData }: { jobData: Job } = props;
 
   const [displayList, setDisplayList] = useState<Application[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const applicationList = useApplicationStore((state) => state.applicationList);
 

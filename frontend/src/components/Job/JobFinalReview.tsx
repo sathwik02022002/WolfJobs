@@ -6,7 +6,7 @@ const JobFinalReview = (props: any) => {
   const { jobData }: { jobData: Job } = props;
   const [acceptedList, setAcceptedList] = useState<Application[]>([]);
   const [rejectedList, setRejectedList] = useState<Application[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const applicationList = useApplicationStore((state) => state.applicationList);
 
