@@ -323,7 +323,18 @@ const JobDetail = (props: any) => {
           )}
 
           {showApply && (
-            <Button onClick={handleApplyJob} type="button" variant="contained">
+            <Button
+              onClick={handleApplyJob}
+              type="button"
+              variant="contained"
+              style={{
+                background: "#FF5353",
+                borderRadius: "10px",
+                textTransform: "none",
+                fontSize: "18px",
+                width: "250px",
+              }}
+            >
               Apply Now
             </Button>
           )}
