@@ -1,22 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import JobDetails from "../../../src/components/Job/JobDetails";
+import JobGrading from "../../../src/components/Job/JobGrading";
 import { MemoryRouter } from "react-router";
 
-describe("JobDetails", () => {
-  it("renders JobDetails", () => {
+describe("JobGrading", () => {
+  it("renders JobGrading", () => {
     render(
       <MemoryRouter>
-        <JobDetails
+        <JobGrading
           jobData={{
-            type: "parttime",
             _id: 1,
-            managerid: 1,
-            name: "Developer",
-            status: "open",
-            location: "Raleigh",
-            pay: "100",
-            description: "Developer",
             question1: "Work experience?",
             question2: "CGPA?",
             question3: "Age?",

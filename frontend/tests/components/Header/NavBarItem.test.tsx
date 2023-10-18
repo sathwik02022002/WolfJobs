@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-// import Header from "../../../src/components/Header/Header";
 import NavBarItem from "../../../src/components/Header/NavBarItem";
 import { MemoryRouter } from "react-router-dom";
 
