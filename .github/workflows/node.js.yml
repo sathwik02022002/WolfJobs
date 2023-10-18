@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: ["master", "test-base"]
+    branches: ["master"]
   pull_request:
     branches: ["master"]
 
@@ -28,21 +28,26 @@ jobs:
       - name: Install packages
         working-directory: ./frontend
         run: |
-          ls -al
           npm i
-      - name: Run Tests
+      - name: Run build
         working-directory: ./frontend
         run: |
           npm run build --if-present
 
-      - name: Run build
-        working-directory: ./frontend
-        run: |
-          npm run test
-      - name: Run coverage
+      # - name: Run tests
+      #   working-directory: ./frontend
+      #   run: |
+      #     npm run test
+      - name: Run tests & coverage
         working-directory: ./frontend
         run: |
           npm run coverage
+      - name: Upload coverage to Codecov
+        # working-directory: ./frontend
+        uses: codecov/codecov-action@v1
+        with:
+          path: /frontend/coverage
+          token: ${{ secrets.CODECOV_TOKEN }}
       # - run: ls -al
       # - run: cd frontend
       # - run: ls -al
