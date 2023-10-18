@@ -14,11 +14,11 @@
 [![Top Language](https://img.shields.io/github/languages/top/ashakhatri007/wolfjobs)](https://GitHub.com/ashakhatri007/Wolfjobs/)
 [![Version](https://img.shields.io/github/package-json/v/ashakhatri007/wolfjobs)](https://GitHub.com/ashakhatri007/Wolfjobs/)
 [![Release](https://img.shields.io/github/v/release/ashakhatri007/wolfjobs)](https://GitHub.com/ashakhatri007/Wolfjobs/)
-[![codecov](https://codecov.io/gh/ashakhatri007/WolfJobs/branch/master/graph/badge.svg?token=1KKWYOMDBZ)](https://codecov.io/gh/ashakhatri007/WolfJobs)
+[![codecov](https://codecov.io/gh/deepr41/WolfJobs/graph/badge.svg?token=RH472ZM4PT)](https://codecov.io/gh/deepr41/WolfJobs)
 
 # Project presentation video
 
-[![Grading](http://img.youtube.com/vi/r8-E4-N6q10/0.jpg)](http://www.youtube.com/watch?v=r8-E4-N6q10 'Grading video')
+[![Grading](http://img.youtube.com/vi/r8-E4-N6q10/0.jpg)](http://www.youtube.com/watch?v=r8-E4-N6q10 "Grading video")
 
 ![WolfJobs Logo](https://user-images.githubusercontent.com/89487138/140389503-29cb0c25-83d0-4196-9bfb-7d1ecc863412.png)
 ![Banner](https://www.schoolcraft.edu/wp-content/uploads/2021/07/student-employee-open-house-graphic.png)
