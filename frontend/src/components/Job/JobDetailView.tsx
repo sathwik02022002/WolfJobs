@@ -5,7 +5,9 @@ import NoJobSelected from "./NoJobSelected";
 import JobDetail from "./JobDetails";
 
 const JobDetailView = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  // eslint-disable-line
+  /* tslint:disable-next-line */
+  const [searchParams] = useSearchParams(); // eslint-disable-line
   const [jobData, setJobData] = useState<Job | null>();
 
   //   let job: Job | undefined | null = null;

@@ -77,7 +77,7 @@ const JobDetail = (props: any) => {
       answer4: "",
     },
   });
-  const { register, handleSubmit, formState, watch } = form;
+  const { register, handleSubmit } = form;
 
   const handleApplyJob = (e: any) => {
     e.preventDefault();

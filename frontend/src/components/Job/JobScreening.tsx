@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router-dom";
 
 const JobScreening = (props: any) => {
   const { jobData }: { jobData: Job } = props;
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const [displayList, setDisplayList] = useState<Application[]>([]);
 
