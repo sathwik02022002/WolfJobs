@@ -119,8 +119,7 @@ https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-
 
 - Start the development server: *npm run dev*
 
-**Step 4:**
-Open [http://localhost:3000](http://localhost:5173) to view it in the browser.
+**Step 4: Open [http://localhost:5173](http://localhost:5173) to view it in the browser.**
 
 Congratulations! The project should now be up and running successfully.
 
