@@ -35,6 +35,8 @@ const JobDetail = (props: any) => {
   const [showApply, setShowApply] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
 
+  const userRole = useUserStore((state) => state.role);
+
   useEffect(() => {
     const temp: Application | undefined = applicationList.find(
       (item: Application) => {
@@ -162,15 +164,20 @@ const JobDetail = (props: any) => {
                 {jobData.location}
               </div>
               <div>
-                <b>Application Status:</b>
-                {application?.status === "accepted" ||
-                application?.status === "rejected" ? (
-                  <span className="capitalize">
-                    &nbsp;{application?.status}
-                  </span>
-                ) : (
-                  <>&nbsp;In Review</>
-                )}
+                {userRole === "Applicant" &&
+                  (application?.status === "accepted" ||
+                  application?.status === "rejected" ? (
+                    <>
+                      <b>Application Status:</b>
+                      <span className="capitalize">
+                        &nbsp;{application?.status}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <b>Application Status:</b>&nbsp;In Review
+                    </>
+                  ))}
               </div>
             </div>
             <div className="text-3xl p-4">{jobData.pay}$/hr</div>

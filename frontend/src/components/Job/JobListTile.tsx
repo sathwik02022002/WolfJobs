@@ -113,16 +113,17 @@ const JobListTile = (props: any) => {
                 <b>Type:</b> <span className="capitalize"> {jobType} </span>
               </p>
               <p className="text-base">
-                <b>Application Status:</b>
                 {userRole === "Applicant" &&
                   ((application !== null &&
                     application?.status === "accepted") ||
                   application?.status === "rejected" ? (
                     <span className="capitalize">
-                      &nbsp;{application?.status}
+                      <b>Application Status:</b>&nbsp;{application?.status}
                     </span>
                   ) : (
-                    <>&nbsp;"In Review"</>
+                    <>
+                      <b>Application Status:</b>&nbsp;"In Review"
+                    </>
                   ))}
               </p>
             </div>
