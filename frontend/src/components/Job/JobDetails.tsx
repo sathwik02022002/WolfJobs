@@ -18,7 +18,7 @@ type FormValues = {
 const JobDetail = (props: any) => {
   const { jobData }: { jobData: Job } = props;
 
-  const jobType = jobData.type === "parttime" ? "Part time" : "Full time";
+  const jobType = jobData.type === "part-time" ? "Part time" : "Full time";
 
   const applicationList: Application[] = useApplicationStore(
     (state) => state.applicationList
