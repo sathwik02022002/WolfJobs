@@ -10,12 +10,12 @@ import LogoutPage from "./Pages/Auth/LogoutPage";
 import RegistrationPage from "./Pages/Auth/RegistrationPage";
 import Header from "./components/Header/Header";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import CreateJob from "./Pages/CreateJob/CreateJob";
 import Explore from "./Pages/Explore/Explore";
 import Profile from "./Pages/Profile/Profile";
-import JobPreview from "./Pages/CreateJob/JobPreview";
 import LandingPage from "./Pages/Auth/LandingPage";
+import CreateJob from "./Pages/CreateJob/CreateJob";
 import JobQuestionnaire from "./Pages/CreateJob/JobQuestionnaire";
+import JobPreview from "./Pages/CreateJob/JobPreview";
 
 const App = () => {
   return (
