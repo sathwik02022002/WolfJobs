@@ -58,7 +58,7 @@ const RegistrationPage = () => {
     <>
       <div className="mx-auto bg-slate-50 content flex flex-col justify-center items-center">
         <div className=" p-4  border rounded bg-white">
-          <div className="text-3xl justify-center text-black mb-2 ">
+          <div className="text-xl justify-center text-black mb-4 ">
             Create New Account
           </div>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
