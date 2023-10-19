@@ -25,14 +25,13 @@
 
 # WolfJobs: The Ultimate Hub for Campus Employment
 
-Eager to dive into a side hustle or seize a quick-rewarding opportunity? Look no further than WolfJobs. Our platform bridges the gap between recruiters seeking temporary talents and candidates yearning for short-term roles without the ties of permanency. Step in, make some cash, and leave whenever you fancy
+Eager to dive into a side hustle or seize a quick-rewarding opportunity? Look no further than WolfJobs. Our platform bridges the gap between recruiters seeking temporary talents and candidates yearning for short-term roles without the ties of permanency. Step in, make some cash, and leave whenever you fancy!
 
-At the heart of our bustling campus, WolfJobs stands out as the top student employment portal. Whether you're aiming for a brief technical gig or stepping in as a part-time cashier at a campus dining hall, we've got you covered.
+At the heart of our bustling campus, WolfJobs stands out as the top student employment portal. Whether you're aiming for a brief technical gig or stepping in as a part-time cashier at a campus dining hall, we've got you covered. 
 
 # Why WolfJobs?
 
-Why settle for ordinary when you can be a part of something monumental? At WolfJobs, it’s not just about work – it's about joining a vibrant pack where every wolf (err, student!) counts. Step in and find your howl! 🐺🎉
-
+At WolfJobs, it’s not just about work – it's about joining a vibrant pack where every wolf (err, student!) counts. Step in and find your howl! 🐺🎉
 
 * **Competitive & Rewarding:** As part of the WolfJobs family, we pride ourselves on offering competitive wages paired with flexible schedules. Your time is valuable, and we recognize that.
 
