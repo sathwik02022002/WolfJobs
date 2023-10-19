@@ -124,6 +124,32 @@ res.json(500, {
     });
 ```
 
+## Close Job
+Method: `POST`
+
+`/api/v1/users/closejob`
+
+Response 1:
+
+```sh
+res.json(200, {
+      message: "Job is updated Successfully",
+
+      data: {
+        job,
+      },
+      success: true,
+    });
+```
+
+Response 2:
+
+```sh
+res.json(500, {
+      message: "Internal Server Error",
+    });
+```
+
 ## Create Application
 
 Method: `POST`
