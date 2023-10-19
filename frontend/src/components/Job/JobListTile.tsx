@@ -33,7 +33,7 @@ const JobListTile = (props: any) => {
 
   const affilation = data.managerAffilication;
   const role = data.name;
-  const jobType = data.type.split("-").join(" ");
+  const jobType = data?.type?.split("-")?.join(" ");
   const pay = data.pay || "0";
 
   useEffect(() => {
