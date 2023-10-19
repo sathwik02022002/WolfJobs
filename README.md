@@ -106,7 +106,7 @@ https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-
 **Step 2: Backend Setup**
 - Open a terminal window and navigate to the backend directory by executing the command: *cd backend*
 
-- Install the necessary packages by running: *npm i*
+- Install the necessary packages by running: *npm install*
 
 - Start the backend service with the following command: *npm start*
 
@@ -115,7 +115,7 @@ https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-
 
 - Open a new terminal window and navigate to the frontend directory: *cd frontend*
 
-- Install the required packages: *npm i*
+- Install the required packages: *npm install*
 
 - Start the development server: *npm run dev*
 
