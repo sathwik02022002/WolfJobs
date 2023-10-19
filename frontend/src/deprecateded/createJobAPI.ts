@@ -61,7 +61,7 @@ export async function login(email: string, password: string, navigate: any) {
     .then((data) => {
       console.log("Login data", data);
       if (data.success) {
-        sessionStorage.setItem("token", data.data.token);
+        localStorage.setItem("token", data.data.token);
         navigate("/dashboard");
       }
     });

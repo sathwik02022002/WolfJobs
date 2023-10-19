@@ -40,7 +40,7 @@ const Explore = () => {
   // const applicationList = useApplicationStore((state) => state.applicationList);
 
   useEffect(() => {
-    const token: string = sessionStorage.getItem("token")!;
+    const token: string = localStorage.getItem("token")!;
     if (!!!token) {
       naviagte("/login");
     }

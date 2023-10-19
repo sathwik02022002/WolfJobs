@@ -1,8 +1,5 @@
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
-// import { LandingPage } from "./feature/user-auth/components/landingPage";
-// import { JobQuestionnaire } from "./feature/createJob/components/jobQuestionnaire";
-// import { JobPreview } from "./feature/createJob/components/jobPreview";
 
 import { ToastContainer } from "react-toastify";
 import { Route, Routes } from "react-router-dom";
@@ -15,15 +12,13 @@ import Header from "./components/Header/Header";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import CreateJob from "./Pages/CreateJob/CreateJob";
 import Explore from "./Pages/Explore/Explore";
-import { LandingPage } from "./Pages/Auth/landingPage";
-import { JobQuestionnaire } from "./Pages/CreateJob/jobQuestionnaire";
-import { JobPreview } from "./Pages/CreateJob/jobPreview";
 import Profile from "./Pages/Profile/Profile";
-
+import JobQuestionnaire from "./Pages/CreateJob/jobQuestionnaire";
+import JobPreview from "./Pages/CreateJob/jobPreview";
+import LandingPage from "./Pages/Auth/landingPage";
 const App = () => {
   return (
     <>
-      <div className="">Hello</div>
       <div className="h-screen">
         <Header />
         <ToastContainer style={{ marginTop: "64px" }} />

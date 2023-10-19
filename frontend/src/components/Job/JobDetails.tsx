@@ -18,7 +18,7 @@ type FormValues = {
 const JobDetail = (props: any) => {
   const { jobData }: { jobData: Job } = props;
 
-  const jobType = jobData.type === "parttime" ? "Part time" : "Full time";
+  const jobType = jobData.type === "part-time" ? "Part time" : "Full time";
 
   const applicationList: Application[] = useApplicationStore(
     (state) => state.applicationList
@@ -323,7 +323,18 @@ const JobDetail = (props: any) => {
           )}
 
           {showApply && (
-            <Button onClick={handleApplyJob} type="button" variant="contained">
+            <Button
+              onClick={handleApplyJob}
+              type="button"
+              variant="contained"
+              style={{
+                background: "#FF5353",
+                borderRadius: "10px",
+                textTransform: "none",
+                fontSize: "18px",
+                width: "250px",
+              }}
+            >
               Apply Now
             </Button>
           )}

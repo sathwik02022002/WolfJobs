@@ -9,7 +9,7 @@ describe("JobDetails", () => {
       <MemoryRouter>
         <JobDetails
           jobData={{
-            type: "parttime",
+            type: "part-time",
             _id: 1,
             managerid: 1,
             name: "Developer",

@@ -153,47 +153,48 @@ module.exports.getProfile = async function (req, res) {
 };
 
 module.exports.editProfile = async function (req, res) {
-  if (req.body.password == req.body.confirm_password) {
-    try {
-      let user = await User.findById(req.body.id);
+  // if (req.body.password == req.body.confirm_password) {
+  try {
+    let user = await User.findById(req.body.id);
 
-      user.name = req.body.name;
-      user.password = req.body.password;
-      user.role = req.body.role;
-      user.address = req.body.address;
-      user.phonenumber = req.body.phonenumber;
-      user.hours = req.body.hours;
-      user.gender = req.body.gender;
-      user.dob = req.body.dob;
-      check = req.body.skills;
-      user.skills = check.split(" ");
-      user.save();
-      res.set("Access-Control-Allow-Origin", "*");
-      return res.json(200, {
-        message: "User is updated Successfully",
+    user.name = req.body.name;
+    user.password = req.body.password;
+    user.role = req.body.role;
+    user.address = req.body.address;
+    user.phonenumber = req.body.phonenumber;
+    user.hours = req.body.hours;
+    user.availability = req.body.availability;
+    user.gender = req.body.gender;
+    // user.dob = req.body.dob;
+    check = req.body.skills;
+    user.skills = check;
+    user.save();
+    res.set("Access-Control-Allow-Origin", "*");
+    return res.json(200, {
+      message: "User is updated Successfully",
 
-        data: {
-          //user.JSON() part gets encrypted
+      data: {
+        //user.JSON() part gets encrypted
 
-          // token: jwt.sign(user.toJSON(), env.jwt_secret, {
-          //   expiresIn: "100000",
-          // }),
-          user,
-        },
-        success: true,
-      });
-    } catch (err) {
-      console.log(err);
+        // token: jwt.sign(user.toJSON(), env.jwt_secret, {
+        //   expiresIn: "100000",
+        // }),
+        user,
+      },
+      success: true,
+    });
+  } catch (err) {
+    console.log(err);
 
-      return res.json(500, {
-        message: "Internal Server Error",
-      });
-    }
-  } else {
-    return res.json(400, {
-      message: "Bad Request",
+    return res.json(500, {
+      message: "Internal Server Error",
     });
   }
+  // } else {
+  //   return res.json(400, {
+  //     message: "Bad Request",
+  //   });
+  // }
 };
 module.exports.searchUser = async function (req, res) {
   try {

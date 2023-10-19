@@ -1,420 +1,205 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { AiFillCheckCircle } from "react-icons/ai";
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Stack,
+  TextField,
+} from "@mui/material";
+import { useForm } from "react-hook-form";
+
+type FormValues = {
+  role: string;
+  jobtype: string;
+  location: string;
+  pay: string;
+  description: string;
+};
 
 const CreateJob = () => {
-  const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
-  const [description, setDescription] = useState("");
-  const [pay, setPay] = useState("");
-  const [type, setType] = useState("");
-
   const navigate = useNavigate();
+
+  const form = useForm<FormValues>({
+    defaultValues: {
+      role: "",
+      jobtype: "",
+      location: "",
+      pay: "",
+      description: "",
+    },
+  });
+
+  const { register, handleSubmit, formState } = form;
+  const { errors } = formState;
+
+  const [jobType, setJobType] = useState("full-time");
+
+  const onSubmit = (data: FormValues) => {
+    const body = {
+      role: data.role,
+      jobtype: jobType,
+      location: data.location,
+      pay: data.pay,
+      description: data.description,
+    };
+    navigate("/job_questionnaire", {
+      state: body,
+    });
+  };
 
   return (
     <>
-      <div
-        style={{
-          position: "absolute",
-          width: "767px",
-          height: "0px",
-          left: "40px",
-          top: "500px",
-          border: "1px solid #DFDFDF",
-          transform: "rotate(90deg)",
-          borderRight: "2px solid #000",
-        }}
-      ></div>
-
-      <div
-        style={{
-          position: "absolute",
-          width: "276px",
-          height: "36px",
-          left: "48px",
-          top: "154px",
-          fontFamily: "Poppins",
-          fontStyle: "normal",
-          fontWeight: 500,
-          fontSize: "24px",
-          lineHeight: "36px",
-          color: "#000000",
-        }}
-      >
-        Create New Job Listing
-      </div>
-
-      <p
-        style={{
-          position: "absolute",
-          height: "20px",
-          left: "3.33%",
-          right: "95.28%",
-          top: "54%",
-          transform: "translateY(-50%)",
-          marginTop: "-135.5px",
-          background: "white",
-        }}
-      >
-        <img src="/images/Vector.png" alt="Vector Image" />
-      </p>
-      <div
-        style={{
-          position: "absolute",
-          width: "81px",
-          height: "19px",
-          left: "80px",
-          top: "232px",
-          fontFamily: "Urbanist",
-          fontStyle: "normal",
-          fontWeight: 400,
-          fontSize: "16px",
-          lineHeight: "19px",
-          color: "#1E1E1E",
-        }}
-      >
-        Add Details
-      </div>
-
-      <p
-        style={{
-          position: "absolute",
-          height: "20px",
-          left: "3.33%",
-          right: "95.28%",
-          top: "60%",
-          transform: "translateY(-50%)",
-          marginTop: "-135.5px",
-          background: "white",
-        }}
-      >
-        <img src="/images/Vector2.png" alt="Vector Image" />
-      </p>
-      <div
-        style={{
-          position: "absolute",
-          width: "109px",
-          height: "19px",
-          left: "80px",
-          top: "272px",
-          fontFamily: "Urbanist",
-          fontStyle: "normal",
-          fontWeight: 400,
-          fontSize: "16px",
-          lineHeight: "19px",
-          color: "#CBCBCB",
-          whiteSpace: "nowrap",
-        }}
-      >
-        Fill Questionnaire
-      </div>
-
-      <p
-        style={{
-          position: "absolute",
-          height: "20px",
-          left: "3.33%",
-          right: "95.28%",
-          top: "65.5%",
-          transform: "translateY(-50%)",
-          marginTop: "-135.5px",
-          background: "white",
-        }}
-      >
-        <img src="/images/Vector2.png" alt="Vector Image" />
-      </p>
-      <div
-        style={{
-          position: "absolute",
-          width: "109px",
-          height: "19px",
-          left: "80px",
-          top: "312px",
-          fontFamily: "Urbanist",
-          fontStyle: "normal",
-          fontWeight: 400,
-          fontSize: "16px",
-          lineHeight: "19px",
-          color: "#CBCBCB",
-          whiteSpace: "nowrap",
-        }}
-      >
-        Preview
-      </div>
-
-      <p
-        style={{
-          position: "absolute",
-          height: "20px",
-          left: "3.33%",
-          right: "95.28%",
-          top: "71.5%",
-          transform: "translateY(-50%)",
-          marginTop: "-135.5px",
-          background: "white",
-        }}
-      >
-        <img src="/images/Vector2.png" alt="Vector Image" />
-      </p>
-      <div
-        style={{
-          position: "absolute",
-          width: "109px",
-          height: "19px",
-          left: "80px",
-          top: "352px",
-          fontFamily: "Urbanist",
-          fontStyle: "normal",
-          fontWeight: 400,
-          fontSize: "16px",
-          lineHeight: "19px",
-          color: "#CBCBCB",
-          whiteSpace: "nowrap",
-        }}
-      >
-        Confirm
-      </div>
-
-      <div
-        style={{
-          position: "absolute",
-          width: "138px",
-          height: "36px",
-          left: "548px",
-          top: "154px",
-          fontFamily: "Poppins",
-          fontStyle: "normal",
-          fontWeight: 500,
-          fontSize: "24px",
-          lineHeight: "36px",
-          color: "#000000",
-        }}
-      >
-        Add Details
-      </div>
-
-      <div
-        style={{
-          boxSizing: "border-box",
-          position: "absolute",
-          width: "344px",
-          height: "50px",
-          left: "548px",
-          top: "220px",
-          background: "#FFFFFF",
-          border: "1px solid #CBCBCB",
-          borderRadius: "10px",
-        }}
-      >
-        <input
-          style={{
-            position: "absolute",
-            width: "300px",
-            height: "40px",
-            left: "10px",
-            top: "2px",
-            fontFamily: "Urbanist",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "16px",
-            lineHeight: "19px",
-            color: "black",
-          }}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          value={name}
-          placeholder="Job Role"
-        />
-      </div>
-
-      <div
-        style={{
-          boxSizing: "border-box",
-          position: "absolute",
-          width: "344px",
-          height: "50px",
-          left: "548px",
-          top: "289px",
-          background: "#FFFFFF",
-          border: "1px solid #CBCBCB",
-          borderRadius: "10px",
-        }}
-      >
-        <select
-          style={{
-            position: "absolute",
-            width: "300px",
-            height: "40px",
-            left: "10px",
-            top: "2px",
-            fontFamily: "Urbanist",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "16px",
-            lineHeight: "19px",
-            color: type ? "black" : "#999",
-          }}
-          onChange={(e) => {
-            setType(e.target.value);
-          }}
-          value={type}
+      <div className="flex flex-row">
+        <div
+          className="w-3/12  pt-10 border-r"
+          style={{ height: "calc(100vh - 72px)" }}
         >
-          <option value="" disabled selected hidden>
-            Job Type
-          </option>
-          <option value="full-time">Full-Time</option>
-          <option value="parttime">Part-Time</option>
-        </select>
-      </div>
-
-      <div
-        style={{
-          boxSizing: "border-box",
-          position: "absolute",
-          width: "344px",
-          height: "50px",
-          left: "548px",
-          top: "357px",
-          background: "#FFFFFF",
-          border: "1px solid #CBCBCB",
-          borderRadius: "10px",
-        }}
-      >
-        <input
-          style={{
-            position: "absolute",
-            width: "300px",
-            height: "40px",
-            left: "10px",
-            top: "2px",
-            fontFamily: "Urbanist",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "16px",
-            lineHeight: "19px",
-            color: "black",
-          }}
-          onChange={(e) => {
-            setLocation(e.target.value);
-          }}
-          value={location}
-          placeholder="Location"
-        />
-      </div>
-
-      <div
-        style={{
-          boxSizing: "border-box",
-          position: "absolute",
-          width: "344px",
-          height: "50px",
-          left: "548px",
-          top: "425px",
-          background: "#FFFFFF",
-          border: "1px solid #CBCBCB",
-          borderRadius: "10px",
-        }}
-      >
-        <input
-          style={{
-            position: "absolute",
-            width: "300px",
-            height: "40px",
-            left: "10px",
-            top: "2px",
-            fontFamily: "Urbanist",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "16px",
-            lineHeight: "19px",
-            color: "black",
-          }}
-          onChange={(e) => {
-            setPay(e.target.value);
-          }}
-          value={pay}
-          placeholder="Pay"
-        />
-      </div>
-
-      <div
-        style={{
-          boxSizing: "border-box",
-          position: "absolute",
-          width: "344px",
-          height: "233px",
-          left: "548px",
-          top: "494px",
-          background: "#FFFFFF",
-          border: "1px solid #CBCBCB",
-          borderRadius: "10px",
-        }}
-      >
-        <input
-          style={{
-            position: "absolute",
-            width: "300px",
-            height: "40px",
-            left: "10px",
-            top: "2px",
-            fontFamily: "Urbanist",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "16px",
-            lineHeight: "19px",
-            color: "black",
-          }}
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
-          value={description}
-          placeholder="Job Description"
-        />
-      </div>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          navigate("/job_questionnaire", {
-            state: {
-              name,
-              location,
-              description,
-              pay,
-              type,
-            },
-          });
-        }}
-        type="button"
-        style={{
-          boxSizing: "border-box",
-          position: "absolute",
-          width: "344px",
-          height: "50px",
-          left: "548px",
-          top: "747px",
-          background: "#FFFFFF",
-          border: "1px solid #FF5353",
-          borderRadius: "10px",
-        }}
-      >
-        <p
-          style={{
-            position: "absolute",
-            width: "300px",
-            height: "40px",
-            left: "10px",
-            top: "10px",
-            fontFamily: "Urbanist",
-            fontStyle: "normal",
-            fontWeight: 600,
-            fontSize: "18px",
-            lineHeight: "22px",
-            color: "#FF5353",
-          }}
+          <div className="text-2xl  translate-x-10">Create New Job Listing</div>
+          <div className="flex flex-col items-start  ml-10  mt-10 ">
+            <div className="inline-flex items-center flex-row  ">
+              <AiFillCheckCircle color="#1E1E1E" size="20px" />
+              <span className="ml-2 text-xl text-[#1E1E1E]">Add details</span>
+            </div>
+            <div className="inline-flex items-center flex-row  ">
+              <AiFillCheckCircle color="#CBCBCB" size="20px" />
+              <span className="ml-2 text-xl text-[#CBCBCB]">
+                Fill Questionnaire
+              </span>
+            </div>
+            <div className="inline-flex items-center flex-row  ">
+              <AiFillCheckCircle color="#CBCBCB" size="20px" />
+              <span className="ml-2 text-xl text-[#CBCBCB]">Preview</span>
+            </div>
+            <div className="inline-flex items-center flex-row  ">
+              <AiFillCheckCircle color="#CBCBCB" size="20px" />
+              <span className="ml-2 text-xl text-[#CBCBCB]">Confirm</span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="w-9/12 pt-10 pl-10"
+          style={{ height: "calc(100vh - 72px)" }}
         >
-          Proceed
-        </p>
-      </button>
+          <div className="text-2xl translate-x-10">Add Details</div>
+          <div className="flex flex-col">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+              className="m-4 mx-10"
+            >
+              <Stack spacing={2} width={600}>
+                <TextField
+                  label="Job Role"
+                  type="text"
+                  {...register("role", {
+                    required: "Job role is required",
+                  })}
+                  error={!!errors.role}
+                  helperText={errors.role?.message}
+                  sx={{
+                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                    "& fieldset": {
+                      paddingLeft: (theme) => theme.spacing(1.5),
+                      borderRadius: "10px",
+                    },
+                  }}
+                />
+                <FormControl>
+                  <InputLabel id="role-id">Job Type</InputLabel>
+                  <Select
+                    value={jobType}
+                    labelId="role-id"
+                    label="Job Type"
+                    id="role"
+                    onChange={(e: SelectChangeEvent) => {
+                      setJobType(e.target.value);
+                    }}
+                    sx={{
+                      "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                      "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                      "& fieldset": {
+                        paddingLeft: (theme) => theme.spacing(0.75),
+                        borderRadius: "10px",
+                      },
+                    }}
+                  >
+                    <MenuItem value={"full-time"}>Full Time</MenuItem>
+                    <MenuItem value={"part-time"}>Part Time</MenuItem>
+                  </Select>
+                </FormControl>
+                <TextField
+                  label="Location"
+                  type="text"
+                  {...register("location")}
+                  error={!!errors.location}
+                  helperText={errors.location?.message}
+                  sx={{
+                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                    "& fieldset": {
+                      paddingLeft: (theme) => theme.spacing(1.5),
+                      borderRadius: "10px",
+                    },
+                  }}
+                />
+                <TextField
+                  label="Pay"
+                  type="number"
+                  {...register("pay", {
+                    required: "Job pay is required",
+                  })}
+                  error={!!errors.pay}
+                  helperText={errors.pay?.message}
+                  sx={{
+                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                    "& fieldset": {
+                      paddingLeft: (theme) => theme.spacing(1.5),
+                      borderRadius: "10px",
+                    },
+                  }}
+                />
+                <TextField
+                  label="Job Description"
+                  type="text"
+                  {...register("description")}
+                  error={!!errors.description}
+                  helperText={errors.description?.message}
+                  sx={{
+                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                    "& fieldset": {
+                      paddingLeft: (theme) => theme.spacing(1.5),
+                      borderRadius: "10px",
+                    },
+                  }}
+                  minRows={4}
+                  multiline
+                />
+                <Button
+                  type="submit"
+                  variant="outlined"
+                  style={{
+                    color: "#FF5353",
+                    borderColor: "#FF5353",
+                    textTransform: "none",
+                    fontSize: "16px",
+                    minWidth: "200px",
+                  }}
+                >
+                  Proceed
+                </Button>
+              </Stack>
+            </form>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

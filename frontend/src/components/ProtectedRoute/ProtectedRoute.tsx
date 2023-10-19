@@ -3,7 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 const ProtectedRoute = ({ children }: any) => {
   // const user = useSelector((state) => state.user);
   // get user information
-  const token: any = sessionStorage.getItem("token");
+  const token: any = localStorage.getItem("token");
 
   let location = useLocation();
 
