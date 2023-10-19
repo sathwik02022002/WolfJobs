@@ -53,9 +53,23 @@ The anaswers are then rated and then final review is done by looking at the grad
 Candidate's applications are maintained and no candidate can apply to an already applied job which was happening the previous project.
 Manager's applications listings are maintained for each manager and no manager can't close an already closed job which was happening the previous project.
 
-### Added Department for each job posting.
+### Added Department for each Job Posting.
 Previously the jobs did not have the department name. We added department for each Job posting as per the Manager's Department.
 ### Manager Role CREATION PAGE WHICH SHOWS departments!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+### ✨ Future Improvements
+
+#### 📧 Email Service
+
+On getting selected/rejected to a job, the applicant should be getting an email about it.
+
+#### 📃 Search jobs based on department
+
+There can be a different category searches for applicants when searching for the jobs. For instance, we can have search on basis of the departments.
+
+#### Styling improvements
+Design improvements were made to make the app more user friendly and intuitive. Previously, there were many design inconsistencies like no landing page for the website, the button shapes, icon colors and fonts did not match everywhere. These were fixed by implementing a lot of changes in the frontend. All of these changes can be viewed in the feature videos in the main README.
 
 
 
