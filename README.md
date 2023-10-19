@@ -33,14 +33,15 @@ At the heart of our bustling campus, WolfJobs stands out as the top student empl
 
 Why settle for ordinary when you can be a part of something monumental? At WolfJobs, we're not just about job listings; we embody the core principles of Student Employment – a beacon of integrity, innovation, and collaboration.
 
-## Competitive & Rewarding
+
+### Competitive & Rewarding
 As part of the Campus Enterprises family, we pride ourselves on offering competitive wages paired with flexible schedules. Your time is valuable, and we recognize that.
 
-## Holistic Growth & Learning
+### Holistic Growth & Learning
 With our commitment to fostering a culture rich in learning and opportunity, every job position at WolfJobs paves the way for personal and professional growth.
 A Confluence of Values: Our foundation rests on unwavering values: integrity, respect for diversity, responsibility, stewardship, and relentless pursuit of excellence. Every job posted resonates with these ideals, ensuring a harmonious and enriching work environment.
 
-## Inclusivity & Belonging
+### Inclusivity & Belonging
 At WolfJobs, every student is a valuable asset. Our emphasis on inclusion ensures that you're not just taking up a job; you're becoming a part of a diverse, dynamic community where your voice matters.
 
 # Watch this video to know more:
