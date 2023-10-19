@@ -162,11 +162,14 @@ const JobDetail = (props: any) => {
                 {jobData.location}
               </div>
               <div>
+                <b>Application Status:</b>
                 {application?.status === "accepted" ||
                 application?.status === "rejected" ? (
-                  <b>Application Status: {application?.status}</b>
+                  <span className="capitalize">
+                    &nbsp;{application?.status}
+                  </span>
                 ) : (
-                  <b>Application Status: In Review</b>
+                  <>&nbsp;In Review</>
                 )}
               </div>
             </div>
