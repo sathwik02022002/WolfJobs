@@ -12,10 +12,10 @@ import Header from "./components/Header/Header";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Explore from "./Pages/Explore/Explore";
 import Profile from "./Pages/Profile/Profile";
-import LandingPage from "./Pages/Auth/LandingPage";
 import CreateJob from "./Pages/CreateJob/CreateJob";
-import JobQuestionnaire from "./Pages/CreateJob/JobQuestionnaire";
-import JobPreview from "./Pages/CreateJob/JobPreview";
+import LandingPage from "./Pages/Auth/landingPage";
+import JobQuestionnaire from "./Pages/CreateJob/jobQuestionnaire";
+import JobPreview from "./Pages/CreateJob/jobPreview";
 
 const App = () => {
   return (
