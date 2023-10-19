@@ -48,8 +48,8 @@ jobs:
         with:
           name: dist-without-markdown
           path: |
-            dist
-            !dist/**/*.md
+            frontend/dist
+            
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
