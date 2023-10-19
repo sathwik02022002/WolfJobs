@@ -40,7 +40,6 @@ const ProfileEdit = ({ props }: { props: any }) => {
     availability,
     gender,
     hours,
-    width = "700px",
   } = props;
 
   const form = useForm<FormValues>({
@@ -64,7 +63,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
 
   const navigate = useNavigate();
 
-  const { register, handleSubmit, formState, watch } = form;
+  const { register, handleSubmit, formState } = form;
   const { errors } = formState;
 
   const handleSaveProfile = (data: FormValues) => {

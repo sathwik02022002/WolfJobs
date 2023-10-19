@@ -13,9 +13,9 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import CreateJob from "./Pages/CreateJob/CreateJob";
 import Explore from "./Pages/Explore/Explore";
 import Profile from "./Pages/Profile/Profile";
-import JobQuestionnaire from "./Pages/CreateJob/jobQuestionnaire";
-import JobPreview from "./Pages/CreateJob/jobPreview";
-import LandingPage from "./Pages/Auth/landingPage";
+import JobQuestionnaire from "./Pages/CreateJob/JobQuestionnaire";
+import JobPreview from "./Pages/CreateJob/JobPreview";
+import LandingPage from "./Pages/Auth/LandingPage";
 
 const App = () => {
   return (
