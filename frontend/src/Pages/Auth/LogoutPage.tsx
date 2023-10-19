@@ -17,7 +17,6 @@ const LogoutPage = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    sessionStorage.clear();
     localStorage.clear();
 
     updateName("");

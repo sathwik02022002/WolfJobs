@@ -36,20 +36,21 @@ At the heart of our bustling campus, WolfJobs stands out as the top student empl
 
 At WolfJobs, it’s not just about work – it's about joining a vibrant pack where every wolf (err, student!) counts. Step in and find your howl!🐺🎉
 
-* **Competitive & Rewarding:** As part of the WolfJobs family, we pride ourselves on offering competitive wages paired with flexible schedules. Your time is valuable, and we recognize that.
+- **Competitive & Rewarding:** As part of the WolfJobs family, we pride ourselves on offering competitive wages paired with flexible schedules. Your time is valuable, and we recognize that.
 
-* **Holistic Growth & Learning:** With our commitment to fostering a culture rich in learning and opportunity, every job position at WolfJobs paves the way for personal and professional growth. 
+- **Holistic Growth & Learning:** With our commitment to fostering a culture rich in learning and opportunity, every job position at WolfJobs paves the way for personal and professional growth.
 
-* **A Confluence of Values:** Our foundation rests on unwavering values: integrity, respect for diversity, responsibility, stewardship, and relentless pursuit of excellence. Every job posted resonates with these ideals, ensuring a harmonious and enriching work environment.
+- **A Confluence of Values:** Our foundation rests on unwavering values: integrity, respect for diversity, responsibility, stewardship, and relentless pursuit of excellence. Every job posted resonates with these ideals, ensuring a harmonious and enriching work environment.
 
-* **Inclusivity & Belonging:** At WolfJobs, every student is a valuable asset. Our emphasis on inclusion ensures that you're not just taking up a job; you're becoming a part of a diverse, dynamic community where your voice matters.
-
+- **Inclusivity & Belonging:** At WolfJobs, every student is a valuable asset. Our emphasis on inclusion ensures that you're not just taking up a job; you're becoming a part of a diverse, dynamic community where your voice matters.
 
 # Ready to get started? Watch this video👇
 
 https://user-images.githubusercontent.com/53376580/140424961-e5cda829-7d05-4221-8539-4a8f67e8fbb5.mov
 
 # Tech Stack used:
+
+<!-- - ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) -->
 
 - ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 - ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
@@ -103,29 +104,27 @@ https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-
 - Download and install the latest version of MongoDB from [MongoDB Official Website.](https://www.mongodb.com/try/download/community)
 - Make sure you have React version 18.0
 
-
 **Step 1: Clone the Repository from this [link](https://github.com/deepr41/WolfJobs.git)**
 
 **Step 2: Backend Setup**
-- Open a terminal window and navigate to the backend directory by executing the command: *cd backend*
 
-- Install the necessary packages by running: *npm install*
+- Open a terminal window and navigate to the backend directory by executing the command: _cd backend_
 
-- Start the backend service with the following command: *npm start*
+- Install the necessary packages by running: _npm install_
 
+- Start the backend service with the following command: _npm start_
 
 **Step 3: Frontend Setup**
 
-- Open a new terminal window and navigate to the frontend directory: *cd frontend*
+- Open a new terminal window and navigate to the frontend directory: _cd frontend_
 
-- Install the required packages: *npm install*
+- Install the required packages: _npm install_
 
-- Start the development server: *npm run dev*
+- Start the development server: _npm run dev_
 
 **Step 4: Open [http://localhost:5173](http://localhost:5173) to view it in the browser.**
 
 **Congratulations! The project should now be up and running successfully.**
-
 
 # Additional commands for React App
 
@@ -145,7 +144,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
 
 # Future Improvements✨
 

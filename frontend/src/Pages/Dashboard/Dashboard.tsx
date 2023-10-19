@@ -7,12 +7,14 @@ import { useUserStore } from "../../store/UserStore";
 import { useJobStore } from "../../store/JobStore";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import JobListTile from "../../components/Job/JobListTile";
+import { Button } from "@mui/material";
 
 const Dashboard = () => {
   const naviagte = useNavigate();
 
   const updateName = useUserStore((state) => state.updateName);
   const updateEmail = useUserStore((state) => state.updateEmail);
+  const updatePassword = useUserStore((state) => state.updatePassword);
   const updateAddress = useUserStore((state) => state.updateAddress);
   const updateRole = useUserStore((state) => state.updateRole);
   const updateDob = useUserStore((state) => state.updateDob);
@@ -41,7 +43,7 @@ const Dashboard = () => {
   const [displayList, setDisplayList] = useState<Job[]>([]);
 
   useEffect(() => {
-    const token: string = sessionStorage.getItem("token")!;
+    const token: string = localStorage.getItem("token")!;
     if (!!!token) {
       naviagte("/login");
     }
@@ -51,6 +53,7 @@ const Dashboard = () => {
 
       updateName(userInfo.name);
       updateEmail(userInfo.email);
+      updatePassword(userInfo.password);
       updateAddress(userInfo.address);
       updateRole(userInfo.role);
       updateDob(userInfo.dob);
@@ -140,16 +143,26 @@ const Dashboard = () => {
         </div>
       </div>
       {role === "Manager" && (
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            naviagte("/createjob");
-          }}
-          type="button"
-          className=" fixed bg-red-400 text-white p-4 bottom-3 right-3"
-        >
-          Create Job button +
-        </button>
+        <div className="fixed p-4 bottom-3 right-3">
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              naviagte("/createjob");
+            }}
+            type="button"
+            className="  bg-red-400 text-white "
+            style={{
+              background: "#FF5353",
+              borderRadius: "10px",
+              textTransform: "none",
+              fontSize: "18px",
+              width: "250px",
+            }}
+            variant="contained"
+          >
+            Create Job +
+          </Button>
+        </div>
       )}
     </>
   );

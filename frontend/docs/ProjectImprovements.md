@@ -25,10 +25,12 @@ We also added the department to which the Job belongs such as NC State Dining, C
 ### ADD APPLICANT LISTING UI SCREENSHOT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #### 🤯 Manager's View
-Manager's can now track his own job listing under 'My Listings' as well as look at 'All jobs' that have been posted by other managers.
+Managers can now track his own job listing under 'My Listings' as well as look at 'All jobs' that have been posted by other managers.
 In the previous project there was just Accept/Reject for any application. We added a 4 stage review process for the manager to finalize from a potential applicant. 
 The 4 stages are Screening, Grading, Rating, Review.
 ### ADD MANAGER LISTING UI SCREENSHOT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 
 #### 🤯 User friendly Landing Page
 Previously the landing page was empty with only login and register button on the top right corner.
@@ -55,18 +57,9 @@ Manager's applications listings are maintained for each manager and no manager c
 
 ### Added Department for each Job Posting.
 Previously the jobs did not have the department name. We added department for each Job posting as per the Manager's Department.
-### Manager Role CREATION PAGE WHICH SHOWS departments!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+<img width="1062" alt="image" src="https://github.com/deepr41/WolfJobs/assets/39904345/e3235889-985b-4b31-bf9f-12c6a2afca61">
 
-### ✨ Future Improvements
-
-#### 📧 Email Service
-
-On getting selected/rejected to a job, the applicant should be getting an email about it.
-
-#### 📃 Search jobs based on department
-
-There can be a different category searches for applicants when searching for the jobs. For instance, we can have search on basis of the departments.
 
 #### Styling improvements
 Design improvements were made to make the app more user friendly and intuitive. Previously, there were many design inconsistencies like no landing page for the website, the button shapes, icon colors and fonts did not match everywhere. These were fixed by implementing a lot of changes in the frontend. All of these changes can be viewed in the feature videos in the main README.

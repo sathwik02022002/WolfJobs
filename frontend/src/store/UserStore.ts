@@ -4,6 +4,7 @@ import { create } from "zustand";
 type UserState = {
   name: string;
   email: string;
+  password: string;
   address: string;
   role: string;
   dob: string;
@@ -20,6 +21,7 @@ type UserState = {
 type UserAction = {
   updateName: (name: UserState["name"]) => void;
   updateEmail: (name: UserState["email"]) => void;
+  updatePassword: (name: UserState["email"]) => void;
   updateAddress: (name: UserState["address"]) => void;
   updateRole: (name: UserState["role"]) => void;
   updateDob: (name: UserState["dob"]) => void;
@@ -36,6 +38,7 @@ type UserAction = {
 export const useUserStore = create<UserState & UserAction>()((set) => ({
   name: "",
   email: "",
+  password: "",
   address: "",
   role: "",
   dob: "",
@@ -53,6 +56,9 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
   },
   updateEmail: (email: string) => {
     set(() => ({ email: email }));
+  },
+  updatePassword: (password: string) => {
+    set(() => ({ password: password }));
   },
   updateAddress: (address: string) => {
     set(() => ({ address: address }));

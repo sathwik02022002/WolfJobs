@@ -9,8 +9,6 @@ const NavBar = () => {
       <div className="relative hidden lg:flex items-center ml-auto">
         <nav className="text-sm leading-6 font-semibold text-slate-700 ">
           <ul className="flex space-x-8">
-            {!isLoggedIn && <NavBarItem link="/login" text="Login" />}
-            {!isLoggedIn && <NavBarItem link="/register" text="Register" />}
             {isLoggedIn && <NavBarItem link="/profile" text="Profile" />}
             {isLoggedIn && <NavBarItem link="/logout" text="Log Out" />}
           </ul>

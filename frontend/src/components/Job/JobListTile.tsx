@@ -13,6 +13,8 @@ const JobListTile = (props: any) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const userId = useUserStore((state) => state.id);
 
+  const userRole = useUserStore((state) => state.role);
+
   const applicationList: Application[] = useApplicationStore(
     (state) => state.applicationList
   );
@@ -26,11 +28,12 @@ const JobListTile = (props: any) => {
       }
     );
     setApplication(temp || null);
+    console.log(temp);
   }, [data]);
 
   const affilation = data.managerAffilication;
-  const role = "Dining Associate";
-  const jobType = "Full-time";
+  const role = data.name;
+  const jobType = data.type.split("-").join(" ");
   const pay = data.pay || "0";
 
   useEffect(() => {
@@ -107,15 +110,21 @@ const JobListTile = (props: any) => {
                 </span>
               </p>
               <p className="text-base">
-                <b>Type:</b> {jobType}
+                <b>Type:</b> <span className="capitalize"> {jobType} </span>
               </p>
               <p className="text-base">
-                {application?.status === "accepted" ||
-                application?.status === "rejected" ? (
-                  <b>Application Status: {application?.status}</b>
-                ) : (
-                  <b>Application Status: In Review</b>
-                )}
+                {userRole === "Applicant" &&
+                  ((application !== null &&
+                    application?.status === "accepted") ||
+                  application?.status === "rejected" ? (
+                    <span className="capitalize">
+                      <b>Application Status:</b>&nbsp;{application?.status}
+                    </span>
+                  ) : (
+                    <>
+                      <b>Application Status:</b>&nbsp;"In Review"
+                    </>
+                  ))}
               </p>
             </div>
           </div>

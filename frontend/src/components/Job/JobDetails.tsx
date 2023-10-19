@@ -18,7 +18,7 @@ type FormValues = {
 const JobDetail = (props: any) => {
   const { jobData }: { jobData: Job } = props;
 
-  const jobType = jobData.type === "parttime" ? "Part time" : "Full time";
+  const jobType = jobData.type === "part-time" ? "Part time" : "Full time";
 
   const applicationList: Application[] = useApplicationStore(
     (state) => state.applicationList
@@ -34,6 +34,8 @@ const JobDetail = (props: any) => {
   const [application, setApplication] = useState<Application | null>(null);
   const [showApply, setShowApply] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
+
+  const userRole = useUserStore((state) => state.role);
 
   useEffect(() => {
     const temp: Application | undefined = applicationList.find(
@@ -134,7 +136,7 @@ const JobDetail = (props: any) => {
             Job Details
           </div>
           <div className="flex flex-row justify-between m-2">
-            <div className="flex flex-col ">
+            <div className="flex flex-col">
               <div>
                 <span className="font-semibold text-lg">Role:</span>&nbsp;
                 {jobData.name}
@@ -162,12 +164,20 @@ const JobDetail = (props: any) => {
                 {jobData.location}
               </div>
               <div>
-                {application?.status === "accepted" ||
-                application?.status === "rejected" ? (
-                  <b>Application Status: {application?.status}</b>
-                ) : (
-                  <b>Application Status: In Review</b>
-                )}
+                {userRole === "Applicant" &&
+                  (application?.status === "accepted" ||
+                  application?.status === "rejected" ? (
+                    <>
+                      <b>Application Status:</b>
+                      <span className="capitalize">
+                        &nbsp;{application?.status}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <b>Application Status:</b>&nbsp;In Review
+                    </>
+                  ))}
               </div>
             </div>
             <div className="text-3xl p-4">{jobData.pay}$/hr</div>
@@ -183,7 +193,7 @@ const JobDetail = (props: any) => {
       {role === "Applicant" && jobData.status === "open" && (
         <div>
           {showQuestionnaire && (
-            <div className="w-7/12">
+            <div className="w-7/12 mb-10">
               <div className="flex flex-col m-4 ">
                 <div className="text-xl border-b border-gray-300 font-bold">
                   Fill Questionnaire
@@ -323,7 +333,18 @@ const JobDetail = (props: any) => {
           )}
 
           {showApply && (
-            <Button onClick={handleApplyJob} type="button" variant="contained">
+            <Button
+              onClick={handleApplyJob}
+              type="button"
+              variant="contained"
+              style={{
+                background: "#FF5353",
+                borderRadius: "10px",
+                textTransform: "none",
+                fontSize: "18px",
+                width: "250px",
+              }}
+            >
               Apply Now
             </Button>
           )}
