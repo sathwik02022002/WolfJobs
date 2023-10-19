@@ -23,21 +23,25 @@
 ![WolfJobs Logo](https://user-images.githubusercontent.com/89487138/140389503-29cb0c25-83d0-4196-9bfb-7d1ecc863412.png)
 ![Banner](https://www.schoolcraft.edu/wp-content/uploads/2021/07/student-employee-open-house-graphic.png)
 
-# WolfJobs
+# WolfJobs: The Ultimate Hub for Campus Employment
 
-Need a side Hustle or want to get some quick rewards? Wolfjobs provides the perfect platform to meet your requirements.
+Eager to dive into a side hustle or seize a quick-rewarding opportunity? Look no further than WolfJobs. Our platform bridges the gap between recruiters seeking temporary talents and candidates yearning for short-term roles without the ties of permanency. Step in, make some cash, and leave whenever you fancy
 
-A job portal which provides recruiters a platform to post temporary job openings and an oppurtunity for candidates to apply for the jobs without being concerned about permanent associations.
+At the heart of our bustling campus, WolfJobs stands out as the top student employment portal. Whether you're aiming for a brief technical gig or stepping in as a part-time cashier at a campus dining hall, we've got you covered.
 
 # Why WolfJobs?
 
-Unlike the Job Portals that display only Permanent job positions, WolfJob focuses on providing Temporary positions to anyone who wants to work for a limited period of time.
+Why settle for ordinary when you can be a part of something monumental? At WolfJobs, we're not just about job listings; we embody the core principles of Student Employment – a beacon of integrity, innovation, and collaboration.
 
-Be it a short-time Technical requirement or hiring a short-term Cashier for a dining place, WolfJobs covers it all!
-Every user associated with WolfJobs has a choice to Post a job or Apply for a job. WolfJobs provides a universal account for a specific user so that He/She can manage the applications as well as job postings efficiently!
+## Competitive & Rewarding
+As part of the Campus Enterprises family, we pride ourselves on offering competitive wages paired with flexible schedules. Your time is valuable, and we recognize that.
 
-Let's say that a Teaching Assistant is going on a vacation and needs a pair of hands to grade a particular exam having many students. He/She can post a requirement in WolfJobs stating the pay/rewards for the job.
-Let's assume the same Teaching Assistant has some free time and want to know if there are any temporary requirements for grading any other course. Thus, He/She can search the jobs in WolfJobs and apply for the same.
+## Holistic Growth & Learning
+With our commitment to fostering a culture rich in learning and opportunity, every job position at WolfJobs paves the way for personal and professional growth.
+A Confluence of Values: Our foundation rests on unwavering values: integrity, respect for diversity, responsibility, stewardship, and relentless pursuit of excellence. Every job posted resonates with these ideals, ensuring a harmonious and enriching work environment.
+
+## Inclusivity & Belonging
+At WolfJobs, every student is a valuable asset. Our emphasis on inclusion ensures that you're not just taking up a job; you're becoming a part of a diverse, dynamic community where your voice matters.
 
 # Watch this video to know more:
 
