@@ -101,8 +101,7 @@ https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-
 - Make sure you have React version 18.0
 
 
-**Step 1: Clone the Repository**
-Clone the repository from this [link](https://github.com/deepr41/WolfJobs.git)
+**Step 1: Clone the Repository from this [link](https://github.com/deepr41/WolfJobs.git)**
 
 **Step 2: Backend Setup**
 - Open a terminal window and navigate to the backend directory by executing the command: *cd backend*
