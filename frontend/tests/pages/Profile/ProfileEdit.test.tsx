@@ -1,13 +1,13 @@
 import { render } from "@testing-library/react";
 import React from "react";
-import App from "../src/App";
 import { MemoryRouter } from "react-router-dom";
+import ProfileEdit from "../../../src/Pages/Profile/ProfileEdit";
 
-describe("App", () => {
-  it("renders App", () => {
+describe("Profile", () => {
+  it("renders Profile", () => {
     render(
       <MemoryRouter>
-        <App />
+        <ProfileEdit props={{}} />
       </MemoryRouter>
     );
   });

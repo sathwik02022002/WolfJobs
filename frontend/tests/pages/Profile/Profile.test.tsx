@@ -1,13 +1,13 @@
 import { render } from "@testing-library/react";
 import React from "react";
-import App from "../src/App";
 import { MemoryRouter } from "react-router-dom";
+import Profile from "../../../src/Pages/Profile/Profile";
 
-describe("App", () => {
-  it("renders App", () => {
+describe("Profile", () => {
+  it("renders Profile", () => {
     render(
       <MemoryRouter>
-        <App />
+        <Profile />
       </MemoryRouter>
     );
   });
