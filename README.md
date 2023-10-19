@@ -105,35 +105,29 @@ https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-
 Clone the repository from this [link](https://github.com/deepr41/WolfJobs.git)
 
 **Step 2: Backend Setup**
-- Open a terminal window and navigate to the backend directory by executing the command:
-cd backend
+- Open a terminal window and navigate to the backend directory by executing the command: *cd backend*
 
-- Install the necessary packages by running:
-npm i
+- Install the necessary packages by running: *npm i*
 
-- Start the backend service with the following command:
-npm start
+- Start the backend service with the following command: *npm start*
 
 
 **Step 3: Frontend Setup**
 
-- Open a new terminal window and navigate to the frontend directory:
-cd frontend
+- Open a new terminal window and navigate to the frontend directory: *cd frontend*
 
-- Install the required packages:
-npm i
+- Install the required packages: *npm i*
 
-- Start the development server:
-npm run dev
+- Start the development server: *npm run dev*
 
 **Step 4:**
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:5173) to view it in the browser.
 
 Congratulations! The project should now be up and running successfully.
 
 # Source Code
 
-- Link to [this repository](https://github.com/deepr41/WolfJobs.git)
+- Link to [the repository](https://github.com/deepr41/WolfJobs.git)
 
 # Additional commands for React App
 
