@@ -11,7 +11,7 @@ type FormValues = {
   question4: string;
 };
 
-export function JobQuestionnaire() {
+const JobQuestionnaire = () => {
   const location = useLocation();
   const { state } = location;
 
@@ -73,7 +73,7 @@ export function JobQuestionnaire() {
           </div>
         </div>
         <div
-          className="w-9/12 pt-10 pl-10 bg-red-100"
+          className="w-9/12 pt-10 pl-10"
           style={{ height: "calc(100vh - 72px)" }}
         >
           <div className="text-2xl translate-x-10">Add Details</div>
@@ -172,4 +172,6 @@ export function JobQuestionnaire() {
       </div>
     </>
   );
-}
+};
+
+export default JobQuestionnaire;

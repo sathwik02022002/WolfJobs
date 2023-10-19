@@ -37,7 +37,7 @@ const CreateJob = () => {
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
 
-  const [jobType, setJobType] = useState("");
+  const [jobType, setJobType] = useState("full-time");
 
   const onSubmit = (data: FormValues) => {
     const body = {
@@ -129,8 +129,8 @@ const CreateJob = () => {
                       },
                     }}
                   >
-                    <MenuItem value={"Manager"}>Full Time</MenuItem>
-                    <MenuItem value={"Applicant"}>Part Time</MenuItem>
+                    <MenuItem value={"full-time"}>Full Time</MenuItem>
+                    <MenuItem value={"part-time"}>Part Time</MenuItem>
                   </Select>
                 </FormControl>
                 <TextField
