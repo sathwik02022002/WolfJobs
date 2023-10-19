@@ -19,34 +19,36 @@
 
 <!-- ![Static Badge](https://img.shields.io/badge/any_text-i_like-blue) -->
 
-# Project presentation video
+# Project Presentation Video
 
 [![Grading](http://img.youtube.com/vi/r8-E4-N6q10/0.jpg)](http://www.youtube.com/watch?v=r8-E4-N6q10 "Grading video")
 
 ![WolfJobs Logo](https://user-images.githubusercontent.com/89487138/140389503-29cb0c25-83d0-4196-9bfb-7d1ecc863412.png)
 ![Banner](https://www.schoolcraft.edu/wp-content/uploads/2021/07/student-employee-open-house-graphic.png)
 
-# WolfJobs
+# WolfJobs: The Ultimate Hub for Campus Employment
 
-Need a side Hustle or want to get some quick rewards? Wolfjobs provides the perfect platform to meet your requirements.
+Eager to dive into a side hustle or seize a full-time job opportunity? Look no further than WolfJobs. Our platform is the ultimate connector between recruiters in need of talent for both short-term and full-time roles and candidates seeking the freedom to choose. Dive in, earn your share, and opt out whenever you want – or stay on for a longer journey!
 
-A job portal which provides recruiters a platform to post temporary job openings and an oppurtunity for candidates to apply for the jobs without being concerned about permanent associations.
+At the heart of our bustling campus, WolfJobs stands out as the top student employment portal. Whether you're on the hunt for a short-term tech project, a part-time shift at a campus dining hall, or a full-time position that offers stability and growth, WolfJobs has a spot just for you.
 
 # Why WolfJobs?
 
-Unlike the Job Portals that display only Permanent job positions, WolfJob focuses on providing Temporary positions to anyone who wants to work for a limited period of time.
+At WolfJobs, it’s not just about work – it's about joining a vibrant pack where every wolf (err, student!) counts. Step in and find your howl!🐺🎉
 
-Be it a short-time Technical requirement or hiring a short-term Cashier for a dining place, WolfJobs covers it all!
-Every user associated with WolfJobs has a choice to Post a job or Apply for a job. WolfJobs provides a universal account for a specific user so that He/She can manage the applications as well as job postings efficiently!
+- **Competitive & Rewarding:** As part of the WolfJobs family, we pride ourselves on offering competitive wages paired with flexible schedules. Your time is valuable, and we recognize that.
 
-Let's say that a Teaching Assistant is going on a vacation and needs a pair of hands to grade a particular exam having many students. He/She can post a requirement in WolfJobs stating the pay/rewards for the job.
-Let's assume the same Teaching Assistant has some free time and want to know if there are any temporary requirements for grading any other course. Thus, He/She can search the jobs in WolfJobs and apply for the same.
+- **Holistic Growth & Learning:** With our commitment to fostering a culture rich in learning and opportunity, every job position at WolfJobs paves the way for personal and professional growth.
 
-# Watch this video to know more:
+- **A Confluence of Values:** Our foundation rests on unwavering values: integrity, respect for diversity, responsibility, stewardship, and relentless pursuit of excellence. Every job posted resonates with these ideals, ensuring a harmonious and enriching work environment.
+
+- **Inclusivity & Belonging:** At WolfJobs, every student is a valuable asset. Our emphasis on inclusion ensures that you're not just taking up a job; you're becoming a part of a diverse, dynamic community where your voice matters.
+
+# Ready to get started? Watch this video👇
 
 https://user-images.githubusercontent.com/53376580/140424961-e5cda829-7d05-4221-8539-4a8f67e8fbb5.mov
 
-# Tech Stack used for the development of this project
+# Tech Stack used:
 
 <!-- - ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) -->
 
@@ -94,25 +96,35 @@ https://user-images.githubusercontent.com/89552657/144120517-57e39e5f-a922-40f3-
 
 https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-b32e-c4c6a59a6e2e.mov
 
-# Installation Guide
+# Installation Instructions for Project Setup
 
-- Install [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows)
-- Download and install [NodeJs](https://nodejs.org/en/download/)
+**Prerequisites:**
 
-- In the command prompt clone the frontend project using following commands:
+- Ensure that you have Node.js version 18.0 installed. If not, download and install it from [Node.js Official Website.](https://nodejs.org/en/download/)
+- Download and install the latest version of MongoDB from [MongoDB Official Website.](https://www.mongodb.com/try/download/community)
+- Make sure you have React version 18.0
 
-#### `git clone https://github.com/ashakhatri007/WolfJobs.git`
+**Step 1: Clone the Repository from this [link](https://github.com/deepr41/WolfJobs.git)**
 
-- Then enter below command for both the terminals to start the application:
+**Step 2: Backend Setup**
 
-#### `npm start`
+- Open a terminal window and navigate to the backend directory by executing the command: _cd backend_
 
-- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Install the necessary packages by running: _npm install_
 
-# Source Code
+- Start the backend service with the following command: _npm start_
 
-- Link to frontend repository: https://github.com/ashakhatri007/WolfJobs
-- Link to backend repository: https://github.com/ashakhatri007/WolfJobsBackend
+**Step 3: Frontend Setup**
+
+- Open a new terminal window and navigate to the frontend directory: _cd frontend_
+
+- Install the required packages: _npm install_
+
+- Start the development server: _npm run dev_
+
+**Step 4: Open [http://localhost:5173](http://localhost:5173) to view it in the browser.**
+
+**Congratulations! The project should now be up and running successfully.**
 
 # Additional commands for React App
 
@@ -133,24 +145,27 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-# Future Scope
+# Future Improvements✨
 
-1. **Job Analysis** – In phase 3, wolf Job will provide the functionality of analysing various aspects of a job. Job Analysis based on various parameters using graphical representation will help in making prediction on which jobs are more preferred and for which jobs applicants have more inclination. Hiring managers can then decide what rewards and salary to be given to the applicants of that job. Even applicants will get to know, which job is being preferred among other applicants.
+**1. Email Service📧** - On getting selected/rejected to a job, the applicant should be getting an email about it.
 
-2. **Chatbot Integration** – Our platform Wolf Job will also provide the functionality of Chatbot integrated with our website so that user can easily interact with the bot and get to know about various features of our web application and have a nice interactive experience.
+**2. Search jobs based on department📃** - There can be a different category searches for applicants when searching for the jobs. For instance, we can have search on basis of the departments.
 
-3. **Interview Appointment Scheduling** – In future phase 3, Wolf Job will also provide the facility for the hiring manager to organize an interview appointment for the job based on applicant’s availability and convenient time uploaded by the hiring manager. Either of the users can upload their availability time in the G-sheet and using google calendar appointments can be organised.
+**3. Job Analysis🔍** – WolfJobs will provide the functionality of analysing various aspects of a job. Job Analysis based on various parameters using graphical representation will help in making prediction on which jobs are more preferred and for which jobs applicants have more inclination. Hiring managers can then decide what rewards and salary to be given to the applicants of that job. Even applicants will get to know, which job is being preferred among other applicants.
 
-Other future related items can be found in Issues section
+**4. Chatbot Integration🤖** – Our platform WolfJobs will also provide the functionality of Chatbot integrated with our website so that user can easily interact with the bot and get to know about various features of our web application and have a nice interactive experience.
+
+**5. Interview Appointment Scheduling📆** – WolfJobs will also provide the facility for the hiring manager to organize an interview appointment for the job based on applicant’s availability and convenient time uploaded by the hiring manager. Either of the users can upload their availability time in the G-sheet and using google calendar appointments can be organised.
+
+Other future related items can be found in Issues section.
 
 # Contributors
 
   <table>
   <tr>
-    <td align="center"><a href="https://github.com/ashakhatri007"><img src="https://avatars.githubusercontent.com/ashakhatri007" width="100px;" alt=""/><br /><sub><b>Asha Khatri</b></sub></a></td>
-    <td align="center"><a href="https://github.com/hetthakkar"><img src="https://avatars.githubusercontent.com/hetthakkar" width="100px;" alt=""/><br /><sub><b>Het Thakkar</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/lorenzs2908 "><img src="https://avatars.githubusercontent.com/lorenzs2908 " width="100px;" alt=""/><br /><sub><b>Lorenz Schellar</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/Neelkanth7"><img src="https://avatars.githubusercontent.com/Neelkanth7" width="100px;" alt=""/><br /><sub><b>Neelkanth Tripathi</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/divyankgupta23"><img src="https://avatars.githubusercontent.com/divyankgupta23" width="100px;" alt=""/><br /><sub><b>Divyank Gupta</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/deepr41"><img src="https://avatars.githubusercontent.com/deepr41" width="100px;" alt=""/><br /><b>Deepak Rajendran</b></a></td>
+    <td align="center"><a href="https://github.com/shafa112"><img src="https://avatars.githubusercontent.com/shafa112" width="100px;" alt=""/><br /><b>Shafa Hassan</b></a><br /></td>
+    <td align="center"><a href="https://github.com/Janhavi-23"><img src="https://avatars.githubusercontent.com/Janhavi-23" width="100px;" alt=""/><br /><b>Janhavi Pendse</b></a><br /></td>
+    <td align="center"><a href="https://github.com/deepp2905"><img src="https://avatars.githubusercontent.com/deepp2905" width="100px;" alt=""/><br /><b>Deep Patel</b></a><br /></td>
   </tr>
 </table>
