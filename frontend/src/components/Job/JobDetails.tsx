@@ -134,7 +134,7 @@ const JobDetail = (props: any) => {
             Job Details
           </div>
           <div className="flex flex-row justify-between m-2">
-            <div className="flex flex-col ">
+            <div className="flex flex-col">
               <div>
                 <span className="font-semibold text-lg">Role:</span>&nbsp;
                 {jobData.name}
@@ -183,7 +183,7 @@ const JobDetail = (props: any) => {
       {role === "Applicant" && jobData.status === "open" && (
         <div>
           {showQuestionnaire && (
-            <div className="w-7/12">
+            <div className="w-7/12 mb-10">
               <div className="flex flex-col m-4 ">
                 <div className="text-xl border-b border-gray-300 font-bold">
                   Fill Questionnaire

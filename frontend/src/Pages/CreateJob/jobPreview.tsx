@@ -1,39 +1,64 @@
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { createJob } from "../../deprecateded/createJobAPI";
 import { useUserStore } from "../../store/UserStore";
 import { Button } from "@mui/material";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+type FormValuesQuestions = {
+  question1: string;
+  question2: string;
+  question3: string;
+  question4: string;
+};
+
+type FormValuesDetails = {
+  role: string;
+  jobtype: string;
+  location: string;
+  pay: string;
+  description: string;
+};
 
 const JobPreview = () => {
   const location = useLocation();
   const { state } = location;
-  const { details, questions } = state;
+  const {
+    details,
+    questions,
+  }: { details: FormValuesDetails; questions: FormValuesQuestions } = state;
 
   const navigate = useNavigate();
 
   const userId = useUserStore((state) => state.id);
-  const managerAffiliation = useUserStore((state) => state.affiliation);
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    console.log("form submitted");
-    createJob(
-      details["name"],
-      userId,
-      "open",
-      details["location"],
-      details["description"],
-      details["pay"],
-      details["type"],
-      questions["question1"],
-      questions["question2"],
-      questions["question3"],
-      questions["question4"],
-      managerAffiliation,
-      navigate
-    );
+
+    const url = `http://localhost:8000/api/v1/users/createjob`;
+    const body = {
+      id: userId,
+      name: details.role,
+      type: details.jobtype,
+      location: details.location,
+      description: details.description,
+      pay: details.pay,
+      question1: questions.question1,
+      question2: questions.question2,
+      question3: questions.question3,
+      question4: questions.question4,
+    };
+
+    axios.post(url, body).then((res) => {
+      if (res.status !== 200) {
+        toast.error("Job posting failed");
+        return;
+      }
+      toast.success("Job created");
+      navigate("/dashboard");
+    });
   };
 
   useEffect(() => {

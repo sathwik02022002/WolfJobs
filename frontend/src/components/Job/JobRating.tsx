@@ -58,7 +58,7 @@ const JobRating = (props: any) => {
   return (
     <>
       <div className="text-xl">Rating</div>
-      {!!displayList && (
+      {displayList.length === 0 && (
         <div className="text-base text-gray-500">List empty</div>
       )}
       {displayList.map((item: Application) => {
