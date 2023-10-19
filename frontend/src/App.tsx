@@ -16,6 +16,7 @@ import Profile from "./Pages/Profile/Profile";
 import JobQuestionnaire from "./Pages/CreateJob/JobQuestionnaire";
 import JobPreview from "./Pages/CreateJob/JobPreview";
 import LandingPage from "./Pages/Auth/LandingPage";
+
 const App = () => {
   return (
     <>
