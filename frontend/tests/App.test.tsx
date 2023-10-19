@@ -4,7 +4,7 @@ import App from "../src/App";
 import { MemoryRouter } from "react-router-dom";
 
 describe("App", () => {
-  it("renders headline", () => {
+  it("renders App", () => {
     render(
       <MemoryRouter>
         <App />
