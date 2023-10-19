@@ -47,7 +47,6 @@ const CreateJob = () => {
       pay: data.pay,
       description: data.description,
     };
-    console.log(body);
     navigate("/job_questionnaire", {
       state: body,
     });
@@ -189,11 +188,9 @@ const CreateJob = () => {
                   style={{
                     color: "#FF5353",
                     borderColor: "#FF5353",
-                    // borderRadius: "10px",
                     textTransform: "none",
                     fontSize: "16px",
                     minWidth: "200px",
-                    // margin: "10px",
                   }}
                 >
                   Proceed
