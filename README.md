@@ -1,7 +1,8 @@
 [![DOI](https://zenodo.org/badge/429097663.svg)](https://zenodo.org/badge/latestdoi/429097663)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/node.js.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/node.js.yml)
+[![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml)
+[![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
 [![Issues](https://img.shields.io/github/issues/deepr41/wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
 [![Issues Closed](https://img.shields.io/github/issues-closed/deepr41/wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
