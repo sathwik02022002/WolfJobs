@@ -28,7 +28,7 @@
 
 # WolfJobs: The Ultimate Hub for Campus Employment
 
-Eager to dive into a side hustle or seize a full-time job opportunity? Look no further than WolfJobs. Our platform is the ultimate connector between recruiters in need of talent for both short-term and full-time roles and candidates seeking the freedom to choose. Step in, make some cash, and leave whenever you fancy!
+Eager to dive into a side hustle or seize a full-time job opportunity? Look no further than WolfJobs. Our platform is the ultimate connector between recruiters in need of talent for both short-term and full-time roles and candidates seeking the freedom to choose. Dive in, earn your share, and opt out whenever you want – or stay on for a longer journey!
 
 At the heart of our bustling campus, WolfJobs stands out as the top student employment portal. Whether you're on the hunt for a short-term tech project, a part-time shift at a campus dining hall, or a full-time position that offers stability and growth, WolfJobs has a spot just for you.
 
@@ -167,7 +167,7 @@ Other future related items can be found in Issues section.
   <tr>
     <td align="center"><a href="https://github.com/deepr41"><img src="https://avatars.githubusercontent.com/deepr41" width="100px;" alt=""/><br /><sub><b>Deepak Rajendran</b></sub></a></td>
     <td align="center"><a href="https://github.com/shafa112"><img src="https://avatars.githubusercontent.com/shafa112" width="100px;" alt=""/><br /><sub><b>Shafa Hassan</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/Janhavi-23 "><img src="https://avatars.githubusercontent.com/Janhavi-23" width="100px;" alt=""/><br /><sub><b>Janhavi Pendse</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Janhavi-23"><img src="https://avatars.githubusercontent.com/Janhavi-23" width="100px;" alt=""/><br /><sub><b>Janhavi Pendse</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/deepp2905"><img src="https://avatars.githubusercontent.com/deepp2905" width="100px;" alt=""/><br /><sub><b>Deep Patel</b></sub></a><br /></td>
   </tr>
 </table>
