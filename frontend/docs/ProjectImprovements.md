@@ -61,18 +61,6 @@ Previously the jobs did not have the department name. We added department for ea
 <img width="1062" alt="image" src="https://github.com/deepr41/WolfJobs/assets/39904345/e3235889-985b-4b31-bf9f-12c6a2afca61">
 
 
-
-
-### ✨ Future Improvements
-
-#### 📧 Email Service
-
-On getting selected/rejected to a job, the applicant should be getting an email about it.
-
-#### 📃 Search jobs based on department
-
-There can be a different category searches for applicants when searching for the jobs. For instance, we can have search on basis of the departments.
-
 #### Styling improvements
 Design improvements were made to make the app more user friendly and intuitive. Previously, there were many design inconsistencies like no landing page for the website, the button shapes, icon colors and fonts did not match everywhere. These were fixed by implementing a lot of changes in the frontend. All of these changes can be viewed in the feature videos in the main README.
 
