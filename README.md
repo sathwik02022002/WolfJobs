@@ -42,14 +42,13 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 * **Inclusivity & Belonging:** At WolfJobs, every student is a valuable asset. Our emphasis on inclusion ensures that you're not just taking up a job; you're becoming a part of a diverse, dynamic community where your voice matters.
 
 
-# Ready to get started? Watch this video to know more👇
+# Ready to get started? Watch this video👇
 
 https://user-images.githubusercontent.com/53376580/140424961-e5cda829-7d05-4221-8539-4a8f67e8fbb5.mov
 
-# Tech Stack used for the development of this project:
+# Tech Stack used:
 
 - ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-- ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 - ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 - ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 - ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
@@ -93,25 +92,48 @@ https://user-images.githubusercontent.com/89552657/144120517-57e39e5f-a922-40f3-
 
 https://user-images.githubusercontent.com/89552657/144122060-0790acaa-a013-4997-b32e-c4c6a59a6e2e.mov
 
-# Installation Guide
+# Installation Instructions for Project Setup
 
-- Install [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows)
-- Download and install [NodeJs](https://nodejs.org/en/download/)
+**Prerequisites:**
 
-- In the command prompt clone the frontend project using following commands:
+- Ensure that you have Node.js version 18.0 installed. If not, download and install it from [Node.js Official Website.](https://nodejs.org/en/download/)
+- Download and install the latest version of MongoDB from [MongoDB Official Website.](https://www.mongodb.com/try/download/community)
+- Make sure you have React version 18.0
 
-#### `git clone https://github.com/ashakhatri007/WolfJobs.git`
 
-- Then enter below command for both the terminals to start the application:
+**Step 1: Clone the Repository**
+Clone the repository from this [link](https://github.com/deepr41/WolfJobs.git)
 
-#### `npm start`
+**Step 2: Backend Setup**
+- Open a terminal window and navigate to the backend directory by executing the command:
+cd backend
 
-- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Install the necessary packages by running:
+npm i
+
+- Start the backend service with the following command:
+npm start
+
+
+**Step 3: Frontend Setup**
+
+- Open a new terminal window and navigate to the frontend directory:
+cd frontend
+
+- Install the required packages:
+npm i
+
+- Start the development server:
+npm run dev
+
+**Step 4:**
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+Congratulations! The project should now be up and running successfully.
 
 # Source Code
 
-- Link to frontend repository: https://github.com/ashakhatri007/WolfJobs
-- Link to backend repository: https://github.com/ashakhatri007/WolfJobsBackend
+- Link to [this repository](https://github.com/deepr41/WolfJobs.git)
 
 # Additional commands for React App
 
