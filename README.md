@@ -31,7 +31,7 @@ At the heart of our bustling campus, WolfJobs stands out as the top student empl
 
 # Why WolfJobs?
 
-At WolfJobs, it’s not just about work – it's about joining a vibrant pack where every wolf (err, student!) counts. Step in and find your howl! 🐺🎉
+At WolfJobs, it’s not just about work – it's about joining a vibrant pack where every wolf (err, student!) counts. Step in and find your howl!🐺🎉
 
 * **Competitive & Rewarding:** As part of the WolfJobs family, we pride ourselves on offering competitive wages paired with flexible schedules. Your time is valuable, and we recognize that.
 
