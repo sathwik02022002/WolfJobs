@@ -30,7 +30,7 @@
 
 # Project Presentation Video
 
-[![Watch the video](https://img.youtube.com/vi/kMgLUrDiYEw/0.jpg)](http://www.youtube.com/watch?v=kMgLUrDiYEw)
+[![Watch the video](https://github.com/deepr41/WolfJobs/blob/master/GIFs/Video%20Thumbnail.png)](http://www.youtube.com/watch?v=kMgLUrDiYEw)
 
 # About Us
 
