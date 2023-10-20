@@ -21,7 +21,7 @@
 
 # Project Presentation Video
 
-[![Grading](http://img.youtube.com/vi/r8-E4-N6q10/0.jpg)](http://www.youtube.com/watch?v=r8-E4-N6q10 "Grading video")
+[![Grading](https://user-images.githubusercontent.com/22258487/276745899-c92c0ed7-f8d8-426a-be62-84d824b6e306.png)](https://github.com/WolfJobs/frontend/Videos/Wolfjobs.mp4)
 
 ![WolfJobs Logo](https://user-images.githubusercontent.com/89487138/140389503-29cb0c25-83d0-4196-9bfb-7d1ecc863412.png)
 ![Banner](https://www.schoolcraft.edu/wp-content/uploads/2021/07/student-employee-open-house-graphic.png)
