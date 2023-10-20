@@ -21,7 +21,7 @@
 
 # Project Presentation Video
 
-[![Grading](https://user-images.githubusercontent.com/22258487/276745899-c92c0ed7-f8d8-426a-be62-84d824b6e306.png)](https://github.com/deepr41/WolfJobs/frontend/Videos/Wolfjobs.mp4)
+[![Grading](https://user-images.githubusercontent.com/22258487/276745899-c92c0ed7-f8d8-426a-be62-84d824b6e306.png)](https://github.com/deepr41/WolfJobs/blob/master/frontend/Videos/Wolfjobs.mp4)
 
 ![WolfJobs Logo](https://user-images.githubusercontent.com/89487138/140389503-29cb0c25-83d0-4196-9bfb-7d1ecc863412.png)
 ![Banner](https://www.schoolcraft.edu/wp-content/uploads/2021/07/student-employee-open-house-graphic.png)
