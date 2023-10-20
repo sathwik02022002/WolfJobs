@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/429097663.svg)](https://zenodo.org/badge/latestdoi/429097663)
+
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml)
@@ -13,6 +13,7 @@
 [![language_count](https://img.shields.io/github/languages/count/deepr41/Wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
 [![Downloads](https://img.shields.io/github/downloads/deepr41/WolfJobs/total)](https://GitHub.com/deepr41/Wolfjobs/)
 [![Top Language](https://img.shields.io/github/languages/top/deepr41/wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
+[![DOI](https://zenodo.org/badge/429097663.svg)](https://zenodo.org/badge/latestdoi/429097663)
 [![Release](https://img.shields.io/github/v/release/deepr41/wolfjobs)](https://gitHub.com/deepr41/Wolfjobs)
 [![codecov](https://codecov.io/gh/deepr41/WolfJobs/graph/badge.svg?token=RH472ZM4PT)](https://codecov.io/gh/deepr41/WolfJobs)
 
