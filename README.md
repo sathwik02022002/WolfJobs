@@ -30,7 +30,7 @@
 
 # Project Presentation Video
 
-[![Grading](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Video%20Thumbnail.png)](http://www.youtube.com/watch?v=r8-E4-N6q10 "Grading video")
+[![Watch the video](https://img.youtube.com/vi/kMgLUrDiYEw/0.jpg)](http://www.youtube.com/watch?v=kMgLUrDiYEw)
 
 # About Us
 
