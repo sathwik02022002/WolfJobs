@@ -22,13 +22,18 @@ Vite is significantly faster compared to Webpack. It leverages ES modules (nativ
 Applicants can now track their applications in a better view. They have different tabs for the jobs they have applied to and different tab for all the jobs that are listed on WolfJobs by different NCSU recruiters.
 We also added Application Status for applicant to see if their Application is 'In Review', 'Accepted', 'Rejected' which was missing in the previous project.
 We also added the department to which the Job belongs such as NC State Dining, Campus Enterprises, Wolfpack Outfitters which was missing in the previous project.
-### ADD APPLICANT LISTING UI SCREENSHOT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+<img width="1350" alt="image" src="https://github.com/deepr41/WolfJobs/assets/39904345/2e854fbc-3bbf-480d-855d-f7010ad539bc">
+
+
 
 #### 🤯 Manager's View
 Managers can now track his own job listing under 'My Listings' as well as look at 'All jobs' that have been posted by other managers.
 In the previous project there was just Accept/Reject for any application. We added a 4 stage review process for the manager to finalize from a potential applicant. 
 The 4 stages are Screening, Grading, Rating, Review.
-### ADD MANAGER LISTING UI SCREENSHOT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+<img width="1503" alt="image" src="https://github.com/deepr41/WolfJobs/assets/39904345/df469a94-b07b-4fbe-b6fb-101c38095971">
+
 
 
 
