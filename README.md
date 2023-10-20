@@ -21,7 +21,7 @@
 
 # Project Presentation Video
 
-[![Wolfjobs](http://img.youtube.com/vi/kMgLUrDiYEw/0.jpg)](http://www.youtube.com/watch?v=kMgLUrDiYEw)
+[![Watch the video](https://img.youtube.com/vi/kMgLUrDiYEw/0.jpg)](http://www.youtube.com/watch?v=kMgLUrDiYEw)
 
 
 ![WolfJobs Logo](https://user-images.githubusercontent.com/89487138/140389503-29cb0c25-83d0-4196-9bfb-7d1ecc863412.png)
