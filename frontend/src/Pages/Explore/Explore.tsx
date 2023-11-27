@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../../store/UserStore";
 import { toast } from "react-toastify";
@@ -38,6 +38,18 @@ const Explore = () => {
   const updateJobList = useJobStore((state) => state.updateJobList);
   const jobList: Job[] = useJobStore((state) => state.jobList);
   // const applicationList = useApplicationStore((state) => state.applicationList);
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredJobList, setFilteredJobList] = useState<Job[]>([]);
+  const [sortHighestPay, setSortHighestPay] = useState(false);
+
+  const handleSearchChange = (event: any) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSortChange = () => {
+    setSortHighestPay(!sortHighestPay);
+  };
 
   useEffect(() => {
     const token: string = localStorage.getItem("token")!;
@@ -87,11 +99,43 @@ const Explore = () => {
       });
   }, []);
 
+  useEffect(() => {
+    let updatedList = jobList;
+
+    if (searchTerm !== "") {
+      updatedList = updatedList.filter((job) =>
+        job.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (sortHighestPay) {
+      updatedList = [...updatedList].sort((a, b) => b.pay - a.pay); // Assuming 'pay' is the property for job's pay
+    }
+
+    setFilteredJobList(updatedList);
+  }, [searchTerm, jobList, sortHighestPay]);
+
   return (
     <>
       <div className="content bg-slate-50">
+        <div className="flex flex-col">
+          <div className="p-4 search-bar-container">
+            <input
+              type="text"
+              placeholder="Search jobs..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              className="w-full p-2"
+            />
+          </div>
+          <div>
+            <button onClick={handleSortChange} className="p-2 ml-2 border">
+              {sortHighestPay ? "Sort by Lowest Pay" : "Sort by Highest Pay"}
+            </button>
+          </div>
+        </div>
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
-          <JobsListView jobsList={jobList} />
+          <JobsListView jobsList={filteredJobList} />
           <JobDetailView />
         </div>
       </div>
