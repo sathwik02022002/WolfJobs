@@ -10,6 +10,17 @@ const nodemailer = require("nodemailer");
 
 require("dotenv").config();
 
+const AWS = require('aws-sdk');
+
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION
+});
+
+const ses = new AWS.SES({ apiVersion: '2010-12-01' });
+
+
 module.exports.createSession = async function (req, res) {
   try {
     let user = await User.findOne({ email: req.body.email });
@@ -432,6 +443,29 @@ module.exports.rejectApplication = async function (req, res) {
 
     application.save();
     res.set("Access-Control-Allow-Origin", "*");
+
+
+const params = {
+  Destination: {
+    ToAddresses: [application.applicantemail]
+  },
+  Message: {
+    Body: {
+      Text: { Data: "Your application has been accepted." }
+    },
+    Subject: { Data: "Application Accepted" }
+  },
+  Source: "asharm52@ncsu.edu"
+};
+
+ses.sendEmail(params, function(err, data) {
+  if (err) console.log(err, err.stack);
+  else     console.log(data);
+});
+
+
+
+
     return res.json(200, {
       message: "Application is updated Successfully",
 

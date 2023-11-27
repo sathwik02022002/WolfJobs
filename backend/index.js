@@ -1,21 +1,40 @@
-require('dotenv').config();
-
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
 const port = 8000;
-const nodemailer = require('nodemailer');
 
+const nodemailer = require('nodemailer');
+const aws = require('aws-sdk');
+
+// Configure AWS SDK
+aws.config.update({
+    accessKeyId: 'YOUR_AWS_ACCESS_KEY_ID',
+    secretAccessKey: 'YOUR_AWS_SECRET_ACCESS_KEY',
+    region: 'YOUR_AWS_REGION' 
+});
+
+// Create Nodemailer transport
 let transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-    secure: process.env.EMAIL_PORT === 465,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
+    SES: new aws.SES({
+        apiVersion: '2010-12-01'
+    })
+});
+
+// Send an email
+transporter.sendMail({
+    from: 'sender@example.com',
+    to: 'recipient@example.com',
+    subject: 'Test Email',
+    text: 'Hello World!'
+}, (err, info) => {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log('Email sent: ', info);
     }
 });
+
 
 
 const expressLayouts = require("express-ejs-layouts");
