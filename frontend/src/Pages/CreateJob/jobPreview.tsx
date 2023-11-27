@@ -1,5 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useUserStore } from "../../store/UserStore";
 import { Button } from "@mui/material";
 import { AiFillCheckCircle } from "react-icons/ai";
@@ -20,6 +19,7 @@ type FormValuesDetails = {
   location: string;
   pay: string;
   description: string;
+  requiredSkills: string[]; 
 };
 
 const JobPreview = () => {
@@ -31,7 +31,6 @@ const JobPreview = () => {
   }: { details: FormValuesDetails; questions: FormValuesQuestions } = state;
 
   const navigate = useNavigate();
-
   const userId = useUserStore((state) => state.id);
 
   const onSubmit = (e: any) => {
@@ -49,6 +48,7 @@ const JobPreview = () => {
       question2: questions.question2,
       question3: questions.question3,
       question4: questions.question4,
+      requiredSkills: details.requiredSkills,
     };
 
     axios.post(url, body).then((res) => {
@@ -124,15 +124,26 @@ const JobPreview = () => {
                   &nbsp;
                   {details["location"]}
                 </div>
+                <div>
+                  <span className="font-semibold text-lg">Pay:</span>
+                  &nbsp;
+                  {details["pay"]}$/hr
+                </div>
               </div>
-              <div className="text-3xl p-4">{details["pay"]}$/hr</div>
             </div>
-            <div className="h-6" />
             <div className="text-lg border-b border-gray-300 mb-2 font-bold">
               Description
             </div>
             <div className="text-[#686868] mx-2">{details["description"]}</div>
-            <div className="h-6" />
+
+            {/* Required Skills Section */}
+            <div className="text-lg border-b border-gray-300 mb-2 font-bold">
+              Required Skills
+            </div>
+            <div className="text-[#686868] mx-2">
+              {details.requiredSkills && details.requiredSkills.join(", ")}
+            </div>
+
             <div className="text-lg border-b border-gray-300 mb-2 font-bold">
               Questions
             </div>
