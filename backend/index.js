@@ -1,8 +1,23 @@
+require('dotenv').config();
+
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
 const port = 8000;
+const nodemailer = require('nodemailer');
+
+// Create a transporter object using the default SMTP transport
+let transporter = nodemailer.createTransport({
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
+    secure: process.env.EMAIL_PORT === 465, // true for 465, false for other ports
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD
+    }
+});
+
 
 const expressLayouts = require("express-ejs-layouts");
 
