@@ -16,8 +16,22 @@ const upload = multer({
 
 // Resume upload handler
 exports.uploadResume = async (req, res) => {
+  // first look for a resume with the same applicantId
+  const existingResume = await Resume.findOne({
+    applicantId: req.body.id
+  });
+
+  if (existingResume) {
+    // delete the existing resume
+    existingResume.remove();
+  }
+
   // find the user and add the resume
   let user = await User.findOne({ _id: req.body.id });
+
+  if (!user) {
+    return res.status(404).send({ error: 'User not found' });
+  }
 
   try {
     const resume = new Resume({
@@ -27,6 +41,11 @@ exports.uploadResume = async (req, res) => {
       contentType: 'application/pdf'
     });
     await resume.save();
+
+    // update the user's resumeId
+    user.resume = resume._id;
+    await user.save();
+
     res.status(201).send({ message: 'Resume uploaded successfully' });
   } catch (error) {
     res.status(400).send({ error: error.message });
