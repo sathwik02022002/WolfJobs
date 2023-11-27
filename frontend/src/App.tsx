@@ -16,6 +16,7 @@ import CreateJob from "./Pages/CreateJob/CreateJob";
 import LandingPage from "./Pages/Auth/landingPage";
 import JobQuestionnaire from "./Pages/CreateJob/jobQuestionnaire";
 import JobPreview from "./Pages/CreateJob/jobPreview";
+import Resume from "./Pages/Resume/Resume";
 
 const App = () => {
   return (
@@ -66,6 +67,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <JobPreview />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/resume"
+            element={
+              <ProtectedRoute>
+                <Resume />
               </ProtectedRoute>
             }
           />
