@@ -44,6 +44,7 @@ const Explore = () => {
   const [sortHighestPay, setSortHighestPay] = useState(false);
   const [sortAlphabeticallyByCity, setSortAlphabeticallyByCity] = useState(false);
   const [sortByEmploymentType, setSortByEmploymentType] = useState(false);
+  const [showOpenJobs, setShowOpenJobs] = useState(true);  // true for open jobs, false for closed jobs
 
   const handleSearchChange = (event: any) => {
     setSearchTerm(event.target.value);
@@ -59,6 +60,10 @@ const Explore = () => {
 
   const handleSortEmploymenyTypeChange = () => {
     setSortByEmploymentType(!sortByEmploymentType);
+  };
+
+  const toggleJobStatus = () => {
+    setShowOpenJobs(!showOpenJobs);
   };
 
   useEffect(() => {
@@ -136,8 +141,10 @@ const Explore = () => {
       });
     }
 
+    updatedList = updatedList.filter(job => showOpenJobs ? job.status === "open" : job.status === "closed");
+
     setFilteredJobList(updatedList);
-  }, [searchTerm, jobList, sortHighestPay, sortAlphabeticallyByCity, sortByEmploymentType]);
+  }, [searchTerm, jobList, sortHighestPay, sortAlphabeticallyByCity, sortByEmploymentType, showOpenJobs]);
 
   return (
     <>
@@ -161,6 +168,9 @@ const Explore = () => {
             </button>
             <button onClick={handleSortEmploymenyTypeChange} className="p-2 ml-2 border">
               {sortByEmploymentType ? "Sort by Employment Type : On" : "Sort by Employment Type : Off"}
+            </button>
+            <button onClick={toggleJobStatus} className="p-2 ml-2 border">
+              {showOpenJobs ? "Show Closed Jobs" : "Show Open Jobs"}
             </button>
           </div>
         </div>
