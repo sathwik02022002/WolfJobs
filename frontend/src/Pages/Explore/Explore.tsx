@@ -109,7 +109,7 @@ const Explore = () => {
     }
 
     if (sortHighestPay) {
-      updatedList = [...updatedList].sort((a, b) => b.pay - a.pay); // Assuming 'pay' is the property for job's pay
+      updatedList = [...updatedList].sort((a, b) => parseFloat(b.pay) - parseFloat(a.pay));
     }
 
     setFilteredJobList(updatedList);
