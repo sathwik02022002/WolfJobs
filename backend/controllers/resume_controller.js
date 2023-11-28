@@ -52,5 +52,20 @@ exports.uploadResume = async (req, res) => {
   }
 };
 
+exports.getResume = async (req, res) => {
+  try {
+    const resume = await Resume.findOne({ applicantId: req.params.id });
+    if (!resume) {
+      return res.status(404).send({ error: 'Resume not found' });
+    }
+    res.set('Content-Type', 'application/pdf');
+    // send file name 
+    res.set('Content-Disposition', `inline; filename=${resume.fileName}`);
+    res.send(resume.fileData);
+  } catch (error) {
+    res.status(400).send({ error: error.message });
+  }
+}
+
 // Make sure to export the multer upload as well
 exports.upload = upload;
