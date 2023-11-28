@@ -54,6 +54,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    resume: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: false,
+      ref: 'Resume',
+    },
   },
   {
     timestamps: true,
