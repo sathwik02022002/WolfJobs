@@ -15,7 +15,9 @@ const Notifications = () => {
   const applicationList = useApplicationStore((state) => state.applicationList);
 
   const [acceptedJobs, setAcceptedJobs] = useState([]);
-  const [isListVisible, setIsListVisible] = useState(true);
+  const [rejectedJobs, setRejectedJobs] = useState([]);
+  const [isAcceptedVisible, setIsAcceptedVisible] = useState(true);
+  const [isRejectedVisible, setIsRejectedVisible] = useState(true);
 
   const navigate = useNavigate();
 
@@ -44,25 +46,34 @@ const Notifications = () => {
     const acceptedJobIds = acceptedApplications.map(app => app.jobid);
     const acceptedJobList = jobList.filter(job => acceptedJobIds.includes(job._id));
     setAcceptedJobs(acceptedJobList);
+
+    const rejectedApplications = applicationList.filter(app => app.status === 'rejected');
+    const rejectedJobIds = rejectedApplications.map(app => app.jobid);
+    const rejectedJobList = jobList.filter(job => rejectedJobIds.includes(job._id));
+    setRejectedJobs(rejectedJobList);
   }, [applicationList, jobList]);
 
   const handleJobClick = (jobId) => {
     navigate('/dashboard', { state: { selectedJobId: jobId } });
   };
 
-  const toggleListVisibility = () => {
-    setIsListVisible(!isListVisible);
+  const toggleAcceptedVisibility = () => {
+    setIsAcceptedVisible(!isAcceptedVisible);
+  };
+
+  const toggleRejectedVisibility = () => {
+    setIsRejectedVisible(!isRejectedVisible);
   };
 
   return (
     <div className="notifications-page">
       <h1>
         Accepted Jobs ({acceptedJobs.length})
-        <span onClick={toggleListVisibility} style={{ cursor: 'pointer' }}>
-          {isListVisible ? '▼' : '▲'}
+        <span onClick={toggleAcceptedVisibility} style={{ cursor: 'pointer' }}>
+          {isAcceptedVisible ? '▼' : '▲'}
         </span>
       </h1>
-      {isListVisible && (
+      {isAcceptedVisible && (
         <div className="notifications-list">
           {acceptedJobs.length > 0 ? (
             acceptedJobs.map(job => (
@@ -72,6 +83,26 @@ const Notifications = () => {
             ))
           ) : (
             <p>No accepted job notifications.</p>
+          )}
+        </div>
+      )}
+
+      <h1>
+        Rejected Jobs ({rejectedJobs.length})
+        <span onClick={toggleRejectedVisibility} style={{ cursor: 'pointer' }}>
+          {isRejectedVisible ? '▼' : '▲'}
+        </span>
+      </h1>
+      {isRejectedVisible && (
+        <div className="notifications-list">
+          {rejectedJobs.length > 0 ? (
+            rejectedJobs.map(job => (
+              <div onClick={() => handleJobClick(job._id)} key={job._id}>
+                <JobListTile data={job} action="view-details" />
+              </div>
+            ))
+          ) : (
+            <p>No rejected job notifications.</p>
           )}
         </div>
       )}
