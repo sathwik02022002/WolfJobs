@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@mui/icons-material": "^5.14.18",
     "aws-sdk": "^2.1504.0",
     "dotenv": "^16.3.1",
     "nodemailer": "^6.9.7"

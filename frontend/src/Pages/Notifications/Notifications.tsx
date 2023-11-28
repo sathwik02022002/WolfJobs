@@ -5,6 +5,7 @@ import { useUserStore } from '../../store/UserStore';
 import { useJobStore } from '../../store/JobStore';
 import { useApplicationStore } from '../../store/ApplicationStore';
 import JobListTile from '../../components/Job/JobListTile';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'; // Importing icons
 
 const Notifications = () => {
   const updateJobList = useJobStore((state) => state.updateJobList);
@@ -14,6 +15,12 @@ const Notifications = () => {
   const applicationList = useApplicationStore((state) => state.applicationList);
 
   const [acceptedJobs, setAcceptedJobs] = useState([]);
+
+  const [isListVisible, setIsListVisible] = useState(true);
+
+  const toggleJobList = () => {
+    setIsListVisible(!isListVisible);
+  };
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/v1/users/fetchapplications')
@@ -44,16 +51,23 @@ const Notifications = () => {
 
   return (
     <div className="notifications-page">
-      <h1>Accepted Job Notifications</h1>
-      <div className="notifications-list">
-        {acceptedJobs.length > 0 ? (
-          acceptedJobs.map(job => (
-            <JobListTile key={job._id} data={job} action="view-details" />
-          ))
-        ) : (
-          <p>No accepted job notifications.</p>
-        )}
+      <div className="header-with-icon">
+        <h1>Accepted Jobs</h1>
+        <button onClick={toggleJobList} className="icon-button">
+          {isListVisible ? <FaChevronDown /> : <FaChevronUp />}
+        </button>
       </div>
+      {isListVisible && (
+        <div className="notifications-list">
+          {acceptedJobs.length > 0 ? (
+            acceptedJobs.map(job => (
+              <JobListTile key={job._id} data={job} action="view-details" />
+            ))
+          ) : (
+            <p>No accepted job notifications.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
