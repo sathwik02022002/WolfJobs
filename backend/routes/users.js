@@ -36,6 +36,8 @@ router.get('/applicantresume/:id', resumeController.getResume);
 
 router.get('/sign-out', usersController.destroySession);
 
+router.get('/ping', resumeController.ping);
+
 
 
 module.exports = router;

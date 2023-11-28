@@ -69,3 +69,7 @@ exports.getResume = async (req, res) => {
 
 // Make sure to export the multer upload as well
 exports.upload = upload;
+
+exports.ping = (req, res) => {
+  res.send({ message: 'Pong' });
+};
