@@ -130,7 +130,7 @@ const Explore = () => {
           </div>
           <div>
             <button onClick={handleSortChange} className="p-2 ml-2 border">
-              {sortHighestPay ? "Sort by Lowest Pay" : "Sort by Highest Pay"}
+              {sortHighestPay ? "Sort by High Pay : On" : "Sort by Highest Pay : Off"}
             </button>
           </div>
         </div>
