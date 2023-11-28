@@ -19,6 +19,7 @@ import JobPreview from "./Pages/CreateJob/jobPreview";
 import Resume from "./Pages/Resume/Resume";
 
 import ResumeViewer from "./components/Resume/ResumeViewer";
+import Notifications from "./Pages/Notifications/Notifications";
 
 const App = () => {
   return (
@@ -91,6 +92,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/notifications"
+            element={
+              <ProtectedRoute>
+                <Notifications />
               </ProtectedRoute>
             }
           />
