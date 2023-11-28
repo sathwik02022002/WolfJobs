@@ -16,6 +16,7 @@ import CreateJob from "./Pages/CreateJob/CreateJob";
 import LandingPage from "./Pages/Auth/landingPage";
 import JobQuestionnaire from "./Pages/CreateJob/jobQuestionnaire";
 import JobPreview from "./Pages/CreateJob/jobPreview";
+import Notifications from "./Pages/Notifications/Notifications";
 
 const App = () => {
   return (
@@ -74,6 +75,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/notifications"
+            element={
+              <ProtectedRoute>
+                <Notifications />
               </ProtectedRoute>
             }
           />
