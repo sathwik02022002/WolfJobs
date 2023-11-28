@@ -8,34 +8,34 @@ const JobListTile = (props: any) => {
   // const { data, action }: { data: Job; action: string | undefined } = props;
   const { data }: { data: Job } = props;
   let action = "view-more";
-
-  const getMatchStatus = (application: Application | null, job: Job) => {
+  
+  const getMatchStatus = (job: Job) => {
     let matchStatus = {
       text: 'Low Match',
-      style: { backgroundColor: '#FF5757', color: 'white' } 
+      style: { backgroundColor: '#FF5757', color: 'white' }
     };
-    
-    console.log("Applicant Skills:", application?.applicantSkills);
+  
+    const skills = useUserStore((state) => state.skills); 
+  
+    console.log("Applicant Skills:", skills);
     console.log("Required Skills:", job.requiredSkills);
-    useEffect(() => {
-      console.log("Application state updated:", application);
-    }, [application]);
-    
-    if (application && application.skills && job.requiredSkills) {
-      const applicantSkillsArray = application.skills.split(',').map(skill => skill.trim().toLowerCase());
+  
+    if (skills && job.requiredSkills) {
+      const applicantSkillsArray = skills.split(',').map(skill => skill.trim().toLowerCase());
       const requiredSkillsArray = job.requiredSkills.split(',').map(skill => skill.trim().toLowerCase());
       const isMatch = requiredSkillsArray.some(skill => applicantSkillsArray.includes(skill));
   
       if (isMatch) {
         matchStatus = {
           text: 'Match',
-          style: { backgroundColor: '#00E000', color: 'white' } 
+          style: { backgroundColor: '#00E000', color: 'white' }
         };
       }
     }
-    
+  
     return matchStatus;
   };
+  
   
   
   const [active, setActive] = useState<boolean>(true);
@@ -135,8 +135,8 @@ const JobListTile = (props: any) => {
               </p>
             </div>
             {(
-              <div className={`ml-2 rounded-full px-3 py-0`} style={getMatchStatus(application, data).style}>
-              <p className="inline text-xs">{getMatchStatus(application, data).text}</p>
+              <div className={`ml-2 rounded-full px-3 py-0`} style={getMatchStatus(data).style}>
+              <p className="inline text-xs">{getMatchStatus(data).text}</p>
             </div>
             )}
           </div>

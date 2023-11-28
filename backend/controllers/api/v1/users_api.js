@@ -333,6 +333,7 @@ module.exports.createApplication = async function (req, res) {
       applicantname: req.body.applicantname,
       applicantemail: req.body.applicantemail,
       applicantskills: req.body.applicantSkills,
+      skills: req.body.skills,
       address: req.body.address,
       phonenumber: req.body.phonenumber,
       hours: req.body.hours,
