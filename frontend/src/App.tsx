@@ -18,6 +18,8 @@ import JobQuestionnaire from "./Pages/CreateJob/jobQuestionnaire";
 import JobPreview from "./Pages/CreateJob/jobPreview";
 import Resume from "./Pages/Resume/Resume";
 
+import ResumeViewer from "./components/Resume/ResumeViewer";
+
 const App = () => {
   return (
     <>
@@ -76,6 +78,12 @@ const App = () => {
               <ProtectedRoute>
                 <Resume />
               </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/resumetest"
+            element={
+                <ResumeViewer />
             }
           />
           <Route
