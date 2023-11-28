@@ -43,6 +43,7 @@ const Explore = () => {
   const [filteredJobList, setFilteredJobList] = useState<Job[]>([]);
   const [sortHighestPay, setSortHighestPay] = useState(false);
   const [sortAlphabeticallyByCity, setSortAlphabeticallyByCity] = useState(false);
+  const [sortByEmploymentType, setSortByEmploymentType] = useState(false);
 
   const handleSearchChange = (event: any) => {
     setSearchTerm(event.target.value);
@@ -54,6 +55,10 @@ const Explore = () => {
 
   const handleSortCityChange = () => {
     setSortAlphabeticallyByCity(!sortAlphabeticallyByCity);
+  };
+
+  const handleSortEmploymenyTypeChange = () => {
+    setSortByEmploymentType(!sortByEmploymentType);
   };
 
   useEffect(() => {
@@ -120,15 +125,19 @@ const Explore = () => {
     if (sortAlphabeticallyByCity) {
 
       updatedList = [...updatedList].sort((a, b) => {
-        console.log(a)
-        console.log(a.location)
-        console.log(a.pay)
         return a.location.localeCompare(b.location)
       });
     }
 
+    if (sortByEmploymentType) {
+
+      updatedList = [...updatedList].sort((a, b) => {
+        return a.type.localeCompare(b.type)
+      });
+    }
+
     setFilteredJobList(updatedList);
-  }, [searchTerm, jobList, sortHighestPay, sortAlphabeticallyByCity]);
+  }, [searchTerm, jobList, sortHighestPay, sortAlphabeticallyByCity, sortByEmploymentType]);
 
   return (
     <>
@@ -149,6 +158,9 @@ const Explore = () => {
             </button>
             <button onClick={handleSortCityChange} className="p-2 ml-2 border">
               {sortAlphabeticallyByCity ? "Sort by City : On" : "Sort by City : Off"}
+            </button>
+            <button onClick={handleSortEmploymenyTypeChange} className="p-2 ml-2 border">
+              {sortByEmploymentType ? "Sort by Employment Type : On" : "Sort by Employment Type : Off"}
             </button>
           </div>
         </div>
