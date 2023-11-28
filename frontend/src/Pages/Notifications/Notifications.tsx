@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import { useUserStore } from '../../store/UserStore';
 import { useJobStore } from '../../store/JobStore';
 import { useApplicationStore } from '../../store/ApplicationStore';
 import JobListTile from '../../components/Job/JobListTile';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa'; // Importing icons
 
 const Notifications = () => {
   const updateJobList = useJobStore((state) => state.updateJobList);
@@ -15,12 +15,9 @@ const Notifications = () => {
   const applicationList = useApplicationStore((state) => state.applicationList);
 
   const [acceptedJobs, setAcceptedJobs] = useState([]);
-
   const [isListVisible, setIsListVisible] = useState(true);
 
-  const toggleJobList = () => {
-    setIsListVisible(!isListVisible);
-  };
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/v1/users/fetchapplications')
@@ -49,19 +46,29 @@ const Notifications = () => {
     setAcceptedJobs(acceptedJobList);
   }, [applicationList, jobList]);
 
+  const handleJobClick = (jobId) => {
+    navigate('/dashboard', { state: { selectedJobId: jobId } });
+  };
+
+  const toggleListVisibility = () => {
+    setIsListVisible(!isListVisible);
+  };
+
   return (
     <div className="notifications-page">
-      <div className="header-with-icon">
-        <h1>Accepted Jobs</h1>
-        <button onClick={toggleJobList} className="icon-button">
-          {isListVisible ? <FaChevronDown /> : <FaChevronUp />}
-        </button>
-      </div>
+      <h1>
+        Accepted Jobs ({acceptedJobs.length})
+        <span onClick={toggleListVisibility} style={{ cursor: 'pointer' }}>
+          {isListVisible ? '▼' : '▲'}
+        </span>
+      </h1>
       {isListVisible && (
         <div className="notifications-list">
           {acceptedJobs.length > 0 ? (
             acceptedJobs.map(job => (
-              <JobListTile key={job._id} data={job} action="view-details" />
+              <div onClick={() => handleJobClick(job._id)} key={job._id}>
+                <JobListTile data={job} action="view-details" />
+              </div>
             ))
           ) : (
             <p>No accepted job notifications.</p>
