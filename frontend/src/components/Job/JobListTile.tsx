@@ -8,28 +8,32 @@ const JobListTile = (props: any) => {
   // const { data, action }: { data: Job; action: string | undefined } = props;
   const { data }: { data: Job } = props;
   let action = "view-more";
-
-  const getMatchStatus = (application: Application | null, job: Job) => {
+  
+  const getMatchStatus = (job: Job) => {
     let matchStatus = {
       text: 'Low Match',
-      style: { backgroundColor: '#FF5757', color: 'white' } 
+      style: { backgroundColor: '#FF5757', color: 'white' }
     };
   
-    if (application && application.skills && job.requiredSkills) {
-      const applicantSkillsArray = application.skills.split(',').map(skill => skill.trim().toLowerCase());
+    const skills = useUserStore((state) => state.skills); 
+    if (skills && job.requiredSkills) {
+      const applicantSkillsArray = skills.split(',').map(skill => skill.trim().toLowerCase());
       const requiredSkillsArray = job.requiredSkills.split(',').map(skill => skill.trim().toLowerCase());
       const isMatch = requiredSkillsArray.some(skill => applicantSkillsArray.includes(skill));
+  
       if (isMatch) {
         matchStatus = {
           text: 'Match',
-          style: { backgroundColor: '#00E000', color: 'white' } 
+          style: { backgroundColor: '#00E000', color: 'white' }
         };
       }
     }
   
     return matchStatus;
   };
-
+  
+  
+  
   const [active, setActive] = useState<boolean>(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const userId = useUserStore((state) => state.id);
@@ -44,18 +48,33 @@ const JobListTile = (props: any) => {
 
   useEffect(() => {
     const temp: Application | undefined = applicationList.find(
-      (item: Application) => {
-        return item.jobid === data._id && item.applicantid === userId;
-      }
+      (item: Application) => item.jobid === data._id && item.applicantid === userId
     );
     setApplication(temp || null);
-    console.log(temp);
-  }, [data]);
+    console.log('Found Application:', temp);
+  }, [data, applicationList, userId]);
+  
 
   const affilation = data.managerAffilication;
   const role = data.name;
   const jobType = data?.type?.split("-")?.join(" ");
   const pay = data.pay || "0";
+  
+  
+
+  // useEffect(() => {
+  //   // Temporary test values 
+  //   const testApplicantSkills = "skill, skill, skill3";
+  //   const testJobRequiredSkills = "skill2, skill4, skill5";
+  
+  //   const applicantSkillsArray = testApplicantSkills.split(',').map(skill => skill.trim().toLowerCase());
+  //   const requiredSkillsArray = testJobRequiredSkills.split(',').map(skill => skill.trim().toLowerCase());
+  //   const isMatch = requiredSkillsArray.some(skill => applicantSkillsArray.includes(skill));
+  
+  //   console.log("Is Match:", isMatch); 
+  // }, []);
+
+  
 
   useEffect(() => {
     const id = searchParams.get("jobId");
@@ -96,7 +115,6 @@ const JobListTile = (props: any) => {
     e.stopPropagation();
     console.log("View Application");
   };
-
   return (
     <div className="my-3" onClick={handleClick}>
     <div
@@ -113,8 +131,8 @@ const JobListTile = (props: any) => {
               </p>
             </div>
             {(
-              <div className={`ml-2 rounded-full px-3 py-0`} style={getMatchStatus(application, data).style}>
-              <p className="inline text-xs">{getMatchStatus(application, data).text}</p>
+              <div className={`ml-2 rounded-full px-3 py-0`} style={getMatchStatus(data).style}>
+              <p className="inline text-xs">{getMatchStatus(data).text}</p>
             </div>
             )}
           </div>

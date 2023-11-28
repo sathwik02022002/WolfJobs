@@ -189,6 +189,8 @@ const CreateJob = () => {
                   {...register("requiredSkills", {
                     required: "Skills are required",
                   })}
+                  value={requiredSkills}
+                  onChange={(e) => setRequiredSkills(e.target.value)}
                   error={!!errors.requiredSkills}
                   helperText={errors.requiredSkills?.message}
                   sx={{

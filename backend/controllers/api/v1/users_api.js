@@ -261,6 +261,7 @@ module.exports.createJob = async function (req, res) {
       location: req.body.location,
       description: req.body.description,
       pay: req.body.pay,
+      requiredSkills: req.body.requiredSkills,
       question1: req.body.question1,
       question2: req.body.question2,
       question3: req.body.question3,
@@ -332,6 +333,7 @@ module.exports.createApplication = async function (req, res) {
       applicantname: req.body.applicantname,
       applicantemail: req.body.applicantemail,
       applicantskills: req.body.applicantSkills,
+      skills: req.body.skills,
       address: req.body.address,
       phonenumber: req.body.phonenumber,
       hours: req.body.hours,
@@ -562,3 +564,5 @@ module.exports.verifyOtp = async function (req, res) {
     });
   }
 };
+
+
