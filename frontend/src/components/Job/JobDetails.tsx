@@ -164,6 +164,10 @@ const JobDetail = (props: any) => {
                 {jobData.location}
               </div>
               <div>
+                <span className="font-semibold text-lg">Required Skills:</span>&nbsp;
+                {jobData.requiredSkills}
+              </div>
+              <div>
                 {userRole === "Applicant" &&
                   (application?.status === "accepted" ||
                   application?.status === "rejected" ? (

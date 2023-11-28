@@ -21,7 +21,7 @@ module.exports.createSession = async function (req, res) {
     return res.json(200, {
       message: "Sign In Successful, here is your token, please keep it safe",
       data: {
-        token: jwt.sign(user.toJSON(), "caloriesapp", { expiresIn: "100000" }),
+        token: jwt.sign(user.toJSON(), "wolfjobs", { expiresIn: "100000" }),
         user: user,
       },
       success: true,
@@ -78,7 +78,7 @@ module.exports.signUp = async function (req, res) {
           data: {
             //user.JSON() part gets encrypted
 
-            token: jwt.sign(user.toJSON(), "caloriesapp", {
+            token: jwt.sign(user.toJSON(), "wolfjobs", {
               expiresIn: "100000",
             }),
             user,
@@ -103,7 +103,7 @@ module.exports.signUp = async function (req, res) {
             data: {
               //user.JSON() part gets encrypted
 
-              token: jwt.sign(user.toJSON(), "caloriesapp", {
+              token: jwt.sign(user.toJSON(), "wolfjobs", {
                 expiresIn: "100000",
               }),
               user,
@@ -259,6 +259,7 @@ module.exports.createJob = async function (req, res) {
       location: req.body.location,
       description: req.body.description,
       pay: req.body.pay,
+      requiredSkills: req.body.requiredSkills,
       question1: req.body.question1,
       question2: req.body.question2,
       question3: req.body.question3,
@@ -330,6 +331,7 @@ module.exports.createApplication = async function (req, res) {
       applicantname: req.body.applicantname,
       applicantemail: req.body.applicantemail,
       applicantskills: req.body.applicantSkills,
+      skills: req.body.skills,
       address: req.body.address,
       phonenumber: req.body.phonenumber,
       hours: req.body.hours,
@@ -560,3 +562,5 @@ module.exports.verifyOtp = async function (req, res) {
     });
   }
 };
+
+

@@ -29,10 +29,11 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="relative hidden lg:flex items-center ml-auto">
-        <nav className="text-sm leading-6 font-semibold text-slate-700 ">
+      <div className="relative items-center hidden ml-auto lg:flex">
+        <nav className="text-sm font-semibold leading-6 text-slate-700 ">
           <ul className="flex space-x-8">
             {isLoggedIn && <NavBarItem link="/profile" text="Profile" />}
+            {isLoggedIn && role == "Applicant" && <NavBarItem link="/resume" text="Upload Resume" />}
             {isLoggedIn && role === "Applicant" && <NavBarItem link="/notifications" text={`Notifications (${notificationCount})`} />}
             {isLoggedIn && <NavBarItem link="/logout" text="Log Out" />}
           </ul>
