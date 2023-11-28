@@ -261,6 +261,7 @@ module.exports.createJob = async function (req, res) {
       location: req.body.location,
       description: req.body.description,
       pay: req.body.pay,
+      requiredSkills: req.body.requiredSkills,
       question1: req.body.question1,
       question2: req.body.question2,
       question3: req.body.question3,
@@ -562,3 +563,5 @@ module.exports.verifyOtp = async function (req, res) {
     });
   }
 };
+
+

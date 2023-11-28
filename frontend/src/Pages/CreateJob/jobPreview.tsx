@@ -19,7 +19,7 @@ type FormValuesDetails = {
   location: string;
   pay: string;
   description: string;
-  requiredSkills: string[]; 
+  requiredSkills: string;
 };
 
 const JobPreview = () => {
@@ -57,6 +57,8 @@ const JobPreview = () => {
         return;
       }
       toast.success("Job created");
+      console.log(details);
+      navigate('/job-preview', { state: { details, questions } });
       navigate("/dashboard");
     });
   };
@@ -136,12 +138,11 @@ const JobPreview = () => {
             </div>
             <div className="text-[#686868] mx-2">{details["description"]}</div>
 
-            {/* Required Skills Section */}
             <div className="text-lg border-b border-gray-300 mb-2 font-bold">
               Required Skills
             </div>
             <div className="text-[#686868] mx-2">
-              {details.requiredSkills && details.requiredSkills.join(", ")}
+              {details.requiredSkills}
             </div>
 
             <div className="text-lg border-b border-gray-300 mb-2 font-bold">

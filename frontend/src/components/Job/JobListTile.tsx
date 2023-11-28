@@ -14,11 +14,18 @@ const JobListTile = (props: any) => {
       text: 'Low Match',
       style: { backgroundColor: '#FF5757', color: 'white' } 
     };
-  
+    
+    console.log("Applicant Skills:", application?.applicantSkills);
+    console.log("Required Skills:", job.requiredSkills);
+    useEffect(() => {
+      console.log("Application state updated:", application);
+    }, [application]);
+    
     if (application && application.skills && job.requiredSkills) {
       const applicantSkillsArray = application.skills.split(',').map(skill => skill.trim().toLowerCase());
       const requiredSkillsArray = job.requiredSkills.split(',').map(skill => skill.trim().toLowerCase());
       const isMatch = requiredSkillsArray.some(skill => applicantSkillsArray.includes(skill));
+  
       if (isMatch) {
         matchStatus = {
           text: 'Match',
@@ -26,10 +33,11 @@ const JobListTile = (props: any) => {
         };
       }
     }
-  
+    
     return matchStatus;
   };
-
+  
+  
   const [active, setActive] = useState<boolean>(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const userId = useUserStore((state) => state.id);
@@ -44,18 +52,33 @@ const JobListTile = (props: any) => {
 
   useEffect(() => {
     const temp: Application | undefined = applicationList.find(
-      (item: Application) => {
-        return item.jobid === data._id && item.applicantid === userId;
-      }
+      (item: Application) => item.jobid === data._id && item.applicantid === userId
     );
     setApplication(temp || null);
-    console.log(temp);
-  }, [data]);
+    console.log('Found Application:', temp);
+  }, [data, applicationList, userId]);
+  
 
   const affilation = data.managerAffilication;
   const role = data.name;
   const jobType = data?.type?.split("-")?.join(" ");
   const pay = data.pay || "0";
+  
+  
+
+  // useEffect(() => {
+  //   // Temporary test values 
+  //   const testApplicantSkills = "skill, skill, skill3";
+  //   const testJobRequiredSkills = "skill2, skill4, skill5";
+  
+  //   const applicantSkillsArray = testApplicantSkills.split(',').map(skill => skill.trim().toLowerCase());
+  //   const requiredSkillsArray = testJobRequiredSkills.split(',').map(skill => skill.trim().toLowerCase());
+  //   const isMatch = requiredSkillsArray.some(skill => applicantSkillsArray.includes(skill));
+  
+  //   console.log("Is Match:", isMatch); 
+  // }, []);
+
+  
 
   useEffect(() => {
     const id = searchParams.get("jobId");
@@ -96,7 +119,6 @@ const JobListTile = (props: any) => {
     e.stopPropagation();
     console.log("View Application");
   };
-
   return (
     <div className="my-3" onClick={handleClick}>
     <div
