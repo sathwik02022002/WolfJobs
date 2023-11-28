@@ -1,20 +1,25 @@
 import React, { useCallback } from 'react';
 import { useDropzone, DropzoneOptions, FileRejection } from 'react-dropzone';
 
-const ResumeDropzone: React.FC = () => {
+interface ResumeDropzoneProps {
+  onFileUpload: (files: File[]) => void;
+}
+
+const ResumeDropzone: React.FC<ResumeDropzoneProps> = ({ onFileUpload }) => {
   const onDrop = useCallback((acceptedFiles: File[], fileRejections: FileRejection[]) => {
-    // Handle accepted files
-    console.log(acceptedFiles);
+    // Pass the accepted files to the parent component
+    onFileUpload(acceptedFiles);
 
     // Handle any file rejections
     fileRejections.forEach((file) => {
       console.error(`File rejected: ${file.file.name}`);
+      // Here you can handle displaying an error message to the user
     });
-  }, []);
+  }, [onFileUpload]); // Don't forget to include onFileUpload in the dependencies array
 
   const dropzoneOptions: DropzoneOptions = {
     onDrop,
-    accept: {  "application/pdf": [".pdf"] },
+    accept: { "application/pdf": [".pdf"] },
     maxSize: 15 * 1024 * 1024, // limit the size to 15mb max to agree with the backend
   };
 
