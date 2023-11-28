@@ -6,6 +6,8 @@ const Job = require("../../../models/job");
 const Application = require("../../../models/application");
 const AuthOtp = require("../../../models/authOtp");
 
+const nodemailer = require("nodemailer");
+
 require("dotenv").config();
 
 module.exports.createSession = async function (req, res) {
