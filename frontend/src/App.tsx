@@ -16,6 +16,10 @@ import CreateJob from "./Pages/CreateJob/CreateJob";
 import LandingPage from "./Pages/Auth/landingPage";
 import JobQuestionnaire from "./Pages/CreateJob/jobQuestionnaire";
 import JobPreview from "./Pages/CreateJob/jobPreview";
+import Resume from "./Pages/Resume/Resume";
+
+import ResumeViewer from "./components/Resume/ResumeViewer";
+import Notifications from "./Pages/Notifications/Notifications";
 
 const App = () => {
   return (
@@ -70,10 +74,32 @@ const App = () => {
             }
           />
           <Route
-            path="/profile"
+            path="/resume"
             element={
               <ProtectedRoute>
-                <Profile />
+                <Resume />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/resumetest"
+            element={
+                <ResumeViewer />
+            }
+          />
+          <Route
+            path="/resume"
+            element={
+              <ProtectedRoute>
+                <Resume />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/notifications"
+            element={
+              <ProtectedRoute>
+                <Notifications />
               </ProtectedRoute>
             }
           />

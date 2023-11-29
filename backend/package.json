@@ -1,5 +1,5 @@
 {
-  "name": "caloriesapp",
+  "name": "wolfjobs",
   "version": "1.0.0",
   "description": "Webapp Calorie Count",
   "main": "index.js",
@@ -27,6 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "mockgoose": "^8.0.4",
     "mongoose": "^6.0.5",
+    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.14",
     "passport": "^0.4.1",

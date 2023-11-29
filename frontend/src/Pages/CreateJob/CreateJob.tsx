@@ -18,11 +18,13 @@ type FormValues = {
   jobtype: string;
   location: string;
   pay: string;
+  requiredSkills: string;
   description: string;
 };
 
 const CreateJob = () => {
   const navigate = useNavigate();
+  const [requiredSkills, setRequiredSkills] = useState("");
 
   const form = useForm<FormValues>({
     defaultValues: {
@@ -46,6 +48,7 @@ const CreateJob = () => {
       location: data.location,
       pay: data.pay,
       description: data.description,
+      requiredSkills: requiredSkills,
     };
     navigate("/job_questionnaire", {
       state: body,
@@ -67,9 +70,7 @@ const CreateJob = () => {
             </div>
             <div className="inline-flex items-center flex-row  ">
               <AiFillCheckCircle color="#CBCBCB" size="20px" />
-              <span className="ml-2 text-xl text-[#CBCBCB]">
-                Fill Questionnaire
-              </span>
+              <span className="ml-2 text-xl text-[#CBCBCB]">Fill Questionnaire</span>
             </div>
             <div className="inline-flex items-center flex-row  ">
               <AiFillCheckCircle color="#CBCBCB" size="20px" />
@@ -181,6 +182,25 @@ const CreateJob = () => {
                   }}
                   minRows={4}
                   multiline
+                />
+                <TextField
+                  label="Required Skills"
+                  type="text"
+                  {...register("requiredSkills", {
+                    required: "Skills are required",
+                  })}
+                  value={requiredSkills}
+                  onChange={(e) => setRequiredSkills(e.target.value)}
+                  error={!!errors.requiredSkills}
+                  helperText={errors.requiredSkills?.message}
+                  sx={{
+                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                    "& fieldset": {
+                      paddingLeft: (theme) => theme.spacing(1.5),
+                      borderRadius: "10px",
+                    },
+                  }}
                 />
                 <Button
                   type="submit"
