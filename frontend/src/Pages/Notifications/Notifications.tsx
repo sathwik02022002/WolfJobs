@@ -7,6 +7,8 @@ import { useJobStore } from '../../store/JobStore';
 import { useApplicationStore } from '../../store/ApplicationStore';
 import JobListTile from '../../components/Job/JobListTile';
 
+// This is the notifications class
+
 const Notifications = () => {
   const updateJobList = useJobStore((state) => state.updateJobList);
   const jobList = useJobStore((state) => state.jobList);
