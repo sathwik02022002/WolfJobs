@@ -82,7 +82,7 @@ const App = () => {
             }
           />
           <Route
-            path="/resumetest"
+            path="/resumeviewer/:applicantId"
             element={
                 <ResumeViewer />
             }
