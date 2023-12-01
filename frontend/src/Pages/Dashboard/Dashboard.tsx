@@ -26,6 +26,7 @@ const Dashboard = () => {
   const updateHours = useUserStore((state) => state.updateHours);
   const updateIsLoggedIn = useUserStore((state) => state.updateIsLoggedIn);
   const updateResume = useUserStore((state) => state.updateResume);
+  const updateResumeId = useUserStore((state) => state.updateResumeId);
 
   const role = useUserStore((state) => state.role);
   const managerId = useUserStore((state) => state.id);
@@ -66,6 +67,7 @@ const Dashboard = () => {
       updateHours(userInfo.hours);
       updateIsLoggedIn(true);
       updateResume(userInfo.resume);
+      updateResumeId(userInfo.resumeId);
     }
   }, []);
 

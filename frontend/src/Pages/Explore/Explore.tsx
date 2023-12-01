@@ -26,6 +26,8 @@ const Explore = () => {
   const updateHours = useUserStore((state) => state.updateHours);
   const updateIsLoggedIn = useUserStore((state) => state.updateIsLoggedIn);
   const updateResume = useUserStore((state) => state.updateResume)
+  const updateResumeId = useUserStore((state) => state.updateResumeId);
+
 
   const updateApplicationList = useApplicationStore(
     (state) => state.updateApplicationList
@@ -88,8 +90,8 @@ const Explore = () => {
       updateGender(userInfo.gender);
       updateHours(userInfo.hours);
       updateIsLoggedIn(true);
-      console.log("the user info is ", userInfo)
       updateResume(userInfo.resume);
+      updateResumeId(userInfo.resumeId);
     }
   }, []);
 
