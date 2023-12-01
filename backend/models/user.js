@@ -55,9 +55,12 @@ const userSchema = new mongoose.Schema(
       default: "",
     },
     resume: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: false,
-      ref: 'Resume',
+      type: String,
+      default: ""
+    },
+    resumeId: {
+      type: String,
+      default: ""
     },
   },
   {
