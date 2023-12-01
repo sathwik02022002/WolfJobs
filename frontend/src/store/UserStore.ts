@@ -17,6 +17,7 @@ type UserState = {
   isLoggedIn: boolean;
   affiliation: string;
   resume: string;
+  resumeId: string;
 };
 
 type UserAction = {
@@ -35,6 +36,7 @@ type UserAction = {
   updateIsLoggedIn: (name: UserState["isLoggedIn"]) => void;
   updateAffiliation: (name: UserState["affiliation"]) => void;
   updateResume: (name: UserState["resume"]) => void;
+  updateResumeId: (name: UserState["resumeId"]) => void;
 };
 
 export const useUserStore = create<UserState & UserAction>()((set) => ({
@@ -53,6 +55,7 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
   affiliation: "",
   isLoggedIn: false,
   resume: "",
+  resumeId: "",
 
   updateName: (name: string) => {
     set(() => ({ name: name }));
@@ -98,5 +101,8 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
   },
   updateResume: (resume: string) => {
     set(() => ({resume: resume}))
+  },
+  updateResumeId: (resumeId: string) => {
+    set(() => ({resumeId: resumeId}))
   }
 }));
