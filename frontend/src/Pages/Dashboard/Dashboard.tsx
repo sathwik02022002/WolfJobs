@@ -25,6 +25,7 @@ const Dashboard = () => {
   const updateGender = useUserStore((state) => state.updateGender);
   const updateHours = useUserStore((state) => state.updateHours);
   const updateIsLoggedIn = useUserStore((state) => state.updateIsLoggedIn);
+  const updateResume = useUserStore((state) => state.updateResume);
 
   const role = useUserStore((state) => state.role);
   const managerId = useUserStore((state) => state.id);
@@ -64,6 +65,7 @@ const Dashboard = () => {
       updateGender(userInfo.gender);
       updateHours(userInfo.hours);
       updateIsLoggedIn(true);
+      updateResume(userInfo.resume);
     }
   }, []);
 
@@ -116,8 +118,8 @@ const Dashboard = () => {
       <div className="content bg-slate-50">
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
           <>
-            <div className="w-4/12 bg-white/60 overflow-y-scroll overflow-x-hidden pt-2 px-9">
-              <div className="text-2xl py-4">
+            <div className="w-4/12 pt-2 overflow-x-hidden overflow-y-scroll bg-white/60 px-9">
+              <div className="py-4 text-2xl">
                 {role === "Manager" ? "My Listings" : "My Applications"}
               </div>
               {displayList?.map((job: Job) => {
@@ -150,7 +152,7 @@ const Dashboard = () => {
               naviagte("/createjob");
             }}
             type="button"
-            className="  bg-red-400 text-white "
+            className="text-white bg-red-400 "
             style={{
               background: "#FF5353",
               borderRadius: "10px",
