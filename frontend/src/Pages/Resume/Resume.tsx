@@ -1,34 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import ResumeDropzone from '../../components/Resume/ResumeDropzone';
+import { useUserStore } from '../../store/UserStore';
 
-// Assuming you have a type for the resume data
-type ResumeData = {
-  filename: string;
-  url: string; // URL to access the resume
-};
 
 const Resume: React.FC = () => {
   // State to store the uploaded file
   const [file, setFile] = useState<File | null>(null);
+  
+  // The current resume data
+  const resumeName = useUserStore((state) => state.resume)
+  const userId = useUserStore((state) => state.id)
 
-  // State to store the current resume
-  const [currentResume, setCurrentResume] = useState<ResumeData | null>(null);
-
-  // Fetch and display the current resume when the component mounts
-  // For now, we'll mock this with a placeholder PDF URL
-  useState(() => {
-    const fetchCurrentResume = async () => {
-      // Replace with your actual fetch logic here
-      const mockResumeData: ResumeData = {
-        filename: 'current_resume.pdf',
-        url: '/path/to/current_resume.pdf', // Mock URL
-      };
-      setCurrentResume(mockResumeData);
-    };
-
-    fetchCurrentResume();
-  });
 
   // Function to handle file submission
   const handleSubmit = async () => {
@@ -66,11 +49,11 @@ const Resume: React.FC = () => {
           >
             Upload Resume
           </button>
-          {currentResume && (
+          {resumeName && (
             <div className="mt-4">
-              <p>Current Resume: {currentResume.filename}</p>
-              <a href={currentResume.url} target="_blank" rel="noopener noreferrer">
-                View / Download
+              <p>Current Resume: {resumeName}</p>
+              <a href={`/resumeviewer/${userId}`} target="_blank" rel="noopener noreferrer">
+                View
               </a>
             </div>
           )}
