@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import ResumeDropzone from '../../components/Resume/ResumeDropzone';
 import { useUserStore } from '../../store/UserStore';
+import { toast } from "react-toastify";
 
 
 const Resume: React.FC = () => {
@@ -13,30 +14,30 @@ const Resume: React.FC = () => {
   const userId = useUserStore((state) => state.id)
 
 
-  // Function to handle file submission
   const handleSubmit = async () => {
     if (file) {
       const formData = new FormData();
       formData.append('resume', file);
-
+      formData.append('id', userId);
+  
       try {
-        // Replace with your actual endpoint
-        const response = await axios.post('/fake-upload-endpoint', formData, {
+        const response = await axios.post('/users/uploadresume', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
-
-        // Handle the response accordingly
-        if (response.status === 200) {
+  
+        if (response.status === 201) {
           console.log('Resume uploaded successfully');
-          // Update the current resume state if needed
+          toast.success("Resume Uploaded Successfully")
+          
         }
       } catch (error) {
         console.error('Error uploading the resume', error);
+        toast.error("Resume could not be uploaded")
       }
     }
-  };
+  };  
 
   return (
     <>
