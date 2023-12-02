@@ -11,6 +11,8 @@ const Resume: React.FC = () => {
   // The current resume data
   const resumeName = useUserStore((state) => state.resume);
   const userId = useUserStore((state) => state.id);
+  const updateResume = useUserStore((state) => state.updateResume);
+  const updateResumeId = useUserStore((state) => state.updateResumeId) 
 
   const handleSubmit = async () => {
     if (file) {
@@ -19,15 +21,19 @@ const Resume: React.FC = () => {
       formData.append("id", userId);
 
       try {
-        const response = await axios.post("/users/uploadresume", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        const response = await axios.post(
+          "http://localhost:8000/users/uploadresume",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
 
         if (response.status === 201) {
           console.log("Resume uploaded successfully");
-          toast.success("Resume Uploaded Successfully");
+          toast.success("Resume Uploaded Successfully. Sign out and sign back in to see changes!");
         }
       } catch (error) {
         console.error("Error uploading the resume", error);
@@ -43,12 +49,15 @@ const Resume: React.FC = () => {
           <ResumeDropzone
             onFileUpload={(acceptedFiles) => setFile(acceptedFiles[0])}
           />
-          <button
-            onClick={handleSubmit}
-            className="px-4 py-2 mt-4 font-bold text-white bg-blue-500 rounded"
-          >
-            Upload Resume
-          </button>
+          <div className="flex flex-row">
+            <button
+              onClick={handleSubmit}
+              className="px-4 py-2 mt-4 font-bold text-white bg-blue-500 rounded"
+            >
+              Upload Resume
+            </button>
+          </div>
+
           {resumeName && (
             <div className="mt-4">
               <p>Current Resume: {resumeName}</p>
@@ -56,6 +65,7 @@ const Resume: React.FC = () => {
                 href={`/resumeviewer/${userId}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="inline-block px-4 py-2 mt-2 font-bold text-white bg-red-500 rounded"
               >
                 View
               </a>
