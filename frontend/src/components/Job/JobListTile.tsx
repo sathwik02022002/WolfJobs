@@ -8,32 +8,36 @@ const JobListTile = (props: any) => {
   // const { data, action }: { data: Job; action: string | undefined } = props;
   const { data }: { data: Job } = props;
   let action = "view-more";
-  
+
   const getMatchStatus = (job: Job) => {
     let matchStatus = {
-      text: 'Low Match',
-      style: { backgroundColor: '#FF5757', color: 'white' }
+      text: "Low Match",
+      style: { backgroundColor: "#FF5757", color: "white" },
     };
-  
-    const skills = useUserStore((state) => state.skills); 
+
+    const skills = useUserStore((state) => state.skills);
     if (skills && job.requiredSkills) {
-      const applicantSkillsArray = skills.split(',').map(skill => skill.trim().toLowerCase());
-      const requiredSkillsArray = job.requiredSkills.split(',').map(skill => skill.trim().toLowerCase());
-      const isMatch = requiredSkillsArray.some(skill => applicantSkillsArray.includes(skill));
-  
+      const applicantSkillsArray = skills
+        .split(",")
+        .map((skill) => skill.trim().toLowerCase());
+      const requiredSkillsArray = job.requiredSkills
+        .split(",")
+        .map((skill) => skill.trim().toLowerCase());
+      const isMatch = requiredSkillsArray.some((skill) =>
+        applicantSkillsArray.includes(skill)
+      );
+
       if (isMatch) {
         matchStatus = {
-          text: 'Match',
-          style: { backgroundColor: '#00E000', color: 'white' }
+          text: "Match",
+          style: { backgroundColor: "#00E000", color: "white" },
         };
       }
     }
-  
+
     return matchStatus;
   };
-  
-  
-  
+
   const [active, setActive] = useState<boolean>(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const userId = useUserStore((state) => state.id);
@@ -48,18 +52,17 @@ const JobListTile = (props: any) => {
 
   useEffect(() => {
     const temp: Application | undefined = applicationList.find(
-      (item: Application) => item.jobid === data._id && item.applicantid === userId
+      (item: Application) =>
+        item.jobid === data._id && item.applicantid === userId
     );
     setApplication(temp || null);
-    console.log('Found Application:', temp);
+    console.log("Found Application:", temp);
   }, [data, applicationList, userId]);
-  
 
   const affilation = data.managerAffilication;
   const role = data.name;
   const jobType = data?.type?.split("-")?.join(" ");
   const pay = data.pay || "0";
-
 
   useEffect(() => {
     const id = searchParams.get("jobId");
@@ -102,28 +105,34 @@ const JobListTile = (props: any) => {
   };
   return (
     <div className="my-3" onClick={handleClick}>
-    <div
-      className={`p-3 bg-white rounded-xl shadow-sm ${
-        active ? "border-black" : "border-white"
-      } border`}
-    >
-      <div className="flex flex-row">
-        <div className="w-4/6">
-          <div className="flex items-center space-x-2"> 
-            <div className={`w-fit ${getAffiliationColour(affilation)} rounded-2xl px-3 py-0`}>
-              <p className="inline text-xs" style={{ width: "fit-content" }}>
-                {getAffiliationTag(affilation).toUpperCase()}
-              </p>
+      <div
+        className={`p-3 bg-white rounded-xl shadow-sm ${
+          active ? "border-black" : "border-white"
+        } border`}
+      >
+        <div className="flex flex-row">
+          <div className="w-4/6">
+            <div className="flex items-center space-x-2">
+              <div
+                className={`w-fit ${getAffiliationColour(
+                  affilation
+                )} rounded-2xl px-3 py-0`}
+              >
+                <p className="inline text-xs" style={{ width: "fit-content" }}>
+                  {getAffiliationTag(affilation).toUpperCase()}
+                </p>
+              </div>
+              {userRole === "Applicant" && (
+                <div
+                  className={`ml-2 rounded-full px-3 py-0`}
+                  style={getMatchStatus(data).style}
+                >
+                  <p className="inline text-xs">{getMatchStatus(data).text}</p>
+                </div>
+              )}
             </div>
-            {userRole === "Applicant" && (
-              <div className={`ml-2 rounded-full px-3 py-0`} style={getMatchStatus(data).style}>
-              <p className="inline text-xs">{getMatchStatus(data).text}</p>
-            </div>
-            )}
-          </div>
-          <div className="h-1"></div>
-            
-            
+            <div className="h-1"></div>
+
             <div className="pl-2">
               <p className="text-base">
                 <b>Role:</b> {role}
@@ -138,7 +147,7 @@ const JobListTile = (props: any) => {
                   &nbsp;<span className="capitalize">{data.status}</span>
                 </span>
               </p>
-              
+
               <p className="text-base">
                 <b>Type:</b> <span className="capitalize"> {jobType} </span>
               </p>
