@@ -33,8 +33,8 @@ const JobFinalReview = (props: any) => {
       )}
       {acceptedList?.map((item: Application) => {
         return (
-          <div className=" p-1">
-            <div className="bg-white my-2 mx-1 p-2 rounded-lg">
+          <div className="p-1 ">
+            <div className="p-2 mx-1 my-2 bg-white rounded-lg">
               <div className="flex flex-col">
                 <div> Name: {item.applicantname} </div>
                 {!!item?.phonenumber && <div>Phone: {item.phonenumber} </div>}
@@ -42,6 +42,14 @@ const JobFinalReview = (props: any) => {
                 {!!item?.applicantSkills && (
                   <div>Skills: {item.applicantSkills}</div>
                 )}
+                <div className="flex justify-center px-2 py-1 ml-2 border border-gray-300 rounded-md">
+                  <a
+                    href={`/resumeviewer/${item.applicantid}`}
+                    className="text-red-500"
+                  >
+                    View Resume
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -53,8 +61,8 @@ const JobFinalReview = (props: any) => {
       )}
       {rejectedList?.map((item) => {
         return (
-          <div className=" p-1">
-            <div className="bg-white my-2 mx-1 p-2 rounded-lg">
+          <div className="p-1 ">
+            <div className="p-2 mx-1 my-2 bg-white rounded-lg">
               <div className="flex flex-col">
                 <div>
                   <span className="font-bold">Name: </span> {item.applicantname}

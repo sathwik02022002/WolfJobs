@@ -43,7 +43,8 @@ exports.uploadResume = async (req, res) => {
     await resume.save();
 
     // update the user's resumeId
-    user.resume = resume._id;
+    user.resumeId = resume._id;
+    user.resume = resume.fileName
     await user.save();
 
     res.status(201).send({ message: 'Resume uploaded successfully' });
