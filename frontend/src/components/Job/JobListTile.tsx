@@ -130,7 +130,7 @@ const JobListTile = (props: any) => {
                 {getAffiliationTag(affilation).toUpperCase()}
               </p>
             </div>
-            {(
+            {userRole === "Applicant" && (
               <div className={`ml-2 rounded-full px-3 py-0`} style={getMatchStatus(data).style}>
               <p className="inline text-xs">{getMatchStatus(data).text}</p>
             </div>
@@ -173,7 +173,7 @@ const JobListTile = (props: any) => {
               </p>
             </div>
           </div>
-          <div className="w-2/6  flex flex-col-reverse text-right">
+          <div className="flex flex-col-reverse w-2/6 text-right">
             {action === "view-more" || !action ? (
               <p
                 className="inline-flex items-center flex-row-reverse text-xs text-[#656565]"
