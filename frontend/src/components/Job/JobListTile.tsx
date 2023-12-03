@@ -59,22 +59,7 @@ const JobListTile = (props: any) => {
   const role = data.name;
   const jobType = data?.type?.split("-")?.join(" ");
   const pay = data.pay || "0";
-  
-  
 
-  // useEffect(() => {
-  //   // Temporary test values 
-  //   const testApplicantSkills = "skill, skill, skill3";
-  //   const testJobRequiredSkills = "skill2, skill4, skill5";
-  
-  //   const applicantSkillsArray = testApplicantSkills.split(',').map(skill => skill.trim().toLowerCase());
-  //   const requiredSkillsArray = testJobRequiredSkills.split(',').map(skill => skill.trim().toLowerCase());
-  //   const isMatch = requiredSkillsArray.some(skill => applicantSkillsArray.includes(skill));
-  
-  //   console.log("Is Match:", isMatch); 
-  // }, []);
-
-  
 
   useEffect(() => {
     const id = searchParams.get("jobId");
