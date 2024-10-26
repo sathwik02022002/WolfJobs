@@ -16,6 +16,7 @@ const Profile = () => {
   const availability = useUserStore((state) => state.availability);
   const gender = useUserStore((state) => state.gender);
   const hours = useUserStore((state) => state.hours);
+  const resume = useUserStore((state) => state.resume);
 
   const widthCard = "700px";
 
@@ -24,11 +25,11 @@ const Profile = () => {
   return (
     <>
       <div
-        className="flex flex-col items-center justify-center bg-gray-50  "
+        className="flex flex-col items-center justify-center bg-gray-50 "
         style={{ height: "calc(100vh - 72px)" }}
       >
         <div
-          className="bg-white flex flex-col rounded-xl m-6 mx-10 p-4 pb-20 py-4 overflow-y-scroll"
+          className="flex flex-col p-4 py-4 pb-20 m-6 mx-10 overflow-y-scroll bg-white rounded-xl"
           style={{ width: `${widthCard}` }}
         >
           <div
@@ -51,7 +52,7 @@ const Profile = () => {
               />
             )}
           </div>
-          <div className="text-xl border-b my-2">Profile</div>
+          <div className="my-2 text-xl border-b">Profile</div>
           {!editMode && (
             <>
               <div>
@@ -93,6 +94,10 @@ const Profile = () => {
               <div>
                 <span className="text-lg">Gender: </span>
                 <span className="text-gray-500">{gender || " -- "}</span>
+              </div>
+              <div>
+                <span className="text-lg">Resume: </span>
+                <span className="text-gray-500">{resume || " -- "}</span>
               </div>
               {/* <div>
                 <span className="text-lg">Hours: </span>

@@ -20,7 +20,7 @@ Response: 2
 res.json(200, {
       message: "Sign In Successful, here is your token, please keep it safe",
       data: {
-        token: jwt.sign(user.toJSON(), "caloriesapp", { expiresIn: "100000" }),
+        token: jwt.sign(user.toJSON(), "wolfjobs", { expiresIn: "100000" }),
         user: user,
       },
       success: true,
@@ -47,7 +47,7 @@ Response: 2
 res.json(200, {
           message: "Sign Up Successful, here is your token, plz keep it safe",
           data: {
-            token: jwt.sign(user.toJSON(), "caloriesapp", {
+            token: jwt.sign(user.toJSON(), "wolfjobs", {
               expiresIn: "100000",
             }),
             user,
