@@ -56,7 +56,9 @@ const ProfileEdit = ({ props }: { props: any }) => {
     },
   });
 
-  const [availabilityDrop, setAvailabilityDtop] = useState(availability);
+  const [availabilityDrop, setAvailabilityDrop] = useState(availability);
+  const [genderDrop, setGenderDrop] = useState(gender);
+
 
   const userId = useUserStore((state) => state.id);
   const password = useUserStore((state) => state.password);
@@ -77,7 +79,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
       address: data.address,
       availability: availabilityDrop,
       hours: data.hours,
-      gender: data.gender,
+      gender: genderDrop,
       skills: data.skills,
       phonenumber: data.phonenumber,
     };
@@ -117,7 +119,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
             <TextField
               label="Email"
               type="email"
-              {...register("address", {
+              {...register("email", {
                 required: "Email is required",
               })}
               error={!!errors.email}
@@ -183,19 +185,33 @@ const ProfileEdit = ({ props }: { props: any }) => {
               }}
             />
             <TextField
-              label="Phone number"
-              type="text"
-              {...register("phonenumber")}
-              error={!!errors.phonenumber}
-              helperText={errors.phonenumber?.message}
-              sx={{
-                "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                "& fieldset": {
-                  paddingLeft: (theme) => theme.spacing(1.5),
-                  borderRadius: "10px",
-                },
-              }}
+                label="Phone number"
+                type="text"
+                {...register("phonenumber", {
+                    required: "Phone number is required",
+                    minLength: {
+                        value: 10,
+                        message: "Phone number must be at least 10 digits long",
+                    },
+                    maxLength: {
+                        value: 15,
+                        message: "Phone number must be at most 15 digits long",
+                    },
+                    pattern: {
+                        value: /^[0-9]+$/,
+                        message: "Phone number can only contain numbers",
+                    },
+                })}
+                error={!!errors.phonenumber}
+                helperText={errors.phonenumber?.message}
+                sx={{
+                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                    "& fieldset": {
+                        paddingLeft: (theme) => theme.spacing(1.5),
+                        borderRadius: "10px",
+                    },
+                }}
             />
             {/* <TextField
               label="Availability"
@@ -212,35 +228,58 @@ const ProfileEdit = ({ props }: { props: any }) => {
                 },
               }}
             /> */}
-            <FormControl>
-              <InputLabel id="available-id">Availability</InputLabel>
-              <Select
-                value={availabilityDrop}
-                labelId="available-id"
-                label="Availability"
-                id="available-id-1"
-                sx={{
-                  "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                  "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                  "& fieldset": {
-                    paddingLeft: (theme) => theme.spacing(1.0),
-                    borderRadius: "10px",
-                  },
-                }}
-                onChange={(e: SelectChangeEvent) => {
-                  // setRole(e.target.value);
-                  setAvailabilityDtop(e.target.value);
-                }}
-              >
-                {/* <MenuItem value={"0 Hours"}>0 Hours</MenuItem> */}
-                <MenuItem value={"4 Hours"}>4 Hours</MenuItem>
-                <MenuItem value={"8 Hours"}>8 Hours</MenuItem>
-                <MenuItem value={"12 Hours"}>12 Hours</MenuItem>
-                <MenuItem value={"16 Hours"}>16 Hours</MenuItem>
-                <MenuItem value={"20 Hours"}>20 Hours</MenuItem>
-              </Select>
+           <FormControl>
+                <InputLabel id="available-id">Availability</InputLabel>
+                <Select
+                    value={availabilityDrop}
+                    labelId="available-id"
+                    label="Availability"
+                    id="available-id-1"
+                    sx={{
+                        "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                        "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                        "& fieldset": {
+                            paddingLeft: (theme) => theme.spacing(1.0),
+                            borderRadius: "10px",
+                        },
+                    }}
+                    onChange={(e: SelectChangeEvent) => {
+                        setAvailabilityDrop(e.target.value);
+                    }}
+                >
+                    <MenuItem value={"4 Hours"}>4 Hours</MenuItem>
+                    <MenuItem value={"8 Hours"}>8 Hours</MenuItem>
+                    <MenuItem value={"12 Hours"}>12 Hours</MenuItem>
+                    <MenuItem value={"16 Hours"}>16 Hours</MenuItem>
+                    <MenuItem value={"20 Hours"}>20 Hours</MenuItem>
+                </Select>
             </FormControl>
-            <TextField
+            <FormControl>
+                <InputLabel id="gender-id">Gender</InputLabel>
+                <Select
+                    value={genderDrop}
+                    labelId="gender-id"
+                    label="Gender"
+                    id="gender-id-1"
+                    sx={{
+                        "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                        "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                        "& fieldset": {
+                            paddingLeft: (theme) => theme.spacing(1.0),
+                            borderRadius: "10px",
+                        },
+                    }}
+                    onChange={(e: SelectChangeEvent) => {
+                        setGenderDrop(e.target.value);
+                    }}
+                >
+                    <MenuItem value={"Female"}>Female</MenuItem>
+                    <MenuItem value={"Male"}>Male</MenuItem>
+                    <MenuItem value={"Trans"}>Trans</MenuItem>
+                    <MenuItem value={"Wish to not say"}>Wish to not say</MenuItem>
+                </Select>
+            </FormControl>
+            {/* <TextField
               label="Gender"
               type="text"
               {...register("gender")}
@@ -254,7 +293,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
                   borderRadius: "10px",
                 },
               }}
-            />
+            /> */}
             {/* <TextField
               label="Hours"
               type="text"
