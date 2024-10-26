@@ -216,6 +216,19 @@ const RegistrationPage = () => {
               >
                 Sign up
               </Button>
+              <Button
+                onClick={() => navigate(-1)}
+                variant="outlined"
+                color="secondary"
+                style={{
+                  borderRadius: "10px",
+                  textTransform: "none",
+                  fontSize: "16px",
+                  marginTop: "10px",
+                }}
+              >
+                Cancel
+              </Button>
             </Stack>
           </form>
           <div className="mx-auto"></div>

@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Stack, TextField, Button } from "@mui/material";
-// import { DevTool } from "@hookform/devtools";
 
 type FormValues = {
   email: string;
@@ -26,7 +25,6 @@ const LoginPage = () => {
     defaultValues: { email: "", password: "" },
     resolver: yupResolver(schema),
   });
-  // const { control } = form;
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
 
@@ -39,8 +37,8 @@ const LoginPage = () => {
   return (
     <>
       <div className="mx-auto bg-slate-50 content flex flex-col justify-center items-center">
-        <div className=" p-4  border rounded bg-white">
-          <div className="text-xl justify-center text-black mb-4 ">
+        <div className="p-4 border rounded bg-white">
+          <div className="text-xl justify-center text-black mb-4">
             Sign In to your Account
           </div>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -98,6 +96,19 @@ const LoginPage = () => {
               >
                 Login
               </Button>
+              <Button
+                onClick={() => navigate(-1)}
+                variant="outlined"
+                color="secondary"
+                style={{
+                  borderRadius: "10px",
+                  textTransform: "none",
+                  fontSize: "16px",
+                  marginTop: "10px",
+                }}
+              >
+                Cancel
+              </Button>
             </Stack>
           </form>
           <div className="mx-auto"></div>
@@ -117,7 +128,6 @@ const LoginPage = () => {
           </p>
         </div>
       </div>
-      {/* <DevTool control={control}></DevTool> */}
     </>
   );
 };
