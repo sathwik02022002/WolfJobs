@@ -191,11 +191,11 @@ const ProfileEdit = ({ props }: { props: any }) => {
                     required: "Phone number is required",
                     minLength: {
                         value: 10,
-                        message: "Phone number must be at least 10 digits long",
+                        message: "Phone number must 10 digits long",
                     },
                     maxLength: {
-                        value: 15,
-                        message: "Phone number must be at most 15 digits long",
+                        value: 10,
+                        message: "Phone number must 10 digits long",
                     },
                     pattern: {
                         value: /^[0-9]+$/,
