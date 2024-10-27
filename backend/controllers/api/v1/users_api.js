@@ -389,16 +389,16 @@ module.exports.modifyApplication = async function (req, res) {
     // Log applicant email to confirm it’s not undefined
     console.log("Applicant Email:", application.applicantemail);
 
-    // Send acceptance email if status is set to "screening"
-    if (req.body.status === "screening") {
+    // Send acceptance email if status is set to "accepted"
+    if (req.body.status === "accepted") {
       if (!application.applicantemail) {
         throw new Error("Applicant email is undefined or empty");
       }
       const acceptMailOptions = {
         from: 'autowolfjobs@gmail.com',
         to: application.applicantemail,
-        subject: 'Application Screening Phase',
-        text: `Dear ${application.applicantname},\n\nYour application for ${application.jobname} has moved to the screening phase. Please fill the questionnaire.\n\nBest regards,\nWolfJobs Team`,
+        subject: 'Application Accepted',
+        text: `Dear ${application.applicantname},\n\nCongratulations! We are pleased to inform you that your application for ${application.jobname} has been accepted. Our team will reach out with further details soon.\n\nBest regards,\nWolfJobs Team`,
       };
 
       console.log("Sending acceptance email with options:", acceptMailOptions);
@@ -408,6 +408,29 @@ module.exports.modifyApplication = async function (req, res) {
           console.error('Error sending acceptance email:', error);
         } else {
           console.log('Acceptance email sent:', info.response);
+        }
+      });
+    }
+
+    // Send screening email if status is set to "screening"
+    if (req.body.status === "screening") {
+      if (!application.applicantemail) {
+        throw new Error("Applicant email is undefined or empty");
+      }
+      const screeningMailOptions = {
+        from: 'autowolfjobs@gmail.com',
+        to: application.applicantemail,
+        subject: 'Application Screening Phase',
+        text: `Dear ${application.applicantname},\n\nYour application for ${application.jobname} has moved to the screening phase. Please fill out the questionnaire.\n\nBest regards,\nWolfJobs Team`,
+      };
+
+      console.log("Sending screening email with options:", screeningMailOptions);
+
+      transporter.sendMail(screeningMailOptions, (error, info) => {
+        if (error) {
+          console.error('Error sending screening email:', error);
+        } else {
+          console.log('Screening email sent:', info.response);
         }
       });
     }
@@ -452,6 +475,7 @@ module.exports.modifyApplication = async function (req, res) {
     });
   }
 };
+
 
 module.exports.acceptApplication = async function (req, res) {
   try {
