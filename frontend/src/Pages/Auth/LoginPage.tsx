@@ -57,7 +57,7 @@ const LoginPage = () => {
 
   const sendOtpEmail = async (userId: string) => {
     try {
-      const response = await axios.post('/api/v1/users/generateOtp', { userId });
+      const response = await axios.post('/api/v1/users/generate-Otp', { userId });
       console.log("OTP Send Response:", response);
 
       if (response.data && response.data.success) {
@@ -74,7 +74,7 @@ const LoginPage = () => {
   const handleOtpSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/v1/users/verifyOtp', { userId, otp });
+      const response = await axios.post('/api/v1/users/verify-otp', { userId, otp });
       if (response.data.success) {
         setMessage("OTP verified, redirecting...");
         navigate('/dashboard'); // Redirect upon successful OTP verification
