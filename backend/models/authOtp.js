@@ -1,25 +1,27 @@
 const mongoose = require('mongoose');
 
-// Auth OTP table
-const autoOtpSchema = new mongoose.Schema({
+// Auth OTP Schema
+const authOtpSchema = new mongoose.Schema({
   userId: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   },
   otp: {
     type: String,
     required: true
   },
-  createdAt: {
+  expiresAt: {
     type: Date,
-    default: Date.now
+    required: true
   }
-
 }, {
   timestamps: true
 });
 
+// Middleware to automatically remove expired OTPs
+authOtpSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
-const autoOtp = mongoose.model('autoOtp', autoOtpSchema);
+const AuthOtp = mongoose.model('AuthOtp', authOtpSchema);
 
-module.exports = autoOtp;
+module.exports = AuthOtp;

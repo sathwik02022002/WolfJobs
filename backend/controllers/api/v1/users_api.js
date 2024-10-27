@@ -10,6 +10,22 @@ const nodemailer = require("nodemailer");
 
 require("dotenv").config();
 
+async function verifyOtp(req, res) {
+    const { userId, otp } = req.body;
+
+    const record = await AuthOtp.findOne({ userId, otp });
+    if (!record || record.expiresAt < new Date()) {
+        return res.status(400).json({ error: 'Invalid or expired OTP' });
+    }
+
+    // OTP is valid; delete it after successful verification
+    await AuthOtp.deleteOne({ _id: record._id });
+
+    // Respond with success (or generate JWT token if needed)
+    res.json({ success: 'OTP verified, login successful' });
+}
+
+
 module.exports.createSession = async function (req, res) {
   try {
     let user = await User.findOne({ email: req.body.email });
@@ -497,72 +513,111 @@ function getTransport() {
 }
 
 // Generate OTP ans send email to user
+const logger = require('./simpleLogger'); // Import the logger
+
 module.exports.generateOtp = async function (req, res) {
-  const otp = Math.floor(100000 + Math.random() * 900000);
+  const otp = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit OTP
+  const expirationTime = 10 * 60 * 1000; // OTP expiration in milliseconds (10 minutes)
+
   try {
+    logger.info("generateOtp function called"); // Log function call
+
+    // Attempt to create the OTP record
+    logger.info("Creating OTP document in database...");
     let authOtp = await AuthOtp.create({
       userId: req.body.userId,
       otp: otp,
+      expiresAt: new Date(Date.now() + expirationTime), // Set expiration time
     });
+    logger.info(`OTP document created for user ${req.body.userId}`);
 
-    const { email } = await User.findById(req.body.userId);
+    // Retrieve the user's email
+    const user = await User.findById(req.body.userId);
+    if (!user) {
+      logger.error(`User not found with ID: ${req.body.userId}`);
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const { email } = user;
+    logger.info(`Sending OTP email to: ${email}`);
+
     // Send mail to user
     const mailOptions = {
       from: '"Job Portal" <' + process.env.EMAIL + ">", // sender address
-      to: email, // list of receivers
-      subject: "OTP", // Subject line
-      html: `<p>Your OTP is ${otp}</p>`, // plain text body
+      to: email, // recipient's email
+      subject: "Your OTP for Login Verification", // Subject line
+      html: `<p>Your OTP is <b>${otp}</b>. This OTP is valid for 10 minutes.</p>`, // HTML body
     };
 
     await getTransport().sendMail(mailOptions);
+    logger.info(`OTP email sent successfully to: ${email}`);
 
     res.set("Access-Control-Allow-Origin", "*");
-    return res.json(200, {
+    return res.status(200).json({
       success: true,
       message: "OTP is generated Successfully",
     });
   } catch (err) {
-    console.log(err);
-
-    return res.json(500, {
+    logger.error(`Error in generateOtp function: ${err.message}`);
+    return res.status(500).json({
+      success: false,
       message: "Internal Server Error",
+      error: err.message,
     });
   }
 };
 
-module.exports.verifyOtp = async function (req, res) {
-  try {
-    const authOtp = await AuthOtp.findOne({
-      userId: req.body.userId,
-      otp: req.body.otp,
-    });
 
-    if (!authOtp) {
-      return res.json(422, {
-        error: true,
-        message: "OTP is not correct",
-      });
-    }
+module.exports.verifyOtp = async function(req, res) {
+  const { userId, otp } = req.body;
 
-    authOtp.remove();
-
-    await User.updateOne(
-      { _id: req.body.userId },
-      { $set: { isVerified: true } }
-    );
-
-    res.set("Access-Control-Allow-Origin", "*");
-    return res.json(200, {
-      success: true,
-      message: "OTP is verified Successfully",
-    });
-  } catch (err) {
-    console.log(err);
-
-    return res.json(500, {
-      message: "Internal Server Error",
-    });
+  const record = await AuthOtp.findOne({ userId, otp });
+  if (!record || record.expiresAt < new Date()) {
+      return res.status(400).json({ error: 'Invalid or expired OTP' });
   }
+
+  // OTP is valid; delete it after successful verification
+  await AuthOtp.deleteOne({ _id: record._id });
+
+  res.json({ success: 'OTP verified, login successful' });
 };
+
+// module.exports.verifyOtp = async function (req, res) {
+//   try {
+//     const authOtp = await AuthOtp.findOne({
+//       userId: req.body.userId,
+//       otp: req.body.otp,
+//     });
+
+//     if (!authOtp) {
+//       return res.json(422, {
+//         error: true,
+//         message: "OTP is not correct",
+//       });
+//     }
+
+//     authOtp.remove();
+
+//     await User.updateOne(
+//       { _id: req.body.userId },
+//       { $set: { isVerified: true } }
+//     );
+
+//     res.set("Access-Control-Allow-Origin", "*");
+//     return res.json(200, {
+//       success: true,
+//       message: "OTP is verified Successfully",
+//     });
+//   } catch (err) {
+//     console.log(err);
+
+//     return res.json(500, {
+//       message: "Internal Server Error",
+//     });
+//   }
+// };
 
 
