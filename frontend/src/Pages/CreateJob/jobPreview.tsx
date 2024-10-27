@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useUserStore } from "../../store/UserStore";
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { useEffect } from "react";
 import axios from "axios";
@@ -77,12 +77,12 @@ const JobPreview = () => {
           <div className="text-2xl  translate-x-10">Create New Job Listing</div>
           <div className="flex flex-col items-start  ml-10  mt-10 ">
             <div className="inline-flex items-center flex-row  ">
-              <AiFillCheckCircle color="#1E1E1E" size="20px" />
-              <span className="ml-2 text-xl text-[#1E1E1E]">Add details</span>
+              <AiFillCheckCircle color="#008000" size="20px" />
+              <span className="ml-2 text-xl text-[#008000]">Add details</span>
             </div>
             <div className="inline-flex items-center flex-row  ">
-              <AiFillCheckCircle color="#1E1E1E" size="20px" />
-              <span className="ml-2 text-xl text-[#1E1E1E]">
+              <AiFillCheckCircle color="#008000" size="20px" />
+              <span className="ml-2 text-xl text-[#008000]">
                 Fill Questionnaire
               </span>
             </div>
@@ -161,7 +161,8 @@ const JobPreview = () => {
               4: {questions["question4"]}
             </div>
             <div className="mt-4 ">
-              <Button
+              <Stack>
+            <Button
                 onClick={onSubmit}
                 type="submit"
                 variant="contained"
@@ -175,6 +176,21 @@ const JobPreview = () => {
               >
                 Add Listing
               </Button>
+              <Button
+              variant="outlined"
+              onClick={() => navigate(-1)}
+              style={{
+                color: "#FF5353",
+                borderColor: "#FF5353",
+                textTransform: "none",
+                fontSize: "16px",
+                minWidth: "100px",
+                marginBottom: "16px",
+              }}
+            >
+              Back
+            </Button></Stack>
+              
             </div>
           </div>
         </div>
