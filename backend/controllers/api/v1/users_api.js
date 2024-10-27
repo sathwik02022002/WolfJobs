@@ -10,6 +10,18 @@ const nodemailer = require("nodemailer");
 
 require("dotenv").config();
 
+function getTransport() {
+  return nodemailer.createTransport({
+    host: "smtp.gmail.com",      
+    port: 587,                    
+    secure: false,                
+    auth: {
+      user: "autowolfjobs@gmail.com",      
+      pass: "kpee cokw ccab wzpq",         
+    },
+  });
+}
+
 async function verifyOtp(req, res) {
     const { userId, otp } = req.body;
 
@@ -18,10 +30,8 @@ async function verifyOtp(req, res) {
         return res.status(400).json({ error: 'Invalid or expired OTP' });
     }
 
-    // OTP is valid; delete it after successful verification
     await AuthOtp.deleteOne({ _id: record._id });
 
-    // Respond with success (or generate JWT token if needed)
     res.json({ success: 'OTP verified, login successful' });
 }
 
@@ -113,13 +123,11 @@ module.exports.signUp = async function (req, res) {
             });
           }
 
-          // let userr = User.findOne({ email: req.body.email });
           res.set("Access-Control-Allow-Origin", "*");
           return res.json(200, {
             message: "Sign Up Successful, here is your token, plz keep it safe",
 
             data: {
-              //user.JSON() part gets encrypted
 
               token: jwt.sign(user.toJSON(), "wolfjobs", {
                 expiresIn: "100000",
@@ -502,39 +510,26 @@ module.exports.closeJob = async function (req, res) {
   }
 };
 
-function getTransport() {
-  return nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL,
-      pass: process.env.PASS,
-    },
-  });
-}
 
-// Generate OTP ans send email to user
-const logger = require('./simpleLogger'); // Import the logger
+const logger = require('./simpleLogger'); 
 
 module.exports.generateOtp = async function (req, res) {
-  const otp = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit OTP
-  const expirationTime = 10 * 60 * 1000; // OTP expiration in milliseconds (10 minutes)
-
+  const otp = Math.floor(100000 + Math.random() * 900000); 
+  const expirationTime = 10 * 60 * 1000; 
   try {
-    logger.info("generateOtp function called"); // Log function call
+    // logger.info("generateOtp function called"); 
+    // logger.info("Creating OTP document in database...");
 
-    // Attempt to create the OTP record
-    logger.info("Creating OTP document in database...");
     let authOtp = await AuthOtp.create({
       userId: req.body.userId,
       otp: otp,
-      expiresAt: new Date(Date.now() + expirationTime), // Set expiration time
+      expiresAt: new Date(Date.now() + expirationTime), 
     });
-    logger.info(`OTP document created for user ${req.body.userId}`);
+    // logger.info(`OTP document created for user ${req.body.userId}`);
 
-    // Retrieve the user's email
     const user = await User.findById(req.body.userId);
     if (!user) {
-      logger.error(`User not found with ID: ${req.body.userId}`);
+      // logger.error(`User not found with ID: ${req.body.userId}`);
       return res.status(404).json({
         success: false,
         message: "User not found",
@@ -544,12 +539,11 @@ module.exports.generateOtp = async function (req, res) {
     const { email } = user;
     logger.info(`Sending OTP email to: ${email}`);
 
-    // Send mail to user
     const mailOptions = {
-      from: '"Job Portal" <' + process.env.EMAIL + ">", // sender address
-      to: email, // recipient's email
-      subject: "Your OTP for Login Verification", // Subject line
-      html: `<p>Your OTP is <b>${otp}</b>. This OTP is valid for 10 minutes.</p>`, // HTML body
+      from: "autowolfjobs@gmail.com", 
+      to: email,
+      subject: "Your OTP for Login Verification",
+      html: `<p>Your OTP is <b>${otp}</b>. This OTP is valid for 10 minutes.</p>`,
     };
 
     await getTransport().sendMail(mailOptions);
@@ -579,7 +573,6 @@ module.exports.verifyOtp = async function(req, res) {
       return res.status(400).json({ error: 'Invalid or expired OTP' });
   }
 
-  // OTP is valid; delete it after successful verification
   await AuthOtp.deleteOne({ _id: record._id });
 
   res.json({ success: 'OTP verified, login successful' });

@@ -56,10 +56,9 @@ module.exports.create = function(req, res) {
     });
 };
 
-// Generate OTP and Send Email on Login
 async function sendOtpEmail(user) {
-    const otp = crypto.randomInt(100000, 999999); // 6-digit OTP
-    const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // Expires in 10 minutes
+    const otp = crypto.randomInt(100000, 999999);
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
 
     await AuthOtp.create({ userId: user._id, otp, expiresAt });
 
@@ -78,7 +77,7 @@ async function sendOtpEmail(user) {
     await transporter.sendMail(mailOptions);
 }
 
-// Create Session and Send OTP
+
 module.exports.createSession = async function(req, res) {
     try {
         const user = req.user;
@@ -90,7 +89,7 @@ module.exports.createSession = async function(req, res) {
     }
 };
 
-// OTP Verification
+
 module.exports.verifyOtp = async function(req, res) {
     const { userId, otp } = req.body;
     try {

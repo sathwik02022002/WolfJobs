@@ -28,16 +28,16 @@ export async function login(email: string, password: string): Promise<LoginRespo
     .then((data) => {
       if (data.success && data.data && data.data.user && data.data.user._id) {
         localStorage.setItem("token", data.data.token);
-        return { userId: data.data.user._id, success: true }; // Explicitly return `success: true`
+        return { userId: data.data.user._id, success: true };
       } else {
         toast.error("Login Failed");
-        return { success: false }; // Explicitly return `success: false` for failure
+        return { success: false };
       }
     })
     .catch((error) => {
       console.error("Login fetch error:", error);
       toast.error("Login request failed");
-      return { success: false }; // Handle errors with `success: false`
+      return { success: false };
     });
 }
 

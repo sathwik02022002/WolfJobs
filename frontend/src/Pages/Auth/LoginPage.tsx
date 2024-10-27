@@ -39,10 +39,12 @@ const LoginPage = () => {
       const response = await login(data.email, data.password);
 
       if (response.success) {
+
+        console.log("HERE: ",response);
         if (response.userId) {
-          setUserId(response.userId);        // Store user ID for OTP verification
-          setShowOtpInput(true);             // Show OTP input form
-          await sendOtpEmail(response.userId); // Send OTP email
+          setUserId(response.userId);        
+          setShowOtpInput(true);             
+          await sendOtpEmail(response.userId); 
         } else {
           setMessage("Login failed, user ID not found.");
         }
@@ -57,7 +59,7 @@ const LoginPage = () => {
 
   const sendOtpEmail = async (userId: string) => {
     try {
-      const response = await axios.post('/api/v1/users/generate-otp', { userId });
+      const response = await axios.post('http://localhost:8000/api/v1/users/generate-otp', { userId });
       console.log("OTP Send Response:", response);
 
       if (response.data && response.data.success) {
@@ -74,10 +76,10 @@ const LoginPage = () => {
   const handleOtpSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/v1/users/verify-otp', { userId, otp });
+      const response = await axios.post('http://localhost:8000/api/v1/users/verify-otp', { userId, otp });
       if (response.data.success) {
         setMessage("OTP verified, redirecting...");
-        navigate('/dashboard'); // Redirect upon successful OTP verification
+        navigate('/dashboard'); 
       } else {
         setMessage("OTP verification failed, please try again.");
       }
