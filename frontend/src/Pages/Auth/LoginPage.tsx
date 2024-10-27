@@ -57,7 +57,7 @@ const LoginPage = () => {
 
   const sendOtpEmail = async (userId: string) => {
     try {
-      const response = await axios.post('/api/v1/users/generate-Otp', { userId });
+      const response = await axios.post('/api/v1/users/generate-otp', { userId });
       console.log("OTP Send Response:", response);
 
       if (response.data && response.data.success) {
