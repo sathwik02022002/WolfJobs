@@ -53,8 +53,8 @@ const JobQuestionnaire = () => {
           <div className="text-2xl  translate-x-10">Create New Job Listing</div>
           <div className="flex flex-col items-start  ml-10  mt-10 ">
             <div className="inline-flex items-center flex-row  ">
-              <AiFillCheckCircle color="#1E1E1E" size="20px" />
-              <span className="ml-2 text-xl text-[#1E1E1E]">Add details</span>
+              <AiFillCheckCircle color="#008000" size="20px" />
+              <span className="ml-2 text-xl text-[#008000]">Add details</span>
             </div>
             <div className="inline-flex items-center flex-row  ">
               <AiFillCheckCircle color="#1E1E1E" size="20px" />
@@ -76,7 +76,7 @@ const JobQuestionnaire = () => {
           className="w-9/12 pt-10 pl-10"
           style={{ height: "calc(100vh - 72px)" }}
         >
-          <div className="text-2xl translate-x-10">Add Details</div>
+          <div className="text-2xl translate-x-10">Fill Questionnaire</div>
           <div className="flex flex-col">
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -165,6 +165,20 @@ const JobQuestionnaire = () => {
                 >
                   Proceed
                 </Button>
+                <Button
+              variant="outlined"
+              onClick={() => navigate(-1)}
+              style={{
+                color: "#FF5353",
+                borderColor: "#FF5353",
+                textTransform: "none",
+                fontSize: "16px",
+                minWidth: "100px",
+                marginBottom: "16px",
+              }}
+            >
+              Back
+            </Button>
               </Stack>
             </form>
           </div>
