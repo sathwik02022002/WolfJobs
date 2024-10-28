@@ -48,11 +48,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const token: string = localStorage.getItem("token")!;
-<<<<<<< HEAD
     if (!token) {
-=======
-    if (!!!token) {
->>>>>>> dev-ui-changes
       navigate("/login");
     }
     if (token) {
