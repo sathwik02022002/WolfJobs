@@ -74,10 +74,11 @@ const JobDetail = (props: any) => {
     }
   }, [jobData]);
 
+  const questionsLength = jobData?.questions?.length || 0; // Fallback to 0 if not defined
   const { control, handleSubmit, formState: { errors } } = useForm<FormValues>({
-    defaultValues: {
-      answers: Array(jobData.questions.length).fill(""),
-    },
+      defaultValues: {
+          answers: Array(questionsLength).fill(""),
+      },
   });
 
   const handleApplyJob = (e: any) => {
