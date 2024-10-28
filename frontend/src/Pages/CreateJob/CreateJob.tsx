@@ -24,208 +24,167 @@ type FormValues = {
 
 const CreateJob = () => {
   const navigate = useNavigate();
-  const [requiredSkills, setRequiredSkills] = useState("");
 
   const form = useForm<FormValues>({
     defaultValues: {
       role: "",
-      jobtype: "",
+      jobtype: "full-time",
       location: "",
       pay: "",
       description: "",
+      requiredSkills: "",
     },
   });
 
-  const { register, handleSubmit, formState } = form;
+  const { register, handleSubmit, formState, setValue } = form;
   const { errors } = formState;
 
-  const [jobType, setJobType] = useState("full-time");
-
   const onSubmit = (data: FormValues) => {
-    const body = {
-      role: data.role,
-      jobtype: jobType,
-      location: data.location,
-      pay: data.pay,
-      description: data.description,
-      requiredSkills: requiredSkills,
-    };
     navigate("/job_questionnaire", {
-      state: body,
+      state: data,
     });
   };
 
   return (
-    <>
-      <div className="flex flex-row">
-        <div
-          className="w-3/12  pt-10 border-r"
-          style={{ height: "calc(100vh - 72px)" }}
-        >
-          <div className="text-2xl  translate-x-10">Create New Job Listing</div>
-          <div className="flex flex-col items-start  ml-10  mt-10 ">
-            <div className="inline-flex items-center flex-row  ">
-              <AiFillCheckCircle color="#1E1E1E" size="20px" />
-              <span className="ml-2 text-xl text-[#1E1E1E]">Add details</span>
-            </div>
-            <div className="inline-flex items-center flex-row  ">
-              <AiFillCheckCircle color="#CBCBCB" size="20px" />
-              <span className="ml-2 text-xl text-[#CBCBCB]">Fill Questionnaire</span>
-            </div>
-            <div className="inline-flex items-center flex-row  ">
-              <AiFillCheckCircle color="#CBCBCB" size="20px" />
-              <span className="ml-2 text-xl text-[#CBCBCB]">Preview</span>
-            </div>
-            <div className="inline-flex items-center flex-row  ">
-              <AiFillCheckCircle color="#CBCBCB" size="20px" />
-              <span className="ml-2 text-xl text-[#CBCBCB]">Confirm</span>
-            </div>
+    <div
+      className="flex flex-col items-center min-h-screen py-10"
+      style={{ backgroundColor: "rgba(255, 255, 255, 0.6)" }}
+    >
+      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-4xl">
+        <div className="border-b pb-4 mb-6">
+          <h2 className="text-3xl font-semibold mb-2 text-gray-800">Create New Job Listing</h2>
+          <div className="flex space-x-6 mt-2">
+            <StepIndicator label="Add Details" active />
+            <StepIndicator label="Fill Questionnaire" />
+            <StepIndicator label="Preview" />
+            <StepIndicator label="Confirm" />
           </div>
         </div>
-        <div
-          className="w-9/12 pt-10 pl-10"
-          style={{ height: "calc(100vh - 72px)" }}
-        >
-          <div className="text-2xl translate-x-10">Add Details</div>
-          <div className="flex flex-col">
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              noValidate
-              className="m-4 mx-10"
-            >
-              <Stack spacing={2} width={600}>
-                <TextField
-                  label="Job Role"
-                  type="text"
-                  {...register("role", {
-                    required: "Job role is required",
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <Stack spacing={4}>
+            <QuestionCard>
+              <TextField
+                label="Job Role"
+                type="text"
+                fullWidth
+                {...register("role", {
+                  required: "Job role is required",
+                })}
+                error={!!errors.role}
+                helperText={errors.role?.message}
+              />
+            </QuestionCard>
+
+            <QuestionCard>
+              <FormControl fullWidth>
+                <InputLabel id="job-type-label">Job Type</InputLabel>
+                <Select
+                  {...register("jobtype", {
+                    required: "Job type is required",
                   })}
-                  error={!!errors.role}
-                  helperText={errors.role?.message}
-                  sx={{
-                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                    "& fieldset": {
-                      paddingLeft: (theme) => theme.spacing(1.5),
-                      borderRadius: "10px",
-                    },
-                  }}
-                />
-                <FormControl>
-                  <InputLabel id="role-id">Job Type</InputLabel>
-                  <Select
-                    value={jobType}
-                    labelId="role-id"
-                    label="Job Type"
-                    id="role"
-                    onChange={(e: SelectChangeEvent) => {
-                      setJobType(e.target.value);
-                    }}
-                    sx={{
-                      "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                      "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                      "& fieldset": {
-                        paddingLeft: (theme) => theme.spacing(0.75),
-                        borderRadius: "10px",
-                      },
-                    }}
-                  >
-                    <MenuItem value={"full-time"}>Full Time</MenuItem>
-                    <MenuItem value={"part-time"}>Part Time</MenuItem>
-                  </Select>
-                </FormControl>
-                <TextField
-                  label="Location"
-                  type="text"
-                  {...register("location",{
-                    required: "Location is required",
-                  })}
-                  error={!!errors.location}
-                  helperText={errors.location?.message}
-                  sx={{
-                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                    "& fieldset": {
-                      paddingLeft: (theme) => theme.spacing(1.5),
-                      borderRadius: "10px",
-                    },
-                  }}
-                />
-                <TextField
-                  label="Pay"
-                  type="number"
-                  {...register("pay", {
-                    required: "Job pay is required",
-                  })}
-                  error={!!errors.pay}
-                  helperText={errors.pay?.message}
-                  sx={{
-                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                    "& fieldset": {
-                      paddingLeft: (theme) => theme.spacing(1.5),
-                      borderRadius: "10px",
-                    },
-                  }}
-                />
-                <TextField
-                  label="Job Description"
-                  type="text"
-                  {...register("description",{
-                    required: "Description is required",
-                  })}
-                  error={!!errors.description}
-                  helperText={errors.description?.message}
-                  sx={{
-                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                    "& fieldset": {
-                      paddingLeft: (theme) => theme.spacing(1.5),
-                      borderRadius: "10px",
-                    },
-                  }}
-                  minRows={4}
-                  multiline
-                />
-                <TextField
-                  label="Required Skills"
-                  type="text"
-                  {...register("requiredSkills", {
-                    required: "Skills are required",
-                  })}
-                  value={requiredSkills}
-                  onChange={(e) => setRequiredSkills(e.target.value)}
-                  error={!!errors.requiredSkills}
-                  helperText={errors.requiredSkills?.message}
-                  sx={{
-                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                    "& fieldset": {
-                      paddingLeft: (theme) => theme.spacing(1.5),
-                      borderRadius: "10px",
-                    },
-                  }}
-                />
-                <Button
-                  type="submit"
-                  variant="outlined"
-                  style={{
-                    color: "#FF5353",
-                    borderColor: "#FF5353",
-                    textTransform: "none",
-                    fontSize: "16px",
-                    minWidth: "200px",
-                  }}
+                  labelId="job-type-label"
+                  label="Job Type"
+                  defaultValue="full-time"
+                  onChange={(e: SelectChangeEvent) => setValue("jobtype", e.target.value)}
                 >
-                  Proceed
-                </Button>
-              </Stack>
-            </form>
-          </div>
-        </div>
+                  <MenuItem value="full-time">Full Time</MenuItem>
+                  <MenuItem value="part-time">Part Time</MenuItem>
+                </Select>
+              </FormControl>
+            </QuestionCard>
+
+            <QuestionCard>
+              <TextField
+                label="Location"
+                type="text"
+                fullWidth
+                {...register("location", {
+                  required: "Location is required",
+                })}
+                error={!!errors.location}
+                helperText={errors.location?.message}
+              />
+            </QuestionCard>
+
+            <QuestionCard>
+              <TextField
+                label="Pay"
+                type="number"
+                fullWidth
+                {...register("pay", {
+                  required: "Job pay is required",
+                })}
+                error={!!errors.pay}
+                helperText={errors.pay?.message}
+              />
+            </QuestionCard>
+
+            <QuestionCard>
+              <TextField
+                label="Job Description"
+                type="text"
+                fullWidth
+                multiline
+                minRows={3}
+                {...register("description", {
+                  required: "Description is required",
+                })}
+                error={!!errors.description}
+                helperText={errors.description?.message}
+              />
+            </QuestionCard>
+
+            <QuestionCard>
+              <TextField
+                label="Required Skills"
+                type="text"
+                fullWidth
+                {...register("requiredSkills", {
+                  required: "Skills are required",
+                })}
+                error={!!errors.requiredSkills}
+                helperText={errors.requiredSkills?.message}
+              />
+            </QuestionCard>
+
+            <div className="flex justify-center">
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{
+                  backgroundColor: "#FF5353",
+                  color: "#FFF",
+                  fontSize: "16px",
+                  width: "200px",
+                  textTransform: "none",
+                  "&:hover": {
+                    backgroundColor: "#FF4343",
+                  },
+                }}
+              >
+                Proceed
+              </Button>
+            </div>
+          </Stack>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
+
+// Helper component for each step indicator
+const StepIndicator = ({ label, active = false }) => (
+  <div className={`flex items-center space-x-2 ${active ? "text-gray-800" : "text-gray-400"}`}>
+    <AiFillCheckCircle size="20px" color={active ? "#1E1E1E" : "#CBCBCB"} />
+    <span className={`text-lg ${active ? "font-semibold" : ""}`}>{label}</span>
+  </div>
+);
+
+// Helper component for each question card
+const QuestionCard = ({ children }) => (
+  <div className="bg-white p-4 rounded-md border border-gray-300 shadow-sm">
+    {children}
+  </div>
+);
 
 export default CreateJob;
