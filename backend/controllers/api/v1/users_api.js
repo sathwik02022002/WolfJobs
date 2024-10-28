@@ -694,4 +694,57 @@ module.exports.verifyOtp = async function(req, res) {
 //   }
 // };
 
+// controllers/api/v1/users_api.js
+module.exports.notifyApplicant = async function (req, res) {
+  try {
+    const { applicantId, jobId, interviewDate } = req.body;
+
+    // Update the application with the interview date
+    const application = await Application.findById(applicantId);
+    if (!application) {
+      return res.status(404).json({ message: "Application not found" });
+    }
+
+    application.interviewDate = new Date(interviewDate);
+    application.status = "interview_scheduled";
+    await application.save();
+
+    // Retrieve applicant's details
+    const user = await User.findById(application.applicantid);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Format the interview date for notification
+    const formattedDate = new Date(interviewDate).toLocaleString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZoneName: "short",
+    });
+
+    // Send an email with interview details
+    const mailOptions = {
+      from: "your_email@gmail.com",
+      to: user.email,
+      subject: "Interview Scheduled for Your Application",
+      html: `<p>Dear ${user.name},</p>
+             <p>Your interview for the job <strong>${application.jobname}</strong> is scheduled.</p>
+             <p><strong>Date and Time:</strong> ${formattedDate}</p>
+             <p>Best regards,<br/>WolfJobs Team</p>`,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).json({ message: "Interview scheduled and notification sent successfully" });
+  } catch (error) {
+    console.error("Error scheduling interview:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+};
+
+
 

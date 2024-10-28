@@ -86,6 +86,10 @@ const applicationSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  interviewDate: { 
+    type: Date, 
+    default: "",
+  },
 });
 
 const Application = mongoose.model("Application", applicationSchema);

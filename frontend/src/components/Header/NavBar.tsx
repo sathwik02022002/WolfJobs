@@ -31,6 +31,7 @@ const NavBar = () => {
       <div className="relative items-center hidden ml-auto lg:flex">
         <nav className="text-sm font-semibold leading-6 text-slate-700 ">
           <ul className="flex space-x-8">
+           {isLoggedIn && role == "Applicant"  && <NavBarItem link="/Interviews" text="Interviews" />}
             {isLoggedIn && <NavBarItem link="/profile" text="Profile" />}
             {isLoggedIn && role == "Applicant" && <NavBarItem link="/resume" text="Upload Resume" />}
             {isLoggedIn && role === "Applicant" && <NavBarItem link="/notifications" text={`Notifications (${notificationCount})`} />}

@@ -19,6 +19,8 @@ import JobPreview from "./Pages/CreateJob/jobPreview";
 import Resume from "./Pages/Resume/Resume";
 import ResumeViewer from "./components/Resume/ResumeViewer";
 import Notifications from "./Pages/Notifications/Notifications";
+import CalendarPage from "./Pages/Calendar/CalendarPage"; 
+import Interview from './Pages/Interview/Interview';
 
 const App = () => {
   return (
@@ -63,7 +65,6 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/job_preview"
             element={
@@ -82,25 +83,7 @@ const App = () => {
           />
           <Route
             path="/resumeviewer/:applicantId"
-            element={
-                <ResumeViewer />
-            }
-          />
-          <Route
-            path="/resume"
-            element={
-              <ProtectedRoute>
-                <Resume />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/notifications"
-            element={
-              <ProtectedRoute>
-                <Notifications />
-              </ProtectedRoute>
-            }
+            element={<ResumeViewer />}
           />
           <Route
             path="/notifications"
@@ -118,6 +101,24 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          {/* New Calendar route */}
+          <Route
+            path="/calendar"
+            element={
+              <ProtectedRoute>
+                <CalendarPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/interviews"
+            element={
+              <ProtectedRoute>
+                <Interview />
+              </ProtectedRoute>
+            }
+          />
+          
 
           <Route path="*" element={<>Error 404</>} />
         </Routes>

@@ -2,13 +2,19 @@ import { useEffect, useState } from "react";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Button } from "@mui/material";
-import { useSearchParams } from "react-router-dom";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
+const localizer = momentLocalizer(moment);
 
 const JobRating = (props: any) => {
   const { jobData }: { jobData: Job } = props;
   const [displayList, setDisplayList] = useState<Application[]>([]);
-  const [searchParams] = useSearchParams();
+  const [isCalendarOpen, setCalendarOpen] = useState(false);
+  const [selectedApplicant, setSelectedApplicant] = useState<Application | null>(null);
+  const [interviewEvents, setInterviewEvents] = useState([]);
 
   const applicationList = useApplicationStore((state) => state.applicationList);
 
@@ -18,40 +24,68 @@ const JobRating = (props: any) => {
         (item) => item.jobid === jobData._id && item.status === "rating"
       )
     );
-  }, [searchParams]);
+  }, [jobData._id, applicationList]);
 
   const handleAccept = (applicantid: string) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
-
-    const body = {
-      applicationId: applicantid,
-      status: "accepted",
-    };
+    const body = { applicationId: applicantid, status: "accepted" };
 
     axios.post(url, body).then((res) => {
-      if (res.status == 200) {
+      if (res.status === 200) {
         toast.success("Accepted candidate");
         location.reload();
-        return;
+      } else {
+        toast.error("Failed to accept candidate");
       }
-      toast.error("Failed to accept candidate");
     });
   };
+
   const handleReject = (applicantid: string) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
-
-    const body = {
-      applicationId: applicantid,
-      status: "rejected",
-    };
+    const body = { applicationId: applicantid, status: "rejected" };
 
     axios.post(url, body).then((res) => {
-      if (res.status == 200) {
+      if (res.status === 200) {
         toast.success("Rejected candidate");
         location.reload();
-        return;
+      } else {
+        toast.error("Failed to reject candidate");
       }
-      toast.error("Failed to reject candidate");
+    });
+  };
+
+  const openCalendar = (applicant: Application) => {
+    setSelectedApplicant(applicant);
+    setCalendarOpen(true);
+  };
+
+  const scheduleInterview = (slotInfo) => {
+    if (!selectedApplicant) return;
+    const { start, end } = slotInfo;
+
+    const event = {
+      title: `Interview with ${selectedApplicant.applicantname}`,
+      start,
+      end,
+      allDay: false,
+    };
+
+    setInterviewEvents([...interviewEvents, event]);
+    setCalendarOpen(false);
+
+    const notificationUrl = "http://localhost:8000/api/v1/users/notifyApplicant";
+    const notificationData = {
+      applicantId: selectedApplicant._id,
+      jobId: jobData._id,
+      interviewDate: start,
+    };
+
+    axios.post(notificationUrl, notificationData).then((res) => {
+      if (res.status === 200) {
+        toast.success("Interview scheduled, notification sent to applicant");
+      } else {
+        toast.error("Failed to send notification");
+      }
     });
   };
 
@@ -63,22 +97,22 @@ const JobRating = (props: any) => {
       )}
       {displayList.map((item: Application) => {
         return (
-          <div className=" p-1">
-            <div className="bg-white my-2 mx-1 p-2 rounded-lg">
-              <div className=" flex flex-row justify-between">
+          <div className="p-1" key={item._id}>
+            <div className="bg-white my-2 mx-1 p-2 rounded-lg shadow-md">
+              <div className="flex flex-row justify-between">
                 <div className="flex flex-col">
                   <div>
-                    <span className="font-bold"> Name: </span>
+                    <span className="font-bold">Name: </span>
                     {item.applicantname}
                   </div>
-                  {!!item?.phonenumber && <div>Phone: {item.phonenumber} </div>}
+                  {!!item.phonenumber && <div>Phone: {item.phonenumber}</div>}
                   <div>
                     <span className="font-bold">Email: </span>
                     {item.applicantemail}
                   </div>
-                  {!!item?.applicantSkills && (
+                  {!!item.applicantSkills && (
                     <div>
-                      <span className="font-bold">Skills:</span>
+                      <span className="font-bold">Skills: </span>
                       {item.applicantSkills}
                     </div>
                   )}
@@ -89,19 +123,19 @@ const JobRating = (props: any) => {
                 </div>
                 <div className="flex flex-row">
                   <Button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      return handleAccept(item._id);
-                    }}
+                    onClick={() => openCalendar(item)}
+                    style={{ color: "#FF5353" }}
+                  >
+                    Schedule Interview
+                  </Button>
+                  <Button
+                    onClick={() => handleAccept(item._id)}
                     style={{ color: "#FF5353" }}
                   >
                     Accept
                   </Button>
                   <Button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      return handleReject(item._id);
-                    }}
+                    onClick={() => handleReject(item._id)}
                     style={{ color: "#FF5353" }}
                   >
                     Reject
@@ -112,6 +146,26 @@ const JobRating = (props: any) => {
           </div>
         );
       })}
+
+      <Dialog open={isCalendarOpen} onClose={() => setCalendarOpen(false)} maxWidth="md" fullWidth>
+        <DialogTitle>Schedule Interview</DialogTitle>
+        <DialogContent>
+          <Calendar
+            localizer={localizer}
+            events={interviewEvents}
+            startAccessor="start"
+            endAccessor="end"
+            selectable
+            onSelectSlot={scheduleInterview}
+            style={{ height: 400 }}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setCalendarOpen(false)} color="secondary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };

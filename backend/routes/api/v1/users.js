@@ -26,6 +26,7 @@ router.post("/verify-otp", usersApi.verifyOtp);
 router.post("/rejectapplication", usersApi.rejectApplication);
 router.post("/closejob", jsonParser, usersApi.closeJob);
 router.post("/createapplication", jsonParser, usersApi.createApplication);
+router.post("/notifyApplicant", usersApi.notifyApplicant);
 
 
 module.exports = router;

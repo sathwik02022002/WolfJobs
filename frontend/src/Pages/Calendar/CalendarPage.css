@@ -1,0 +1,57 @@
+/* CalendarPage.css */
+
+.calendar-container {
+    background-color: rgba(255, 255, 255, 0.6); /* Translucent white background */
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+}
+
+.calendar-header {
+    color: #333333;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.rbc-calendar {
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.6); /* Match container background */
+}
+
+.rbc-event {
+    background-color: #FF5353; /* Red to match the primary action color */
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 4px;
+    padding: 0.2rem 0.4rem;
+}
+
+.rbc-event:hover {
+    background-color: #E04B4B; /* Slightly darker red on hover */
+    cursor: pointer;
+}
+
+.rbc-toolbar {
+    color: #333333;
+    font-weight: 500;
+}
+
+.rbc-btn-group button {
+    background-color: #f0f0f0;
+    color: #333333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0 0.2rem;
+    padding: 0.3rem 0.6rem;
+}
+
+.rbc-btn-group button:hover {
+    background-color: #e0e0e0;
+}
+
+.rbc-today {
+    background-color: rgba(255, 83, 83, 0.1); /* Subtle red tint for today */
+}
