@@ -28,26 +28,21 @@ const Explore = () => {
   const updateResume = useUserStore((state) => state.updateResume)
   const updateResumeId = useUserStore((state) => state.updateResumeId);
 
-
   const updateApplicationList = useApplicationStore(
     (state) => state.updateApplicationList
   );
-  // const userId = useUserStore((state) => state.id);
-
-  // const [displayList, setDisplayList] = useState<Job[]>([]);
 
   const updateEmail = useUserStore((state) => state.updateEmail);
 
   const updateJobList = useJobStore((state) => state.updateJobList);
   const jobList: Job[] = useJobStore((state) => state.jobList);
-  // const applicationList = useApplicationStore((state) => state.applicationList);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredJobList, setFilteredJobList] = useState<Job[]>([]);
   const [sortHighestPay, setSortHighestPay] = useState(false);
   const [sortAlphabeticallyByCity, setSortAlphabeticallyByCity] = useState(false);
   const [sortByEmploymentType, setSortByEmploymentType] = useState(false);
-  const [showOpenJobs, setShowOpenJobs] = useState(true);  // true for open jobs, false for closed jobs
+  const [showOpenJobs, setShowOpenJobs] = useState(true);
 
   const handleSearchChange = (event: any) => {
     setSearchTerm(event.target.value);
@@ -71,10 +66,10 @@ const Explore = () => {
 
   useEffect(() => {
     const token: string = localStorage.getItem("token")!;
-    if (!!!token) {
+    if (!token) {
       naviagte("/login");
     }
-    if (!!token) {
+    if (token) {
       const tokenInfo = token.split(".");
       const userInfo = JSON.parse(atob(tokenInfo[1]));
 
@@ -133,14 +128,12 @@ const Explore = () => {
     }
 
     if (sortAlphabeticallyByCity) {
-
       updatedList = [...updatedList].sort((a, b) => {
         return a.location.localeCompare(b.location)
       });
     }
 
     if (sortByEmploymentType) {
-
       updatedList = [...updatedList].sort((a, b) => {
         return a.type.localeCompare(b.type)
       });
@@ -153,7 +146,7 @@ const Explore = () => {
 
   return (
     <>
-      <div className="content bg-slate-50">
+      <div className="content" style={{ backgroundColor: "rgba(255, 255, 255, 0.6)", minHeight: "100vh" }}>
         <div className="flex flex-col">
           <div className="p-4 search-bar-container">
             <input
@@ -164,17 +157,33 @@ const Explore = () => {
               className="w-full p-2"
             />
           </div>
-          <div>
-            <button onClick={handleSortChange} className="p-2 ml-2 border">
+          <div className="flex space-x-2">
+            <button
+              onClick={handleSortChange}
+              className="p-2 border rounded bg-white shadow"
+              style={{ padding: '10px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}
+            >
               {sortHighestPay ? "Sort by High Pay : On" : "Sort by Highest Pay : Off"}
             </button>
-            <button onClick={handleSortCityChange} className="p-2 ml-2 border">
+            <button
+              onClick={handleSortCityChange}
+              className="p-2 border rounded bg-white shadow"
+              style={{ padding: '10px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}
+            >
               {sortAlphabeticallyByCity ? "Sort by City : On" : "Sort by City : Off"}
             </button>
-            <button onClick={handleSortEmploymenyTypeChange} className="p-2 ml-2 border">
+            <button
+              onClick={handleSortEmploymenyTypeChange}
+              className="p-2 border rounded bg-white shadow"
+              style={{ padding: '10px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}
+            >
               {sortByEmploymentType ? "Sort by Employment Type : On" : "Sort by Employment Type : Off"}
             </button>
-            <button onClick={toggleJobStatus} className="p-2 ml-2 border">
+            <button
+              onClick={toggleJobStatus}
+              className="p-2 border rounded bg-white shadow"
+              style={{ padding: '10px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}
+            >
               {showOpenJobs ? "Show Closed Jobs" : "Show Open Jobs"}
             </button>
           </div>
