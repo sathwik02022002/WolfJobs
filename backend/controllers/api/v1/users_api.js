@@ -252,6 +252,8 @@ module.exports.getHistory = async function (req, res) {
 module.exports.createJob = async function (req, res) {
   let user = await User.findOne({ _id: req.body.id });
   check = req.body.skills;
+  questions = req.body.questions;
+  filteredQuestions = questions.filter(item => item != "");
   try {
     let job = await Job.create({
       name: req.body.name,
@@ -262,10 +264,12 @@ module.exports.createJob = async function (req, res) {
       description: req.body.description,
       pay: req.body.pay,
       requiredSkills: req.body.requiredSkills,
-      question1: req.body.question1,
-      question2: req.body.question2,
-      question3: req.body.question3,
-      question4: req.body.question4,
+      // question1: req.body.question1,
+      // question2: req.body.question2,
+      // question3: req.body.question3,
+      // question4: req.body.question4,
+      questions: filteredQuestions,
+      // questions: req.body.name
     });
     res.set("Access-Control-Allow-Origin", "*");
     return res.json(200, {
@@ -369,10 +373,11 @@ module.exports.modifyApplication = async function (req, res) {
 
     //change answer only from screening to grading
     if (req.body.status === "grading") {
-      application.answer1 = req.body.answer1;
-      application.answer2 = req.body.answer2;
-      application.answer3 = req.body.answer3;
-      application.answer4 = req.body.answer4;
+      // application.answer1 = req.body.answer1;
+      // application.answer2 = req.body.answer2;
+      // application.answer3 = req.body.answer3;
+      // application.answer4 = req.body.answer4;
+      application.answers = req.body.answers;
     }
 
     if (req.body.status === "rating") {

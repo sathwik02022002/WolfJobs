@@ -66,21 +66,26 @@ const applicationSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Job",
   },
-  answer1: {
-    type: String,
-    default: "",
-  },
-  answer2: {
-    type: String,
-    default: "",
-  },
-  answer3: {
-    type: String,
-    default: "",
-  },
-  answer4: {
-    type: String,
-    default: "",
+  // answer1: {
+  //   type: String,
+  //   default: "",
+  // },
+  // answer2: {
+  //   type: String,
+  //   default: "",
+  // },
+  // answer3: {
+  //   type: String,
+  //   default: "",
+  // },
+  // answer4: {
+  //   type: String,
+  //   default: "",
+  // },
+  answers:{
+    type: [String],
+    default: [],
+    required: true,
   },
   rating: {
     type: String,
