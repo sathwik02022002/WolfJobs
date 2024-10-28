@@ -118,8 +118,6 @@ const Dashboard = () => {
         applicantsJobs = applicantsJobs.filter((app) => {
           if (applicationStatusFilter === "accepted") return app.status === "accepted";
           if (applicationStatusFilter === "rejected") return app.status === "rejected";
-          if (applicationStatusFilter === "in_review") return ["screening", "grading"].includes(app.status);
-          if (applicationStatusFilter === "not_applied") return !app.status || app.status === "";
           return true;
         });
       }
@@ -173,8 +171,6 @@ const Dashboard = () => {
                   <MenuItem value="all">All Applications</MenuItem>
                   <MenuItem value="accepted">Accepted</MenuItem>
                   <MenuItem value="rejected">Rejected</MenuItem>
-                  <MenuItem value="in_review">In Review</MenuItem>
-                  <MenuItem value="not_applied">Not Yet Applied</MenuItem>
                 </Select>
               </FormControl>
             )}
