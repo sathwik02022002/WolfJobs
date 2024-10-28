@@ -7,10 +7,12 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 type FormValuesQuestions = {
-  question1: string;
-  question2: string;
-  question3: string;
-  question4: string;
+  // question1: string;
+  // question2: string;
+  // question3: string;
+  // question4: string;
+  questions: string[];
+
 };
 
 type FormValuesDetails = {
@@ -28,7 +30,7 @@ const JobPreview = () => {
   const {
     details,
     questions,
-  }: { details: FormValuesDetails; questions: FormValuesQuestions } = state;
+  }: { details: FormValuesDetails; questions: FormValuesQuestions; } = state;
 
   const navigate = useNavigate();
   const userId = useUserStore((state) => state.id);
@@ -44,27 +46,35 @@ const JobPreview = () => {
       location: details.location,
       description: details.description,
       pay: details.pay,
-      question1: questions.question1,
-      question2: questions.question2,
-      question3: questions.question3,
-      question4: questions.question4,
+      // question1: details.role,
+      // question2: details.role,
+      // question3: details.role,
+      // question4: details.role,
       requiredSkills: details.requiredSkills,
+      questions: questions.questions,
     };
 
-    axios.post(url, body).then((res) => {
-      if (res.status !== 200) {
-        toast.error("Job posting failed");
-        return;
-      }
-      toast.success("Job created");
-      console.log(details);
-      navigate('/job-preview', { state: { details, questions } });
-      navigate("/dashboard");
-    });
+    axios.post(url, body)
+      .then((res) => {
+        if (res.status !== 200) {
+          toast.error("Job posting failed");
+          return;
+        }
+        toast.success("Job created");
+        console.log(details);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        toast.error("An error occurred while creating the job");
+        // toast.error(questions.questions[0])
+        console.error("Error:", error);
+      });
+
   };
 
   useEffect(() => {
     console.log(state);
+    console.log("Questions:", questions);
   }, []);
 
   return (
@@ -145,7 +155,7 @@ const JobPreview = () => {
               {details.requiredSkills}
             </div>
 
-            <div className="text-lg border-b border-gray-300 mb-2 font-bold">
+            {/* <div className="text-lg border-b border-gray-300 mb-2 font-bold">
               Questions
             </div>
             <div className="text-[#686868] mx-2">
@@ -159,38 +169,48 @@ const JobPreview = () => {
             </div>
             <div className="text-[#686868] mx-2">
               4: {questions["question4"]}
-            </div>
+            </div> */}
+            <div className="text-lg border-b border-gray-300 mb-2 font-bold">Questions</div>
+{questions.questions.filter(question => question).length > 0 ? (  // Filter out empty strings
+  questions.questions.filter(question => question).map((question, index) => (  // Map over the filtered array
+    <div key={index} className="text-[#686868] mx-2">
+      {index + 1}: {question}
+    </div>
+  ))
+) : (
+  <div className="text-[#686868] mx-2">No questions available.</div>
+)}
             <div className="mt-4 ">
-              <Stack>
-            <Button
-                onClick={onSubmit}
-                type="submit"
-                variant="contained"
-                color="primary"
-                style={{
-                  background: "#FF5353",
-                  borderRadius: "10px",
-                  textTransform: "none",
-                  fontSize: "16px",
-                }}
-              >
-                Add Listing
-              </Button>
-              <Button
-              variant="outlined"
-              onClick={() => navigate(-1)}
-              style={{
-                color: "#FF5353",
-                borderColor: "#FF5353",
-                textTransform: "none",
-                fontSize: "16px",
-                minWidth: "100px",
-                marginBottom: "16px",
-              }}
-            >
-              Back
-            </Button></Stack>
-              
+              <Stack spacing={2} width={600}>
+                <Button
+                  onClick={onSubmit}
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  style={{
+                    background: "#FF5353",
+                    borderRadius: "10px",
+                    textTransform: "none",
+                    fontSize: "16px",
+                  }}
+                >
+                  Add Listing
+                </Button>
+                <Button
+                  variant="outlined"
+                  onClick={() => navigate(-1)}
+                  style={{
+                    color: "#FF5353",
+                    borderColor: "#FF5353",
+                    textTransform: "none",
+                    fontSize: "16px",
+                    minWidth: "100px",
+                    marginBottom: "16px",
+                  }}
+                >
+                  Back
+                </Button></Stack>
+
             </div>
           </div>
         </div>
