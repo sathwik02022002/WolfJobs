@@ -74,7 +74,7 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 
 ### Student Applies for Job
 
-![Apply for Job](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Student%20Applies%20to%20a%20Job.gif)
+![Apply for Job](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/readme-update/GIFs/Student_applies_to_job.gif)
 
 ### Application Status & Questionaire
 
