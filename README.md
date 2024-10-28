@@ -69,6 +69,11 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 
 ## Applicant Side
 
+## Signup & Login
+
+<p align="center">
+  <img src="https://github.com/CSC-510-SE-IPV/WolfJobs/blob/readme-update/GIFs/Student_SignUp_Login.gif" width="600" alt="Signup & Login">
+</p>
 ### Signup & Login
 
 ![Signup & Login](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/readme-update/GIFs/Student_SignUp_Login.gif)
