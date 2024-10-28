@@ -29,7 +29,9 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![RestAPI](https://img.shields.io/badge/RestAPI-005571?style=for-the-badge&logo=restapi)
 
-# What's New:
+# What's New: 
+
+**Enhanced User Experience, Security, and Functionality**
 
 - **Email Notifications**: Automated emails for applicants upon selection or rejection to keep them informed every step of the way.
 - **Interview Scheduling with Notifications**: Managers can now schedule interviews with an integrated calendar, notifying candidates instantly via email and in-app alerts.
