@@ -1,4 +1,3 @@
-// import CreateIcon from '@mui/';
 import { BiSolidPencil } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useUserStore } from "../../store/UserStore";
@@ -18,113 +17,71 @@ const Profile = () => {
   const hours = useUserStore((state) => state.hours);
   const resume = useUserStore((state) => state.resume);
 
-  const widthCard = "700px";
-
   const [editMode, setEditMode] = useState(false);
 
   return (
-    <>
+    <div
+      className="flex flex-col items-center justify-center"
+      style={{ backgroundColor: "rgba(255, 255, 255, 0.6)", height: "calc(100vh - 72px)" }}
+    >
       <div
-        className="flex flex-col items-center justify-center bg-gray-50 "
-        style={{ height: "calc(100vh - 72px)" }}
+        className="relative flex flex-col p-6 overflow-y-auto bg-white rounded-xl shadow-lg"
+        style={{ width: "90%", maxWidth: "700px", maxHeight: "85vh" }}
       >
-        <div
-          className="flex flex-col p-4 py-4 pb-20 m-6 mx-10 overflow-y-scroll bg-white rounded-xl"
-          style={{ width: `${widthCard}` }}
-        >
-          <div
-            className="relative h-0"
-            style={{ left: `calc(${widthCard} - 60px)`, top: "9px" }}
-          >
-            {editMode ? (
-              <AiOutlineClose
-                onClick={(e: any) => {
-                  e.preventDefault();
-                  setEditMode(false);
-                }}
-              />
-            ) : (
-              <BiSolidPencil
-                onClick={(e: any) => {
-                  e.preventDefault();
-                  setEditMode(true);
-                }}
-              />
-            )}
-          </div>
-          <div className="my-2 text-xl border-b">Profile</div>
-          {!editMode && (
-            <>
-              <div>
-                <span className="text-lg">Name: </span>
-                <span className="text-gray-500">{name || " -- "}</span>
-              </div>
-              <div>
-                <span className="text-lg">Email: </span>
-                <span className="text-gray-500">{email || " -- "}</span>
-              </div>
-              <div>
-                <span className="text-lg">Role: </span>
-                <span className="text-gray-500">{role || " -- "}</span>
-              </div>
-              <div>
-                <span className="text-lg">Address: </span>
-                <span className="text-gray-500">{address || " -- "}</span>
-              </div>
-              <div>
-                <span className="text-lg">Skills: </span>
-                <span className="text-gray-500">{skills || " -- "}</span>
-              </div>
-              <div>
-                <span className="text-lg">Phone Number: </span>
-                <span className="text-gray-500">{phonenumber || " -- "}</span>
-              </div>
-              {!!affiliation && (
-                <div>
-                  <span className="text-lg">Affiliation: </span>
-                  <span className="text-gray-500">
-                    {affiliation || " -- "}{" "}
-                  </span>
-                </div>
-              )}
-              <div>
-                <span className="text-lg">Availability: </span>
-                <span className="text-gray-500">{availability || " -- "}</span>
-              </div>
-              <div>
-                <span className="text-lg">Gender: </span>
-                <span className="text-gray-500">{gender || " -- "}</span>
-              </div>
-              <div>
-                <span className="text-lg">Resume: </span>
-                <span className="text-gray-500">{resume || " -- "}</span>
-              </div>
-              {/* <div>
-                <span className="text-lg">Hours: </span>
-                <span className="text-gray-500">{hours || " -- "}</span>
-              </div> */}
-            </>
-          )}
-          {editMode && (
-            <ProfileEdit
-              props={{
-                name,
-                email,
-                address,
-                role,
-                skills,
-                phonenumber,
-                affiliation,
-                availability,
-                gender,
-                hours,
-              }}
+        <div className="absolute top-4 right-4 cursor-pointer">
+          {editMode ? (
+            <AiOutlineClose
+              onClick={() => setEditMode(false)}
+              className="text-xl text-gray-600 hover:text-gray-800"
+            />
+          ) : (
+            <BiSolidPencil
+              onClick={() => setEditMode(true)}
+              className="text-xl text-gray-600 hover:text-gray-800"
             />
           )}
         </div>
+        <div className="my-4 text-2xl font-semibold border-b">Profile</div>
+        {!editMode ? (
+          <>
+            <ProfileDetail label="Name" value={name} />
+            <ProfileDetail label="Email" value={email} />
+            <ProfileDetail label="Role" value={role} />
+            <ProfileDetail label="Address" value={address} />
+            <ProfileDetail label="Skills" value={skills} />
+            <ProfileDetail label="Phone Number" value={phonenumber} />
+            <ProfileDetail label="Affiliation" value={affiliation} />
+            <ProfileDetail label="Availability" value={availability} />
+            <ProfileDetail label="Gender" value={gender} />
+            <ProfileDetail label="Resume" value={resume} />
+          </>
+        ) : (
+          <ProfileEdit
+            props={{
+              name,
+              email,
+              address,
+              role,
+              skills,
+              phonenumber,
+              affiliation,
+              availability,
+              gender,
+              hours,
+            }}
+          />
+        )}
       </div>
-    </>
+    </div>
   );
 };
+
+// Helper component to display each profile detail
+const ProfileDetail = ({ label, value }) => (
+  <div className="my-2">
+    <span className="text-lg font-medium">{label}: </span>
+    <span className="text-gray-600">{value || " -- "}</span>
+  </div>
+);
 
 export default Profile;
