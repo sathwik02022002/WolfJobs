@@ -9,9 +9,8 @@ type Job = {
   pay: string;
   type: string;
   requiredSkills: string;
-  // question1: string;
-  // question2: string;
-  // question3: string;
-  // question4: string;
-  questions: string[];
+  question1: string;
+  question2: string;
+  question3: string;
+  question4: string;
 };
