@@ -5,14 +5,11 @@ import { useUserStore } from "../../store/UserStore";
 import { toast } from "react-toastify";
 
 const Resume: React.FC = () => {
-  // State to store the uploaded file
   const [file, setFile] = useState<File | null>(null);
-
-  // The current resume data
   const resumeName = useUserStore((state) => state.resume);
   const userId = useUserStore((state) => state.id);
   const updateResume = useUserStore((state) => state.updateResume);
-  const updateResumeId = useUserStore((state) => state.updateResumeId) 
+  const updateResumeId = useUserStore((state) => state.updateResumeId);
 
   const handleSubmit = async () => {
     if (file) {
@@ -56,10 +53,16 @@ const Resume: React.FC = () => {
             >
               Upload Resume
             </button>
+            <button
+    onClick={() => window.history.back()}
+    className="px-4 py-2 mt-4 font-bold text-white bg-gray-500 rounded"
+  >
+    Cancel
+  </button>
           </div>
 
           {resumeName && (
-            <div className="mt-4">
+            <div className="mt-4 flex flex-row items-center gap-4">
               <p>Current Resume: {resumeName}</p>
               <a
                 href={`/resumeviewer/${userId}`}
@@ -69,6 +72,12 @@ const Resume: React.FC = () => {
               >
                 View
               </a>
+              <button
+                onClick={() => window.history.back()}
+                className="px-4 py-2 mt-2 font-bold text-white bg-gray-500 rounded"
+              >
+                Back
+              </button>
             </div>
           )}
         </div>
