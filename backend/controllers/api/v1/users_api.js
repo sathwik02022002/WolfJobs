@@ -746,5 +746,45 @@ module.exports.notifyApplicant = async function (req, res) {
   }
 };
 
+// Accept Interview - Set status to "interview_accepted"
+exports.acceptInterview = async (req, res) => {
+  const { applicationId } = req.body;
+
+  try {
+    const application = await Application.findById(applicationId);
+    if (!application) {
+      return res.status(404).json({ message: "Application not found" });
+    }
+
+    // Set status to "interview_accepted" for manager review post-interview
+    application.status = "interview_accepted";
+    await application.save();
+
+    res.status(200).json({ message: "Interview accepted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error accepting interview", error });
+  }
+};
+
+// Decline Interview - Set status to "rejected"
+exports.declineInterview = async (req, res) => {
+  const { applicationId } = req.body;
+
+  try {
+    const application = await Application.findById(applicationId);
+    if (!application) {
+      return res.status(404).json({ message: "Application not found" });
+    }
+
+    // Set status to "rejected" for manager to view in rejected tab
+    application.status = "rejected";
+    await application.save();
+
+    res.status(200).json({ message: "Interview declined, application moved to rejected status" });
+  } catch (error) {
+    res.status(500).json({ message: "Error declining interview", error });
+  }
+};
+
 
 

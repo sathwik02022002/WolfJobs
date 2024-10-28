@@ -27,6 +27,10 @@ router.post("/rejectapplication", usersApi.rejectApplication);
 router.post("/closejob", jsonParser, usersApi.closeJob);
 router.post("/createapplication", jsonParser, usersApi.createApplication);
 router.post("/notifyApplicant", usersApi.notifyApplicant);
+router.post("/acceptInterview", usersApi.acceptInterview);
+router.post("/declineInterview", usersApi.declineInterview);
+
+
 
 
 module.exports = router;

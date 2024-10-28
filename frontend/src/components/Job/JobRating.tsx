@@ -15,10 +15,12 @@ const JobRating = (props: any) => {
   const [isCalendarOpen, setCalendarOpen] = useState(false);
   const [selectedApplicant, setSelectedApplicant] = useState<Application | null>(null);
   const [interviewEvents, setInterviewEvents] = useState([]);
+  const [scheduledInterviews, setScheduledInterviews] = useState<string[]>([]); // Track scheduled interviews
 
   const applicationList = useApplicationStore((state) => state.applicationList);
 
   useEffect(() => {
+    // Filter applicants and update display list for those with "rating" status
     setDisplayList(
       applicationList.filter(
         (item) => item.jobid === jobData._id && item.status === "rating"
@@ -83,6 +85,9 @@ const JobRating = (props: any) => {
     axios.post(notificationUrl, notificationData).then((res) => {
       if (res.status === 200) {
         toast.success("Interview scheduled, notification sent to applicant");
+
+        // Add applicant to scheduled list to disable Accept/Reject
+        setScheduledInterviews((prev) => [...prev, selectedApplicant._id]);
       } else {
         toast.error("Failed to send notification");
       }
@@ -96,6 +101,8 @@ const JobRating = (props: any) => {
         <div className="text-base text-gray-500">List empty</div>
       )}
       {displayList.map((item: Application) => {
+        const isScheduled = scheduledInterviews.includes(item._id);
+        
         return (
           <div className="p-1" key={item._id}>
             <div className="bg-white my-2 mx-1 p-2 rounded-lg shadow-md">
@@ -130,13 +137,15 @@ const JobRating = (props: any) => {
                   </Button>
                   <Button
                     onClick={() => handleAccept(item._id)}
-                    style={{ color: "#FF5353" }}
+                    style={{ color: isScheduled ? "gray" : "#FF5353" }}
+                    disabled={isScheduled} // Disable if interview is scheduled
                   >
                     Accept
                   </Button>
                   <Button
                     onClick={() => handleReject(item._id)}
-                    style={{ color: "#FF5353" }}
+                    style={{ color: isScheduled ? "gray" : "#FF5353" }}
+                    disabled={isScheduled} // Disable if interview is scheduled
                   >
                     Reject
                   </Button>
