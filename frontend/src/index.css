@@ -4,6 +4,7 @@
 
 html,
 body {
+  background-color:#ecb4b4; 
   margin: 0;
   height: 100vh;
   font-family: "Urbanist", sans-serif;

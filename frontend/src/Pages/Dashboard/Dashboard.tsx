@@ -10,7 +10,7 @@ import JobListTile from "../../components/Job/JobListTile";
 import { Button } from "@mui/material";
 
 const Dashboard = () => {
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
 
   const updateName = useUserStore((state) => state.updateName);
   const updateEmail = useUserStore((state) => state.updateEmail);
@@ -47,7 +47,7 @@ const Dashboard = () => {
   useEffect(() => {
     const token: string = localStorage.getItem("token")!;
     if (!!!token) {
-      naviagte("/login");
+      navigate("/login");
     }
     if (!!token) {
       const tokenInfo = token.split(".");
@@ -117,32 +117,36 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="content bg-slate-50">
+      <div
+        className="content"
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.6)", // Entire background translucent white
+          minHeight: "100vh",
+        }}
+      >
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
-          <>
-            <div className="w-4/12 pt-2 overflow-x-hidden overflow-y-scroll bg-white/60 px-9">
-              <div className="py-4 text-2xl">
-                {role === "Manager" ? "My Listings" : "My Applications"}
-              </div>
-              {displayList?.map((job: Job) => {
-                let action;
-
-                if (role === "Manager") {
-                  action = "view-application";
-                } else {
-                  const application = applicationList?.find(
-                    (item) =>
-                      item.jobid === job._id && item.status === "screening"
-                  );
-                  action = application
-                    ? "view-questionnaire"
-                    : "view-application";
-                }
-
-                return <JobListTile data={job} key={job._id} action={action} />;
-              })}
+          <div className="w-4/12 pt-2 overflow-x-hidden overflow-y-scroll px-9">
+            <div className="py-4 text-2xl">
+              {role === "Manager" ? "My Listings" : "My Applications"}
             </div>
-          </>
+            {displayList?.map((job: Job) => {
+              let action;
+
+              if (role === "Manager") {
+                action = "view-application";
+              } else {
+                const application = applicationList?.find(
+                  (item) =>
+                    item.jobid === job._id && item.status === "screening"
+                );
+                action = application
+                  ? "view-questionnaire"
+                  : "view-application";
+              }
+
+              return <JobListTile data={job} key={job._id} action={action} />;
+            })}
+          </div>
           <JobDetailView />
         </div>
       </div>
@@ -151,7 +155,7 @@ const Dashboard = () => {
           <Button
             onClick={(e) => {
               e.preventDefault();
-              naviagte("/createjob");
+              navigate("/createjob");
             }}
             type="button"
             className="text-white bg-red-400 "
