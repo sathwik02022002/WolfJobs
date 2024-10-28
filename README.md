@@ -83,16 +83,16 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 ## Manager Side
 
 ### Manager Sign Up
-![Manager Sign Up](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Sign%20Up.gif)
+![Manager Sign Up](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/readme-update/GIFs/Manager_signup.gif)
 
 ### Manager Login
-![Manager Login](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Login.gif)
+![Manager Login](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/readme-update/GIFs/Manager_login.gif)
 
 ### Edit Profile
-![Edit Profile](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Open%20%26%20Edit%20Profile.gif)
+![Edit Profile](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/readme-update/GIFs/edit_profile.gif)
 
 ### Add/Close Job
-![Add/Close Job](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Add%20%26%20Close%20Job.gif)
+![Add/Close Job](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/readme-update/GIFs/add_close_job.gif)
 
 ### Screening
 ![Screening](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Screening.gif)
