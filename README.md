@@ -189,3 +189,12 @@ Your app is ready to be deployed!
    
   </tr>
 </table>
+
+## Iteration 3:
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/ishani-rajput"><img src="https://avatars.githubusercontent.com/ishani-rajput" width="100px;" alt=""/><br /><b>Ishani Rajput</b></a></td>
+    <td align="center"><a href="https://github.com/s-poorna"><img src="https://avatars.githubusercontent.com/s-poorna" width="100px;" alt=""/><br /><b>Poorna Subramanian</b></a><br /></td>
+    <td align="center"><a href="https://github.com/vaishnavpuram27"><img src="https://avatars.githubusercontent.com/vaishnavpuram27" width="100px;" alt=""/><br /><b>Vaishnav Puram</b></a><br /></td>
+  </tr>
+</table>
