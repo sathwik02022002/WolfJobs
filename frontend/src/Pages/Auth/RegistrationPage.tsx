@@ -56,8 +56,17 @@ const RegistrationPage = () => {
 
   return (
     <>
-      <div className="mx-auto bg-slate-50 content flex flex-col justify-center items-center">
-        <div className=" p-4  border rounded bg-white">
+      <div
+        className="mx-auto content flex flex-col justify-center items-center"
+        style={{
+          background: "linear-gradient(135deg, #FF8A8A, #FFFFFF)", // Updated gradient background
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div className="p-4 border rounded bg-white">
           <div className="text-xl justify-center text-black mb-4 ">
             Create New Account
           </div>
@@ -181,25 +190,19 @@ const RegistrationPage = () => {
               </FormControl>
               {role === "Manager" && (
                 <FormControl>
-                  <InputLabel id="affiliation-id">Role</InputLabel>
+                  <InputLabel id="affiliation-id">Affiliation</InputLabel>
                   <Select
                     value={affilation}
                     labelId="affiliation-id"
-                    label="Role"
-                    id="role"
+                    label="Affiliation"
+                    id="affiliation"
                     onChange={(e: SelectChangeEvent) => {
                       setAffiliation(e.target.value);
                     }}
                   >
-                    <MenuItem value={"nc-state-dining"}>
-                      NC State Dining
-                    </MenuItem>
-                    <MenuItem value={"campus-enterprises"}>
-                      Campus Enterprises
-                    </MenuItem>
-                    <MenuItem value={"wolfpack-outfitters"}>
-                      Wolfpack Outfitters
-                    </MenuItem>
+                    <MenuItem value={"nc-state-dining"}>NC State Dining</MenuItem>
+                    <MenuItem value={"campus-enterprises"}>Campus Enterprises</MenuItem>
+                    <MenuItem value={"wolfpack-outfitters"}>Wolfpack Outfitters</MenuItem>
                   </Select>
                 </FormControl>
               )}
