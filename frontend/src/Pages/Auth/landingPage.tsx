@@ -4,155 +4,110 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div style={{ overflow: "hidden" }}>
-      <div
-        style={{
-          position: "absolute",
-          width: "523px",
-          height: "96px",
-          left: "62px",
-          top: "269px",
-          fontFamily: "Urbanist",
-          fontStyle: "normal",
-          fontWeight: 600,
-          fontSize: "40px",
-          lineHeight: "48px",
-          color: "#000000",
-        }}
-      >
-        We understand that being a student can be{" "}
-        <span style={{ color: "#FF5353" }}>challenging.</span>
-      </div>
-
-      <div
-        style={{
-          position: "absolute",
-          width: "550px",
-          height: "72px",
-          left: "62px",
-          top: "383px",
-          fontFamily: "Urbanist",
-          fontStyle: "normal",
-          fontWeight: "400",
-          fontSize: "20px",
-          lineHeight: "24px",
-          color: "#666666",
-        }}
-      >
-        Join our dynamic team right here on campus. Earn, learn, and be part of
-        the community that powers your daily essentials. Apply now and shape
-        your campus experience!
-      </div>
-
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          navigate("/register");
-        }}
-        type="button"
-        style={{
-          position: "absolute",
-          width: "223px",
-          height: "54px",
-          left: "62px",
-          top: "501px",
-          background: "#FF5353",
-          borderRadius: "10px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <p
+    <div style={{ overflow: "hidden", display: "flex", alignItems: "center", minHeight: "100vh", padding: "0 5%" }}>
+      {/* Left Section with Text and Buttons */}
+      <div style={{ flex: 1 }}>
+        <div
           style={{
             fontFamily: "Urbanist",
             fontStyle: "normal",
             fontWeight: 600,
-            fontSize: "20px",
-            lineHeight: "24px",
-            color: "white",
-            margin: 0,
+            fontSize: "40px",
+            lineHeight: "48px",
+            color: "#000000",
+            marginBottom: "20px",
           }}
         >
-          Sign Up
-        </p>
-      </button>
+          We understand that being a student can be{" "}
+          <span style={{ color: "#a80502" }}>challenging.</span>
+        </div>
 
-      <p
-        style={{
-          position: "absolute",
-          width: "29px",
-          height: "30px",
-          left: "308px",
-          top: "513px",
-          fontFamily: "Poppins",
-          fontStyle: "normal",
-          fontWeight: 500,
-          fontSize: "20px",
-          lineHeight: "30px",
-          textAlign: "center",
-          color: "#8C8D90",
-        }}
-      >
-        OR
-      </p>
-
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          navigate("/login");
-        }}
-        type="button"
-        style={{
-          boxSizing: "border-box",
-          position: "absolute",
-          width: "223px",
-          height: "54px",
-          left: "359px",
-          top: "501px",
-          background: "#FFFFFF",
-          border: "1px solid #656565",
-          borderRadius: "10px",
-        }}
-      >
-        <p
+        <div
           style={{
             fontFamily: "Urbanist",
             fontStyle: "normal",
-            fontWeight: 600,
+            fontWeight: "400",
             fontSize: "20px",
             lineHeight: "24px",
-            margin: 0,
-            color: "#656565",
+            color: "#14043b",
+            marginBottom: "40px",
           }}
         >
-          Login
-        </p>
-      </button>
+          Join our dynamic team right here on campus. Earn, learn, and be part
+          of the community that powers your daily essentials. Apply now and
+          shape your campus experience!
+        </div>
 
-      <div
-        style={{
-          position: "absolute",
-          width: "735px",
-          height: "752px",
-          left: "669px",
-          top: "121px",
-          mixBlendMode: "multiply",
-        }}
-      >
-        <img src="/images/landingpage_image1.png" alt="Landing Page Image" />
+        <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/register");
+            }}
+            type="button"
+            style={{
+              width: "150px",
+              height: "54px",
+              background: "#a80502",
+              borderRadius: "10px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "Urbanist",
+                fontStyle: "normal",
+                fontWeight: 600,
+                fontSize: "20px",
+                lineHeight: "24px",
+                color: "white",
+                margin: 0,
+              }}
+            >
+              Sign Up
+            </p>
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/login");
+            }}
+            type="button"
+            style={{
+              width: "150px",
+              height: "54px",
+              background: "#FFFFFF",
+              border: "1px solid #656565",
+              borderRadius: "10px",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "Urbanist",
+                fontStyle: "normal",
+                fontWeight: 600,
+                fontSize: "20px",
+                lineHeight: "24px",
+                margin: 0,
+                color: "#a80502",
+              }}
+            >
+              Login
+            </p>
+          </button>
+        </div>
       </div>
 
-      <div
-        style={{
-          position: "absolute",
-          width: "420px",
-          height: "640px",
-          left: "612px",
-          top: "167px",
-        }}
-      >
-        <img src="/images/landingpage_image2.png" alt="Landing Page Image" />
+      {/* Right Section with Image */}
+      <div style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "flex-start", paddingTop: "50px" }}>
+        <img
+          src="/images/landingpage_image2.png"
+          alt="Landing Page Image"
+          style={{ width: "100%", maxWidth: "600px", height: "auto" }}
+        />
       </div>
     </div>
   );

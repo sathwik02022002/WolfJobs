@@ -48,7 +48,11 @@ const Dashboard = () => {
 
   useEffect(() => {
     const token: string = localStorage.getItem("token")!;
+<<<<<<< HEAD
     if (!token) {
+=======
+    if (!!!token) {
+>>>>>>> dev-ui-changes
       navigate("/login");
     }
     if (token) {
@@ -140,7 +144,13 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="content bg-slate-50 p-4">
+      <div
+      className="content"
+      style={{
+        backgroundColor: "rgba(255, 255, 255, 0.6)", // Entire background translucent white
+        minHeight: "100vh",
+      }}
+    >
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
           <div className="w-4/12 pt-2 overflow-x-hidden overflow-y-scroll bg-white/60 px-9 rounded-lg shadow-md">
             {/* Filter Dropdowns */}
@@ -201,25 +211,24 @@ const Dashboard = () => {
 
       {role === "Manager" && (
         <div className="fixed p-4 bottom-3 right-3">
-          <Tooltip title="Create a new job listing" arrow>
-            <Button
-              onClick={(e) => {
-                e.preventDefault();
-                navigate("/createjob");
-              }}
-              type="button"
-              className="text-white bg-red-500 hover:bg-red-600 transition-colors"
-              style={{
-                borderRadius: "10px",
-                textTransform: "none",
-                fontSize: "18px",
-                width: "250px",
-              }}
-              variant="contained"
-            >
-              Create Job +
-            </Button>
-          </Tooltip>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/createjob");
+            }}
+            type="button"
+            className="text-white bg-red-400 "
+            style={{
+              background: "#FF5353",
+              borderRadius: "10px",
+              textTransform: "none",
+              fontSize: "18px",
+              width: "250px",
+            }}
+            variant="contained"
+          >
+            Create Job +
+          </Button>
         </div>
       )}
     </>
