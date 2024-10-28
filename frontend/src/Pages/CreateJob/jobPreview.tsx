@@ -7,10 +7,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 type FormValuesQuestions = {
-  question1: string;
-  question2: string;
-  question3: string;
-  question4: string;
+  // question1: string;
+  // question2: string;
+  // question3: string;
+  // question4: string;
+  questions: string[];
 };
 
 type FormValuesDetails = {
@@ -28,7 +29,7 @@ const JobPreview = () => {
   const {
     details,
     questions,
-  }: { details: FormValuesDetails; questions: FormValuesQuestions } = state;
+  }: { details: FormValuesDetails; questions: FormValuesQuestions;} = state;
 
   const navigate = useNavigate();
   const userId = useUserStore((state) => state.id);
@@ -44,24 +45,30 @@ const JobPreview = () => {
       location: details.location,
       description: details.description,
       pay: details.pay,
-      question1: questions.question1,
-      question2: questions.question2,
-      question3: questions.question3,
-      question4: questions.question4,
+      // question1: questions.question1,
+      // question2: questions.question2,
+      // question3: questions.question3,
+      // question4: questions.question4,
+      questions: questions.questions,
       requiredSkills: details.requiredSkills,
     };
 
-    axios.post(url, body).then((res) => {
+    axios.post(url, body)
+    .then((res) => {
       if (res.status !== 200) {
         toast.error("Job posting failed");
         return;
       }
       toast.success("Job created");
       console.log(details);
-      navigate('/job-preview', { state: { details, questions } });
       navigate("/dashboard");
+    })
+    .catch((error) => {
+      toast.error("An error occurred while creating the job");
+      // toast.error(questions.questions[0])
+      console.error("Error:", error);
     });
-  };
+};
 
   useEffect(() => {
     console.log(state);
@@ -145,21 +152,16 @@ const JobPreview = () => {
               {details.requiredSkills}
             </div>
 
-            <div className="text-lg border-b border-gray-300 mb-2 font-bold">
-              Questions
-            </div>
-            <div className="text-[#686868] mx-2">
-              1: {questions["question1"]}
-            </div>
-            <div className="text-[#686868] mx-2">
-              2: {questions["question2"]}
-            </div>
-            <div className="text-[#686868] mx-2">
-              3: {questions["question3"]}
-            </div>
-            <div className="text-[#686868] mx-2">
-              4: {questions["question4"]}
-            </div>
+            <div className="text-lg border-b border-gray-300 mb-2 font-bold">Questions</div>
+{questions.questions.filter(question => question).length > 0 ? (  // Filter out empty strings
+  questions.questions.filter(question => question).map((question, index) => (  // Map over the filtered array
+    <div key={index} className="text-[#686868] mx-2">
+      {index + 1}: {question}
+    </div>
+  ))
+) : (
+  <div className="text-[#686868] mx-2">No questions available.</div>
+)}
             <div className="mt-4 ">
               <Stack>
             <Button

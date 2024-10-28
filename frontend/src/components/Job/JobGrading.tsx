@@ -33,12 +33,12 @@ const JobGrading = (props: any) => {
 
     axios.post(url, body).then((res) => {
       if (res.status == 200) {
-        toast.success("Rejected candidate");
+        toast.success("Grading done");
         location.reload();
 
         return;
       }
-      toast.error("Failed to reject candidate");
+      toast.error("Failed to grade the candidate");
     });
   };
 
@@ -61,22 +61,14 @@ const JobGrading = (props: any) => {
                 )}
               </div>
               <div className="text-xl mt-4">Grade the questions</div>
-              <div className="text-base">{jobData.question1}</div>
-              <div className="text-base text-gray-600/80">
-                {item.answer1 || "empty"}
-              </div>
-              <div className="text-base">{jobData.question2}</div>
-              <div className="text-base text-gray-600/80">
-                {item.answer2 || "empty"}
-              </div>
-              <div className="text-base">{jobData.question3}</div>
-              <div className="text-base text-gray-600/80 ">
-                {item.answer3 || "empty"}
-              </div>
-              <div className="text-base">{jobData.question4}</div>
-              <div className="text-base text-gray-600/80">
-                {item.answer4 || "empty"}
-              </div>
+              {jobData.questions.map((question, index) => (
+                <div key={index}>
+                  <div className="text-lg font-semibold mt-2">{question}</div>
+                  <div className="text-base text-gray-600/80">
+                    {item.answers[index] || "empty"}
+                  </div>
+                </div>
+              ))}
               <div className="text-xl mt-4">Grade</div>
               <div className="flex flex-row">
                 <input
