@@ -76,7 +76,7 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 </p>
 ### Signup & Login
 
-![Signup & Login](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/readme-update/GIFs/Student_SignUp_Login.gif)
+![Signup & Login](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/readme-update/GIFs/Signup_login.mp4)
 
 ### Student Applies for Job
 
