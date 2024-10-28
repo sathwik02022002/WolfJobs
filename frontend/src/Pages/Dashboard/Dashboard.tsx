@@ -43,7 +43,8 @@ const Dashboard = () => {
   );
 
   const [displayList, setDisplayList] = useState<Job[]>([]);
-  const [jobStatusFilter, setJobStatusFilter] = useState("all"); // New state for job status filter
+  const [jobStatusFilter, setJobStatusFilter] = useState("all"); // For manager's job filter
+  const [applicationStatusFilter, setApplicationStatusFilter] = useState("all"); // For applicant's status filter
 
   useEffect(() => {
     const token: string = localStorage.getItem("token")!;
@@ -100,27 +101,43 @@ const Dashboard = () => {
     let temp: Job[] = jobList;
 
     if (role === "Manager") {
+      // Filter jobs based on manager and job status
       temp = temp.filter((item) => item.managerid === managerId);
+      if (jobStatusFilter !== "all") {
+        temp = temp.filter((job) =>
+          jobStatusFilter === "open" ? job.status === "open" : job.status === "closed"
+        );
+      }
     } else if (role === "Applicant") {
-      const applicantsJobs: Application[] = applicationList.filter(
-        (item) => item.applicantid
+      // Filter applications specific to the current user and status
+      let applicantsJobs: Application[] = applicationList.filter(
+        (item) => item.applicantid === managerId // Filters for the current applicant's applications
       );
-      const ids: string[] = applicantsJobs.map((job) => job.jobid);
-      temp = temp.filter((item) => ids.includes(item._id));
-    }
 
-    // Apply job status filter
-    if (jobStatusFilter !== "all") {
-      temp = temp.filter((job) =>
-        jobStatusFilter === "open" ? job.status === "open" : job.status === "closed"
-      );
+      if (applicationStatusFilter !== "all") {
+        applicantsJobs = applicantsJobs.filter((app) => {
+          if (applicationStatusFilter === "accepted") return app.status === "accepted";
+          if (applicationStatusFilter === "rejected") return app.status === "rejected";
+          if (applicationStatusFilter === "in_review") return ["screening", "grading"].includes(app.status);
+          if (applicationStatusFilter === "not_applied") return !app.status || app.status === "";
+          return true;
+        });
+      }
+
+      // Map filtered applications to jobs
+      const jobIds = applicantsJobs.map((app) => app.jobid);
+      temp = temp.filter((job) => jobIds.includes(job._id));
     }
 
     setDisplayList(temp);
-  }, [role, jobList, applicationList, jobStatusFilter]);
+  }, [role, jobList, applicationList, jobStatusFilter, applicationStatusFilter]);
 
-  const handleStatusFilterChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setJobStatusFilter(event.target.value as string);
+  const handleJobStatusFilterChange = (event) => {
+    setJobStatusFilter(event.target.value);
+  };
+
+  const handleApplicationStatusFilterChange = (event) => {
+    setApplicationStatusFilter(event.target.value);
   };
 
   return (
@@ -128,19 +145,36 @@ const Dashboard = () => {
       <div className="content bg-slate-50 p-4">
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
           <div className="w-4/12 pt-2 overflow-x-hidden overflow-y-scroll bg-white/60 px-9 rounded-lg shadow-md">
-            {/* Job Status Filter Dropdown */}
+            {/* Filter Dropdowns */}
             {role === "Manager" && (
               <FormControl variant="outlined" size="small" className="mb-4" style={{ width: "100%" }}>
                 <InputLabel>Job Status</InputLabel>
                 <Select
                   value={jobStatusFilter}
-                  onChange={handleStatusFilterChange}
+                  onChange={handleJobStatusFilterChange}
                   label="Job Status"
                   style={{ backgroundColor: "#ffffff", borderRadius: "8px" }}
                 >
                   <MenuItem value="all">All Jobs</MenuItem>
                   <MenuItem value="open">Open Jobs</MenuItem>
                   <MenuItem value="closed">Closed Jobs</MenuItem>
+                </Select>
+              </FormControl>
+            )}
+            {role === "Applicant" && (
+              <FormControl variant="outlined" size="small" className="mb-4" style={{ width: "100%" }}>
+                <InputLabel>Status</InputLabel>
+                <Select
+                  value={applicationStatusFilter}
+                  onChange={handleApplicationStatusFilterChange}
+                  label="Status"
+                  style={{ backgroundColor: "#ffffff", borderRadius: "8px" }}
+                >
+                  <MenuItem value="all">All Applications</MenuItem>
+                  <MenuItem value="accepted">Accepted</MenuItem>
+                  <MenuItem value="rejected">Rejected</MenuItem>
+                  <MenuItem value="in_review">In Review</MenuItem>
+                  <MenuItem value="not_applied">Not Yet Applied</MenuItem>
                 </Select>
               </FormControl>
             )}
