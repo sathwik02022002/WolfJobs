@@ -1,0 +1,84 @@
+[2024-10-27T03:47:21.974Z] [INFO]: generateOtp function called
+[2024-10-27T03:47:21.977Z] [INFO]: Creating OTP document in database...
+[2024-10-27T03:47:21.999Z] [ERROR]: Error in generateOtp function: AuthOtp validation failed: userId: Path `userId` is required.
+[2024-10-27T03:48:50.946Z] [INFO]: generateOtp function called
+[2024-10-27T03:48:50.947Z] [INFO]: Creating OTP document in database...
+[2024-10-27T03:48:50.951Z] [ERROR]: Error in generateOtp function: AuthOtp validation failed: userId: Path `userId` is required.
+[2024-10-27T03:50:37.294Z] [INFO]: generateOtp function called
+[2024-10-27T03:50:37.295Z] [INFO]: Creating OTP document in database...
+[2024-10-27T03:50:37.298Z] [ERROR]: Error in generateOtp function: AuthOtp validation failed: userId: Path `userId` is required.
+[2024-10-27T04:03:55.443Z] [INFO]: generateOtp function called
+[2024-10-27T04:03:55.448Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:03:55.467Z] [ERROR]: Error in generateOtp function: AuthOtp validation failed: userId: Path `userId` is required.
+[2024-10-27T04:05:26.159Z] [INFO]: generateOtp function called
+[2024-10-27T04:05:26.161Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:05:26.172Z] [ERROR]: Error in generateOtp function: AuthOtp validation failed: userId: Path `userId` is required.
+[2024-10-27T04:07:04.746Z] [INFO]: generateOtp function called
+[2024-10-27T04:07:04.748Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:07:04.767Z] [ERROR]: Error in generateOtp function: AuthOtp validation failed: userId: Path `userId` is required.
+[2024-10-27T04:09:55.915Z] [INFO]: generateOtp function called
+[2024-10-27T04:09:55.917Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:09:55.933Z] [ERROR]: Error in generateOtp function: AuthOtp validation failed: userId: Path `userId` is required.
+[2024-10-27T04:10:53.625Z] [INFO]: generateOtp function called
+[2024-10-27T04:10:53.626Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:10:53.639Z] [ERROR]: Error in generateOtp function: AuthOtp validation failed: userId: Path `userId` is required.
+[2024-10-27T04:12:11.220Z] [INFO]: generateOtp function called
+[2024-10-27T04:12:11.222Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:12:11.225Z] [ERROR]: Error in generateOtp function: AuthOtp validation failed: userId: Path `userId` is required.
+[2024-10-27T04:15:03.417Z] [INFO]: generateOtp function called
+[2024-10-27T04:15:03.419Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:15:03.433Z] [ERROR]: Error in generateOtp function: AuthOtp validation failed: userId: Path `userId` is required.
+[2024-10-27T04:16:03.641Z] [INFO]: generateOtp function called
+[2024-10-27T04:16:03.643Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:16:03.834Z] [ERROR]: Error in generateOtp function: AuthOtp validation failed: userId: Path `userId` is required.
+[2024-10-27T04:18:36.247Z] [INFO]: generateOtp function called
+[2024-10-27T04:18:36.249Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:18:36.449Z] [INFO]: OTP document created for user 671d7603d26dea630d47402a
+[2024-10-27T04:18:36.462Z] [INFO]: Sending OTP email to: s.poorna20@gmail.com
+[2024-10-27T04:18:36.745Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-27T04:19:20.983Z] [INFO]: generateOtp function called
+[2024-10-27T04:19:20.985Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:19:21.192Z] [INFO]: OTP document created for user 671d7603d26dea630d47402a
+[2024-10-27T04:19:21.207Z] [INFO]: Sending OTP email to: s.poorna20@gmail.com
+[2024-10-27T04:19:21.446Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-27T04:21:10.908Z] [INFO]: generateOtp function called
+[2024-10-27T04:21:10.911Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:21:11.115Z] [INFO]: OTP document created for user 671d7603d26dea630d47402a
+[2024-10-27T04:21:11.129Z] [INFO]: Sending OTP email to: s.poorna20@gmail.com
+[2024-10-27T04:21:11.457Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-27T04:22:31.616Z] [INFO]: generateOtp function called
+[2024-10-27T04:22:31.619Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:22:31.655Z] [INFO]: OTP document created for user 671d7603d26dea630d47402a
+[2024-10-27T04:22:31.667Z] [INFO]: Sending OTP email to: ${email}
+[2024-10-27T04:22:32.044Z] [ERROR]: Error in generateOtp function: ${err.message}
+[2024-10-27T04:23:37.106Z] [INFO]: generateOtp function called
+[2024-10-27T04:23:37.108Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:23:37.136Z] [INFO]: OTP document created for user 671d7603d26dea630d47402a
+[2024-10-27T04:23:37.145Z] [INFO]: Sending OTP email to: s.poorna20@gmail.com
+[2024-10-27T04:23:37.377Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-27T04:27:09.833Z] [INFO]: generateOtp function called
+[2024-10-27T04:27:09.835Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:27:09.864Z] [INFO]: OTP document created for user 671d7603d26dea630d47402a
+[2024-10-27T04:27:09.874Z] [INFO]: Sending OTP email to: s.poorna20@gmail.com
+[2024-10-27T04:27:10.126Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-27T04:31:38.331Z] [INFO]: generateOtp function called
+[2024-10-27T04:31:38.334Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:31:38.359Z] [INFO]: OTP document created for user 671d7603d26dea630d47402a
+[2024-10-27T04:31:38.374Z] [INFO]: Sending OTP email to: s.poorna20@gmail.com
+[2024-10-27T04:31:38.613Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-27T04:36:52.309Z] [INFO]: generateOtp function called
+[2024-10-27T04:36:52.312Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:36:52.351Z] [INFO]: OTP document created for user 671d7603d26dea630d47402a
+[2024-10-27T04:36:52.360Z] [INFO]: Sending OTP email to: s.poorna20@gmail.com
+[2024-10-27T04:36:53.571Z] [INFO]: OTP email sent successfully to: s.poorna20@gmail.com
+[2024-10-27T04:38:36.557Z] [INFO]: generateOtp function called
+[2024-10-27T04:38:36.560Z] [INFO]: Creating OTP document in database...
+[2024-10-27T04:38:36.597Z] [INFO]: OTP document created for user 671d7603d26dea630d47402a
+[2024-10-27T04:38:36.605Z] [INFO]: Sending OTP email to: s.poorna20@gmail.com
+[2024-10-27T04:38:37.708Z] [INFO]: OTP email sent successfully to: s.poorna20@gmail.com
+[2024-10-27T04:43:06.161Z] [INFO]: Sending OTP email to: s.poorna20@gmail.com
+[2024-10-27T04:43:07.237Z] [INFO]: OTP email sent successfully to: s.poorna20@gmail.com
+[2024-10-27T05:01:05.350Z] [INFO]: Sending OTP email to: s.poorna20@gmail.com
+[2024-10-27T05:01:06.404Z] [INFO]: OTP email sent successfully to: s.poorna20@gmail.com
+[2024-10-27T05:03:55.206Z] [INFO]: Sending OTP email to: s.poorna20@gmail.com
+[2024-10-27T05:03:56.091Z] [INFO]: OTP email sent successfully to: s.poorna20@gmail.com
