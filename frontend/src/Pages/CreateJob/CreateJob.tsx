@@ -137,7 +137,9 @@ const CreateJob = () => {
                 <TextField
                   label="Location"
                   type="text"
-                  {...register("location")}
+                  {...register("location",{
+                    required: "Location is required",
+                  })}
                   error={!!errors.location}
                   helperText={errors.location?.message}
                   sx={{
@@ -169,7 +171,9 @@ const CreateJob = () => {
                 <TextField
                   label="Job Description"
                   type="text"
-                  {...register("description")}
+                  {...register("description",{
+                    required: "Description is required",
+                  })}
                   error={!!errors.description}
                   helperText={errors.description?.message}
                   sx={{
