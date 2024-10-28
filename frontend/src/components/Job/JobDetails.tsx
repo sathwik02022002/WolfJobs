@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useUserStore } from "../../store/UserStore";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Button } from "@mui/material";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
@@ -9,11 +9,10 @@ import { Stack, TextField } from "@mui/material";
 import JobManagerView from "./JobManagerView";
 
 type FormValues = {
-  // answer1: string;
-  // answer2: string;
-  // answer3: string;
-  // answer4: string;
-  answers: string[];
+  answer1: string;
+  answer2: string;
+  answer3: string;
+  answer4: string;
 };
 
 const JobDetail = (props: any) => {
@@ -35,8 +34,6 @@ const JobDetail = (props: any) => {
   const [application, setApplication] = useState<Application | null>(null);
   const [showApply, setShowApply] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
-  
-
 
   const userRole = useUserStore((state) => state.role);
 
@@ -74,12 +71,15 @@ const JobDetail = (props: any) => {
     }
   }, [jobData]);
 
-  const questionsLength = jobData?.questions?.length || 0; // Fallback to 0 if not defined
-  const { control, handleSubmit, formState: { errors } } = useForm<FormValues>({
-      defaultValues: {
-          answers: Array(questionsLength).fill(""),
-      },
+  const form = useForm<FormValues>({
+    defaultValues: {
+      answer1: "",
+      answer2: "",
+      answer3: "",
+      answer4: "",
+    },
   });
+  const { register, handleSubmit } = form;
 
   const handleApplyJob = (e: any) => {
     e.preventDefault();
@@ -112,11 +112,10 @@ const JobDetail = (props: any) => {
     const body = {
       applicationId: application?._id,
       status: "grading",
-      // answer1: data.answer1,
-      // answer2: data.answer2,
-      // answer3: data.answer3,
-      // answer4: data.answer4,
-      answers: data.answers,
+      answer1: data.answer1,
+      answer2: data.answer2,
+      answer3: data.answer3,
+      answer4: data.answer4,
     };
 
     axios.post(url, body).then((res) => {
@@ -128,11 +127,7 @@ const JobDetail = (props: any) => {
       toast.error("Failed to accept candidate");
     });
   };
-  // const handleAnswerChange = (index: number, value: string) => {
-  //   const updatedAnswers = [...answers];
-  //   updatedAnswers[index] = value;
-  //   setAnswers(updatedAnswers);
-  // };
+
   return (
     <>
       <div className="w-7/12">
@@ -150,10 +145,11 @@ const JobDetail = (props: any) => {
                 <span className="font-semibold text-lg">Job Status:</span>
                 &nbsp;
                 <span
-                  className={`capitalize ${jobData.status === "open"
-                    ? "text-green-500"
-                    : "text-red-500"
-                    }`}
+                  className={`capitalize ${
+                    jobData.status === "open"
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
                 >
                   {jobData.status}
                 </span>
@@ -174,7 +170,7 @@ const JobDetail = (props: any) => {
               <div>
                 {userRole === "Applicant" &&
                   (application?.status === "accepted" ||
-                    application?.status === "rejected" ? (
+                  application?.status === "rejected" ? (
                     <>
                       <b>Application Status:</b>
                       <span className="capitalize">
@@ -211,18 +207,16 @@ const JobDetail = (props: any) => {
                   onSubmit={handleSubmit(handleAnswerQuestionnaire)}
                   noValidate
                 >
-
-                  <Stack spacing={2} width={400}>
-                    {/* <div className="flex flex-row justify-between m-2">
+                  <div className="flex flex-row justify-between m-2">
                     <div className="flex flex-col ">
                       <div>
-                        
                         <span className="font-semibold text-lg">1:</span>
                         &nbsp;
                         {jobData.question1}
                       </div>
                     </div>
                   </div>
+                  <Stack spacing={2} width={400}>
                     <TextField
                       label="Answer 1"
                       type="text"
@@ -322,40 +316,7 @@ const JobDetail = (props: any) => {
                           borderRadius: "10px",
                         },
                       }}
-                    /> */}
-                    {jobData.questions.map((question, index) => (
-                      <div key={index} className="flex flex-col m-2">
-                        <div style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
-                          <span className="font-semibold">{index + 1}:</span>
-                          &nbsp;{question}
-                        </div>
-                        <Controller
-                          name={`answers[${index}]`}
-                          control={control}
-                          render={({ field }) => (
-                            <TextField
-                              {...field}
-                              label={`Answer ${index + 1}`}
-                              type="text"
-                              error={!!errors.answers?.[index]}
-                              helperText={errors.answers?.[index]?.message}
-                              sx={{
-                                "& label": {
-                                  paddingLeft: (theme) => theme.spacing(1),
-                                },
-                                "& input": {
-                                  paddingLeft: (theme) => theme.spacing(2.5),
-                                },
-                                "& fieldset": {
-                                  paddingLeft: (theme) => theme.spacing(1.5),
-                                  borderRadius: "10px",
-                                },
-                              }}
-                            />
-                          )}
-                        />
-                      </div>
-                    ))}
+                    />
                     <Button
                       type="submit"
                       variant="contained"
