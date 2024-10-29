@@ -32,9 +32,7 @@ const JobQuestionnaire = () => {
         },
       },
     };
-    // console.log(questions)
     navigate("/job_preview", body);
-    
   };
 
   const addQuestion = () => {
@@ -48,122 +46,121 @@ const JobQuestionnaire = () => {
   };
 
   return (
-    <div className="flex flex-row">
-      <div
-        className="w-3/12 pt-10 border-r"
-        style={{ height: "calc(100vh - 72px)" }}
-      >
-        <div className="text-2xl translate-x-10">Create New Job Listing</div>
-        <div className="flex flex-col items-start ml-10 mt-10">
-          {["Add details", "Fill Questionnaire", "Preview", "Confirm"].map(
-            (step, idx) => (
-              <div key={idx} className="inline-flex items-center flex-row">
-                <AiFillCheckCircle
-                  color={idx === 0 ? "#008000" : idx === 1 ? "#1E1E1E" : "#CBCBCB"}
-                  size="20px"
-                />
-                <span
-                  className={`ml-2 text-xl ${idx === 0 ? "text-[#008000]" : idx === 1 ? "text-[#1E1E1E]" : "text-[#CBCBCB]"
-                    }`}
-                >
-                  {step}
-                </span>
-              </div>
-            )
-          )}
+    <div
+      className="flex flex-col items-center min-h-screen py-10"
+      style={{ backgroundColor: "rgba(255, 255, 255, 0.6)" }}
+    >
+      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-4xl flex">
+        <div className="w-1/3 pr-8 border-r">
+          <h2 className="text-2xl font-semibold mb-6">Create New Job Listing</h2>
+          <div className="flex flex-col space-y-4">
+            {["Add details", "Fill Questionnaire", "Preview", "Confirm"].map(
+              (step, idx) => (
+                <div key={idx} className="inline-flex items-center flex-row">
+                  <AiFillCheckCircle
+                    color={idx === 0 ? "#008000" : idx === 1 ? "#1E1E1E" : "#CBCBCB"}
+                    size="20px"
+                  />
+                  <span
+                    className={`ml-2 text-xl ${idx === 0 ? "text-[#008000]" : idx === 1 ? "text-[#1E1E1E]" : "text-[#CBCBCB]"
+                      }`}
+                  >
+                    {step}
+                  </span>
+                </div>
+              )
+            )}
+          </div>
         </div>
-      </div>
 
-      <div
-        className="w-9/12 pt-10 pl-10"
-        style={{ height: "calc(100vh - 72px)" }}
-      >
-        <div className="text-2xl translate-x-10">Fill Questionnaire</div>
-        <form onSubmit={handleSubmit(onSubmit)} noValidate className="m-4 mx-10">
-          <Stack spacing={2} width={600}>
-            {questions.map((question, index) => (
-              <Controller
-                key={index}
-                name={`questions.${index}`}
-                control={control}
-                defaultValue={question}
-                rules={{ required: "Question is required" }}
-                render={({ field }) => (
-                  <Stack direction="row" alignItems="center" spacing={1}>
-                    <TextField
-                      {...field}
-                      label={`Question ${index + 1}`}
-                      fullWidth
-                      error={!!errors.questions?.[index]}
-                      helperText={errors.questions?.[index]?.message}
-                      sx={{
-                        "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                        "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                        "& fieldset": {
-                          paddingLeft: (theme) => theme.spacing(1.5),
-                          borderRadius: "10px",
-                        },
-                      }}
-                    />
-                    {questions.length > 1 && (
-                      <Button
-                        onClick={() => removeQuestion(index)}
-                        variant="outlined"
-                        color="error"
-                      >
-                        Delete
-                      </Button>
-                    )}
-                  </Stack>
-                )}
-              />
-            ))}
-            <Button
-              onClick={addQuestion}
-              variant="outlined"
-              style={{
-                color: "#1E1E1E",
-                borderColor: "#1E1E1E",
-                textTransform: "none",
-                fontSize: "16px",
-                minWidth: "200px",
-              }}
-            >
-              Add Question
-            </Button>
-            <Stack direction="row" spacing={2}>
+        <div className="w-2/3 pl-8">
+          <h2 className="text-2xl mb-4">Fill Questionnaire</h2>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate className="m-4 mx-10">
+            <Stack spacing={2} width="100%">
+              {questions.map((question, index) => (
+                <Controller
+                  key={index}
+                  name={`questions.${index}`}
+                  control={control}
+                  defaultValue={question}
+                  rules={{ required: "Question is required" }}
+                  render={({ field }) => (
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      <TextField
+                        {...field}
+                        label={`Question ${index + 1}`}
+                        fullWidth
+                        error={!!errors.questions?.[index]}
+                        helperText={errors.questions?.[index]?.message}
+                        sx={{
+                          "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                          "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                          "& fieldset": {
+                            paddingLeft: (theme) => theme.spacing(1.5),
+                            borderRadius: "10px",
+                          },
+                        }}
+                      />
+                      {questions.length > 1 && (
+                        <Button
+                          onClick={() => removeQuestion(index)}
+                          variant="outlined"
+                          color="error"
+                        >
+                          Delete
+                        </Button>
+                      )}
+                    </Stack>
+                  )}
+                />
+              ))}
               <Button
-                type="submit"
-                variant="contained"
-                sx={{
-                  backgroundColor: "#FF5353",
-                  color: "#FFF",
-                  fontSize: "16px",
-                  width: "200px",
-                  textTransform: "none",
-                  "&:hover": {
-                    backgroundColor: "#FF4343",
-                  },
-                }}
-              >
-                Proceed
-              </Button>
-              <Button
+                onClick={addQuestion}
                 variant="outlined"
-                onClick={() => navigate(-1)}
                 style={{
-                  color: "#FF5353",
-                  borderColor: "#FF5353",
+                  color: "#1E1E1E",
+                  borderColor: "#1E1E1E",
                   textTransform: "none",
                   fontSize: "16px",
-                  minWidth: "100px",
+                  minWidth: "200px",
                 }}
               >
-                Back
+                Add Question
               </Button>
+              <Stack direction="row" spacing={2}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#FF5353",
+                    color: "#FFF",
+                    fontSize: "16px",
+                    width: "200px",
+                    textTransform: "none",
+                    "&:hover": {
+                      backgroundColor: "#FF4343",
+                    },
+                  }}
+                >
+                  Proceed
+                </Button>
+                <Button
+                  variant="outlined"
+                  onClick={() => navigate(-1)}
+                  style={{
+                    color: "#FF5353",
+                    borderColor: "#FF5353",
+                    textTransform: "none",
+                    fontSize: "16px",
+                    minWidth: "100px",
+                  }}
+                >
+                  Back
+                </Button>
+              </Stack>
             </Stack>
-          </Stack>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );
