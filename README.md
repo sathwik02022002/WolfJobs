@@ -1,4 +1,4 @@
-![Banner](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/GIF-Update/GIFs/Banner.png)
+![Banner](https://github.com/deepr41WolfJobs/blob/GIF-Update/GIFs/Banner.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm-build](https://github.com/CSC-510-SE-IPV/WolfJobs/actions/workflows/build-checker.yml/badge.svg)](https://github.com/CSC-510-SE-IPV/WolfJobs/actions/workflows/build-checker.yml)
@@ -11,10 +11,10 @@
 [![Repo-size](https://img.shields.io/github/repo-size/CSC-510-SE-IPV/Wolfjobs)](https://GitHub.com/CSC-510-SE-IPV/Wolfjobs/)
 [![file_count](https://img.shields.io/github/directory-file-count/CSC-510-SE-IPV/Wolfjobs)](https://GitHub.com/CSC-510-SE-IPV/Wolfjobs/)
 [![language_count](https://img.shields.io/github/languages/count/CSC-510-SE-IPV/Wolfjobs)](https://GitHub.com/CSC-510-SE-IPV/Wolfjobs/)
-[![Downloads](https://img.shields.io/github/downloads/CSC-510-SE-IPV/WolfJobs/total)](https://GitHub.com/CSC-510-SE-IPV/Wolfjobs/)
-[![Top Language](https://img.shields.io/github/languages/top/CSC-510-SE-IPV/WolfJobs/)](https://GitHub.com/CSC-510-SE-IPV/WolfJobs/)
+[![Downloads](https://img.shields.io/github/downloads/deepr41/WolfJobs/total)](https://GitHub.com/deepr41/Wolfjobs/)
+[![Top Language](https://img.shields.io/github/languages/top/deepr41/WolfJobs/)](https://GitHub.com/deepr41/WolfJobs/)
 [![DOI](https://zenodo.org/badge/429097663.svg)](https://zenodo.org/badge/latestdoi/429097663)
-[![Release](https://img.shields.io/github/v/release/CSC-510-SE-IPV/WolfJobs)](https://github.com/CSC-510-SE-IPV/WolfJobs/)
+[![Release](https://img.shields.io/github/v/release/deepr41/WolfJobs)](https://github.com/deepr41/WolfJobs/)
 [![codecov](https://codecov.io/github/deepr41/WolfJobs/graph/badge.svg?token=RH472ZM4PT)](https://codecov.io/gh/deepr41/WolfJobs)
 
 <!-- ![Static Badge](https://img.shields.io/badge/any_text-i_like-blue) -->
