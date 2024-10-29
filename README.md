@@ -99,6 +99,9 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 ### Review & Accept Applications
 ![Review Applications](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Grade%2C%20Review%20%26%20Accept%20Candidates.gif)
 
+### Interview Scheduling
+![Interview Scheduling](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/readme-update/GIFs/interview.gif)
+
 
 # Installation Instructions for Project Setup
 
