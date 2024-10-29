@@ -31,7 +31,7 @@ const LoginPage = () => {
     defaultValues: { email: "", password: "" },
     resolver: yupResolver(schema),
   });
-  const { register, handleSubmit, formState } = form;
+  const { register, handleSubmit, formState, reset } = form;
   const { errors } = formState;
 
   const onSubmit = async (data: FormValues) => {
@@ -83,6 +83,16 @@ const LoginPage = () => {
       console.error("OTP verification failed:", error);
       setMessage("OTP verification failed, please try again.");
     }
+  };
+
+  const handleCancelOtp = () => {
+    setShowOtpInput(false);
+    setOtp("");
+    setMessage("");
+  };
+
+  const navigateBack = () => {
+    navigate(-1);
   };
 
   return (
@@ -153,6 +163,19 @@ const LoginPage = () => {
               >
                 Login
               </Button>
+              <Button
+                variant="outlined"
+                onClick={navigateBack}
+                style={{
+                  color: "#FF5353",
+                  borderColor: "#FF5353",
+                  borderRadius: "10px",
+                  textTransform: "none",
+                  fontSize: "16px",
+                }}
+              >
+                Back
+              </Button>
             </Stack>
           </form>
         ) : (
@@ -174,18 +197,33 @@ const LoginPage = () => {
                   },
                 }}
               />
-              <Button
-                type="submit"
-                variant="contained"
-                color="secondary"
-                style={{
-                  borderRadius: "10px",
-                  textTransform: "none",
-                  fontSize: "16px",
-                }}
-              >
-                Verify OTP
-              </Button>
+              <Stack direction="row" spacing={2}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                  style={{
+                    borderRadius: "10px",
+                    textTransform: "none",
+                    fontSize: "16px",
+                  }}
+                >
+                  Verify OTP
+                </Button>
+                <Button
+                  variant="outlined"
+                  onClick={handleCancelOtp}
+                  style={{
+                    color: "#FF5353",
+                    borderColor: "#FF5353",
+                    borderRadius: "10px",
+                    textTransform: "none",
+                    fontSize: "16px",
+                  }}
+                >
+                  Cancel
+                </Button>
+              </Stack>
             </Stack>
           </form>
         )}
