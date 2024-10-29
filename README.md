@@ -31,7 +31,7 @@
 
 # What's New: 
 
-**Enhanced User Experience, Security, and Functionality**
+**Enhanced User Experience, Security, and Functionality!**
 
 - **Email Notifications**: Automated emails for applicants upon selection or rejection to keep them informed every step of the way.
 - **Interview Scheduling with Notifications**: Managers can now schedule interviews with an integrated calendar, notifying candidates instantly via email and in-app alerts.
@@ -164,6 +164,9 @@ Your app is ready to be deployed!
 
 **5. Matching based on Resume** – WolfJobs applicants will be able to parse their resume and WolfJobs will extract key skills from the resume and compare it with required job skills to give candidates job matching status.
 
+**6. Customizable Job Alerts🔔** – Allow applicants to set personalized job alerts based on their preferences like job title, location, salary range, or employment type. This feature will send automated notifications when a new job posting matches their criteria, helping applicants stay up-to-date with relevant opportunities without constantly checking the platform.
+
+**7. Saved Jobs Feature📁** – Add a "Save for Later" feature so applicants can bookmark job listings they are interested in and revisit them easily. This will help applicants keep track of positions they may want to apply for, allowing them to compare and prioritize roles without losing track of opportunities.
 
 
 # Contributors
