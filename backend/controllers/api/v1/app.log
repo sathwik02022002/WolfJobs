@@ -202,3 +202,38 @@
 [2024-10-29T01:29:32.391Z] [INFO]: OTP email sent successfully to: vaishnavpuram27@gmail.com
 [2024-10-29T01:30:18.163Z] [INFO]: Sending OTP email to: vaishnavms2711@gmail.com
 [2024-10-29T01:30:19.273Z] [INFO]: OTP email sent successfully to: vaishnavms2711@gmail.com
+[2024-10-29T02:03:20.599Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:03:20.964Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-29T02:05:22.178Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:05:22.453Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-29T02:06:03.397Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:06:03.682Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-29T02:07:18.310Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:07:18.714Z] [ERROR]: Error in generateOtp function: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d75a77b69052e-4613211a228sm40187501cf.19 - gsmtp
+[2024-10-29T02:08:18.315Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:08:18.729Z] [ERROR]: Error in generateOtp function: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d75a77b69052e-4613228c8efsm40701101cf.41 - gsmtp
+[2024-10-29T02:08:38.200Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:08:38.537Z] [ERROR]: Error in generateOtp function: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 6a1803df08f44-6d17973d8bdsm38094666d6.18 - gsmtp
+[2024-10-29T02:09:52.940Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:09:53.432Z] [ERROR]: Error in generateOtp function: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials af79cd13be357-7b18d27a9ffsm379442585a.23 - gsmtp
+[2024-10-29T02:11:00.898Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:11:01.236Z] [ERROR]: Error in generateOtp function: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d75a77b69052e-461323a1fbesm40392531cf.82 - gsmtp
+[2024-10-29T02:12:15.096Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:12:15.415Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-29T02:12:32.253Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:12:32.524Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-29T02:13:55.280Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:13:55.599Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-29T02:15:42.936Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:15:43.251Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-29T02:16:25.094Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:16:25.360Z] [ERROR]: Error in generateOtp function: Missing credentials for "PLAIN"
+[2024-10-29T02:22:06.797Z] [INFO]: Sending OTP email to: ishanirajput1999@gmail.com
+[2024-10-29T02:22:07.893Z] [INFO]: OTP email sent successfully to: ishanirajput1999@gmail.com
+[2024-10-29T02:22:44.123Z] [INFO]: Sending OTP email to: rajputishani515@gmail.com
+[2024-10-29T02:22:45.147Z] [INFO]: OTP email sent successfully to: rajputishani515@gmail.com
