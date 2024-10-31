@@ -641,9 +641,6 @@ module.exports.generateOtp = async function (req, res) {
       html: `<p>Your OTP is <b>${otp}</b>. This OTP is valid for 10 minutes.</p>`,
     };
 
-    console.log(process.env.EMAIL_USER); // should output your email
-    console.log(process.env.EMAIL_PASS); 
-
     await getTransport().sendMail(mailOptions);
     logger.info(`OTP email sent successfully to: ${email}`);
 
