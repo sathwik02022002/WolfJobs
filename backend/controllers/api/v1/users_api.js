@@ -8,7 +8,8 @@ const AuthOtp = require("../../../models/authOtp");
 const bcrypt = require('bcrypt');
 const nodemailer = require("nodemailer");
 
-require("dotenv").config();
+require('dotenv').config();
+
 
 function getTransport() {
   return nodemailer.createTransport({
@@ -16,8 +17,8 @@ function getTransport() {
     port: 587,                    
     secure: false,                
     auth: {
-      user: "autowolfjobs@gmail.com",      
-      pass: "kpee cokw ccab wzpq",         
+      user: process.env.EMAIL_USER,      
+      pass: process.env.EMAIL_PASS,         
     },
   });
 }
@@ -395,8 +396,8 @@ module.exports.createApplication = async function (req, res) {
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'autowolfjobs@gmail.com', // Your email
-    pass: 'kpee cokw ccab wzpq',     // App-specific password or actual password if Less Secure Apps is enabled
+    user: process.env.EMAIL_USER, // Your email
+    pass: process.env.EMAIL_PASS,     // App-specific password or actual password if Less Secure Apps is enabled
   },
 });
 

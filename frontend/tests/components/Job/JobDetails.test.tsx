@@ -17,10 +17,7 @@ describe("JobDetails", () => {
             location: "Raleigh",
             pay: "100",
             description: "Developer",
-            question1: "Work experience?",
-            question2: "CGPA?",
-            question3: "Age?",
-            question4: "Skills?",
+            questions: [],
           }}
         />
       </MemoryRouter>

@@ -1,21 +1,21 @@
 ![Banner](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Banner.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml)
-[![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml)
+[![npm-build](https://github.com/CSC-510-SE-IPV/WolfJobs/actions/workflows/build-checker.yml/badge.svg)](https://github.com/CSC-510-SE-IPV/WolfJobs/actions/workflows/build-checker.yml)
+[![npm-build](https://github.com/CSC-510-SE-IPV/WolfJobs/actions/workflows/build-test-upload.yml/badge.svg)](https://github.com/CSC-510-SE-IPV/WolfJobs/actions/workflows/build-test-upload.yml)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
-[![Issues](https://img.shields.io/github/issues/deepr41/wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
-[![Issues Closed](https://img.shields.io/github/issues-closed/deepr41/wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
-![last commit](https://img.shields.io/github/last-commit/deepr41/Wolfjobs)
-![Lines of code](https://tokei.rs/b1/github/deepr41/wolfjobs)
-[![Repo-size](https://img.shields.io/github/repo-size/deepr41/Wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
-[![file_count](https://img.shields.io/github/directory-file-count/deepr41/Wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
-[![language_count](https://img.shields.io/github/languages/count/deepr41/Wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
+[![Issues](https://img.shields.io/github/issues/CSC-510-SE-IPV/wolfjobs)](https://GitHub.com/CSC-510-SE-IPV/Wolfjobs/)
+[![Issues Closed](https://img.shields.io/github/issues-closed/CSC-510-SE-IPV/wolfjobs)](https://GitHub.com/CSC-510-SE-IPV/Wolfjobs/)
+![last commit](https://img.shields.io/github/last-commit/CSC-510-SE-IPV/Wolfjobs)
+![Lines of code](https://tokei.rs/b1/github/CSC-510-SE-IPV/wolfjobs)
+[![Repo-size](https://img.shields.io/github/repo-size/CSC-510-SE-IPV/Wolfjobs)](https://GitHub.com/CSC-510-SE-IPV/Wolfjobs/)
+[![file_count](https://img.shields.io/github/directory-file-count/CSC-510-SE-IPV/Wolfjobs)](https://GitHub.com/CSC-510-SE-IPV/Wolfjobs/)
+[![language_count](https://img.shields.io/github/languages/count/CSC-510-SE-IPV/Wolfjobs)](https://GitHub.com/CSC-510-SE-IPV/Wolfjobs/)
 [![Downloads](https://img.shields.io/github/downloads/deepr41/WolfJobs/total)](https://GitHub.com/deepr41/Wolfjobs/)
 [![Top Language](https://img.shields.io/github/languages/top/deepr41/wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
 [![DOI](https://zenodo.org/badge/429097663.svg)](https://zenodo.org/badge/latestdoi/429097663)
-[![Release](https://img.shields.io/github/v/release/deepr41/wolfjobs)](https://gitHub.com/deepr41/Wolfjobs)
-[![codecov](https://codecov.io/github/deepr41/WolfJobs/graph/badge.svg?token=RH472ZM4PT)](https://codecov.io/gh/deepr41/WolfJobs)
+[![Release](https://img.shields.io/github/v/release/deepr41/WolfJobs)](https://github.com/deepr41/WolfJobs/)
+[![codecov](https://codecov.io/gh/CSC-510-SE-IPV/WolfJobs/branch/master/graph/badge.svg?token=RH472ZM4PT)](https://codecov.io/gh/CSC-510-SE-IPV/WolfJobs/tree/master)
 
 <!-- ![Static Badge](https://img.shields.io/badge/any_text-i_like-blue) -->
 
@@ -31,7 +31,7 @@
 
 # What's New: 
 
-**Enhanced User Experience, Security, and Functionality**
+**Enhanced User Experience, Security, and Functionality!**
 
 - **Email Notifications**: Automated emails for applicants upon selection or rejection to keep them informed every step of the way.
 - **Interview Scheduling with Notifications**: Managers can now schedule interviews with an integrated calendar, notifying candidates instantly via email and in-app alerts.
@@ -99,6 +99,8 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 ### Review & Accept Applications
 ![Review Applications](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Grade%2C%20Review%20%26%20Accept%20Candidates.gif)
 
+### Interview Scheduling
+![Interview Scheduling](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/readme-update/GIFs/interview.gif)
 
 # Installation Instructions for Project Setup
 
@@ -161,6 +163,9 @@ Your app is ready to be deployed!
 
 **5. Matching based on Resume** – WolfJobs applicants will be able to parse their resume and WolfJobs will extract key skills from the resume and compare it with required job skills to give candidates job matching status.
 
+**6. Customizable Job Alerts🔔** – Allow applicants to set personalized job alerts based on their preferences like job title, location, salary range, or employment type. This feature will send automated notifications when a new job posting matches their criteria, helping applicants stay up-to-date with relevant opportunities without constantly checking the platform.
+
+**7. Saved Jobs Feature📁** – Add a "Save for Later" feature so applicants can bookmark job listings they are interested in and revisit them easily. This will help applicants keep track of positions they may want to apply for, allowing them to compare and prioritize roles without losing track of opportunities.
 
 
 # Contributors

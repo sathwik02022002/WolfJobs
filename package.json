@@ -13,6 +13,8 @@
     "dotenv": "^16.4.5",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.46",
-    "react-big-calendar": "^1.15.0"
+    "pdfjs-dist": "^4.7.76",
+    "react-big-calendar": "^1.15.0",
+    "react-pdf": "^9.1.1"
   }
 }
