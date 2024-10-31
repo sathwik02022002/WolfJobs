@@ -1,3 +1,3 @@
 .DS_STORE
 node_modules
-.env
+backend/controllers/api/v1/app.log

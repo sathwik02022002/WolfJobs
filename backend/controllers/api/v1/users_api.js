@@ -5,7 +5,7 @@ const History = require("../../../models/history");
 const Job = require("../../../models/job");
 const Application = require("../../../models/application");
 const AuthOtp = require("../../../models/authOtp");
-
+const bcrypt = require('bcrypt');
 const nodemailer = require("nodemailer");
 
 require('dotenv').config();
@@ -40,14 +40,27 @@ async function verifyOtp(req, res) {
 module.exports.createSession = async function (req, res) {
   try {
     let user = await User.findOne({ email: req.body.email });
+
+    // Set CORS headers
     res.set("Access-Control-Allow-Origin", "*");
-    if (!user || user.password != req.body.password) {
-      return res.json(422, {
+
+    // Check if user exists
+    if (!user) {
+      return res.status(422).json({
         message: "Invalid username or password",
       });
     }
-    res.set("Access-Control-Allow-Origin", "*");
-    return res.json(200, {
+
+    // Compare the provided password with the hashed password in the database
+    const isMatch = await bcrypt.compare(req.body.password, user.password);
+    if (!isMatch) {
+      return res.status(422).json({
+        message: "Invalid username or password",
+      });
+    }
+
+    // If everything is fine, generate a token
+    return res.status(200).json({
       message: "Sign In Successful, here is your token, please keep it safe",
       data: {
         token: jwt.sign(user.toJSON(), "wolfjobs", { expiresIn: "100000" }),
@@ -57,7 +70,7 @@ module.exports.createSession = async function (req, res) {
     });
   } catch (err) {
     console.log("*******", err);
-    return res.json(500, {
+    return res.status(500).json({
       message: "Internal Server Error",
     });
   }
@@ -92,64 +105,54 @@ module.exports.createHistory = async function (req, res) {
 
 module.exports.signUp = async function (req, res) {
   try {
-    if (req.body.password != req.body.confirm_password) {
-      return res.json(422, {
-        message: "Passwords donot match",
+    // Check if passwords match
+    if (req.body.password !== req.body.confirm_password) {
+      return res.status(422).json({
+        message: "Passwords do not match",
       });
     }
 
-    User.findOne({ email: req.body.email }, function (err, user) {
+    // Check if user already exists
+    User.findOne({ email: req.body.email }, async function (err, user) {
+      if (err) {
+        return res.status(500).json({ message: "Internal Server Error" });
+      }
+
       if (user) {
         res.set("Access-Control-Allow-Origin", "*");
-        return res.json(200, {
-          message: "Sign Up Successful, here is your token, plz keep it safe",
-
+        return res.status(200).json({
+          message: "Sign Up Successful, here is your token, please keep it safe",
           data: {
-            //user.JSON() part gets encrypted
-
-            token: jwt.sign(user.toJSON(), "wolfjobs", {
-              expiresIn: "100000",
-            }),
+            token: jwt.sign(user.toJSON(), "wolfjobs", { expiresIn: "100000" }),
             user,
           },
           success: true,
         });
       }
 
-      if (!user) {
-        let user = User.create(req.body, function (err, user) {
-          if (err) {
-            return res.json(500, {
-              message: "Internal Server Error",
-            });
-          }
+      // Hash the password
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-          res.set("Access-Control-Allow-Origin", "*");
-          return res.json(200, {
-            message: "Sign Up Successful, here is your token, plz keep it safe",
+      // Create a new user with hashed password
+      User.create({ ...req.body, password: hashedPassword }, function (err, newUser) {
+        if (err) {
+          return res.status(500).json({ message: "Internal Server Error" });
+        }
 
-            data: {
-
-              token: jwt.sign(user.toJSON(), "wolfjobs", {
-                expiresIn: "100000",
-              }),
-              user,
-            },
-            success: true,
-          });
+        res.set("Access-Control-Allow-Origin", "*");
+        return res.status(200).json({
+          message: "Sign Up Successful, here is your token, please keep it safe",
+          data: {
+            token: jwt.sign(newUser.toJSON(), "wolfjobs", { expiresIn: "100000" }),
+            user: newUser,
+          },
+          success: true,
         });
-      } else {
-        return res.json(500, {
-          message: "Internal Server Error",
-        });
-      }
+      });
     });
   } catch (err) {
-    console.log(err);
-
-    return res.json(500, {
-      message: "Internal Server Error",
-    });
+    console.error(err);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
