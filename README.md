@@ -14,7 +14,7 @@
 [![Downloads](https://img.shields.io/github/downloads/deepr41/WolfJobs/total)](https://GitHub.com/deepr41/Wolfjobs/)
 [![Top Language](https://img.shields.io/github/languages/top/deepr41/wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14027181.svg)](https://doi.org/10.5281/zenodo.14027181)
-[![Release](https://img.shields.io/github/v/release/deepr41/WolfJobs)](https://github.com/deepr41/WolfJobs/)
+[![Release](https://img.shields.io/github/v/release/CSC-510-SE-IPV/WolfJobs)](https://github.com/CSC-510-SE-IPV/WolfJobs/)
 [![codecov](https://codecov.io/gh/CSC-510-SE-IPV/WolfJobs/branch/master/graph/badge.svg?token=RH472ZM4PT)](https://codecov.io/gh/CSC-510-SE-IPV/WolfJobs/tree/master)
 
 <!-- ![Static Badge](https://img.shields.io/badge/any_text-i_like-blue) -->
