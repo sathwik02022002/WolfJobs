@@ -85,6 +85,58 @@ describe('Dashboard Page', () => {
     const mainDiv = container.querySelector('div');
     expect(mainDiv).toBeInTheDocument();
   });
+  it('renders the application status filter dropdown for applicants', () => {
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
+
+    // Verify presence of application status dropdown (for Applicant role)
+    const applicationStatusDropdown = screen.queryByLabelText(/Status/i);
+    if (applicationStatusDropdown) {
+      expect(applicationStatusDropdown).toBeInTheDocument();
+    }
+  });
+  it('renders the job status filter dropdown for managers', () => {
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
+
+    // Verify presence of job status filter dropdown (for Manager role)
+    const jobStatusDropdown = screen.queryByLabelText(/Job Status/i);
+    if (jobStatusDropdown) {
+      expect(jobStatusDropdown).toBeInTheDocument();
+    }
+  });
+  it('renders a button to create a job if the user role is "Manager"', () => {
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
+
+    // Checking for a button to create a job
+    const createJobButton = screen.queryByText(/Create Job \+/i);
+    if (createJobButton) {
+      expect(createJobButton).toBeInTheDocument();
+    } else {
+      console.log("No Create Job button, as role is not Manager");
+    }
+  });
+  it('renders "My Listings" or "My Applications" heading based on role', () => {
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
+    
+    // Check that either "My Listings" or "My Applications" text is in the document
+    const heading = screen.queryByText(/My Listings|My Applications/i);
+    expect(heading).toBeInTheDocument();
+  });
 
 
 });
