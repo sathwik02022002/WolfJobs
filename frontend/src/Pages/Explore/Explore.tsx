@@ -1,19 +1,17 @@
 import axios from "axios";
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../../store/UserStore";
 import { toast } from "react-toastify";
-
 import JobsListView from "../../components/Job/JobListView";
 import JobDetailView from "../../components/Job/JobDetailView";
 import { useJobStore } from "../../store/JobStore";
 import { useApplicationStore } from "../../store/ApplicationStore";
-// const userId = useUserStore((state) => state.id);
 
 const Explore = () => {
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
 
+  // Store update functions
   const updateName = useUserStore((state) => state.updateName);
   const updateAddress = useUserStore((state) => state.updateAddress);
   const updateRole = useUserStore((state) => state.updateRole);
@@ -25,99 +23,97 @@ const Explore = () => {
   const updateGender = useUserStore((state) => state.updateGender);
   const updateHours = useUserStore((state) => state.updateHours);
   const updateIsLoggedIn = useUserStore((state) => state.updateIsLoggedIn);
-  const updateResume = useUserStore((state) => state.updateResume)
+  const updateResume = useUserStore((state) => state.updateResume);
   const updateResumeId = useUserStore((state) => state.updateResumeId);
-
-  const updateApplicationList = useApplicationStore(
-    (state) => state.updateApplicationList
-  );
-
+  const updateApplicationList = useApplicationStore((state) => state.updateApplicationList);
   const updateEmail = useUserStore((state) => state.updateEmail);
-
   const updateJobList = useJobStore((state) => state.updateJobList);
-  const jobList: Job[] = useJobStore((state) => state.jobList);
+  const jobList = useJobStore((state) => state.jobList);
 
+  // Local state for filtering and sorting jobs
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredJobList, setFilteredJobList] = useState<Job[]>([]);
+  const [filteredJobList, setFilteredJobList] = useState([]);
   const [sortHighestPay, setSortHighestPay] = useState(false);
   const [sortAlphabeticallyByCity, setSortAlphabeticallyByCity] = useState(false);
   const [sortByEmploymentType, setSortByEmploymentType] = useState(false);
   const [showOpenJobs, setShowOpenJobs] = useState(true);
 
-  const handleSearchChange = (event: any) => {
-    setSearchTerm(event.target.value);
-  };
+  const handleSearchChange = (event) => setSearchTerm(event.target.value);
+  const handleSortChange = () => setSortHighestPay(!sortHighestPay);
+  const handleSortCityChange = () => setSortAlphabeticallyByCity(!sortAlphabeticallyByCity);
+  const handleSortEmploymenyTypeChange = () => setSortByEmploymentType(!sortByEmploymentType);
+  const toggleJobStatus = () => setShowOpenJobs(!showOpenJobs);
 
-  const handleSortChange = () => {
-    setSortHighestPay(!sortHighestPay);
-  };
-
-  const handleSortCityChange = () => {
-    setSortAlphabeticallyByCity(!sortAlphabeticallyByCity);
-  };
-
-  const handleSortEmploymenyTypeChange = () => {
-    setSortByEmploymentType(!sortByEmploymentType);
-  };
-
-  const toggleJobStatus = () => {
-    setShowOpenJobs(!showOpenJobs);
-  };
-
+  // Authenticate user and update store
   useEffect(() => {
-    const token: string = localStorage.getItem("token")!;
+    const token = localStorage.getItem("token");
     if (!token) {
-      naviagte("/login");
+      navigate("/login");
+      return;
     }
-    if (token) {
+
+    try {
       const tokenInfo = token.split(".");
       const userInfo = JSON.parse(atob(tokenInfo[1]));
 
-      updateName(userInfo.name);
-      updateEmail(userInfo.email);
-      updateAddress(userInfo.address);
-      updateRole(userInfo.role);
-      updateDob(userInfo.dob);
-      updateSkills(userInfo.skills);
-      updatePhonenumber(userInfo.phonenumber);
-      updateId(userInfo._id);
-      updateAvailability(userInfo.availability);
-      updateGender(userInfo.gender);
-      updateHours(userInfo.hours);
+      // Check for user info properties before updating store
+      updateName(userInfo.name || "");
+      updateEmail(userInfo.email || "");
+      updateAddress(userInfo.address || "");
+      updateRole(userInfo.role || "");
+      updateDob(userInfo.dob || "");
+      updateSkills(userInfo.skills || []);
+      updatePhonenumber(userInfo.phonenumber || "");
+      updateId(userInfo._id || "");
+      updateAvailability(userInfo.availability || "");
+      updateGender(userInfo.gender || "");
+      updateHours(userInfo.hours || 0);
       updateIsLoggedIn(true);
-      updateResume(userInfo.resume);
-      updateResumeId(userInfo.resumeId);
+      updateResume(userInfo.resume || "");
+      updateResumeId(userInfo.resumeId || "");
+    } catch (error) {
+      console.error("Error parsing token:", error);
+      toast.error("Invalid token. Please log in again.");
+      navigate("/login");
     }
   }, []);
 
+  // Fetch applications and jobs
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/v1/users/fetchapplications")
       .then((res) => {
-        if (res.status !== 200) {
+        if (res.status === 200) {
+          updateApplicationList(res.data.application || []);
+        } else {
           toast.error("Error fetching applications");
-          return;
         }
-        updateApplicationList(res.data.application as Application[]);
+      })
+      .catch((error) => {
+        console.error("Error fetching applications:", error);
+        toast.error("Error fetching applications");
       });
 
     axios
-      .get("http://localhost:8000/api/v1/users", {
-        params: { page: 1, limit: 25 },
-      })
+      .get("http://localhost:8000/api/v1/users", { params: { page: 1, limit: 25 } })
       .then((res) => {
-        if (res.status !== 200) {
+        if (res.status === 200) {
+          updateJobList(res.data.jobs || []);
+        } else {
           toast.error("Error fetching jobs");
-          return;
         }
-        updateJobList(res.data.jobs as Job[]);
+      })
+      .catch((error) => {
+        console.error("Error fetching jobs:", error);
+        toast.error("Error fetching jobs");
       });
   }, []);
 
+  // Filter and sort job list
   useEffect(() => {
     let updatedList = jobList;
 
-    if (searchTerm !== "") {
+    if (searchTerm) {
       updatedList = updatedList.filter((job) =>
         job.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
@@ -128,19 +124,14 @@ const Explore = () => {
     }
 
     if (sortAlphabeticallyByCity) {
-      updatedList = [...updatedList].sort((a, b) => {
-        return a.location.localeCompare(b.location)
-      });
+      updatedList = [...updatedList].sort((a, b) => a.location.localeCompare(b.location));
     }
 
     if (sortByEmploymentType) {
-      updatedList = [...updatedList].sort((a, b) => {
-        return a.type.localeCompare(b.type)
-      });
+      updatedList = [...updatedList].sort((a, b) => a.type.localeCompare(b.type));
     }
 
-    updatedList = updatedList.filter(job => showOpenJobs ? job.status === "open" : job.status === "closed");
-
+    updatedList = updatedList.filter((job) => (showOpenJobs ? job.status === "open" : job.status === "closed"));
     setFilteredJobList(updatedList);
   }, [searchTerm, jobList, sortHighestPay, sortAlphabeticallyByCity, sortByEmploymentType, showOpenJobs]);
 
@@ -158,32 +149,16 @@ const Explore = () => {
             />
           </div>
           <div className="flex space-x-2">
-            <button
-              onClick={handleSortChange}
-              className="p-2 border rounded bg-white shadow"
-              style={{ padding: '10px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}
-            >
+            <button onClick={handleSortChange} className="p-2 border rounded bg-white shadow">
               {sortHighestPay ? "Sort by High Pay : On" : "Sort by Highest Pay : Off"}
             </button>
-            <button
-              onClick={handleSortCityChange}
-              className="p-2 border rounded bg-white shadow"
-              style={{ padding: '10px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}
-            >
+            <button onClick={handleSortCityChange} className="p-2 border rounded bg-white shadow">
               {sortAlphabeticallyByCity ? "Sort by City : On" : "Sort by City : Off"}
             </button>
-            <button
-              onClick={handleSortEmploymenyTypeChange}
-              className="p-2 border rounded bg-white shadow"
-              style={{ padding: '10px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}
-            >
+            <button onClick={handleSortEmploymenyTypeChange} className="p-2 border rounded bg-white shadow">
               {sortByEmploymentType ? "Sort by Employment Type : On" : "Sort by Employment Type : Off"}
             </button>
-            <button
-              onClick={toggleJobStatus}
-              className="p-2 border rounded bg-white shadow"
-              style={{ padding: '10px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}
-            >
+            <button onClick={toggleJobStatus} className="p-2 border rounded bg-white shadow">
               {showOpenJobs ? "Show Closed Jobs" : "Show Open Jobs"}
             </button>
           </div>
