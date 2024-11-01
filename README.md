@@ -1,4 +1,4 @@
-![Banner](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Banner.png)
+![Banner](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/master/GIFs/WolfJobs_Banner.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm-build](https://github.com/CSC-510-SE-IPV/WolfJobs/actions/workflows/build-checker.yml/badge.svg)](https://github.com/CSC-510-SE-IPV/WolfJobs/actions/workflows/build-checker.yml)
