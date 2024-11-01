@@ -44,7 +44,7 @@
 
 # Presentation Video
 
-[![Watch the video](https://github.com/deepr41/WolfJobs/blob/master/GIFs/Video%20Thumbnail.png)](http://www.youtube.com/watch?v=kMgLUrDiYEw)
+[![Watch the video](https://github.com/CSC-510-SE-IPV/WolfJobs/blob/master/GIFs/WolfJobs_Thumbnail.png)](https://youtu.be/qUNIyCOmG1o)
 
 # About Us
 
