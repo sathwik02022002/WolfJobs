@@ -7,7 +7,7 @@ import { useUserStore } from "../../store/UserStore";
 import { useJobStore } from "../../store/JobStore";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import JobListTile from "../../components/Job/JobListTile";
-import { Button, Select, MenuItem, FormControl, InputLabel, Tooltip } from "@mui/material";
+import { Button, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -47,14 +47,15 @@ const Dashboard = () => {
   const [applicationStatusFilter, setApplicationStatusFilter] = useState("all"); // For applicant's status filter
 
   useEffect(() => {
-    const token: string = localStorage.getItem("token")!;
-    if (!token) {
-      navigate("/login");
-    }
-    if (token) {
+    try {
+      const token: string | null = localStorage.getItem("token");
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+
       const tokenInfo = token.split(".");
       const userInfo = JSON.parse(atob(tokenInfo[1]));
-
       updateName(userInfo.name);
       updateEmail(userInfo.email);
       updatePassword(userInfo.password);
@@ -70,6 +71,10 @@ const Dashboard = () => {
       updateIsLoggedIn(true);
       updateResume(userInfo.resume);
       updateResumeId(userInfo.resumeId);
+    } catch (error) {
+      console.error("Error decoding token:", error);
+      toast.error("Failed to decode user information.");
+      navigate("/login");
     }
   }, []);
 
@@ -82,6 +87,10 @@ const Dashboard = () => {
           return;
         }
         updateApplicationList(res.data.application as Application[]);
+      })
+      .catch((error) => {
+        console.error("Error fetching applications:", error);
+        toast.error("Failed to load applications.");
       });
 
     axios
@@ -94,40 +103,49 @@ const Dashboard = () => {
           return;
         }
         updateJobList(res.data.jobs as Job[]);
+      })
+      .catch((error) => {
+        console.error("Error fetching jobs:", error);
+        toast.error("Failed to load jobs.");
       });
   }, []);
 
   useEffect(() => {
-    let temp: Job[] = jobList;
+    try {
+      let temp: Job[] = jobList;
 
-    if (role === "Manager") {
-      // Filter jobs based on manager and job status
-      temp = temp.filter((item) => item.managerid === managerId);
-      if (jobStatusFilter !== "all") {
-        temp = temp.filter((job) =>
-          jobStatusFilter === "open" ? job.status === "open" : job.status === "closed"
+      if (role === "Manager") {
+        // Filter jobs based on manager and job status
+        temp = temp.filter((item) => item.managerid === managerId);
+        if (jobStatusFilter !== "all") {
+          temp = temp.filter((job) =>
+            jobStatusFilter === "open" ? job.status === "open" : job.status === "closed"
+          );
+        }
+      } else if (role === "Applicant") {
+        // Filter applications specific to the current user and status
+        let applicantsJobs: Application[] = applicationList.filter(
+          (item) => item.applicantid === managerId // Filters for the current applicant's applications
         );
-      }
-    } else if (role === "Applicant") {
-      // Filter applications specific to the current user and status
-      let applicantsJobs: Application[] = applicationList.filter(
-        (item) => item.applicantid === managerId // Filters for the current applicant's applications
-      );
 
-      if (applicationStatusFilter !== "all") {
-        applicantsJobs = applicantsJobs.filter((app) => {
-          if (applicationStatusFilter === "accepted") return app.status === "accepted";
-          if (applicationStatusFilter === "rejected") return app.status === "rejected";
-          return true;
-        });
+        if (applicationStatusFilter !== "all") {
+          applicantsJobs = applicantsJobs.filter((app) => {
+            if (applicationStatusFilter === "accepted") return app.status === "accepted";
+            if (applicationStatusFilter === "rejected") return app.status === "rejected";
+            return true;
+          });
+        }
+
+        // Map filtered applications to jobs
+        const jobIds = applicantsJobs.map((app) => app.jobid);
+        temp = temp.filter((job) => jobIds.includes(job._id));
       }
 
-      // Map filtered applications to jobs
-      const jobIds = applicantsJobs.map((app) => app.jobid);
-      temp = temp.filter((job) => jobIds.includes(job._id));
+      setDisplayList(temp);
+    } catch (error) {
+      console.error("Error filtering job list:", error);
+      toast.error("Failed to process job list.");
     }
-
-    setDisplayList(temp);
   }, [role, jobList, applicationList, jobStatusFilter, applicationStatusFilter]);
 
   const handleJobStatusFilterChange = (event) => {
