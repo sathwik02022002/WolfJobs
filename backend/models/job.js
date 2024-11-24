@@ -15,7 +15,7 @@ const jobSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: 'open',
+    default: "open",
   },
   location: {
     type: String,
@@ -53,12 +53,16 @@ const jobSchema = new mongoose.Schema({
   //   type: String,
   //   required: true,
   // },
-  questions:{
+  questions: {
     type: [String],
     default: [],
     required: true,
-  }
+  },
 
+  saved: {
+    type: Boolean,
+    deafult: false,
+  },
 });
 
 const Job = mongoose.model("Job", jobSchema);

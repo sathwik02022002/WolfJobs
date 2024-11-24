@@ -7,7 +7,13 @@ import { useUserStore } from "../../store/UserStore";
 import { useJobStore } from "../../store/JobStore";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import JobListTile from "../../components/Job/JobListTile";
-import { Button, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import {
+  Button,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from "@mui/material";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -119,7 +125,9 @@ const Dashboard = () => {
         temp = temp.filter((item) => item.managerid === managerId);
         if (jobStatusFilter !== "all") {
           temp = temp.filter((job) =>
-            jobStatusFilter === "open" ? job.status === "open" : job.status === "closed"
+            jobStatusFilter === "open"
+              ? job.status === "open"
+              : job.status === "closed"
           );
         }
       } else if (role === "Applicant") {
@@ -130,8 +138,10 @@ const Dashboard = () => {
 
         if (applicationStatusFilter !== "all") {
           applicantsJobs = applicantsJobs.filter((app) => {
-            if (applicationStatusFilter === "accepted") return app.status === "accepted";
-            if (applicationStatusFilter === "rejected") return app.status === "rejected";
+            if (applicationStatusFilter === "accepted")
+              return app.status === "accepted";
+            if (applicationStatusFilter === "rejected")
+              return app.status === "rejected";
             return true;
           });
         }
@@ -146,30 +156,41 @@ const Dashboard = () => {
       console.error("Error filtering job list:", error);
       toast.error("Failed to process job list.");
     }
-  }, [role, jobList, applicationList, jobStatusFilter, applicationStatusFilter]);
+  }, [
+    role,
+    jobList,
+    applicationList,
+    jobStatusFilter,
+    applicationStatusFilter,
+  ]);
 
-  const handleJobStatusFilterChange = (event) => {
+  const handleJobStatusFilterChange = (event: any) => {
     setJobStatusFilter(event.target.value);
   };
 
-  const handleApplicationStatusFilterChange = (event) => {
+  const handleApplicationStatusFilterChange = (event: any) => {
     setApplicationStatusFilter(event.target.value);
   };
 
   return (
     <>
       <div
-      className="content"
-      style={{
-        backgroundColor: "rgba(255, 255, 255, 0.6)", // Entire background translucent white
-        minHeight: "100vh",
-      }}
-    >
+        className="content"
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.6)", // Entire background translucent white
+          minHeight: "100vh",
+        }}
+      >
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
           <div className="w-4/12 pt-2 overflow-x-hidden overflow-y-scroll bg-white/60 px-9 rounded-lg shadow-md">
             {/* Filter Dropdowns */}
             {role === "Manager" && (
-              <FormControl variant="outlined" size="small" className="mb-4" style={{ width: "100%" }}>
+              <FormControl
+                variant="outlined"
+                size="small"
+                className="mb-4"
+                style={{ width: "100%" }}
+              >
                 <InputLabel>Job Status</InputLabel>
                 <Select
                   value={jobStatusFilter}
@@ -184,7 +205,12 @@ const Dashboard = () => {
               </FormControl>
             )}
             {role === "Applicant" && (
-              <FormControl variant="outlined" size="small" className="mb-4" style={{ width: "100%" }}>
+              <FormControl
+                variant="outlined"
+                size="small"
+                className="mb-4"
+                style={{ width: "100%" }}
+              >
                 <InputLabel>Status</InputLabel>
                 <Select
                   value={applicationStatusFilter}
@@ -213,7 +239,9 @@ const Dashboard = () => {
                   (item) =>
                     item.jobid === job._id && item.status === "screening"
                 );
-                action = application ? "view-questionnaire" : "view-application";
+                action = application
+                  ? "view-questionnaire"
+                  : "view-application";
               }
 
               return <JobListTile data={job} key={job._id} action={action} />;
